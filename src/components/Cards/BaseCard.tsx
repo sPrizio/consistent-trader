@@ -29,7 +29,8 @@ function BaseCard(
     }
 ) {
     return (
-        <div className="tb-card">
+        <div className={"tb-card" + (loading ? " tb-card--is-loading" : "")}>
+            <div className="tb-card__loader-overlay" />
             <div className="columns is-multiline is-mobile is-gapless">
                 <div className="column is-12">
                     <div className="tb-card__header">

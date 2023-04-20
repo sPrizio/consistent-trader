@@ -15,7 +15,6 @@
   text-decoration: none;
   text-transform: none;
   min-height: 50px;
-
   transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: $transition-duration;
   transition-timing-function: $transition-curve;
@@ -207,14 +206,5 @@
         }
       }
     }
-  }
-}
-
-@keyframes spinner {
-  0% {
-    transform: translate3d(-50%, -50%, 0) rotate(0deg);
-  }
-  100% {
-    transform: translate3d(-50%, -50%, 0) rotate(360deg);
   }
 }

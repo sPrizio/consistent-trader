@@ -4,6 +4,39 @@
   border-radius: 16px;
   padding: 35px;
   box-shadow: 0 8px 16px rgba(#4133B7, 0.2);
+  min-height: 250px;
+  transition-property: width, height, display;
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-curve;
+
+  &--is-loading {
+    .tb-card__loader-overlay {
+      display: block;
+      width: 100%;
+      height: 236px;
+      position: relative;
+
+      &::before {
+        animation: 0.75s linear infinite spinner;
+        animation-play-state: inherit;
+        border: solid 4px rgba($color-primary, 0.25); // background ring
+        border-bottom-color: $color-primary;
+        border-radius: 50%;
+        content: "";
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: 100px;
+        will-change: transform;
+      }
+    }
+
+    .columns {
+      display: none;
+    }
+  }
 
   &__header {
     &__title {

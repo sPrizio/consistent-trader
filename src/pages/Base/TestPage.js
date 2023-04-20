@@ -1,6 +1,12 @@
 import SimpleButton from "../../components/Buttons/SimpleButton";
 import BaseCard from "../../components/Cards/BaseCard";
 
+/**
+ * A generic page used for testing components and functionality
+ *
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function TestPage() {
     return (
         <div className="container">
@@ -109,7 +115,7 @@ function TestPage() {
                 <div className="column is-6">
                     <BaseCard
                         content={[<p key={0}>This is some test content</p>]}
-                        controls={[<SimpleButton text={'Submit'} key={0} loading={true} />, <SimpleButton text={'Cancel'} variant={"tertiary"} key={1} />]}
+                        controls={[<SimpleButton text={'Submit'} key={0} loading={false} />, <SimpleButton text={'Cancel'} variant={"tertiary"} key={1} />]}
                     />
                 </div>
             </div>

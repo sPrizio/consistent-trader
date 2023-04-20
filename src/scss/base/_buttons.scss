@@ -1,6 +1,6 @@
 .tb-button {
   //  TEMP
-  margin-top: 25px;
+  /*margin-top: 25px;*/
 
   background: none;
   border: 1px solid transparent;
@@ -14,8 +14,9 @@
   position: relative;
   text-decoration: none;
   text-transform: none;
+  min-height: 50px;
 
-  transition-property: background-color, border-color, color, opacity;
+  transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: $transition-duration;
   transition-timing-function: $transition-curve;
 
@@ -28,6 +29,32 @@
   &:hover,
   &:focus-visible {
     cursor: pointer;
+  }
+
+  &--loading {
+    &:hover {
+      pointer-events: none;
+    }
+  }
+
+  &--loader {
+    color: transparent;
+    min-width: 40px;
+
+    &::before {
+      animation: 0.75s linear infinite spinner;
+      animation-play-state: inherit;
+      border: solid 2px transparent; // background ring
+      border-radius: 50%;
+      content: "";
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 24px;
+      will-change: transform;
+    }
   }
 
   &--plain {
@@ -91,6 +118,22 @@
         color: $color-font-disabled;
         pointer-events: none;
       }
+
+      &.tb-button--loading {
+        .tb-button--loader {
+          &::before {
+            border-bottom-color: $color-primary;
+          }
+        }
+      }
+    }
+
+    &.tb-button--loading {
+      .tb-button--loader {
+        &::before {
+          border-bottom-color: $color-white;
+        }
+      }
     }
 
     &:disabled {
@@ -136,6 +179,14 @@
         background-color: $color-secondary;
       }
     }
+
+    &.tb-button--loading {
+      .tb-button--loader {
+        &::before {
+          border-bottom-color: $color-white;
+        }
+      }
+    }
   }
 
   &--tertiary {
@@ -148,5 +199,22 @@
       background-color: $color-secondary;
       color: $color-white;
     }
+
+    &.tb-button--loading {
+      .tb-button--loader {
+        &::before {
+          border-bottom-color: $color-secondary;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
   }
 }

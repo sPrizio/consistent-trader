@@ -109,7 +109,7 @@ function TestPage() {
                 <div className="column is-6">
                     <BaseCard
                         content={[<p key={0}>This is some test content</p>]}
-                        controls={[<SimpleButton text={'Submit'} key={0} />, <SimpleButton text={'Cancel'} variant={"tertiary"} key={1} />]}
+                        controls={[<SimpleButton text={'Submit'} key={0} loading={true} />, <SimpleButton text={'Cancel'} variant={"tertiary"} key={1} />]}
                     />
                 </div>
             </div>

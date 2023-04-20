@@ -44,8 +44,9 @@ function SimpleButton(
         const i = inverted ? "tb-button--inverted" : ""
         const p = plain ? "tb-button--plain" : ""
         const a = active ? "tb-button--active" : ""
+        const l = loading ? "tb-button--loading" : ""
 
-        return `tb-button ${v} ${i} ${p} ${a}`.trim()
+        return `tb-button ${v} ${i} ${p} ${a} ${l}`.trim()
     }
 
     if (!variant || variant.length === 0) {
@@ -54,7 +55,7 @@ function SimpleButton(
 
     return (
         <button className={computeClass(variant, inverted, plain, active)} disabled={disabled} onClick={handler}>
-            {text}
+            { !loading ? text : <div className="tb-button--loader">L</div> }
         </button>
     );
 }

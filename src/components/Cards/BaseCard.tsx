@@ -5,6 +5,9 @@ import React from "react";
  *
  * @prop header - card header component
  * @prop subtitle - card subtitle
+ * @prop content - custom card content, can be anything, expecting an array
+ * @prop controls - custom controls, for buttons if necessary, expecting an array
+ * @prop loading - flag to determine whether the card is in a loading state
  *
  * @author Stephen Prizio
  * @version 1.0

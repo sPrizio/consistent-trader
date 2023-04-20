@@ -1,7 +1,4 @@
 .tb-card {
-  //TEMP
-  margin-top: 36px;
-
   color: $color-font-primary;
   background-color: $color-white;
   border-radius: 16px;
@@ -24,7 +21,6 @@
     }
 
     &__subtitle {
-      margin: 6px 0;
       color: $color-font-header-subtitle;
       font-size: map-get($font-body, 'xsmall', 'mobile', 'size');
       line-height: map-get($font-body, 'xsmall', 'mobile', 'line');
@@ -39,8 +35,9 @@
   }
 
   &__content {
+    border-bottom: 1px solid rgba($color-primary, 0.4);
     border-top: 1px solid rgba($color-primary, 0.4);
-    margin-top: 12px;
+    margin-top: 18px;
     display: flex;
     flex-direction: row;
     padding: 12px 0;
@@ -52,10 +49,13 @@
 
   &__controls {
     text-align: right;
-    border-top: 1px solid rgba($color-primary, 0.4);
+    height: 100%;
+    margin-top: 24px;
 
     &__item {
+      vertical-align: center;
       display: inline-block;
+      height: 100%;
 
       &:not(:first-child) {
         margin-left: 6px;

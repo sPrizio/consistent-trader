@@ -187,7 +187,7 @@ p strong {
 }
 
 .tb-button {
-  margin-top: 25px;
+  /*margin-top: 25px;*/
   background: none;
   border: 1px solid transparent;
   border-radius: 0;
@@ -200,7 +200,8 @@ p strong {
   position: relative;
   text-decoration: none;
   text-transform: none;
-  transition-property: background-color, border-color, color, opacity;
+  min-height: 50px;
+  transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
@@ -213,6 +214,27 @@ p strong {
 }
 .tb-button:hover, .tb-button:focus-visible {
   cursor: pointer;
+}
+.tb-button--loading:hover {
+  pointer-events: none;
+}
+.tb-button--loader {
+  color: transparent;
+  min-width: 40px;
+}
+.tb-button--loader::before {
+  animation: 0.75s linear infinite spinner;
+  animation-play-state: inherit;
+  border: solid 2px transparent;
+  border-radius: 50%;
+  content: "";
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 24px;
+  will-change: transform;
 }
 .tb-button--plain {
   padding: 0 0 1px 0;
@@ -262,6 +284,12 @@ p strong {
   color: rgb(161, 172, 184);
   pointer-events: none;
 }
+.tb-button--primary.tb-button--inverted.tb-button--loading .tb-button--loader::before {
+  border-bottom-color: #696cff;
+}
+.tb-button--primary.tb-button--loading .tb-button--loader::before {
+  border-bottom-color: #FFFFFF;
+}
 .tb-button--primary:disabled {
   background-color: rgb(161, 172, 184);
   border-color: rgb(161, 172, 184);
@@ -296,6 +324,9 @@ p strong {
 .tb-button--secondary.tb-button--plain:after {
   background-color: rgb(86, 106, 127);
 }
+.tb-button--secondary.tb-button--loading .tb-button--loader::before {
+  border-bottom-color: #FFFFFF;
+}
 .tb-button--tertiary {
   background-color: #FFFFFF;
   border-color: rgb(86, 106, 127);
@@ -305,9 +336,19 @@ p strong {
   background-color: rgb(86, 106, 127);
   color: #FFFFFF;
 }
+.tb-button--tertiary.tb-button--loading .tb-button--loader::before {
+  border-bottom-color: rgb(86, 106, 127);
+}
 
+@keyframes spinner {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
 .tb-card {
-  margin-top: 36px;
   color: #313131;
   background-color: #FFFFFF;
   border-radius: 16px;
@@ -329,7 +370,6 @@ p strong {
   }
 }
 .tb-card__header__subtitle {
-  margin: 6px 0;
   color: rgb(161, 172, 184);
   font-size: 12px;
   line-height: 20px;
@@ -343,8 +383,9 @@ p strong {
   }
 }
 .tb-card__content {
+  border-bottom: 1px solid rgba(105, 108, 255, 0.4);
   border-top: 1px solid rgba(105, 108, 255, 0.4);
-  margin-top: 12px;
+  margin-top: 18px;
   display: flex;
   flex-direction: row;
   padding: 12px 0;
@@ -354,10 +395,13 @@ p strong {
 }
 .tb-card__controls {
   text-align: right;
-  border-top: 1px solid rgba(105, 108, 255, 0.4);
+  height: 100%;
+  margin-top: 24px;
 }
 .tb-card__controls__item {
+  vertical-align: center;
   display: inline-block;
+  height: 100%;
 }
 .tb-card__controls__item:not(:first-child) {
   margin-left: 6px;

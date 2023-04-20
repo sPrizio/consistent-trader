@@ -1,0 +1,152 @@
+.tb-button {
+  //  TEMP
+  margin-top: 25px;
+
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-family: $font-primary;
+  font-weight: $font-weight-medium;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 6px 12px;
+  height: auto;
+  position: relative;
+  text-decoration: none;
+  text-transform: none;
+
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-curve;
+
+  @include mq-large-up {
+    font-size: 13px;
+    line-height: 28px;
+    padding: 8px 16px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    cursor: pointer;
+  }
+
+  &--plain {
+    padding: 0 0 1px 0;
+    background: none !important;
+    border: none;
+
+    &:after {
+      background-color: transparent;
+      border: none;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      top: inherit;
+      transition: width $transition-duration $transition-curve;
+      width: 0;
+    }
+
+    &:hover,
+    &:focus-visible {
+      &:after {
+        width: 100%;
+      }
+    }
+
+    &.tb-button--active {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-white;
+      color: $color-primary;
+    }
+
+    &.tb-button--inverted {
+      background-color: $color-white;
+      border-color: $color-primary;
+      color: $color-primary;
+
+      &:hover,
+      &:focus-visible {
+        background-color: $color-primary;
+        color: $color-white;
+      }
+
+      &:disabled {
+        background-color: $color-white;
+        border-color: $color-font-disabled;
+        color: $color-font-disabled;
+        pointer-events: none;
+      }
+    }
+
+    &:disabled {
+      background-color: $color-font-disabled;
+      border-color: $color-font-disabled;
+      color: $color-white;
+      pointer-events: none;
+    }
+
+    &.tb-button--plain {
+      color: $color-primary;
+
+      &:disabled {
+        color: $color-font-disabled;
+        pointer-events: none;
+
+        &:after {
+          background-color: $color-font-disabled;
+        }
+      }
+
+      &:after {
+        background-color: $color-primary;
+      }
+    }
+  }
+
+  &--secondary {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    color: $color-white;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-white;
+      color: $color-secondary;
+    }
+
+    &.tb-button--plain {
+      color: $color-secondary;
+
+      &:after {
+        background-color: $color-secondary;
+      }
+    }
+  }
+
+  &--tertiary {
+    background-color: $color-white;
+    border-color: $color-secondary;
+    color: $color-secondary;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-secondary;
+      color: $color-white;
+    }
+  }
+}

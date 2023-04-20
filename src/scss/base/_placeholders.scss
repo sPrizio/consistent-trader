@@ -1,0 +1,146 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+a,
+p,
+span, {
+    font-family: $font-primary;
+    color: $color-font-primary;
+    transition-property: font-weight, font-size;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-curve;
+}
+
+h1 {
+    font-size: map-get($font-h1, 'mobile', 'size');
+    font-weight: map-get($font-h1, 'mobile', 'weight');
+    line-height: map-get($font-h1, 'mobile', 'line');
+    letter-spacing: map-get($font-h1, 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-h1, 'desktop', 'size');
+        font-weight: map-get($font-h1, 'desktop', 'weight');
+        line-height: map-get($font-h1, 'desktop', 'line');
+        letter-spacing: map-get($font-h1, 'desktop', 'letter');
+    }
+}
+
+h2 {
+    font-size: map-get($font-h2, 'mobile', 'size');
+    font-weight: map-get($font-h2, 'mobile', 'weight');
+    line-height: map-get($font-h2, 'mobile', 'line');
+    letter-spacing: map-get($font-h2, 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-h2, 'desktop', 'size');
+        font-weight: map-get($font-h2, 'desktop', 'weight');
+        line-height: map-get($font-h2, 'desktop', 'line');
+        letter-spacing: map-get($font-h2, 'desktop', 'letter');
+    }
+}
+
+h3 {
+    font-size: map-get($font-h3, 'mobile', 'size');
+    font-weight: map-get($font-h3, 'mobile', 'weight');
+    line-height: map-get($font-h3, 'mobile', 'line');
+    letter-spacing: map-get($font-h3, 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-h3, 'desktop', 'size');
+        font-weight: map-get($font-h3, 'desktop', 'weight');
+        line-height: map-get($font-h3, 'desktop', 'line');
+        letter-spacing: map-get($font-h3, 'desktop', 'letter');
+    }
+}
+
+h4 {
+    font-size: map-get($font-h4, 'mobile', 'size');
+    font-weight: map-get($font-h4, 'mobile', 'weight');
+    line-height: map-get($font-h4, 'mobile', 'line');
+    letter-spacing: map-get($font-h4, 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-h4, 'desktop', 'size');
+        font-weight: map-get($font-h4, 'desktop', 'weight');
+        line-height: map-get($font-h4, 'desktop', 'line');
+        letter-spacing: map-get($font-h4, 'desktop', 'letter');
+    }
+}
+
+h5 {
+    font-size: map-get($font-h5, 'mobile', 'size');
+    font-weight: map-get($font-h5, 'mobile', 'weight');
+    line-height: map-get($font-h5, 'mobile', 'line');
+    letter-spacing: map-get($font-h5, 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-h5, 'desktop', 'size');
+        font-weight: map-get($font-h5, 'desktop', 'weight');
+        line-height: map-get($font-h5, 'desktop', 'line');
+        letter-spacing: map-get($font-h5, 'desktop', 'letter');
+    }
+}
+
+h6 {
+    font-size: map-get($font-h6, 'mobile', 'size');
+    font-weight: map-get($font-h6, 'mobile', 'weight');
+    line-height: map-get($font-h6, 'mobile', 'line');
+    letter-spacing: map-get($font-h6, 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-h6, 'desktop', 'size');
+        font-weight: map-get($font-h6, 'desktop', 'weight');
+        line-height: map-get($font-h6, 'desktop', 'line');
+        letter-spacing: map-get($font-h6, 'desktop', 'letter');
+    }
+}
+
+p {
+    font-size: map-get($font-body, 'default', 'mobile', 'size');
+    font-weight: map-get($font-body, 'default', 'mobile', 'weight');
+    line-height: map-get($font-body, 'default', 'mobile', 'line');
+    letter-spacing: map-get($font-body, 'default', 'mobile', 'letter');
+
+    strong {
+        font-weight: $font-weight-medium;
+    }
+
+    @include mq-large-up {
+        font-size: map-get($font-body, 'default', 'desktop', 'size');
+        font-weight: map-get($font-body, 'default', 'desktop', 'weight');
+        line-height: map-get($font-body, 'default', 'desktop', 'line');
+        letter-spacing: map-get($font-body, 'default', 'desktop', 'letter');
+    }
+}
+
+.p-small {
+    font-size: map-get($font-body, 'small', 'mobile', 'size');
+    font-weight: map-get($font-body, 'small', 'mobile', 'weight');
+    line-height: map-get($font-body, 'small', 'mobile', 'line');
+    letter-spacing: map-get($font-body, 'small', 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-body, 'small', 'desktop', 'size');
+        font-weight: map-get($font-body, 'small', 'desktop', 'weight');
+        line-height: map-get($font-body, 'small', 'desktop', 'line');
+        letter-spacing: map-get($font-body, 'small', 'desktop', 'letter');
+    }
+}
+
+.p-xsmall {
+    font-size: map-get($font-body, 'xsmall', 'mobile', 'size');
+    font-weight: map-get($font-body, 'xsmall', 'mobile', 'weight');
+    line-height: map-get($font-body, 'xsmall', 'mobile', 'line');
+    letter-spacing: map-get($font-body, 'xsmall', 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
+        font-weight: map-get($font-body, 'xsmall', 'desktop', 'weight');
+        line-height: map-get($font-body, 'xsmall', 'desktop', 'line');
+        letter-spacing: map-get($font-body, 'xsmall', 'desktop', 'letter');
+    }
+}

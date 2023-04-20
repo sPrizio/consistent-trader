@@ -1,0 +1,25 @@
+html {
+    font-size: 100%;
+}
+
+body {
+    min-height: $minimum-window-height;
+    background-color: $color-background;
+    color: $color-font-primary;
+    font-family: $font-primary;
+    font-size: map-get($font-body, 'default', 'mobile', 'size');
+    font-weight: map-get($font-body, 'default', 'mobile', 'weight');
+    line-height: map-get($font-body, 'default', 'mobile', 'line');
+    letter-spacing: map-get($font-body, 'default', 'mobile', 'letter');
+
+    @include mq-large-up {
+        font-size: map-get($font-body, 'default', 'desktop', 'size');
+        font-weight: map-get($font-body, 'default', 'desktop', 'weight');
+        line-height: map-get($font-body, 'default', 'desktop', 'line');
+        letter-spacing: map-get($font-body, 'default', 'desktop', 'letter');
+    }
+}
+
+body, html {
+    scroll-behavior: smooth;
+}

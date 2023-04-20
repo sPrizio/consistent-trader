@@ -1,0 +1,236 @@
+//  FONTS
+
+/*
+Public Sans
+ */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$font-primary: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+
+//  COLORS
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-primary: #696cff;
+$color-secondary: rgb(86, 106, 127);
+$color-background: rgb(245, 245, 249);
+$color-background-alternate: rgb(237, 242, 249);
+
+$color-font-primary: #313131;
+$color-font-header-title: rgb(86, 106, 127);
+$color-font-header-subtitle: rgb(161, 172, 184);
+$color-font-disabled: rgb(161, 172, 184);
+$color-font-alternate: rgb(105, 122, 141);
+
+$color-value-positive: rgb(113, 221, 55);
+$color-value-negative: rgb(255, 62, 29);
+
+$color-news-severe: rgb(255, 0, 0);
+$color-news-moderate: rgb(255, 165, 0);
+$color-news-low: rgb(240, 230, 140);
+
+$color-trade-buy: #356d76;
+$color-trade-sell: #765e35;
+/*$buy-trade: #2a575e;*/
+/*$sell-trade: #5e4b2a;*/
+
+$color-rank-bronze: rgb(188, 120, 60);
+$color-rank-garnet: rgb(154, 42, 42);
+$color-rank-silver: rgb(165, 165, 165);
+$color-rank-amethyst: rgb(153, 102, 204);
+$color-rank-gold: rgb(237, 175, 53);
+$color-rank-sapphire: rgb(15, 82, 186);
+$color-rank-platinum: rgb(237, 214, 174);
+$color-rank-ruby: rgb(155, 17, 30);
+$color-rank-diamond: rgb(12, 191, 157);
+$color-rank-emerald: rgb(6, 95, 53);
+$color-rank-obsidian: rgb(86, 54, 217);
+
+
+//  TYPOGRAPHY
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+$font-h1: (
+        mobile: (
+                size: 32px,
+                line: 38px,
+                weight: $font-weight-light,
+                letter: 0,
+        ),
+        desktop: (
+                size: 42px,
+                line: 56px,
+                weight: $font-weight-light,
+                letter: 0,
+        ),
+);
+
+$font-h2: (
+        mobile: (
+                size: 30px,
+                line: 38px,
+                weight: $font-weight-regular,
+                letter: 0,
+        ),
+        desktop: (
+                size: 36px,
+                line: 48px,
+                weight: $font-weight-regular,
+                letter: 0,
+        ),
+);
+
+$font-h3: (
+        mobile: (
+                size: 26px,
+                line: 36px,
+                weight: $font-weight-regular,
+                letter: 0,
+        ),
+        desktop: (
+                size: 32px,
+                line: 46px,
+                weight: $font-weight-regular,
+                letter: 0,
+        ),
+);
+
+$font-h4: (
+        mobile: (
+                size: 20px,
+                line: 26px,
+                weight: $font-weight-medium,
+                letter: 0,
+        ),
+        desktop: (
+                size: 22px,
+                line: 32px,
+                weight: $font-weight-medium,
+                letter: 0,
+        ),
+);
+
+$font-h5: (
+        mobile: (
+                size: 18px,
+                line: 32px,
+                weight: $font-weight-regular,
+                letter: 0,
+        ),
+        desktop: (
+                size: 20px,
+                line: 32px,
+                weight: $font-weight-regular,
+                letter: 0,
+        ),
+);
+
+$font-h6: (
+        mobile: (
+                size: 16px,
+                line: 22px,
+                weight: $font-weight-light,
+                letter: 0 p,
+        ),
+        desktop: (
+                size: 18px,
+                line: 26px,
+                weight: $font-weight-light,
+                letter: 0,
+        ),
+);
+
+$font-body: (
+        default: (
+                mobile: (
+                        size: 16px,
+                        line: 26px,
+                        weight: $font-weight-light,
+                        letter: 0,
+                ),
+                desktop: (
+                        size: 16px,
+                        line: 26px,
+                        weight: $font-weight-light,
+                        letter: 0,
+                )
+        ),
+        small: (
+                mobile: (
+                        size: 14px,
+                        line: 20px,
+                        weight: $font-weight-light,
+                        letter: 0,
+                ),
+                desktop: (
+                        size: 14px,
+                        line: 22px,
+                        weight: $font-weight-light,
+                        letter: 0,
+                )
+        ),
+        xsmall: (
+                mobile: (
+                        size: 12px,
+                        line: 20px,
+                        weight: $font-weight-regular,
+                        letter: 0,
+                ),
+                desktop: (
+                        size: 13px,
+                        line: 20px,
+                        weight: $font-weight-regular,
+                        letter: 0,
+                )
+        ),
+        xxsmall: (
+                mobile: (
+                        size: 10px,
+                        line: 20px,
+                        weight: $font-weight-bold,
+                        letter: 0,
+                ),
+                desktop: (
+                        size: 12px,
+                        line: 20px,
+                        weight: $font-weight-bold,
+                        letter: 0,
+                )
+        ),
+);
+
+
+// TRANSITIONS
+$transition-duration: .3s;
+$transition-curve: ease-in-out;
+
+
+// GENERAL LAYOUT
+$minimum-window-height: 100vh;
+$container-max-width: 1440px;
+$container-gutters: (
+        mobile: 16px,
+        desktop: 24px,
+);
+
+$breakpoints: (
+        xsmall: 0px,
+        small: 480px,
+        medium: 768px,
+        large: 992px,
+        xlarge: 1132px
+);
+
+$grid-padding: (
+        mobile: (
+                padding: 16px,
+        ),
+        desktop: (
+                padding: 80px,
+        ),
+);

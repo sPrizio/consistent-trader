@@ -40,13 +40,13 @@ function SimpleButton(
 ) {
 
     function computeClass(variant: string, inverted: boolean, plain: boolean, active: boolean) {
-        const v = variant ? "tb-button--" + variant : ""
-        const i = inverted ? "tb-button--inverted" : ""
-        const p = plain ? "tb-button--plain" : ""
-        const a = active ? "tb-button--active" : ""
-        const l = loading ? "tb-button--loading" : ""
+        const v = variant ? "ct-button--" + variant : ""
+        const i = inverted ? "ct-button--inverted" : ""
+        const p = plain ? "ct-button--plain" : ""
+        const a = active ? "ct-button--active" : ""
+        const l = loading ? "ct-button--loading" : ""
 
-        return `tb-button ${v} ${i} ${p} ${a} ${l}`.trim()
+        return `ct-button ${v} ${i} ${p} ${a} ${l}`.trim()
     }
 
     if (!variant || variant.length === 0) {
@@ -55,7 +55,7 @@ function SimpleButton(
 
     return (
         <button className={computeClass(variant, inverted, plain, active)} disabled={disabled} onClick={handler}>
-            { !loading ? text : <div className="tb-button--loader">L</div> }
+            { !loading ? text : <div className="ct-button--loader">L</div> }
         </button>
     );
 }

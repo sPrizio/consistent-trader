@@ -2,7 +2,8 @@
         "./mixins";
 
 @import "./base/body",
-        "./base/placeholders",
-        "./base/buttons";
+        "./base/placeholders";
 
-@import "./components/cards";
+@import "./components/buttons",
+        "./components/cards",
+        "./components/navigation";

@@ -29,22 +29,22 @@ function BaseCard(
     }
 ) {
     return (
-        <div className={"tb-card" + (loading ? " tb-card--is-loading" : "")}>
-            <div className="tb-card__loader-overlay" />
+        <div className={"ct-card" + (loading ? " ct-card--is-loading" : "")}>
+            <div className="ct-card__loader-overlay" />
             <div className="columns is-multiline is-mobile is-gapless">
                 <div className="column is-12">
-                    <div className="tb-card__header">
-                        <h5 className="tb-card__header__title">{title}</h5>
-                        <h6 className="tb-card__header__subtitle">{subtitle}</h6>
+                    <div className="ct-card__header">
+                        <h5 className="ct-card__header__title">{title}</h5>
+                        <h6 className="ct-card__header__subtitle">{subtitle}</h6>
                     </div>
                 </div>
                 <div className="column is-12">
                     {
                         content && content.length > 0 &&
-                        <div className="tb-card__content">
+                        <div className="ct-card__content">
                             {
                                 content.map(item => {
-                                    return <div className="tb-card__content__item" key={item}>{item}</div>
+                                    return <div className="ct-card__content__item" key={item}>{item}</div>
                                 })
                             }
                         </div>
@@ -53,10 +53,10 @@ function BaseCard(
                 <div className="column is-12">
                     {
                         controls && controls.length > 0 &&
-                        <div className="tb-card__controls">
+                        <div className="ct-card__controls">
                             {
                                 controls.map(item => {
-                                    return <div className="tb-card__controls__item" key={item}>{item}</div>
+                                    return <div className="ct-card__controls__item" key={item}>{item}</div>
                                 })
                             }
                         </div>

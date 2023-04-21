@@ -1,4 +1,4 @@
-.tb-button {
+.ct-button {
   //  TEMP
   /*margin-top: 25px;*/
 
@@ -82,7 +82,7 @@
       }
     }
 
-    &.tb-button--active {
+    &.ct-button--active {
       &:after {
         width: 100%;
       }
@@ -100,7 +100,7 @@
       color: $color-primary;
     }
 
-    &.tb-button--inverted {
+    &.ct-button--inverted {
       background-color: $color-white;
       border-color: $color-primary;
       color: $color-primary;
@@ -118,8 +118,8 @@
         pointer-events: none;
       }
 
-      &.tb-button--loading {
-        .tb-button--loader {
+      &.ct-button--loading {
+        .ct-button--loader {
           &::before {
             border-bottom-color: $color-primary;
           }
@@ -127,8 +127,8 @@
       }
     }
 
-    &.tb-button--loading {
-      .tb-button--loader {
+    &.ct-button--loading {
+      .ct-button--loader {
         &::before {
           border-bottom-color: $color-white;
         }
@@ -142,7 +142,7 @@
       pointer-events: none;
     }
 
-    &.tb-button--plain {
+    &.ct-button--plain {
       color: $color-primary;
 
       &:disabled {
@@ -171,7 +171,7 @@
       color: $color-secondary;
     }
 
-    &.tb-button--plain {
+    &.ct-button--plain {
       color: $color-secondary;
 
       &:after {
@@ -179,8 +179,8 @@
       }
     }
 
-    &.tb-button--loading {
-      .tb-button--loader {
+    &.ct-button--loading {
+      .ct-button--loader {
         &::before {
           border-bottom-color: $color-white;
         }
@@ -199,8 +199,8 @@
       color: $color-white;
     }
 
-    &.tb-button--loading {
-      .tb-button--loader {
+    &.ct-button--loading {
+      .ct-button--loader {
         &::before {
           border-bottom-color: $color-secondary;
         }

@@ -7,16 +7,29 @@ Public Sans
 
 $font-primary: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
+// BRAND
+$color-brand-base: #eeeeee;
+$color-brand-primary: #137DC5;
+$color-brand-secondary: #cee2f8;
+$color-brand-tertiary: rgb(212, 230, 249);
+$color-brand-grey: #d4d4d4;
+$color-brand-base-alternate: #fbfcfe;
+
+$color-brand-p1: rgb(44, 59, 141);
+$color-brand-p2: rgb(1, 169, 235);
+
 
 //  COLORS
 $color-black: #000000;
 $color-white: #FFFFFF;
-$color-primary: #696cff;
-$color-secondary: rgb(86, 106, 127);
-$color-background: rgb(245, 245, 249);
-$color-background-alternate: rgb(237, 242, 249);
+/*$color-primary: #696cff;*/
+$color-primary: $color-brand-primary;
+/*$color-secondary: rgb(86, 106, 127);*/
+$color-secondary: $color-brand-p2;
+$color-background: $color-brand-tertiary;
 
-$color-font-primary: #313131;
+/*$color-font-primary: #313131;*/
+$color-font-primary: $color-brand-p1;
 $color-font-header-title: rgb(86, 106, 127);
 $color-font-header-subtitle: rgb(161, 172, 184);
 $color-font-disabled: rgb(161, 172, 184);
@@ -31,6 +44,9 @@ $color-news-low: rgb(240, 230, 140);
 
 $color-trade-buy: #356d76;
 $color-trade-sell: #765e35;
+
+$color-navigation-hover: rgba(67, 89, 113, 0.04);
+$color-navigation-bullet: rgb(180, 189, 198);
 /*$buy-trade: #2a575e;*/
 /*$sell-trade: #5e4b2a;*/
 

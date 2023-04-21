@@ -6,6 +6,7 @@ import {
     AiOutlineQuestionCircle
 } from "react-icons/ai";
 import brand from '../../assets/brand/brand_white-removebg.png'
+import logo from '../../assets/brand/logo.png'
 import {useState} from "react";
 
 /**
@@ -14,8 +15,9 @@ import {useState} from "react";
  * @author Stephen Prizio
  * @version 1.0
  */
-function SideNav() {
-    const [isOpen, setIsOpen] = useState(true);
+function DesktopSideNav() {
+
+    const [isOpen, setIsOpen] = useState(false);
     const [selectedTab, setSelectedTab] = useState('overview');
 
 
@@ -77,11 +79,11 @@ function SideNav() {
     ]
 
     return (
-        <div className="ct-side-nav">
+        <div className={"ct-side-nav" + (isOpen ? "" : " minimized ")}>
             <div className="ct-side-nav__content">
                 <div className="ct-side-nav__logo content-entry">
                     <div className="ct-side-nav__logo__container">
-                        <img src={brand} alt="Primary Brand"/>
+                        <img src={isOpen ? brand : logo} alt="Primary Brand"/>
                         <div className="ct-side-nav__logo__control">
                             <div className="control-icon" onClick={toggleMenu}>
                                 <span className="icon">
@@ -145,4 +147,4 @@ function SideNav() {
     )
 }
 
-export default SideNav;
+export default DesktopSideNav;

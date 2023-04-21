@@ -1,6 +1,6 @@
 import SimpleButton from "../../components/Buttons/SimpleButton";
 import BaseCard from "../../components/Cards/BaseCard";
-import SideNav from "../../components/Navigation/SideNav";
+import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
 
 /**
  * A generic page used for testing components and functionality
@@ -11,7 +11,7 @@ import SideNav from "../../components/Navigation/SideNav";
 function TestPage() {
     return (
         <>
-            <SideNav />
+            <DesktopSideNav />
             {/*<div className="container">
                 <div className="columns is-multiline is-mobile">
                     <div className="column is-6">

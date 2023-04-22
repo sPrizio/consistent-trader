@@ -1,10 +1,16 @@
 import React from 'react';
-import TestPage from "./pages/Base/TestPage";
+import ContentPage from "./pages/Base/ContentPage";
 
+/**
+ * React app file that renders the base app
+ *
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function App() {
     return (
         <>
-            <TestPage />
+           <ContentPage />
         </>
     );
 }

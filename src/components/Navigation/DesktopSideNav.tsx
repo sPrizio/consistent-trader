@@ -15,9 +15,9 @@ import {useState} from "react";
  * @author Stephen Prizio
  * @version 1.0
  */
-function DesktopSideNav() {
+function DesktopSideNav({ pageHandler } : { pageHandler: Function }) {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [selectedTab, setSelectedTab] = useState('overview');
 
 
@@ -30,6 +30,7 @@ function DesktopSideNav() {
      */
     function selectTab(val: string) {
         setSelectedTab(val)
+        pageHandler(val);
     }
 
     /**
@@ -77,6 +78,9 @@ function DesktopSideNav() {
     const adminLinks = [
         renderLink('dashboard', 'dashboard'),
     ]
+
+
+    //  RENDER
 
     return (
         <div className={"ct-side-nav" + (isOpen ? "" : " minimized ")}>

@@ -14,8 +14,8 @@ import React from "react";
  */
 function BaseCard(
     {
-        title = 'Lorem Ipsum',
-        subtitle = 'This is a subtitle',
+        title = '',
+        subtitle = '',
         content = [],
         controls = [],
         loading = false
@@ -28,16 +28,23 @@ function BaseCard(
         loading?: boolean
     }
 ) {
+
+    //  RENDER
+
     return (
         <div className={"ct-card" + (loading ? " ct-card--is-loading" : "")}>
             <div className="ct-card__loader-overlay" />
             <div className="columns is-multiline is-mobile is-gapless">
-                <div className="column is-12">
-                    <div className="ct-card__header">
-                        <h5 className="ct-card__header__title">{title}</h5>
-                        <h6 className="ct-card__header__subtitle">{subtitle}</h6>
-                    </div>
-                </div>
+                {
+                    title.length > 0 ?
+                        <div className="column is-12">
+                            <div className="ct-card__header">
+                                <h5 className="ct-card__header__title">{title}</h5>
+                                <h6 className="ct-card__header__subtitle">{subtitle}</h6>
+                            </div>
+                        </div>
+                        : null
+                }
                 <div className="column is-12">
                     {
                         content && content.length > 0 &&

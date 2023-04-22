@@ -1,0 +1,20 @@
+.ct-content-page {
+
+  .page-container {
+    padding: 24px 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    transition-property: padding-top, padding-right, padding-bottom, padding-left;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-curve;
+
+    @include mq-medium-up {
+      padding: 36px 48px;
+    }
+
+    @include mq-large-up {
+      padding: 48px 100px;
+    }
+  }
+}

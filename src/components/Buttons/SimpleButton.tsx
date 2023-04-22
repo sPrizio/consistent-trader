@@ -39,6 +39,15 @@ function SimpleButton(
     }
 ) {
 
+    /**
+     * Computes the css class based on the given props
+     *
+     * @param variant - determines color & shape. Accepted values are : 'primary', 'secondary', 'tertiary'.
+     *                 if the value is not one of the above or is missing, the button will not render
+     * @param inverted - flag to determine if the colors should be inverted
+     * @param plain - flag to determine whether to render plain button with no styling other than theming
+     * @param active - flag used with the plain flag, if true will always show the hover state
+     */
     function computeClass(variant: string, inverted: boolean, plain: boolean, active: boolean) {
         const v = variant ? "ct-button--" + variant : ""
         const i = inverted ? "ct-button--inverted" : ""
@@ -53,9 +62,12 @@ function SimpleButton(
         return null
     }
 
+
+    //  RENDER
+
     return (
         <button className={computeClass(variant, inverted, plain, active)} disabled={disabled} onClick={handler}>
-            { !loading ? text : <div className="ct-button--loader">L</div> }
+            {!loading ? text : <div className="ct-button--loader">L</div>}
         </button>
     );
 }

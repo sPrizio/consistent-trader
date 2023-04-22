@@ -2,8 +2,10 @@
         "./mixins";
 
 @import "./base/body",
+        "./base/pages",
         "./base/placeholders";
 
 @import "./components/buttons",
         "./components/cards",
-        "./components/navigation";
+        "./components/navigation",
+        "./components/user-bar";

@@ -1,0 +1,90 @@
+.ct-user-bar {
+
+  .level-right {
+    .level-item {
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  .highlight-name {
+    font-weight: $font-weight-semi-bold;
+    color: $color-primary;
+  }
+
+  &__skill-text {
+    padding-right: 8px;
+    color: $color-primary;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  &__skill-icon {
+    position: relative;
+    text-align: center;
+    vertical-align: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 3px solid $color-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+      font-weight: $font-weight-semi-bold;
+      color: $color-primary;
+    }
+  }
+
+  &__account-details {
+    font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
+    line-height: map-get($font-body, 'xsmall', 'desktop', 'height');
+    font-weight: $font-weight-light;
+    color: $color-font-alternate;
+  }
+
+  &__user-menu {
+    position: relative;
+
+    .icon {
+      cursor: pointer;
+      color: $color-primary;
+    }
+
+    &__content {
+      display: none;
+      box-shadow: 0 8px 16px rgba($color-primary, 0.2);
+      background-color: $color-white;
+      min-width: 235px;
+      height: 0;
+      right: 0;
+      position: absolute;
+      transition-property: height, display;
+      transition-duration: 0.15s;
+      transition-timing-function: $transition-curve;
+
+      &__container {
+        padding: 8px 10px;
+
+        &__link {
+          padding: 8px 12px;
+          transition-property: font-weight, color, background-color;
+          transition-duration: 0.15s;
+          transition-timing-function: $transition-curve;
+
+          &:hover {
+            background-color: rgba($color-primary, 0.16);
+            border-radius: 6px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      &.is-active {
+        display: block;
+        height: auto;
+      }
+    }
+  }
+}

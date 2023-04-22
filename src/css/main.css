@@ -4,7 +4,7 @@ Public Sans
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /*$color-primary: #696cff;*/
 /*$color-secondary: rgb(86, 106, 127);*/
-/*$color-font-primary: #313131;*/
+/*$color-font-primary: $color-brand-p1;*/
 /*$buy-trade: #2a575e;*/
 /*$sell-trade: #5e4b2a;*/
 html {
@@ -14,7 +14,7 @@ html {
 body {
   min-height: 100vh;
   background-color: rgb(212, 230, 249);
-  color: rgb(44, 59, 141);
+  color: #313131;
   font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -42,6 +42,25 @@ body, html {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
   }
 }
+.ct-content-page .page-container {
+  padding: 24px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  transition-property: padding-top, padding-right, padding-bottom, padding-left;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .ct-content-page .page-container {
+    padding: 36px 48px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .ct-content-page .page-container {
+    padding: 48px 100px;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -53,7 +72,7 @@ a,
 p,
 span {
   font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  color: rgb(44, 59, 141);
+  color: #313131;
   transition-property: font-weight, font-size;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
@@ -352,12 +371,11 @@ p strong {
 }
 
 .ct-card {
-  color: rgb(44, 59, 141);
+  color: #313131;
   background-color: #FFFFFF;
   border-radius: 16px;
   padding: 35px;
-  box-shadow: 0 8px 16px rgba(65, 51, 183, 0.2);
-  min-height: 250px;
+  box-shadow: 0 8px 16px rgba(19, 125, 197, 0.2);
   transition-property: width, height, display;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
@@ -392,6 +410,8 @@ p strong {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0;
+  border-bottom: 1px solid rgba(19, 125, 197, 0.4);
+  padding-bottom: 18px;
 }
 @media screen and (min-width: 992px) {
   .ct-card__header__title {
@@ -414,20 +434,17 @@ p strong {
   }
 }
 .ct-card__content {
-  border-bottom: 1px solid rgba(19, 125, 197, 0.4);
-  border-top: 1px solid rgba(19, 125, 197, 0.4);
-  margin-top: 18px;
   display: flex;
   flex-direction: row;
-  padding: 12px 0;
 }
 .ct-card__content__item {
   flex: 1;
 }
 .ct-card__controls {
+  border-top: 1px solid rgba(19, 125, 197, 0.4);
   text-align: right;
   height: 100%;
-  margin-top: 24px;
+  padding-top: 24px;
 }
 .ct-card__controls__item {
   vertical-align: center;
@@ -608,6 +625,77 @@ p strong {
   line-height: 20px;
   font-weight: 300;
   color: rgb(161, 172, 184);
+}
+
+.ct-user-bar .level-right .level-item:not(:last-child) {
+  margin-right: 24px;
+}
+.ct-user-bar .highlight-name {
+  font-weight: 600;
+  color: #137DC5;
+}
+.ct-user-bar__skill-text {
+  padding-right: 8px;
+  color: #137DC5;
+  font-weight: 600;
+}
+.ct-user-bar__skill-icon {
+  position: relative;
+  text-align: center;
+  vertical-align: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 3px solid #137DC5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ct-user-bar__skill-icon__text {
+  font-weight: 600;
+  color: #137DC5;
+}
+.ct-user-bar__account-details {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgb(105, 122, 141);
+}
+.ct-user-bar__user-menu {
+  position: relative;
+}
+.ct-user-bar__user-menu .icon {
+  cursor: pointer;
+  color: #137DC5;
+}
+.ct-user-bar__user-menu__content {
+  display: none;
+  box-shadow: 0 8px 16px rgba(19, 125, 197, 0.2);
+  background-color: #FFFFFF;
+  min-width: 235px;
+  height: 0;
+  right: 0;
+  position: absolute;
+  transition-property: height, display;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+}
+.ct-user-bar__user-menu__content__container {
+  padding: 8px 10px;
+}
+.ct-user-bar__user-menu__content__container__link {
+  padding: 8px 12px;
+  transition-property: font-weight, color, background-color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+}
+.ct-user-bar__user-menu__content__container__link:hover {
+  background-color: rgba(19, 125, 197, 0.16);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.ct-user-bar__user-menu__content.is-active {
+  display: block;
+  height: auto;
 }
 
 /*# sourceMappingURL=main.css.map */

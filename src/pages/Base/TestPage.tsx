@@ -1,6 +1,8 @@
 import SimpleButton from "../../components/Buttons/SimpleButton";
 import BaseCard from "../../components/Cards/BaseCard";
 import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
+import get from "../../services/client/ClientService";
+import {CoreConstants} from "../../constants/CoreConstants";
 
 /**
  * A generic page used for testing components and functionality
@@ -9,9 +11,20 @@ import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
  * @version 1.0
  */
 function TestPage() {
+
+    const d = get(CoreConstants.ApiUrls.Account.Overview)
+    d.then(res => {
+        console.log('complete', res)
+    }).catch(err => {
+        console.log(err)
+    })
+
+
+    //  RENDER
+
     return (
         <>
-            <DesktopSideNav />
+           {/* <DesktopSideNav />*/}
             {/*<div className="container">
                 <div className="columns is-multiline is-mobile">
                     <div className="column is-6">

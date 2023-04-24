@@ -6,7 +6,9 @@
         "./base/pages",
         "./base/placeholders";
 
-@import "./components/buttons",
-        "./components/cards",
-        "./components/navigation",
-        "./components/user-bar";
+@import "./components/Buttons/buttons",
+        "./components/Cards/account-overview-card",
+        "./components/Cards/cards",
+        "./components/Cards/user-bar-card",
+        "./components/Navigation/desktop-side-nav",
+        "./components/Rank/account-overview-rank";

@@ -1,0 +1,34 @@
+.ct-account-overview {
+  &__balance {
+    color: $color-font-header-title;
+
+    small {
+      font-size: 12px;
+      font-weight: 600;
+      padding-left: 6px;
+    }
+  }
+
+  &__net {
+    font-size: 14px;
+    font-weight: 600;
+
+    .positive {
+      color: $color-value-positive;
+    }
+
+    .negative {
+      color: $color-value-negative;
+    }
+  }
+
+  &__target {
+    color: #a1acb8;
+    font-size: 14px;
+    font-weight: 400;
+
+    &.no-show {
+      display: none;
+    }
+  }
+}

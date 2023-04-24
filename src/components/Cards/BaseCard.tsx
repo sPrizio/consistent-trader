@@ -16,6 +16,7 @@ function BaseCard(
     {
         title = '',
         subtitle = '',
+        hasBorder = true,
         content = [],
         controls = [],
         loading = false
@@ -23,6 +24,7 @@ function BaseCard(
         : {
         title?: string,
         subtitle?: string,
+        hasBorder?: boolean,
         content?: Array<any>,
         controls?: Array<any>,
         loading?: boolean
@@ -38,7 +40,7 @@ function BaseCard(
                 {
                     title.length > 0 ?
                         <div className="column is-12">
-                            <div className="ct-card__header">
+                            <div className={"ct-card__header" + (hasBorder ? ' header-border ' : '')}>
                                 <h5 className="ct-card__header__title">{title}</h5>
                                 <h6 className="ct-card__header__subtitle">{subtitle}</h6>
                             </div>

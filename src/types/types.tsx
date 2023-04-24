@@ -24,6 +24,18 @@ export type RankInfo = {
     uid?: string,
 }
 
+export type CurrentRankInfo = {
+    className?: string,
+    current?: number,
+    end?: number,
+    imageUrl?: string,
+    name?: string,
+    nextRank?: CurrentRankInfo,
+    previousRank?: CurrentRankInfo,
+    start?: number,
+    uid?: number,
+}
+
 export type SkillInfo = {
     delta?: number,
     empty?: boolean,
@@ -84,4 +96,14 @@ export type UserInfo = {
     uid?: string,
     userLocale?: UserLocaleInfo,
     username?: string,
+}
+
+export type AccountOverview = {
+    account?: AccountInfo,
+    balance?: number,
+    dailyEarnings?: number,
+    dateTime?: string,
+    monthlyEarnings?: number,
+    nextTarget?: number,
+    rank?: CurrentRankInfo,
 }

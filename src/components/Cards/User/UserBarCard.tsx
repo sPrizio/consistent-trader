@@ -1,5 +1,4 @@
 import {UserInfo} from "../../../types/types";
-import moment from "moment";
 import {RxHamburgerMenu} from "react-icons/rx";
 import {AiOutlineClose, AiOutlineSwap, AiOutlineUser} from "react-icons/ai";
 import {HiUpload} from "react-icons/hi";
@@ -9,12 +8,12 @@ import {now} from "../../../services/datetime/DateTimeService";
 
 
 /**
- * Components for displaying basic user info
+ * Component for displaying basic user info
  *
  * @author Stephen Prizio
  * @version 1.0
  */
-function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
+function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
 
     const [menuActive, setMenuActive] = useState(false)
 
@@ -71,13 +70,13 @@ function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
                             </div>
                         </div>
                     </div>
-                    <div className="level-item">
+                    {/*<div className="level-item">
                         <div className="ct-user-bar__account-details">
                             {userInfo.account?.broker}
                             <br />
                             {userInfo.account?.accountType}&nbsp;-&nbsp;{userInfo.account?.accountNumber}
                         </div>
-                    </div>
+                    </div>*/}
                     <div className="level-item">
                         <div className="ct-user-bar__user-menu">
                             <span className="icon is-size-3" onClick={toggleMenu}>
@@ -122,4 +121,4 @@ function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
     )
 }
 
-export default UserBar;
+export default UserBarCard;

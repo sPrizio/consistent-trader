@@ -5,8 +5,7 @@ import {
     AiOutlineLineChart,
     AiOutlineQuestionCircle
 } from "react-icons/ai";
-import brand from '../../assets/brand/brand_white-removebg.png'
-import logo from '../../assets/brand/logo.png'
+import brand from '../../assets/images/brand/brand_white-removebg.png'
 import {useState} from "react";
 
 /**

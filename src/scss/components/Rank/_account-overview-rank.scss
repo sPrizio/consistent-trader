@@ -1,0 +1,35 @@
+.ct-account-overview__rank {
+  .progress.is-primary {
+    &::-webkit-progress-value {
+      background-color: $color-primary;
+    }
+
+    &::-moz-progress-bar {
+      background-color: $color-primary;
+    }
+
+    &::-ms-fill {
+      background-color: $color-primary;
+    }
+
+    &:indeterminate {
+      background-image: linear-gradient(to right, $color-primary 30%, #ededed 30%);
+    }
+  }
+
+  .progress.rank {
+    height: 0.35rem;
+  }
+
+  &__bound {
+    color: $color-font-header-subtitle;
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
+  }
+
+  &__value {
+    color: $color-font-primary;
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
+  }
+}

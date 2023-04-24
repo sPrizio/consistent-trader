@@ -79,6 +79,7 @@ function DesktopSideNav({ pageHandler } : { pageHandler: Function }) {
         renderLink('dashboard', 'dashboard'),
     ]
 
+    //  TODO: the column that handles the nav and content should be set to 12 when hidden and 8-9 when active
 
     //  RENDER
 
@@ -87,7 +88,7 @@ function DesktopSideNav({ pageHandler } : { pageHandler: Function }) {
             <div className="ct-side-nav__content">
                 <div className="ct-side-nav__logo content-entry">
                     <div className="ct-side-nav__logo__container">
-                        <img src={isOpen ? brand : logo} alt="Primary Brand"/>
+                        <img src={brand} alt="Primary Brand"/>
                         <div className="ct-side-nav__logo__control">
                             <div className="control-icon" onClick={toggleMenu}>
                                 <span className="icon">

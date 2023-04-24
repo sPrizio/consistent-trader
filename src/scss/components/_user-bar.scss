@@ -23,8 +23,8 @@
     position: relative;
     text-align: center;
     vertical-align: center;
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
     border: 3px solid $color-primary;
     display: flex;
@@ -72,6 +72,8 @@
           transition-property: font-weight, color, background-color;
           transition-duration: 0.15s;
           transition-timing-function: $transition-curve;
+          font-size: map-get($font-body, 'small', 'desktop', 'size');
+          line-height: map-get($font-body, 'small', 'desktop', 'line');
 
           &:hover {
             background-color: rgba($color-primary, 0.16);

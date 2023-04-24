@@ -12,7 +12,7 @@ export function baseUrl() {
  *
  * @returns {string} url
  */
-export function getDomain(appendVal) {
+export function getDomain(appendVal: string) {
     return baseUrl() + '/api/v1' + appendVal
 }
 

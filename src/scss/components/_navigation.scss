@@ -1,26 +1,36 @@
 .ct-side-nav {
   &.minimized {
-    max-width: 50px;
+    transform: translatex(-25%);
+    max-width: 35px;
 
     .ct-side-nav__logo {
       img {
-        display: none;
+        visibility: hidden;
       }
     }
 
     .ct-side-nav__links,
     .ct-side-nav__footer {
-      display: none;
+      visibility: hidden;
+
+      p,
+      .icon,
+      &__link,
+      &__title {
+        font-size: 0 !important;
+
+        &.active {
+          background-color: transparent;
+        }
+      }
     }
   }
 
-  opacity: 1.0;
   min-height: 100vh;
-  width: 100%;
   max-width: 300px;
   background-color: $color-white;
   box-shadow: 0 0.125rem 0.375rem 0 rgba(161, 172, 184, 0.50);
-  transition: width $transition-duration $transition-curve, max-width $transition-duration $transition-curve, display 1.5s $transition-curve;
+  transition: max-width $transition-duration $transition-curve, transform $transition-duration $transition-curve, visibility $transition-duration $transition-curve, opacity $transition-duration $transition-curve;
 
   &__content {
     padding: 18px 18px;
@@ -123,6 +133,10 @@
       display: flex;
       align-items: center;
 
+      transition-property: font-size;
+      transition-duration: 0.15s;
+      transition-timing-function: $transition-curve;
+
       &:after {
         content: '';
         flex: 1;
@@ -142,9 +156,10 @@
       font-size: map-get($font-body, 'small', 'desktop', 'size');
       line-height: map-get($font-body, 'small', 'desktop', 'line');
 
-      transition-property: font-weight, color, background-color;
+      transition-property: font-weight, color, background-color, font-size;
       transition-duration: 0.15s;
       transition-timing-function: $transition-curve;
+      width: 100%;
 
       .val {
         text-transform: capitalize;

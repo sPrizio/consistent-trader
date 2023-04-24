@@ -5,6 +5,7 @@ import {AiOutlineClose, AiOutlineSwap, AiOutlineUser} from "react-icons/ai";
 import {HiUpload} from "react-icons/hi";
 import {RiLogoutCircleLine} from "react-icons/ri";
 import {useState} from "react";
+import {now} from "../../../services/datetime/DateTimeService";
 
 
 /**
@@ -35,7 +36,7 @@ function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
      */
     function getDisplayText() {
 
-        const date = moment();
+        const date = now();
         let string;
         if (date.hour() > 17) {
             string = 'Good Evening'

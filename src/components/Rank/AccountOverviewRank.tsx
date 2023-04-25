@@ -68,30 +68,30 @@ function AccountOverviewRank({showPrevNextRanks = false, rankInfo = {}}: {
     return (
         <div className="ct-account-overview__rank">
             <div className="columns is-multiline is-mobile is-gapless">
-                <div className="column is-4">
-                    {previous}
-                </div>
-                <div className="column is-4 current-rank">
-                    <img
-                        src={handleImagePath('curr')}
-                        alt={'Current Rank'}
-                        height={100}
-                        width={100}
-                    />
-                </div>
-                <div className="column is-4">
-                    {next}
+                <div className="column is-12">
+                    <div className="ct-account-overview__rank__image-container">
+                        <img
+                            src={handleImagePath('curr')}
+                            alt={'Current Rank'}
+                            height={100}
+                            width={100}
+                        />
+                    </div>
                 </div>
                 <div className="column is-12 has-text-right">
                     <div className="level">
                         <div className="level-left">
                             <div className="level-item">
-                                <span className="ct-account-overview__rank__bound">{rankInfo.start}</span>
+                                <span className="ct-account-overview__rank__bound">
+                                    {rankInfo.className?.length !== 0 ? rankInfo.start : null}
+                                </span>
                             </div>
                         </div>
                         <div className="level-right">
                             <div className="level-item">
-                                <span className="ct-account-overview__rank__bound">{rankInfo.end}</span>
+                                <span className="ct-account-overview__rank__bound">
+                                    {rankInfo.className?.length !== 0 ? rankInfo.end : null}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ function AccountOverviewRank({showPrevNextRanks = false, rankInfo = {}}: {
                         <div className="level-right">
                             <div className="level-item">
                                 <span className={"ct-account-overview__rank__value has-text-weight-bold " + rankInfo.className}>
-                                    {rankInfo.current}
+                                    {rankInfo.className?.length !== 0 ? rankInfo.current : null}
                                 </span>
                             </div>
                         </div>

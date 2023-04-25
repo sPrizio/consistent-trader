@@ -78,7 +78,6 @@ function DesktopSideNav({ pageHandler } : { pageHandler: Function }) {
         renderLink('dashboard', 'dashboard'),
     ]
 
-    //  TODO: the column that handles the nav and content should be set to 12 when hidden and 8-9 when active
 
     //  RENDER
 

@@ -1,8 +1,12 @@
 .ct-user-bar {
-  .level-right {
-    .level-item {
-      &:not(:last-child) {
-        margin-right: 24px;
+  .level {
+    margin-bottom: 0;
+
+    .level-right {
+      .level-item {
+        &:not(:last-child) {
+          margin-right: 24px;
+        }
       }
     }
   }

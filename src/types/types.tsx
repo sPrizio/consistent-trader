@@ -1,3 +1,13 @@
+//  ENUMS
+
+export const PeriodType = {
+    DAYS: {ordinal: 1, label: 'Days', key: 'daily'},
+    WEEKS: {ordinal: 2, label: 'Weeks', key: 'weekly'},
+    MONTHS: {ordinal: 3, label: 'Months', key: 'monthly'},
+    YEARS: {ordinal: 4, label: 'Years', key: 'yearly'},
+}
+
+
 //  CLIENT
 
 export type StandardJsonResponse = {
@@ -106,4 +116,13 @@ export type AccountOverview = {
     monthlyEarnings?: number,
     nextTarget?: number,
     rank?: CurrentRankInfo,
+}
+
+export type ProfitCurvePoint = {
+    date: string,
+    value: number,
+}
+
+export type ProfitCurveInfo = {
+    points?: Array<ProfitCurvePoint>
 }

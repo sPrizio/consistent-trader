@@ -220,6 +220,33 @@ p strong {
   }
 }
 
+.ct-account-overview__balance {
+  color: rgb(86, 106, 127);
+}
+.ct-account-overview__balance small {
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 6px;
+}
+.ct-account-overview__net {
+  font-size: 14px;
+  font-weight: 600;
+}
+.ct-account-overview__net .positive {
+  color: rgb(113, 221, 55);
+}
+.ct-account-overview__net .negative {
+  color: rgb(255, 62, 29);
+}
+.ct-account-overview__target {
+  color: #a1acb8;
+  font-size: 14px;
+  font-weight: 400;
+}
+.ct-account-overview__target.no-show {
+  display: none;
+}
+
 .ct-button {
   background: none;
   border: 1px solid transparent;
@@ -373,33 +400,6 @@ p strong {
   border-bottom-color: rgb(1, 169, 235);
 }
 
-.ct-account-overview__balance {
-  color: rgb(86, 106, 127);
-}
-.ct-account-overview__balance small {
-  font-size: 12px;
-  font-weight: 600;
-  padding-left: 6px;
-}
-.ct-account-overview__net {
-  font-size: 14px;
-  font-weight: 600;
-}
-.ct-account-overview__net .positive {
-  color: rgb(113, 221, 55);
-}
-.ct-account-overview__net .negative {
-  color: rgb(255, 62, 29);
-}
-.ct-account-overview__target {
-  color: #a1acb8;
-  font-size: 14px;
-  font-weight: 400;
-}
-.ct-account-overview__target.no-show {
-  display: none;
-}
-
 .ct-card {
   color: #313131;
   background-color: #FFFFFF;
@@ -492,81 +492,6 @@ p strong {
 }
 .ct-card__controls__item:not(:last-child) {
   margin-right: 6px;
-}
-
-.ct-user-bar .level-right .level-item:not(:last-child) {
-  margin-right: 24px;
-}
-.ct-user-bar .highlight-name {
-  font-weight: 600;
-  color: #137DC5;
-}
-.ct-user-bar__skill-text {
-  padding-right: 8px;
-  color: #137DC5;
-  font-weight: 600;
-}
-.ct-user-bar__skill-icon {
-  position: relative;
-  text-align: center;
-  vertical-align: center;
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  border: 3px solid #137DC5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.ct-user-bar__skill-icon__text {
-  font-weight: 600;
-  color: #137DC5;
-}
-.ct-user-bar__account-details {
-  font-size: 13px;
-  font-weight: 300;
-  color: rgb(105, 122, 141);
-}
-.ct-user-bar__user-menu {
-  position: relative;
-  display: flex;
-}
-.ct-user-bar__user-menu .icon {
-  cursor: pointer;
-  color: #137DC5;
-}
-.ct-user-bar__user-menu__content {
-  display: none;
-  box-shadow: 0 8px 16px rgba(19, 125, 197, 0.2);
-  background-color: #FFFFFF;
-  min-width: 235px;
-  height: 0;
-  right: 0;
-  top: 35px;
-  position: absolute;
-  transition-property: height, display;
-  transition-duration: 0.15s;
-  transition-timing-function: ease-in-out;
-}
-.ct-user-bar__user-menu__content__container {
-  padding: 8px 10px;
-}
-.ct-user-bar__user-menu__content__container__link {
-  padding: 8px 12px;
-  transition-property: font-weight, color, background-color;
-  transition-duration: 0.15s;
-  transition-timing-function: ease-in-out;
-  font-size: 14px;
-  line-height: 22px;
-}
-.ct-user-bar__user-menu__content__container__link:hover {
-  background-color: rgba(19, 125, 197, 0.16);
-  border-radius: 6px;
-  cursor: pointer;
-}
-.ct-user-bar__user-menu__content.is-active {
-  display: block;
-  height: auto;
 }
 
 .ct-modal {
@@ -888,6 +813,99 @@ p strong {
   color: #313131;
   font-size: 14px;
   line-height: 22px;
+}
+.ct-account-overview__rank__image-container {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 992px) {
+  .ct-account-overview__rank__image-container {
+    width: 75px;
+    height: 75px;
+  }
+}
+.ct-account-overview__rank__image-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.ct-user-bar .level {
+  margin-bottom: 0;
+}
+.ct-user-bar .level .level-right .level-item:not(:last-child) {
+  margin-right: 24px;
+}
+.ct-user-bar .highlight-name {
+  font-weight: 600;
+  color: #137DC5;
+}
+.ct-user-bar__skill-text {
+  padding-right: 8px;
+  color: #137DC5;
+  font-weight: 600;
+}
+.ct-user-bar__skill-icon {
+  position: relative;
+  text-align: center;
+  vertical-align: center;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: 3px solid #137DC5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ct-user-bar__skill-icon__text {
+  font-weight: 600;
+  color: #137DC5;
+}
+.ct-user-bar__account-details {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgb(105, 122, 141);
+}
+.ct-user-bar__user-menu {
+  position: relative;
+  display: flex;
+}
+.ct-user-bar__user-menu .icon {
+  cursor: pointer;
+  color: #137DC5;
+}
+.ct-user-bar__user-menu__content {
+  display: none;
+  box-shadow: 0 8px 16px rgba(19, 125, 197, 0.2);
+  background-color: #FFFFFF;
+  min-width: 235px;
+  height: 0;
+  right: 0;
+  top: 35px;
+  position: absolute;
+  transition-property: height, display;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+}
+.ct-user-bar__user-menu__content__container {
+  padding: 8px 10px;
+}
+.ct-user-bar__user-menu__content__container__link {
+  padding: 8px 12px;
+  transition-property: font-weight, color, background-color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+  font-size: 14px;
+  line-height: 22px;
+}
+.ct-user-bar__user-menu__content__container__link:hover {
+  background-color: rgba(19, 125, 197, 0.16);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.ct-user-bar__user-menu__content.is-active {
+  display: block;
+  height: auto;
 }
 
 /*# sourceMappingURL=main.css.map */

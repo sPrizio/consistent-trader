@@ -6,10 +6,10 @@
         "./base/pages",
         "./base/placeholders";
 
-@import "./components/Buttons/buttons",
-        "./components/Cards/account-overview-card",
+@import "./components/Account/account-overview",
+        "./components/Buttons/buttons",
         "./components/Cards/cards",
-        "./components/Cards/user-bar-card",
         "./components/Modals/base-modal",
         "./components/Navigation/desktop-side-nav",
-        "./components/Rank/account-overview-rank";
+        "./components/Rank/account-overview-rank",
+        "./components/User/user-bar";

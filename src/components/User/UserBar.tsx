@@ -1,11 +1,11 @@
-import {UserInfo} from "../../../types/types";
+import {UserInfo} from "../../types/types";
 import {RxHamburgerMenu} from "react-icons/rx";
 import {AiOutlineClose, AiOutlineSwap, AiOutlineUser} from "react-icons/ai";
 import {HiUpload} from "react-icons/hi";
 import {RiLogoutCircleLine} from "react-icons/ri";
 import {useState} from "react";
-import {now} from "../../../services/datetime/DateTimeService";
-import BaseModal from "../../Modals/BaseModal";
+import {now} from "../../services/datetime/DateTimeService";
+import BaseModal from "../Modals/BaseModal";
 
 
 /**
@@ -14,10 +14,10 @@ import BaseModal from "../../Modals/BaseModal";
  * @author Stephen Prizio
  * @version 1.0
  */
-function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
+function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
 
     const [menuActive, setMenuActive] = useState(false)
-    const [modalActive, setModalActive] = useState(true)
+    const [modalActive, setModalActive] = useState(false)
 
 
     //  HANDLERS
@@ -133,4 +133,4 @@ function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
     )
 }
 
-export default UserBarCard;
+export default UserBar;

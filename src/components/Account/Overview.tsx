@@ -1,7 +1,7 @@
-import {AccountOverview} from "../../../types/types";
-import {formatNumberForDisplay} from "../../../services/data/FormattingService";
+import {AccountOverview} from "../../types/types";
+import {formatNumberForDisplay} from "../../services/data/FormattingService";
 import {TbTrendingDown, TbTrendingUp} from "react-icons/tb";
-import AccountOverviewRank from "../../Rank/AccountOverviewRank";
+import AccountOverviewRank from "../Rank/AccountOverviewRank";
 
 /**
  * Component for displaying the account overview
@@ -9,7 +9,7 @@ import AccountOverviewRank from "../../Rank/AccountOverviewRank";
  * @author Stephen Prizio
  * @version 1.0
  */
-function OverviewCard({accountOverview = {}}: { accountOverview: AccountOverview }) {
+function Overview({accountOverview = {}}: { accountOverview: AccountOverview }) {
 
 
     //  GENERAL FUNCTIONS
@@ -50,8 +50,8 @@ function OverviewCard({accountOverview = {}}: { accountOverview: AccountOverview
     return (
         <>
             <div className="ct-account-overview">
-                <div className="columns is-multiline is-mobile is-vcentered is-gapless">
-                    <div className="column is-7-desktop is-7-tablet is-12-mobile">
+                <div className="columns is-multiline is-mobile is-vcentered">
+                    <div className="column is-7-desktop is-12-tablet is-12-mobile">
                         <div className="columns is-multiline is-mobile is-gapless">
                             <div className="column is-12">
                                 <h4 className="ct-account-overview__balance">
@@ -67,7 +67,7 @@ function OverviewCard({accountOverview = {}}: { accountOverview: AccountOverview
                             </div>
                         </div>
                     </div>
-                    <div className="column is-5-desktop is-5-tablet is-12-mobile has-text-centered">
+                    <div className="column is-5-desktop is-12-tablet is-12-mobile has-text-centered">
                         <AccountOverviewRank showPrevNextRanks={false} rankInfo={accountOverview?.rank ?? undefined} />
                     </div>
                 </div>
@@ -76,4 +76,4 @@ function OverviewCard({accountOverview = {}}: { accountOverview: AccountOverview
     )
 }
 
-export default OverviewCard;
+export default Overview;

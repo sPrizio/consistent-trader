@@ -60,7 +60,13 @@ function EquityCurveCard({period = 6, periodType = PeriodType.MONTHS} : {period:
 
     return (
         <>
-            <BaseCard loading={isLoading} title={'Account Growth'} subtitle={'Last ' + period + ' ' + periodType.label} hasBorder={false} content={[<EquityCurve key={0} profitCurveInfo={profitCurveInfo} />]} />
+            <BaseCard
+                loading={isLoading}
+                title={'Account Growth'}
+                subtitle={'Last ' + period + ' ' + periodType.label}
+                hasBorder={false}
+                content={[<EquityCurve key={0} profitCurveInfo={profitCurveInfo} aggregateInterval={periodType} />]}
+            />
         </>
     )
 }

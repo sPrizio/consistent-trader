@@ -1,10 +1,79 @@
-import {ProfitCurveInfo} from "../../types/types";
-import {Area, CartesianGrid, ComposedChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {PeriodType, ProfitCurveInfo} from "../../types/types";
+import ReactApexChart from "react-apexcharts";
+import {ApexOptions} from "apexcharts";
 import {CoreConstants} from "../../constants/CoreConstants";
-import {formatNumberForDisplay} from "../../services/data/FormattingService";
-import moment from "moment";
+import {formatDate} from "../../services/datetime/DateTimeService";
 
-function EquityCurve({profitCurveInfo = {}}: { profitCurveInfo: ProfitCurveInfo }) {
+function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTHS}: { profitCurveInfo: ProfitCurveInfo, aggregateInterval: any }) {
+
+
+    //  CONSTANTS
+
+    const options: ApexOptions = {
+        chart: {
+            type: 'area',
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+
+        title: {
+            text: '',
+        },
+        xaxis: {
+            type: 'category',
+            labels: {
+                formatter: function (value, timestamp, opts) {
+                    return formatDate(value, formatXAxisTicks())
+                }
+            },
+            axisBorder: {
+                show: true
+            },
+            axisTicks: {
+                show: true
+            }
+        },
+        yaxis: {
+            tickAmount: 4,
+            floating: false,
+            labels: {
+                style: {
+                    colors: '#8e8da4',
+                },
+                offsetY: -7,
+                offsetX: 0,
+            },
+            axisBorder: {
+                show: true,
+            },
+            axisTicks: {
+                show: true
+            }
+        },
+        fill: {
+            type: 'gradient',
+            opacity: 0.5
+        },
+        tooltip: {
+            x: {
+                format: "yyyy",
+            },
+            fixed: {
+                enabled: false,
+                position: 'topRight'
+            }
+        },
+        grid: {
+            show: false,
+        },
+        legend: {
+            show: false,
+        }
+    }
 
 
     //  GENERAL FUNCTIONS
@@ -24,6 +93,51 @@ function EquityCurve({profitCurveInfo = {}}: { profitCurveInfo: ProfitCurveInfo 
         return value
     }
 
+    /**
+     * Obtains the date time format
+     */
+    function formatXAxisTicks() {
+        switch (aggregateInterval) {
+            case PeriodType.DAYS:
+                return CoreConstants.DateTime.ISODayFormat
+            case PeriodType.WEEKS:
+                return CoreConstants.DateTime.ISODateFormat
+            case PeriodType.MONTHS:
+                return CoreConstants.DateTime.ISOMonthYearFormat
+            case PeriodType.YEARS:
+                return CoreConstants.DateTime.ISOYearFormat
+            default:
+                return ''
+        }
+    }
+
+    /**
+     * Formats the data into the correct format
+     */
+    function computeData() {
+
+        const d : Array<any> = []
+        if (profitCurveInfo && profitCurveInfo.points && profitCurveInfo.points.length > 0) {
+            profitCurveInfo.points.forEach(point => {
+                d.push({
+                    x: point.date,
+                    y: point.value
+                })
+            })
+        }
+
+        return [
+            {
+                name: 'Account Balance',
+                data: d
+            }
+        ]
+    }
+
+    //  TODO: hide controls
+    //  TODO: show different bucket formats (5days 1 week 1 year all time)
+    //  TODO: disable formats depending on number of data points
+    //  TODO: style the graph
 
     //  RENDER
 
@@ -40,32 +154,7 @@ function EquityCurve({profitCurveInfo = {}}: { profitCurveInfo: ProfitCurveInfo 
         <div className="ct-equity-curve">
             {emptyText}
             <div className="chart-container">
-                <ResponsiveContainer width="100%" height={250}>
-                    <ComposedChart data={profitCurveInfo.points}>
-                        <defs>
-                            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="25%"
-                                      stopColor={CoreConstants.CssConstants.ProfitCurvePrimary}
-                                      stopOpacity={0.2}/>
-                                <stop offset="95%" stopColor={CoreConstants.CssConstants.White}
-                                      stopOpacity={0.1}/>
-                            </linearGradient>
-                        </defs>
-                        <CartesianGrid horizontal={false} vertical={false}/>
-                        <XAxis
-                            dataKey="date"
-                            tickFormatter={(value) => moment(value).format(CoreConstants.DateTime.ISOShortMonthFormat)}
-                        />
-                        <YAxis tickFormatter={(value) => formatYAxisTicks(value)}/>
-                        <Tooltip
-                            labelFormatter={(value) => moment(value).format(CoreConstants.DateTime.ISOMonthYearFormat)}
-                            formatter={(value) => formatNumberForDisplay(parseFloat(value.toString()))}
-                        />
-                        <Area type="monotone" name="Value" dataKey="value"
-                              stroke={CoreConstants.CssConstants.ProfitCurvePrimary} fillOpacity={1}
-                              fill="url(#colorUv)" strokeWidth={3}/>
-                    </ComposedChart>
-                </ResponsiveContainer>
+                <ReactApexChart options={options} series={computeData()} type="area" height={350} width={"100%"}/>
             </div>
         </div>
     )

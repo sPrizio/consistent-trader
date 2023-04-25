@@ -79,11 +79,15 @@ function OverviewPage() {
             <div className="column is-12">
                 <BaseCard loading={isLoading} hasBorder={false} content={[<UserBarCard key={0} userInfo={userInfo}/>]}/>
             </div>
-            <div className="column is-5">
-                <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={'Test'} hasBorder={true} content={[<OverviewCard key={0} accountOverview={accountOverview} />]} />
-            </div>
-            <div className="column is-7">
-                <BaseCard loading={isLoading} title={'Account Growth'} subtitle={'Last 6 months'} hasBorder={false} content={[]} />
+            <div className="column is-12">
+                <div className="columns is-multiline is-mobile">
+                    <div className="column is-5">
+                        <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={'Test'} hasBorder={true} content={[<OverviewCard key={0} accountOverview={accountOverview} />]} />
+                    </div>
+                    <div className="column is-7">
+                        <BaseCard loading={isLoading} title={'Account Growth'} subtitle={'Last 6 months'} hasBorder={false} content={[]} />
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -1,0 +1,122 @@
+.ct-modal {
+  display: none;
+  animation: fade-out $transition-duration forwards;
+
+  &.active {
+    display: flex;
+    animation: fade-in $transition-duration forwards;
+  }
+
+  .modal-padding {
+    padding: 18px 24px;
+    width: 100%;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba($color-black, 0.80);
+  }
+
+  &__content {
+    background-color: rgba($color-white, 1.0);
+    max-width: 650px;
+    max-height: 650px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: fixed;
+    z-index: 11;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 30px 0 rgba(#000, 0.25);
+    flex-grow: 1;
+
+    @include mq-large-down {
+      max-width: 90%;
+    }
+
+    &__header {
+      border-bottom: 1px solid #DDDDDD;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 65px;
+
+      &__column {
+        flex: 1;
+
+        .icon {
+          float: right;
+          border-radius: 6px;
+
+          &:hover {
+            background-color: rgba(#DDDDDD, 0.5);
+            cursor: pointer;
+          }
+        }
+      }
+
+      &__title {
+        color: $color-primary;
+        font-weight: $font-weight-semi-bold;
+      }
+    }
+
+    &__body {
+      display: flex;
+      flex: 1;
+    }
+
+    &__controls {
+      border-top: 1px solid #DDDDDD;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 85px;
+
+      &__control {
+        display: inline-block;
+
+        &:not(:first-child) {
+          margin-left: 12px;
+        }
+
+        &:not(:last-child) {
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}

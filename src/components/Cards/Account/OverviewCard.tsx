@@ -14,6 +14,9 @@ function OverviewCard({accountOverview = {}}: { accountOverview: AccountOverview
 
     //  GENERAL FUNCTIONS
 
+    /**
+     * Computes the css class to determine coloring for the value of daily earnings
+     */
     function computeClass() {
         if (accountOverview?.dailyEarnings ?? -1 > 0) {
             return ' positive '
@@ -48,7 +51,7 @@ function OverviewCard({accountOverview = {}}: { accountOverview: AccountOverview
         <>
             <div className="ct-account-overview">
                 <div className="columns is-multiline is-mobile is-vcentered is-gapless">
-                    <div className="column is-6">
+                    <div className="column is-7-desktop is-7-tablet is-12-mobile">
                         <div className="columns is-multiline is-mobile is-gapless">
                             <div className="column is-12">
                                 <h4 className="ct-account-overview__balance">
@@ -64,7 +67,7 @@ function OverviewCard({accountOverview = {}}: { accountOverview: AccountOverview
                             </div>
                         </div>
                     </div>
-                    <div className="column is-6 has-text-centered">
+                    <div className="column is-5-desktop is-5-tablet is-12-mobile has-text-centered">
                         <AccountOverviewRank showPrevNextRanks={false} rankInfo={accountOverview?.rank ?? undefined} />
                     </div>
                 </div>

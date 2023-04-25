@@ -221,10 +221,9 @@ p strong {
 }
 
 .ct-button {
-  /*margin-top: 25px;*/
   background: none;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 8px;
   font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-size: 12px;
@@ -241,9 +240,9 @@ p strong {
 }
 @media screen and (min-width: 992px) {
   .ct-button {
-    font-size: 13px;
-    line-height: 28px;
-    padding: 8px 16px;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 12px 20px;
   }
 }
 .ct-button:hover, .ct-button:focus-visible {
@@ -570,6 +569,113 @@ p strong {
   height: auto;
 }
 
+.ct-modal {
+  display: none;
+  animation: fade-out 0.3s forwards;
+}
+.ct-modal.active {
+  display: flex;
+  animation: fade-in 0.3s forwards;
+}
+.ct-modal .modal-padding {
+  padding: 18px 24px;
+  width: 100%;
+}
+.ct-modal .flex-container {
+  display: flex;
+  flex-direction: row;
+}
+.ct-modal__overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.ct-modal__content {
+  background-color: white;
+  max-width: 650px;
+  max-height: 650px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  position: fixed;
+  z-index: 11;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+  flex-grow: 1;
+}
+@media screen and (max-width: 991px) {
+  .ct-modal__content {
+    max-width: 90%;
+  }
+}
+.ct-modal__content__header {
+  border-bottom: 1px solid #DDDDDD;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 65px;
+}
+.ct-modal__content__header__column {
+  flex: 1;
+}
+.ct-modal__content__header__column .icon {
+  float: right;
+  border-radius: 6px;
+}
+.ct-modal__content__header__column .icon:hover {
+  background-color: rgba(221, 221, 221, 0.5);
+  cursor: pointer;
+}
+.ct-modal__content__header__title {
+  color: #137DC5;
+  font-weight: 600;
+}
+.ct-modal__content__body {
+  display: flex;
+  flex: 1;
+}
+.ct-modal__content__controls {
+  border-top: 1px solid #DDDDDD;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 85px;
+}
+.ct-modal__content__controls__control {
+  display: inline-block;
+}
+.ct-modal__content__controls__control:not(:first-child) {
+  margin-left: 12px;
+}
+.ct-modal__content__controls__control:not(:last-child) {
+  margin-right: 12px;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
 .ct-side-nav {
   min-height: 100vh;
   max-width: 300px;

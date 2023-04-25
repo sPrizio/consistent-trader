@@ -1,10 +1,7 @@
 .ct-button {
-  //  TEMP
-  /*margin-top: 25px;*/
-
   background: none;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 8px;
   font-family: $font-primary;
   font-weight: $font-weight-medium;
   font-size: 12px;
@@ -20,9 +17,9 @@
   transition-timing-function: $transition-curve;
 
   @include mq-large-up {
-    font-size: 13px;
-    line-height: 28px;
-    padding: 8px 16px;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 12px 20px;
   }
 
   &:hover,

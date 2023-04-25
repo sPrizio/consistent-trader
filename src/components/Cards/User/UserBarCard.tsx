@@ -5,6 +5,7 @@ import {HiUpload} from "react-icons/hi";
 import {RiLogoutCircleLine} from "react-icons/ri";
 import {useState} from "react";
 import {now} from "../../../services/datetime/DateTimeService";
+import BaseModal from "../../Modals/BaseModal";
 
 
 /**
@@ -16,6 +17,7 @@ import {now} from "../../../services/datetime/DateTimeService";
 function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
 
     const [menuActive, setMenuActive] = useState(false)
+    const [modalActive, setModalActive] = useState(true)
 
 
     //  HANDLERS
@@ -25,6 +27,16 @@ function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
      */
     function toggleMenu() {
         setMenuActive(!menuActive)
+    }
+
+    /**
+     * Toggles a modal
+     */
+    function toggleModal() {
+        setModalActive(!modalActive)
+        if (menuActive) {
+            setMenuActive(false)
+        }
     }
 
 
@@ -70,13 +82,6 @@ function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
                             </div>
                         </div>
                     </div>
-                    {/*<div className="level-item">
-                        <div className="ct-user-bar__account-details">
-                            {userInfo.account?.broker}
-                            <br />
-                            {userInfo.account?.accountType}&nbsp;-&nbsp;{userInfo.account?.accountNumber}
-                        </div>
-                    </div>*/}
                     <div className="level-item">
                         <div className="ct-user-bar__user-menu">
                             <span className="icon is-size-3" onClick={toggleMenu}>
@@ -92,7 +97,7 @@ function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
                                             <span>My Account</span>
                                         </span>
                                     </div>
-                                    <div className="ct-user-bar__user-menu__content__container__link">
+                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={toggleModal}>
                                         <span className="icon-text">
                                             <span className="icon"><HiUpload/></span>
                                             <span>Upload Trades</span>
@@ -117,6 +122,13 @@ function UserBarCard({userInfo = {}}: { userInfo?: UserInfo }) {
                     </div>
                 </div>
             </div>
+
+            <BaseModal
+                active={modalActive}
+                title={'Upload / Import Trades'}
+                closeHandler={toggleModal}
+                content={[<div key={0}>Hello There, General Kenobi</div>]}
+            />
         </div>
     )
 }

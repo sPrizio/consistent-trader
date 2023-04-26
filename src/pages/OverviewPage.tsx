@@ -74,6 +74,7 @@ function OverviewPage() {
 
 
     //  RENDER
+
     const subtitle = `${accountOverview?.account?.broker ?? ''}\u00A0-\u00A0${accountOverview?.account?.accountNumber ?? ''}`
     return (
         <div className="columns is-multiline is-mobile">
@@ -86,7 +87,7 @@ function OverviewPage() {
                         <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={subtitle} hasBorder={true} content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]} />
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        <EquityCurveCard period={6} periodType={PeriodType.MONTHS} />
+                        <EquityCurveCard period={6} periodType={PeriodType.DAYS} />
                     </div>
                 </div>
             </div>

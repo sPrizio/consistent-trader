@@ -1,10 +1,10 @@
 //  ENUMS
 
 export const PeriodType = {
-    DAYS: {ordinal: 1, label: 'Days', key: 'daily'},
-    WEEKS: {ordinal: 2, label: 'Weeks', key: 'weekly'},
-    MONTHS: {ordinal: 3, label: 'Months', key: 'monthly'},
-    YEARS: {ordinal: 4, label: 'Years', key: 'yearly'},
+    DAYS: {ordinal: 1, label: 'Days', key: 'daily', unit: 'day'},
+    WEEKS: {ordinal: 2, label: 'Weeks', key: 'weekly', unit: 'week'},
+    MONTHS: {ordinal: 3, label: 'Months', key: 'monthly', unit: 'month'},
+    YEARS: {ordinal: 4, label: 'Years', key: 'yearly', unit: 'year'},
 }
 
 

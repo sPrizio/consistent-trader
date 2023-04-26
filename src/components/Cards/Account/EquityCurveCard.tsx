@@ -35,8 +35,8 @@ function EquityCurveCard({period = 6, periodType = PeriodType.MONTHS} : {period:
         const d =
             get(
                 CoreConstants.ApiUrls.Account.EquityCurve
-                    .replace('{start}', moment().subtract((period - 1), periodType.label.toLowerCase()).startOf('month').format(CoreConstants.DateTime.ISODateFormat))
-                    .replace('{end}', moment().add(1, periodType.label.toLowerCase()).startOf('month').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat))
+                    .replace('{start}', moment().subtract((period - 1), periodType.unit.toLowerCase()).startOf(periodType.unit.toLowerCase()).format(CoreConstants.DateTime.ISODateFormat))
+                    .replace('{end}', moment().add(1, periodType.unit.toLowerCase()).startOf(periodType.unit.toLowerCase()).add(1, 'days').format(CoreConstants.DateTime.ISODateFormat))
                     .replace('{interval}', periodType.key.toUpperCase())
             )
         d.then(res => {

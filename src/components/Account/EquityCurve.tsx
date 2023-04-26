@@ -12,12 +12,18 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
     const options: ApexOptions = {
         chart: {
             type: 'area',
+            width: '100%',
+            toolbar: {
+                show: false
+            }
         },
+        colors: [CoreConstants.CssConstants.ColorPrimary],
         dataLabels: {
             enabled: false
         },
         stroke: {
-            curve: 'smooth'
+            curve: 'smooth',
+            colors: [CoreConstants.CssConstants.ColorPrimary]
         },
 
         title: {
@@ -28,6 +34,10 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
             labels: {
                 formatter: function (value, timestamp, opts) {
                     return formatDate(value, formatXAxisTicks())
+                },
+                style: {
+                    colors: CoreConstants.CssConstants.ColorFontSubtitle,
+                    fontFamily: CoreConstants.CssConstants.FontPrimary,
                 }
             },
             axisBorder: {
@@ -42,10 +52,14 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
             floating: false,
             labels: {
                 style: {
-                    colors: '#8e8da4',
+                    colors: CoreConstants.CssConstants.ColorFontSubtitle,
+                    fontFamily: CoreConstants.CssConstants.FontPrimary,
                 },
                 offsetY: -7,
                 offsetX: 0,
+                formatter(val: number, opts?: any): string | string[] {
+                    return formatYAxisTicks(val)
+                }
             },
             axisBorder: {
                 show: true,
@@ -56,7 +70,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
         },
         fill: {
             type: 'gradient',
-            opacity: 0.5
+            colors: [CoreConstants.CssConstants.ColorPrimary]
         },
         tooltip: {
             x: {
@@ -65,7 +79,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
             fixed: {
                 enabled: false,
                 position: 'topRight'
-            }
+            },
         },
         grid: {
             show: false,
@@ -99,7 +113,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
     function formatXAxisTicks() {
         switch (aggregateInterval) {
             case PeriodType.DAYS:
-                return CoreConstants.DateTime.ISODayFormat
+                return CoreConstants.DateTime.ISOMonthDayFormat
             case PeriodType.WEEKS:
                 return CoreConstants.DateTime.ISODateFormat
             case PeriodType.MONTHS:
@@ -134,10 +148,9 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
         ]
     }
 
-    //  TODO: hide controls
     //  TODO: show different bucket formats (5days 1 week 1 year all time)
     //  TODO: disable formats depending on number of data points
-    //  TODO: style the graph
+    //  TODO: fix the z-index issue with modals
 
     //  RENDER
 
@@ -154,7 +167,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
         <div className="ct-equity-curve">
             {emptyText}
             <div className="chart-container">
-                <ReactApexChart options={options} series={computeData()} type="area" height={350} width={"100%"}/>
+                <ReactApexChart options={options} series={computeData()} type="area" height={350}/>
             </div>
         </div>
     )

@@ -24,7 +24,7 @@
     bottom: 0;
     margin: auto;
     position: fixed;
-    z-index: 1;
+    z-index: 12;
     background-color: rgba($color-black, 0.80);
   }
 
@@ -38,7 +38,7 @@
     bottom: 0;
     margin: auto;
     position: fixed;
-    z-index: 11;
+    z-index: 12;
     border-radius: 16px;
     display: flex;
     flex-direction: column;

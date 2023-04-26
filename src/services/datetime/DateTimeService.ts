@@ -15,7 +15,7 @@ export function now() {
  */
 export function formatDate(value: string, format: string) {
     try {
-        return moment().format(format)
+        return moment(value).format(format)
     } catch (e) {
         console.log(e)
         return value

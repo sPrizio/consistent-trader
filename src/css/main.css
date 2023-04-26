@@ -475,6 +475,7 @@ p strong {
 }
 .ct-card__content__item {
   flex: 1;
+  width: 100%;
 }
 .ct-card__controls {
   border-top: 1px solid rgba(19, 125, 197, 0.4);
@@ -517,7 +518,7 @@ p strong {
   bottom: 0;
   margin: auto;
   position: fixed;
-  z-index: 1;
+  z-index: 12;
   background-color: rgba(0, 0, 0, 0.8);
 }
 .ct-modal__content {
@@ -530,7 +531,7 @@ p strong {
   bottom: 0;
   margin: auto;
   position: fixed;
-  z-index: 11;
+  z-index: 12;
   border-radius: 16px;
   display: flex;
   flex-direction: column;

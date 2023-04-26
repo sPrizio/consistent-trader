@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import get from "../../../services/client/ClientService";
 import {CoreConstants} from "../../../constants/CoreConstants";
-import {StandardJsonResponse} from "../../../types/types";
+import {StandardJsonResponse} from "../../../types/api-types";
 import hasData from "../../../services/data/DataIntegrityService";
 import BaseCard from "../BaseCard";
 import {formatDateMoment, now} from "../../../services/datetime/DateTimeService";

@@ -1,4 +1,4 @@
-import {CurrentRankInfo} from "../../types/types";
+import {CurrentRankInfo} from "../../types/api-types";
 import {displayRankName, normalize} from "../../services/data/FormattingService";
 
 /**

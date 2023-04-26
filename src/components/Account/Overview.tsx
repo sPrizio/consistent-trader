@@ -1,4 +1,4 @@
-import {AccountOverview} from "../../types/types";
+import {AccountOverview} from "../../types/api-types";
 import {formatNumberForDisplay} from "../../services/data/FormattingService";
 import {TbTrendingDown, TbTrendingUp} from "react-icons/tb";
 import AccountOverviewRank from "../Rank/AccountOverviewRank";

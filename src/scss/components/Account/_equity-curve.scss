@@ -1,0 +1,28 @@
+.ct-equity-curve {
+  .tabs {
+    margin-bottom: 0;
+    margin-top: -12px;
+
+    ul {
+      border-bottom: none;
+
+      li {
+        border-bottom: 1px solid rgb(219, 219, 219);
+
+        a {
+          transition-property: color, border-bottom-color;
+          transition-duration: $transition-duration;
+          transition-timing-function: $transition-curve;
+        }
+
+        &.is-active {
+          border-bottom: 1px solid $color-primary;
+
+          a {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import {PerformanceSummaryInfo} from "../../types/types";
+import {PerformanceSummaryInfo} from "../../types/api-types";
 import {formatNumberForDisplay} from "../../services/data/FormattingService";
 
 /**

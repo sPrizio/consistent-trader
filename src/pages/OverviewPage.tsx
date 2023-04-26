@@ -3,13 +3,11 @@ import UserBar from "../components/User/UserBar";
 import get from "../services/client/ClientService";
 import {CoreConstants} from "../constants/CoreConstants";
 import {useEffect, useState} from "react";
-import {PeriodType, StandardJsonResponse} from "../types/types";
+import {StandardJsonResponse} from "../types/api-types";
 import hasData from "../services/data/DataIntegrityService";
 import Overview from "../components/Account/Overview";
 import EquityCurveCard from "../components/Cards/Account/EquityCurveCard";
 import PerformanceSummaryCard from "../components/Cards/Account/PerformanceSummaryCard";
-import {formatDateMoment, now} from "../services/datetime/DateTimeService";
-import moment from "moment";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -99,7 +97,7 @@ function OverviewPage() {
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-12">
-                                <EquityCurveCard period={6} periodType={PeriodType.DAYS} />
+                                <EquityCurveCard />
                             </div>
                             <div className="column is-12">
                                 <PerformanceSummaryCard />

@@ -1,10 +1,18 @@
-import {PeriodType, ProfitCurveInfo} from "../../types/types";
+import {ProfitCurveInfo} from "../../types/api-types";
 import ReactApexChart from "react-apexcharts";
 import {ApexOptions} from "apexcharts";
 import {CoreConstants} from "../../constants/CoreConstants";
 import {formatDate} from "../../services/datetime/DateTimeService";
+import {useState} from "react";
+import {EquityChartTabMap, PeriodType} from "../../types/ui-types";
 
-function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTHS}: { profitCurveInfo: ProfitCurveInfo, aggregateInterval: any }) {
+function EquityCurve({profitCurveInfo = {}, aggregateInterval, fetchHandler}: {
+    profitCurveInfo: ProfitCurveInfo,
+    aggregateInterval: any,
+    fetchHandler: Function
+}) {
+
+    const [selectedTab, setSelectedTab] = useState('5D')
 
 
     //  CONSTANTS
@@ -88,7 +96,31 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
             show: false,
         }
     }
+    const tabs: EquityChartTabMap = {
+        '5D': {period: 5, periodType: PeriodType.DAYS},
+        '1M': {period: 30, periodType: PeriodType.DAYS},
+        '3M': {period: 3, periodType: PeriodType.MONTHS},
+        '6M': {period: 6, periodType: PeriodType.MONTHS},
+        '1Y': {period: 12, periodType: PeriodType.MONTHS},
+        '5Y': {period: 5, periodType: PeriodType.YEARS},
+    }
 
+
+    //  HANDLER FUNCTIONS
+
+    /**
+     * Selects a new tab and updates the curve data
+     *
+     * @param val new tab
+     */
+    function selectTab(val: string) {
+        setSelectedTab(val)
+        fetchHandler(tabs[val].period, tabs[val].periodType)
+    }
+
+
+    //  TODO: test the chart tabs and see what data is coming
+    //  TODO: looks like the state is delayed
 
     //  GENERAL FUNCTIONS
 
@@ -130,7 +162,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
      */
     function computeData() {
 
-        const d : Array<any> = []
+        const d: Array<any> = []
         if (profitCurveInfo && profitCurveInfo.points && profitCurveInfo.points.length > 0) {
             profitCurveInfo.points.forEach(point => {
                 d.push({
@@ -148,12 +180,9 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
         ]
     }
 
-    //  TODO: show different bucket formats (5days 1 week 1 year all time)
-    //  TODO: disable formats depending on number of data points
 
     //  RENDER
 
-    let emptyText = null
     if (!profitCurveInfo || !profitCurveInfo.points || profitCurveInfo.points.length === 0) {
         return (
             <div className="ct-equity-curve">
@@ -164,7 +193,28 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
 
     return (
         <div className="ct-equity-curve">
-            {emptyText}
+            <div className="tabs is-right is-small">
+                <ul>
+                    <li className={(selectedTab === '5D' ? " is-active " : "")}>
+                        <a onClick={() => selectTab('5D')}>5D</a>
+                    </li>
+                    <li className={(selectedTab === '1M' ? " is-active " : "")}>
+                        <a onClick={() => selectTab('1M')}>1M</a>
+                    </li>
+                    <li className={(selectedTab === '3M' ? " is-active " : "")}>
+                        <a onClick={() => selectTab('3M')}>3M</a>
+                    </li>
+                    <li className={(selectedTab === '6M' ? " is-active " : "")}>
+                        <a onClick={() => selectTab('6M')}>6M</a>
+                    </li>
+                    <li className={(selectedTab === '1Y' ? " is-active " : "")}>
+                        <a onClick={() => selectTab('1Y')}>1Y</a>
+                    </li>
+                    <li className={(selectedTab === '5Y' ? " is-active " : "")}>
+                        <a onClick={() => selectTab('5Y')}>5Y</a>
+                    </li>
+                </ul>
+            </div>
             <div className="chart-container">
                 <ReactApexChart options={options} series={computeData()} type="area" height={350}/>
             </div>

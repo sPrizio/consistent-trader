@@ -1,4 +1,4 @@
-import {UserInfo} from "../../types/types";
+import {UserInfo} from "../../types/api-types";
 import {RxHamburgerMenu} from "react-icons/rx";
 import {AiOutlineClose, AiOutlineSwap, AiOutlineUser} from "react-icons/ai";
 import {HiUpload} from "react-icons/hi";

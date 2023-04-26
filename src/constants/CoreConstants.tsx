@@ -17,7 +17,7 @@ export const CoreConstants = {
             BalanceHistory: getAccountDomain() + '/balance-history?start={start}&end={end}',
             CreateBalanceModification: getAccountDomain() + '/create-modification',
             DeleteBalanceModification: getAccountDomain() + '/delete-modification?uid={uid}',
-            EquityCurve: getAccountDomain() + '/equity-curve?start={start}&end={end}&interval={interval}',
+            EquityCurve: getAccountDomain() + '/equity-curve?interval={interval}&count={count}',
             LossInfo: getAccountDomain() + '/loss-info?start={start}&end={end}',
             Overview: getAccountDomain() + '/overview',
             PromoPayments: getAccountDomain() + '/promo-payments',

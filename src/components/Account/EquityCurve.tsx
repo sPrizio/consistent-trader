@@ -150,7 +150,6 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval = PeriodType.MONTH
 
     //  TODO: show different bucket formats (5days 1 week 1 year all time)
     //  TODO: disable formats depending on number of data points
-    //  TODO: fix the z-index issue with modals
 
     //  RENDER
 

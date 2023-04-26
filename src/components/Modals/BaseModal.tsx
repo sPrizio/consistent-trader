@@ -1,7 +1,20 @@
 import SimpleButton from "../Buttons/SimpleButton";
 import {IoMdClose} from "react-icons/io";
-import React from "react";
+import React, {useEffect} from "react";
 
+/**
+ * Base modal to be used as skeleton for custom modals
+ *
+ * @param active flag to show the modal
+ * @param title modal title
+ * @param content modal custom content
+ * @param hasControls if true, show section for buttons
+ * @param submitHandler when buttons are shown, a submit handler is needed
+ * @param closeHandler handle closing the modal
+ *
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function BaseModal(
     {
         active,
@@ -11,7 +24,7 @@ function BaseModal(
         submitHandler = undefined,
         closeHandler,
     }
-    : {
+        : {
         active: boolean,
         title?: string,
         content?: Array<any>,
@@ -20,21 +33,50 @@ function BaseModal(
         closeHandler: Function
     }) {
 
+    useEffect(() => {
+        hideApexCharts()
+    })
+
+
+    //  GENERAL FUNCTIONS
+
+    /**
+     * Resolves a bug with ApexCharts where modals cannot appear in front of a canvas drawing.
+     * When a modal is active, the apex charts are hidden
+     */
+    function hideApexCharts() {
+        let className = ''
+        let item = null
+        const coll = document.getElementsByClassName('apexcharts-canvas')
+        if (coll.length > 0) {
+            className = coll?.item(0)?.className ?? ''
+            item = coll.item(0)
+        }
+
+        if (active && item) {
+            className += ' hide '
+            item.className = className
+        } else if (item) {
+            className = className.replace(' hide ', '')
+            item.className = className
+        }
+    }
+
 
     //  RENDER
 
     return (
         <div className={"ct-modal" + (active ? " active " : "")}>
-            <div className="ct-modal__overlay" />
+            <div className="ct-modal__overlay"/>
             <div className="ct-modal__content">
                 <div className="ct-modal__content__header">
                     <div className="modal-padding flex-container">
                         <div className="ct-modal__content__header__column">
-                            <h6 className="ct-modal__content__header__title">{ title }</h6>
+                            <h6 className="ct-modal__content__header__title">{title}</h6>
                         </div>
                         <div className="ct-modal__content__header__column has-text-right">
                             <div className="icon is-size-2" onClick={() => closeHandler()}>
-                                <IoMdClose />
+                                <IoMdClose/>
                             </div>
                         </div>
                     </div>
@@ -46,7 +88,8 @@ function BaseModal(
                             <div className="ct-modal__content__body__entry">
                                 {
                                     content.map(item => {
-                                        return <div className="ct-modal__content__body__entry__item" key={item}>{item}</div>
+                                        return <div className="ct-modal__content__body__entry__item"
+                                                    key={item}>{item}</div>
                                     })
                                 }
                             </div>
@@ -56,10 +99,10 @@ function BaseModal(
                 <div className="ct-modal__content__controls has-text-right">
                     <div className="modal-padding">
                         <div className="ct-modal__content__controls__control">
-                            <SimpleButton text={'Cancel'} plain={true} handler={closeHandler} />
+                            <SimpleButton text={'Cancel'} plain={true} handler={closeHandler}/>
                         </div>
                         <div className="ct-modal__content__controls__control">
-                            <SimpleButton text={'Submit'} />
+                            <SimpleButton text={'Submit'}/>
                         </div>
                     </div>
                 </div>

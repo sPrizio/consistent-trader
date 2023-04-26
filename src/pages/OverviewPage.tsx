@@ -7,6 +7,9 @@ import {PeriodType, StandardJsonResponse} from "../types/types";
 import hasData from "../services/data/DataIntegrityService";
 import Overview from "../components/Account/Overview";
 import EquityCurveCard from "../components/Cards/Account/EquityCurveCard";
+import PerformanceSummaryCard from "../components/Cards/Account/PerformanceSummaryCard";
+import {formatDateMoment, now} from "../services/datetime/DateTimeService";
+import moment from "moment";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -84,10 +87,24 @@ function OverviewPage() {
             <div className="column is-12">
                 <div className="columns is-multiline is-mobile">
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={subtitle} hasBorder={true} content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]} />
+                        <div className="columns is-multiline is-mobile">
+                            <div className="column is-12">
+                                <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={subtitle} hasBorder={true} content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]} />
+                            </div>
+                            <div className="column is-12">
+                                News
+                            </div>
+                        </div>
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        <EquityCurveCard period={6} periodType={PeriodType.DAYS} />
+                        <div className="columns is-multiline is-mobile">
+                            <div className="column is-12">
+                                <EquityCurveCard period={6} periodType={PeriodType.DAYS} />
+                            </div>
+                            <div className="column is-12">
+                                <PerformanceSummaryCard />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

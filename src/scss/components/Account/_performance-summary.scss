@@ -1,0 +1,15 @@
+.ct-performance-summary {
+
+  &__title {
+    color: $color-font-header-subtitle;
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
+  }
+
+  &__value {
+    color: $color-primary;
+    font-size: map-get($font-body, 'default', 'desktop', 'size');
+    line-height: map-get($font-body, 'default', 'desktop', 'line');
+    font-weight: $font-weight-bold;
+  }
+}

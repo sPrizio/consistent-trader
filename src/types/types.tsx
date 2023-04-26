@@ -126,3 +126,54 @@ export type ProfitCurvePoint = {
 export type ProfitCurveInfo = {
     points?: Array<ProfitCurvePoint>
 }
+
+
+//  TRADE & TRADE RECORD
+
+export type EquityChartPoint = {
+    x?: string,
+    y?: number,
+}
+
+export type TradeRecordStatisticsInfo = {
+    averageLossAmount?: number,
+    averageLossDelta?: number,
+    averageLossSize?: number,
+    averageWinAmount?: number,
+    averageWinDelta?: number,
+    averageWinSize?: number,
+    empty?: boolean,
+    grossLossAmount?: number,
+    grossWinAmount?: number,
+    largestLossAmount?: number,
+    largestLossDelta?: number,
+    largestLossSize?: number,
+    largestWinAmount?: number,
+    largesWinDelta?: number,
+    largestWinSize?: number,
+    netPips?: number,
+    netProfit?: number,
+    numberOfLosingTrades?: number,
+    numberOfTrades?: number,
+    numberOfWinningTrades?: number,
+    percentageProfit?: number,
+    pipsEarned?: number,
+    pipsLost?: number,
+    points?: Array<EquityChartPoint>,
+    profitability?: number,
+    tradeSessions?: number,
+    tradingRate?: number,
+    uid?: string,
+    winPercentage?: number,
+}
+
+export type PerformanceSummaryInfo = {
+    account?: AccountInfo,
+    aggregateInterval?: string,
+    balance?: number,
+    empty?: boolean,
+    endDate?: string,
+    startDate?: string,
+    statistics?: TradeRecordStatisticsInfo,
+    uid?: string,
+}

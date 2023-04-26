@@ -18,9 +18,9 @@ function Overview({accountOverview = {}}: { accountOverview: AccountOverview }) 
      * Computes the css class to determine coloring for the value of daily earnings
      */
     function computeClass() {
-        if (accountOverview?.dailyEarnings ?? -1 > 0) {
+        if ((accountOverview.dailyEarnings ?? -1) > 0) {
             return ' positive '
-        } else if (accountOverview?.dailyEarnings ?? -1 < 0) {
+        } else if ((accountOverview.dailyEarnings ?? -1) < 0) {
             return ' negative '
         }
 
@@ -36,7 +36,7 @@ function Overview({accountOverview = {}}: { accountOverview: AccountOverview }) 
             <span className="icon-text ct-account-overview__net">
                     <span className={"icon is-size-5 " + (computeClass())}>
                         {
-                            accountOverview?.dailyEarnings ?? -1 >= 0 ?
+                            (accountOverview?.dailyEarnings ?? -1) > 0 ?
                                 <TbTrendingUp/> :
                                 <TbTrendingDown/>
                         }

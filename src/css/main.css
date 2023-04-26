@@ -11,6 +11,14 @@ Public Sans
   border: 1px solid rebeccapurple !important;
 }
 
+.no-show {
+  display: none;
+}
+
+.hide {
+  visibility: hidden;
+}
+
 html {
   font-size: 100%;
 }
@@ -245,6 +253,18 @@ p strong {
 }
 .ct-account-overview__target.no-show {
   display: none;
+}
+
+.ct-performance-summary__title {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+}
+.ct-performance-summary__value {
+  color: #137DC5;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
 }
 
 .ct-button {

@@ -40,6 +40,24 @@
     }
   }
 
+  &__locale {
+    height: 34px;
+    width: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
   &__account-details {
     font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
     line-height: map-get($font-body, 'xsmall', 'desktop', 'height');

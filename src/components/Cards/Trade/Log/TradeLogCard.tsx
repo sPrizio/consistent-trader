@@ -1,0 +1,69 @@
+import BaseCard from "../../BaseCard";
+import {useEffect, useState} from "react";
+import TradeLog from "../../../Trade/Log/TradeLog";
+import get from "../../../../services/client/ClientService";
+import {CoreConstants} from "../../../../constants/CoreConstants";
+import {StandardJsonResponse} from "../../../../types/api-types";
+import hasData from "../../../../services/data/DataIntegrityService";
+
+/**
+ * Card representing a trade log, recent history of trades
+ *
+ * @param count number of trades to show
+ * @author Stephen Prizio
+ * @version 1.0
+ */
+function TradeLogCard({count = 0}: {count: number}) {
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [records, setRecords] = useState([])
+
+    useEffect(() => {
+        getTradeRecordInfo()
+    }, [])
+
+
+    //  GENERAL FUNCTIONS
+
+    function getTradeRecordInfo() {
+
+        setIsLoading(true);
+
+        const d =
+            get(
+                CoreConstants.ApiUrls.TradeRecord.RecentHistory
+                    .replace('{count}', count.toString())
+                    .replace('{aggregateInterval}', 'DAILY')
+                    .replace('{sortOrder}', 'desc')
+            )
+        d.then(res => {
+            let response: StandardJsonResponse = JSON.parse(res)
+            if (response.success && hasData(response.data)) {
+                setRecords(response.data)
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+
+        setIsLoading(false)
+
+        return {}
+    }
+
+
+    //  RENDER
+
+    return (
+        <>
+            <BaseCard
+                loading={isLoading}
+                title={'Trade Log'}
+                subtitle={'Last ' + count + ' sessions'}
+                hasBorder={false}
+                content={[<TradeLog key={0} records={records} />]}
+            />
+        </>
+    )
+}
+
+export default TradeLogCard;

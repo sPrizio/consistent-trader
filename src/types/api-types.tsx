@@ -159,6 +159,11 @@ export type TradeRecordStatisticsInfo = {
     winPercentage?: number,
 }
 
+export type TradeRecordInfo = {
+    startDate?: string,
+    statistics?: TradeRecordStatisticsInfo,
+}
+
 export type PerformanceSummaryInfo = {
     account?: AccountInfo,
     aggregateInterval?: string,

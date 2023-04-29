@@ -6,6 +6,7 @@ import {RiLogoutCircleLine} from "react-icons/ri";
 import {useState} from "react";
 import {now} from "../../services/datetime/DateTimeService";
 import BaseModal from "../Modals/BaseModal";
+import temp from '../../assets/icons/locales/canada.png'
 
 
 /**
@@ -15,6 +16,8 @@ import BaseModal from "../Modals/BaseModal";
  * @version 1.0
  */
 function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
+
+    //  TODO: add locale selector
 
     const [menuActive, setMenuActive] = useState(false)
     const [modalActive, setModalActive] = useState(false)
@@ -80,6 +83,12 @@ function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
                             <div className="ct-user-bar__skill-icon__text">
                                 {userInfo.account?.skill.level}
                             </div>
+                        </div>
+                    </div>
+                    <div className="level-item">
+                        <div className="ct-user-bar__locale">
+                            {/*TODO: dropdown for locales, need to be selectable. Language should come from the backend*/}
+                            <img src={temp} alt={'User Locale'} />
                         </div>
                     </div>
                     <div className="level-item">

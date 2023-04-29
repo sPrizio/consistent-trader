@@ -44,8 +44,6 @@ function PerformanceStatisticsCard({start = '', end = ''} : {start: string, end:
         d.then(res => {
             let response: StandardJsonResponse = JSON.parse(res)
             if (response.success && hasData(response.data)) {
-                //setStatsInfo(response.data)
-                console.log(response.data[0].statistics)
                 setStatsInfo(response.data[0].statistics)
             }
         }).catch(err => {

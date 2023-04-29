@@ -1,0 +1,38 @@
+.ct-trade-log {
+
+  &__disclaimer {
+    font-weight: $font-weight-light;
+    color: $color-font-header-title;
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
+  }
+
+  &__table {
+    &__header {
+      border-bottom-color: rgba($color-primary, 0.3) !important;
+      color: $color-primary !important;
+      text-transform: uppercase;
+      font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
+      line-height: map-get($font-body, 'xsmall', 'desktop', 'line');
+    }
+  }
+
+  &__entry {
+    &__value {
+      font-size: map-get($font-body, 'default', 'desktop', 'size');
+      line-height: map-get($font-body, 'default', 'desktop', 'line');
+
+      &__date {
+        .month {
+          font-size: map-get($font-body, 'small', 'desktop', 'size');
+          line-height: map-get($font-body, 'small', 'desktop', 'line');
+        }
+
+        .day {
+          color: $color-primary;
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+  }
+}

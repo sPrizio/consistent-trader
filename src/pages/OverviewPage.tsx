@@ -11,6 +11,7 @@ import PerformanceSummaryCard from "../components/Cards/Account/Performance/Perf
 import ExcessLossCard from "../components/Cards/Account/ExcessLossCard";
 import {formatDateMoment, now} from "../services/datetime/DateTimeService";
 import PerformanceStatisticsCard from "../components/Cards/Account/Performance/Statistics/PerformanceStatisticsCard";
+import TradeLogCard from "../components/Cards/Trade/Log/TradeLogCard";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -95,9 +96,6 @@ function OverviewPage() {
                             <div className="column is-12">
                                 News
                             </div>
-                            <div className="column is-12">
-                                Recent Retro
-                            </div>
                         </div>
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
@@ -120,10 +118,13 @@ function OverviewPage() {
                                     end={formatDateMoment(now().startOf('month').add(1, 'months'), CoreConstants.DateTime.ISODateFormat)}
                                 />
                             </div>
-                            <div className="column is-12">
-                                Trade Log
-                            </div>
                         </div>
+                    </div>
+                    <div className="column is-7-desktop is-12-tablet is-12-mobile">
+                        Recent Retro
+                    </div>
+                    <div className="column is-5-desktop is-12-tablet is-12-mobile">
+                        <TradeLogCard count={5} />
                     </div>
                 </div>
             </div>

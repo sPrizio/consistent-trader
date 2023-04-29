@@ -692,6 +692,7 @@ p strong {
 }
 .ct-side-nav {
   min-height: 100vh;
+  height: 100%;
   max-width: 300px;
   background-color: #FFFFFF;
   box-shadow: 0 0.125rem 0.375rem 0 rgba(161, 172, 184, 0.5);
@@ -919,6 +920,32 @@ p strong {
   height: 100%;
 }
 
+.ct-trade-log__disclaimer {
+  font-weight: 300;
+  color: rgb(86, 106, 127);
+  font-size: 14px;
+  line-height: 22px;
+}
+.ct-trade-log__table__header {
+  border-bottom-color: rgba(19, 125, 197, 0.3) !important;
+  color: #137DC5 !important;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 20px;
+}
+.ct-trade-log__entry__value {
+  font-size: 16px;
+  line-height: 26px;
+}
+.ct-trade-log__entry__value__date .month {
+  font-size: 14px;
+  line-height: 22px;
+}
+.ct-trade-log__entry__value__date .day {
+  color: #137DC5;
+  font-weight: 700;
+}
+
 .ct-user-bar .level {
   margin-bottom: 0;
 }
@@ -949,6 +976,21 @@ p strong {
 .ct-user-bar__skill-icon__text {
   font-weight: 600;
   color: #137DC5;
+}
+.ct-user-bar__locale {
+  height: 34px;
+  width: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.ct-user-bar__locale:hover {
+  cursor: pointer;
+}
+.ct-user-bar__locale img {
+  height: 100%;
+  width: 100%;
 }
 .ct-user-bar__account-details {
   font-size: 13px;

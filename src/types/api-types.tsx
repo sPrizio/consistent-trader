@@ -1,5 +1,7 @@
 //  CLIENT
 
+import exp from "constants";
+
 export type StandardJsonResponse = {
     success?: boolean,
     data?: any,
@@ -166,4 +168,12 @@ export type PerformanceSummaryInfo = {
     startDate?: string,
     statistics?: TradeRecordStatisticsInfo,
     uid?: string,
+}
+
+export type ExcessLossInfo = {
+    adjusted?: number,
+    excess?: number,
+    limit?: number,
+    occurrences?: number,
+    type?: string,
 }

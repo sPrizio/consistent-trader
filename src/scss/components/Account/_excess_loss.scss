@@ -1,0 +1,21 @@
+.ct-excess-loss {
+  &__header {
+    font-size: map-get($font-body, 'default', 'desktop', 'size');
+    font-weight: map-get($font-body, 'default', 'desktop', 'weight');
+    line-height: map-get($font-body, 'default', 'desktop', 'line');
+  }
+
+  &__value {
+    font-size: map-get($font-body, 'default', 'desktop', 'size');
+    font-weight: $font-weight-semi-bold;
+    line-height: map-get($font-body, 'default', 'desktop', 'line');
+    color: $color-primary;
+  }
+
+  &__unit {
+    font-size: map-get($font-body, 'xxsmall', 'desktop', 'size');
+    font-weight: $font-weight-light;
+    line-height: map-get($font-body, 'xxsmall', 'desktop', 'line');
+    color: $color-font-header-subtitle;
+  }
+}

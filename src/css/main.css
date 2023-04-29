@@ -277,6 +277,24 @@ p strong {
   color: #137DC5;
 }
 
+.ct-excess-loss__header {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+}
+.ct-excess-loss__value {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #137DC5;
+}
+.ct-excess-loss__unit {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 20px;
+  color: rgb(161, 172, 184);
+}
+
 .ct-performance-summary__title {
   color: rgb(161, 172, 184);
   font-size: 14px;

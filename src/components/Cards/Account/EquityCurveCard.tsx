@@ -73,7 +73,7 @@ function EquityCurveCard() {
                 loading={isLoading}
                 title={'Account Growth'}
                 subtitle={'Last ' + period + ' ' + periodType.label}
-                hasBorder={false}
+                hasBorder={true}
                 content={[<EquityCurve key={0} profitCurveInfo={profitCurveInfo} aggregateInterval={periodType} fetchHandler={changeTab} />]}
             />
         </>

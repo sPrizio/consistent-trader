@@ -8,6 +8,8 @@ import hasData from "../services/data/DataIntegrityService";
 import Overview from "../components/Account/Overview";
 import EquityCurveCard from "../components/Cards/Account/EquityCurveCard";
 import PerformanceSummaryCard from "../components/Cards/Account/PerformanceSummaryCard";
+import ExcessLossCard from "../components/Cards/Account/ExcessLossCard";
+import {formatDateMoment, now} from "../services/datetime/DateTimeService";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -92,6 +94,9 @@ function OverviewPage() {
                             <div className="column is-12">
                                 News
                             </div>
+                            <div className="column is-12">
+                                Recent Retro
+                            </div>
                         </div>
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
@@ -101,6 +106,18 @@ function OverviewPage() {
                             </div>
                             <div className="column is-12">
                                 <PerformanceSummaryCard />
+                            </div>
+                            <div className="column is-6">
+                                <ExcessLossCard
+                                    start={formatDateMoment(now().startOf('month'), CoreConstants.DateTime.ISODateFormat)}
+                                    end={formatDateMoment(now().startOf('month').add(1, 'months'), CoreConstants.DateTime.ISODateFormat)}
+                                />
+                            </div>
+                            <div className="column is-6">
+                                Stats
+                            </div>
+                            <div className="column is-12">
+                                Trade Log
                             </div>
                         </div>
                     </div>

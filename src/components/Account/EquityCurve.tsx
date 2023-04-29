@@ -5,6 +5,7 @@ import {CoreConstants} from "../../constants/CoreConstants";
 import {formatDate} from "../../services/datetime/DateTimeService";
 import {useState} from "react";
 import {EquityChartTabMap, PeriodType} from "../../types/ui-types";
+import {formatNumberForDisplay} from "../../services/data/FormattingService";
 
 /**
  * Component that renders a chart to display an account's equity fluctuations
@@ -93,8 +94,13 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval, fetchHandler}: {
             x: {
                 format: "yyyy",
             },
+            y: {
+                formatter(val: number, opts?: any): string {
+                    return formatNumberForDisplay(val)
+                }
+            },
             fixed: {
-                enabled: false,
+                enabled: true,
                 position: 'topRight'
             },
         },

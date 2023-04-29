@@ -22,7 +22,7 @@ function EquityCurveCard() {
 
     useEffect(() => {
         getProfitCurveData()
-    }, [])
+    }, [period, periodType])
 
 
     //  HANDLER FUNCTIONS
@@ -30,7 +30,6 @@ function EquityCurveCard() {
     function changeTab(period: number, periodType: any) {
         setPeriod(period)
         setPeriodType(periodType)
-        getProfitCurveData()
     }
 
 

@@ -6,6 +6,15 @@ import {formatDate} from "../../services/datetime/DateTimeService";
 import {useState} from "react";
 import {EquityChartTabMap, PeriodType} from "../../types/ui-types";
 
+/**
+ * Component that renders a chart to display an account's equity fluctuations
+ *
+ * @param profitCurveInfo chart data
+ * @param aggregateInterval interval (daily, monthly, yearly)
+ * @param fetchHandler when selecting a new tab, calls this handler to dictate the action
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function EquityCurve({profitCurveInfo = {}, aggregateInterval, fetchHandler}: {
     profitCurveInfo: ProfitCurveInfo,
     aggregateInterval: any,
@@ -118,9 +127,6 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval, fetchHandler}: {
         fetchHandler(tabs[val].period, tabs[val].periodType)
     }
 
-
-    //  TODO: test the chart tabs and see what data is coming
-    //  TODO: looks like the state is delayed
 
     //  GENERAL FUNCTIONS
 

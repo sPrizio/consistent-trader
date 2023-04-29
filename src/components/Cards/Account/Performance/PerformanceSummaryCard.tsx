@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import get from "../../../services/client/ClientService";
-import {CoreConstants} from "../../../constants/CoreConstants";
-import {StandardJsonResponse} from "../../../types/api-types";
-import hasData from "../../../services/data/DataIntegrityService";
-import BaseCard from "../BaseCard";
-import {formatDateMoment, now} from "../../../services/datetime/DateTimeService";
-import PerformanceSummary from "../../Account/PerformanceSummary";
+import get from "../../../../services/client/ClientService";
+import {CoreConstants} from "../../../../constants/CoreConstants";
+import {StandardJsonResponse} from "../../../../types/api-types";
+import hasData from "../../../../services/data/DataIntegrityService";
+import BaseCard from "../../BaseCard";
+import {formatDateMoment, now} from "../../../../services/datetime/DateTimeService";
+import PerformanceSummary from "../../../Account/Performance/PerformanceSummary";
 
 /**
  * Card displaying the monthly summary

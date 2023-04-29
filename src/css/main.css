@@ -278,9 +278,10 @@ p strong {
 }
 
 .ct-excess-loss__header {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 26px;
+  font-weight: 500;
+  color: rgb(86, 106, 127);
+  font-size: 14px;
+  line-height: 22px;
 }
 .ct-excess-loss__value {
   font-size: 16px;
@@ -293,6 +294,33 @@ p strong {
   font-weight: 300;
   line-height: 20px;
   color: rgb(161, 172, 184);
+}
+
+.ct-performance-statistics__entry__header {
+  font-weight: 500;
+  color: rgb(86, 106, 127);
+  font-size: 14px;
+  line-height: 22px;
+}
+.ct-performance-statistics__entry__value {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  color: rgb(86, 106, 127);
+}
+.ct-performance-statistics__entry__unit {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 20px;
+  color: rgb(161, 172, 184);
+}
+.ct-performance-statistics__entry__unit.positive {
+  color: rgb(113, 221, 55);
+  font-weight: 500;
+}
+.ct-performance-statistics__entry__unit.negative {
+  color: rgb(255, 62, 29);
+  font-weight: 500;
 }
 
 .ct-performance-summary__title {

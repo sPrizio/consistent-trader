@@ -1,0 +1,34 @@
+.ct-performance-statistics {
+  &__entry {
+    &__header {
+      font-weight: $font-weight-medium;
+      color: $color-font-header-title;
+      font-size: map-get($font-body, 'small', 'desktop', 'size');
+      line-height: map-get($font-body, 'small', 'desktop', 'line');
+    }
+
+    &__value {
+      font-size: map-get($font-body, 'default', 'desktop', 'size');
+      font-weight: $font-weight-semi-bold;
+      line-height: map-get($font-body, 'default', 'desktop', 'line');
+      color: $color-font-header-title;
+    }
+
+    &__unit {
+      font-size: map-get($font-body, 'xxsmall', 'desktop', 'size');
+      font-weight: $font-weight-light;
+      line-height: map-get($font-body, 'xxsmall', 'desktop', 'line');
+      color: $color-font-header-subtitle;
+
+      &.positive {
+        color: $color-value-positive;
+        font-weight: $font-weight-medium;
+      }
+
+      &.negative {
+        color: $color-value-negative;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}

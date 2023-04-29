@@ -1,5 +1,5 @@
-import {PerformanceSummaryInfo} from "../../types/api-types";
-import {formatNumberForDisplay} from "../../services/data/FormattingService";
+import {PerformanceSummaryInfo} from "../../../types/api-types";
+import {formatNumberForDisplay} from "../../../services/data/FormattingService";
 
 /**
  * Component for the performance summary information, meant to show basic performance data like points earned, net profit, etc.

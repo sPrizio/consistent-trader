@@ -141,7 +141,7 @@ export type TradeRecordStatisticsInfo = {
     largestLossDelta?: number,
     largestLossSize?: number,
     largestWinAmount?: number,
-    largesWinDelta?: number,
+    largestWinDelta?: number,
     largestWinSize?: number,
     netPips?: number,
     netProfit?: number,

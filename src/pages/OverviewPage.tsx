@@ -7,9 +7,10 @@ import {StandardJsonResponse} from "../types/api-types";
 import hasData from "../services/data/DataIntegrityService";
 import Overview from "../components/Account/Overview";
 import EquityCurveCard from "../components/Cards/Account/EquityCurveCard";
-import PerformanceSummaryCard from "../components/Cards/Account/PerformanceSummaryCard";
+import PerformanceSummaryCard from "../components/Cards/Account/Performance/PerformanceSummaryCard";
 import ExcessLossCard from "../components/Cards/Account/ExcessLossCard";
 import {formatDateMoment, now} from "../services/datetime/DateTimeService";
+import PerformanceStatisticsCard from "../components/Cards/Account/Performance/Statistics/PerformanceStatisticsCard";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -114,7 +115,10 @@ function OverviewPage() {
                                 />
                             </div>
                             <div className="column is-6">
-                                Stats
+                                <PerformanceStatisticsCard
+                                    start={formatDateMoment(now().startOf('month'), CoreConstants.DateTime.ISODateFormat)}
+                                    end={formatDateMoment(now().startOf('month').add(1, 'months'), CoreConstants.DateTime.ISODateFormat)}
+                                />
                             </div>
                             <div className="column is-12">
                                 Trade Log

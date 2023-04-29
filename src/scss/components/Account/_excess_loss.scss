@@ -1,8 +1,9 @@
 .ct-excess-loss {
   &__header {
-    font-size: map-get($font-body, 'default', 'desktop', 'size');
-    font-weight: map-get($font-body, 'default', 'desktop', 'weight');
-    line-height: map-get($font-body, 'default', 'desktop', 'line');
+    font-weight: $font-weight-medium;
+    color: $color-font-header-title;
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
   }
 
   &__value {

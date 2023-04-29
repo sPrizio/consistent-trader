@@ -7,6 +7,14 @@ import {StandardJsonResponse} from "../../../types/api-types";
 import hasData from "../../../services/data/DataIntegrityService";
 import {formatDate} from "../../../services/datetime/DateTimeService";
 
+/**
+ * Card representing the excess loss information
+ *
+ * @param start start date
+ * @param end end date
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function ExcessLossCard({start = '', end = ''} : {start: string, end: string}) {
 
     const [isLoading, setIsLoading] = useState(false)

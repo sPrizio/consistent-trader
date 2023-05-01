@@ -182,3 +182,35 @@ export type ExcessLossInfo = {
     occurrences?: number,
     type?: string,
 }
+
+
+//  NEWS
+
+export type NewsEntrySlotEntryInfo = {
+    content?: string,
+    empty?: boolean,
+    severity?: string,
+    severityLevel?: number,
+    uid?: string,
+}
+
+export type NewsEntrySlotInfo = {
+    empty?: boolean,
+    entries?: Array<NewsEntrySlotEntryInfo>,
+    time?: string,
+    uid?: string,
+}
+
+export type NewsPieceInfo = {
+    active?: boolean,
+    date?: string,
+    empty?: boolean,
+    future?: boolean,
+    past?: boolean,
+    slots?: Array<NewsEntrySlotInfo>,
+    uid?: string,
+}
+
+export type NewsInfo = {
+    news?: Array<NewsPieceInfo>
+}

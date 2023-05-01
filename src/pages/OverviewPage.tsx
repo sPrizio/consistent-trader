@@ -12,6 +12,7 @@ import ExcessLossCard from "../components/Cards/Account/ExcessLossCard";
 import {formatDateMoment, now} from "../services/datetime/DateTimeService";
 import PerformanceStatisticsCard from "../components/Cards/Account/Performance/Statistics/PerformanceStatisticsCard";
 import TradeLogCard from "../components/Cards/Trade/Log/TradeLogCard";
+import NewsCard from "../components/Cards/News/NewsCard";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -94,7 +95,10 @@ function OverviewPage() {
                                 <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={subtitle} hasBorder={true} content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]} />
                             </div>
                             <div className="column is-12">
-                                News
+                                <NewsCard
+                                    start={formatDateMoment(now().startOf('week').add(1, 'days'), CoreConstants.DateTime.ISODateFormat)}
+                                    end={formatDateMoment(now().startOf('week').add(6, 'days'), CoreConstants.DateTime.ISODateFormat)}
+                                />
                             </div>
                         </div>
                     </div>

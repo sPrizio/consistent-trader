@@ -157,7 +157,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval, fetchHandler}: {
     function formatXAxisTicks() {
         switch (aggregateInterval) {
             case PeriodType.DAYS:
-                return CoreConstants.DateTime.ISOMonthDayFormat
+                return CoreConstants.DateTime.ISOShortMonthDayFormat
             case PeriodType.WEEKS:
                 return CoreConstants.DateTime.ISODateFormat
             case PeriodType.MONTHS:
@@ -228,7 +228,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval, fetchHandler}: {
                 </ul>
             </div>
             <div className="chart-container">
-                <ReactApexChart options={options} series={computeData()} type="area" height={350}/>
+                <ReactApexChart options={options} series={computeData()} type="area" height={275}/>
             </div>
         </div>
     )

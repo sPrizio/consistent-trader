@@ -27,6 +27,12 @@ function EquityCurveCard() {
 
     //  HANDLER FUNCTIONS
 
+    /**
+     * Handles selecting a new tab
+     *
+     * @param period period amount
+     * @param periodType type of period
+     */
     function changeTab(period: number, periodType: any) {
         setPeriod(period)
         setPeriodType(periodType)
@@ -71,7 +77,7 @@ function EquityCurveCard() {
         <>
             <BaseCard
                 loading={isLoading}
-                title={'Account Growth'}
+                title={'Equity'}
                 subtitle={'Last ' + period + ' ' + periodType.label}
                 hasBorder={true}
                 content={[<EquityCurve key={0} profitCurveInfo={profitCurveInfo} aggregateInterval={periodType} fetchHandler={changeTab} />]}

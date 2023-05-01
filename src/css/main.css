@@ -879,6 +879,59 @@ p strong {
   color: rgb(161, 172, 184);
 }
 
+.ct-news__entry .is-active {
+  border-left: 3px solid #137DC5;
+}
+.ct-news__entry .old-news {
+  opacity: 0.25;
+}
+.ct-news__entry .date-column {
+  border-right: 2px solid rgba(19, 125, 197, 0.15);
+}
+.ct-news__entry__news-date-header {
+  color: rgb(86, 106, 127);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.ct-news__entry__news-date-value {
+  color: #137DC5;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+}
+.ct-news__entry__time {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+}
+.ct-news__entry__content {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.ct-news__entry__content .severe {
+  color: rgb(255, 0, 0);
+}
+.ct-news__entry__content .moderate {
+  color: rgb(255, 165, 0);
+}
+.ct-news__entry__content .low {
+  color: rgba(105, 122, 141, 0.5);
+}
+.ct-news__entry .content-column:not(:first-child) .content {
+  padding: 4px 0;
+}
+.ct-news__entry .content-column.first:not(:first-child) {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.ct-news .entry:nth-child(even) {
+  background-color: rgba(19, 125, 197, 0.05);
+}
+.ct-news .entry:nth-child(even) .date-column {
+  border-right: 2px solid white;
+}
+
 .ct-account-overview__rank .progress.is-primary::-webkit-progress-value {
   background-color: #137DC5;
 }

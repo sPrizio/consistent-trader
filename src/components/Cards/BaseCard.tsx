@@ -22,8 +22,8 @@ function BaseCard(
         loading = false
     }
         : {
-        title?: string,
-        subtitle?: string,
+        title?: any,
+        subtitle?: any,
         hasBorder?: boolean,
         content?: Array<any>,
         controls?: Array<any>,

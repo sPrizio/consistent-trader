@@ -49,7 +49,7 @@ $color-chart-candle-red: #ce1b2d;
 
 $color-news-severe: rgb(255, 0, 0);
 $color-news-moderate: rgb(255, 165, 0);
-$color-news-low: rgb(240, 230, 140);
+$color-news-low: rgba($color-font-alternate, 0.5);
 
 $color-trade-buy: #356d76;
 $color-trade-sell: #765e35;

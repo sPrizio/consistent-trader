@@ -18,6 +18,7 @@ import temp from '../../assets/icons/locales/canada.png'
 function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
 
     //  TODO: add locale selector
+    //  TODO: add comments to all methods and classes
 
     const [menuActive, setMenuActive] = useState(false)
     const [modalActive, setModalActive] = useState(false)
@@ -109,7 +110,7 @@ function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
                                     <div className="ct-user-bar__user-menu__content__container__link" onClick={toggleModal}>
                                         <span className="icon-text">
                                             <span className="icon"><HiUpload/></span>
-                                            <span>Upload Trades</span>
+                                            <span>Import Trades</span>
                                         </span>
                                     </div>
                                     <div className="ct-user-bar__user-menu__content__container__link">
@@ -134,7 +135,7 @@ function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
 
             <BaseModal
                 active={modalActive}
-                title={'Upload / Import Trades'}
+                title={'Import Trades'}
                 closeHandler={toggleModal}
                 content={[<div key={0}>Hello There, General Kenobi</div>]}
             />

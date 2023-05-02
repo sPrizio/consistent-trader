@@ -21,13 +21,17 @@
       color: $color-font-header-subtitle;
 
       &.positive {
-        color: $color-value-positive;
-        font-weight: $font-weight-medium;
+        span {
+          color: $color-value-positive;
+          font-weight: $font-weight-medium;
+        }
       }
 
       &.negative {
-        color: $color-value-negative;
-        font-weight: $font-weight-medium;
+        span {
+          color: $color-value-negative;
+          font-weight: $font-weight-medium;
+        }
       }
     }
   }

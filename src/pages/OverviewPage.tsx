@@ -13,6 +13,7 @@ import {formatDateMoment, now} from "../services/datetime/DateTimeService";
 import PerformanceStatisticsCard from "../components/Cards/Account/Performance/Statistics/PerformanceStatisticsCard";
 import TradeLogCard from "../components/Cards/Trade/Log/TradeLogCard";
 import NewsCard from "../components/Cards/News/NewsCard";
+import {getUser} from "../services/user/userService";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -20,7 +21,7 @@ import NewsCard from "../components/Cards/News/NewsCard";
  * @author Stephen Prizio
  * @version 1.0
  */
-function OverviewPage() {
+function OverviewPage({ pageHandler } : { pageHandler: Function }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [userInfo, setUserInfo] = useState<any>(null)
@@ -38,21 +39,9 @@ function OverviewPage() {
      * Obtains the user info for use with the overview page
      */
     function getUserInfo() {
-
         setIsLoading(true);
-
-        const d = get(CoreConstants.ApiUrls.User.Current)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setUserInfo(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
-
+        setUserInfo(getUser())
         setIsLoading(false)
-
         return {}
     }
 
@@ -60,7 +49,6 @@ function OverviewPage() {
      * Obtains the account overview for use with the overview page
      */
     function getAccountOverview() {
-
         setIsLoading(true);
 
         const d = get(CoreConstants.ApiUrls.Account.Overview)
@@ -74,7 +62,6 @@ function OverviewPage() {
         })
 
         setIsLoading(false)
-
         return {}
     }
 
@@ -85,13 +72,14 @@ function OverviewPage() {
     return (
         <div className="columns is-multiline is-mobile">
             <div className="column is-12">
-                <BaseCard loading={isLoading} hasBorder={false} content={[<UserBar key={0} userInfo={userInfo ?? {}}/>]}/>
+                <BaseCard loading={isLoading} hasBorder={false} content={[<UserBar key={0} userInfo={userInfo ?? {}} pageHandler={pageHandler}/>]}/>
             </div>
             <div className="column is-12">
                 <div className="columns is-multiline is-mobile">
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-12">
+                                {/*//  TODO: make this an Overview Card so it is reusable*/}
                                 <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={subtitle} hasBorder={true} content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]} />
                             </div>
                             <div className="column is-12">

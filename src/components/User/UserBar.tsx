@@ -15,7 +15,7 @@ import temp from '../../assets/icons/locales/canada.png'
  * @author Stephen Prizio
  * @version 1.0
  */
-function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
+function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandler: Function }) {
 
     //  TODO: add locale selector
     //  TODO: add comments to all methods and classes
@@ -101,7 +101,7 @@ function UserBar({userInfo = {}}: { userInfo?: UserInfo }) {
                             </span>
                             <div className={"ct-user-bar__user-menu__content" + (menuActive ? " is-active " : "")}>
                                 <div className="ct-user-bar__user-menu__content__container">
-                                    <div className="ct-user-bar__user-menu__content__container__link">
+                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={() => pageHandler('profile')}>
                                         <span className="icon-text">
                                             <span className="icon"><AiOutlineUser/></span>
                                             <span>My Account</span>

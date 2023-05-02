@@ -85,7 +85,7 @@ function NewsCard({start = '', end = ''}: { start: string, end: string }) {
                         {dateDisplay(formatDateMoment(moment(end).subtract(1, 'days'), CoreConstants.DateTime.ISODateFormat))}
                     </>
                 }
-                hasBorder={false}
+                hasBorder={true}
                 content={[<News key={0} newsInfo={newsInfo} />]}
             />
         </>

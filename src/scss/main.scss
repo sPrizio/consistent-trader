@@ -6,11 +6,13 @@
         "./base/pages",
         "./base/placeholders";
 
-@import "./components/Account/account-overview",
-        "./components/Account/equity-curve",
+@import "./components/Account/equity-curve",
         "./components/Account/excess_loss",
+        "./components/Account/overview",
         "./components/Account/Performance/performance-statistics",
         "./components/Account/Performance/performance-summary",
+        "./components/Account/Profile/profile-banner",
+        "./components/Account/Profile/profile-content",
         "./components/Buttons/buttons",
         "./components/Cards/base-card",
         "./components/Modals/base-modal",
@@ -19,3 +21,5 @@
         "./components/Rank/account-overview-rank",
         "./components/Trade/trade-log",
         "./components/User/user-bar";
+
+@import "./ranks/ranks";

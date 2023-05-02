@@ -1,6 +1,7 @@
 import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
 import {useState} from "react";
 import OverviewPage from "../OverviewPage";
+import ProfilePage from "../ProfilePage";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -10,7 +11,8 @@ import OverviewPage from "../OverviewPage";
  */
 function ContentPage() {
 
-    const [page, setPage] = useState('overview')
+    const [page, setPage] = useState('profile')
+    const [selectedTab, setSelectedTab] = useState('profile')
 
 
     //  HANDLERS
@@ -22,6 +24,7 @@ function ContentPage() {
      */
     function selectPage(val: string) {
         setPage(val);
+        setSelectedTab(val)
     }
 
 
@@ -33,7 +36,9 @@ function ContentPage() {
     function resolvePage() {
         switch (page) {
             case "overview":
-                return <OverviewPage />
+                return <OverviewPage pageHandler={selectPage} />
+            case "profile":
+                return <ProfilePage />
             default:
                 return null;
         }
@@ -45,7 +50,7 @@ function ContentPage() {
     return (
         <div className="columns is-multiline is-mobile is-gapless">
             <div className="column is-narrow-desktop is-narrow-tablet is-12-mobile">
-                <DesktopSideNav pageHandler={selectPage} />
+                <DesktopSideNav pageHandler={selectPage} selectedTab={selectedTab} />
             </div>
             <div className="column is-12-mobile">
                 <div className="ct-content-page">

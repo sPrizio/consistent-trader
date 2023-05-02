@@ -14,10 +14,9 @@ import {useState} from "react";
  * @author Stephen Prizio
  * @version 1.0
  */
-function DesktopSideNav({ pageHandler } : { pageHandler: Function }) {
+function DesktopSideNav({ pageHandler, selectedTab } : { pageHandler: Function, selectedTab: string }) {
 
     const [isOpen, setIsOpen] = useState(true);
-    const [selectedTab, setSelectedTab] = useState('overview');
 
 
     //  HANDLER FUNCTIONS
@@ -28,7 +27,6 @@ function DesktopSideNav({ pageHandler } : { pageHandler: Function }) {
      * @param val selected tab
      */
     function selectTab(val: string) {
-        setSelectedTab(val)
         pageHandler(val);
     }
 

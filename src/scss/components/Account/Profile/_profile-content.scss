@@ -1,0 +1,28 @@
+.ct-profile-content {
+  &__section-header {
+    font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
+    font-weight: $font-weight-regular;
+    color: $color-font-header-subtitle;
+    text-transform: uppercase;
+  }
+
+  &__section-content {
+    margin-top: 16px;
+
+    .column {
+      margin-bottom: 12px !important;
+
+      strong {
+        color: $color-font-header-title;
+      }
+
+      span {
+        color: $color-font-header-title;
+      }
+
+      .value {
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}

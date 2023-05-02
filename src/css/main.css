@@ -228,33 +228,6 @@ p strong {
   }
 }
 
-.ct-account-overview__balance {
-  color: rgb(86, 106, 127);
-}
-.ct-account-overview__balance small {
-  font-size: 12px;
-  font-weight: 600;
-  padding-left: 6px;
-}
-.ct-account-overview__net {
-  font-size: 14px;
-  font-weight: 600;
-}
-.ct-account-overview__net .positive {
-  color: rgb(113, 221, 55);
-}
-.ct-account-overview__net .negative {
-  color: rgb(255, 62, 29);
-}
-.ct-account-overview__target {
-  color: #a1acb8;
-  font-size: 14px;
-  font-weight: 400;
-}
-.ct-account-overview__target.no-show {
-  display: none;
-}
-
 .ct-equity-curve .tabs {
   margin-bottom: 0;
   margin-top: -12px;
@@ -296,6 +269,33 @@ p strong {
   color: rgb(161, 172, 184);
 }
 
+.ct-account-overview__balance {
+  color: rgb(86, 106, 127);
+}
+.ct-account-overview__balance small {
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 6px;
+}
+.ct-account-overview__net {
+  font-size: 14px;
+  font-weight: 600;
+}
+.ct-account-overview__net .positive {
+  color: rgb(113, 221, 55);
+}
+.ct-account-overview__net .negative {
+  color: rgb(255, 62, 29);
+}
+.ct-account-overview__target {
+  color: #a1acb8;
+  font-size: 14px;
+  font-weight: 400;
+}
+.ct-account-overview__target.no-show {
+  display: none;
+}
+
 .ct-performance-statistics__entry__header {
   font-weight: 500;
   color: rgb(86, 106, 127);
@@ -314,11 +314,11 @@ p strong {
   line-height: 20px;
   color: rgb(161, 172, 184);
 }
-.ct-performance-statistics__entry__unit.positive {
+.ct-performance-statistics__entry__unit.positive span {
   color: rgb(113, 221, 55);
   font-weight: 500;
 }
-.ct-performance-statistics__entry__unit.negative {
+.ct-performance-statistics__entry__unit.negative span {
   color: rgb(255, 62, 29);
   font-weight: 500;
 }
@@ -332,6 +332,79 @@ p strong {
   color: #137DC5;
   font-size: 16px;
   line-height: 26px;
+  font-weight: 700;
+}
+
+.ct-profile-banner__banner img {
+  height: 215px;
+}
+.ct-profile-banner__banner-card {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.ct-profile-banner__rank img {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+.ct-profile-banner__profile-name {
+  color: rgb(86, 106, 127);
+}
+.ct-profile-banner__profile-name small {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.ct-profile-banner__profile-name small span {
+  color: rgb(161, 172, 184);
+}
+.ct-profile-banner__profile-sub-headers {
+  color: rgb(105, 122, 141) !important;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.ct-profile-banner .level .level-item:not(:first-child) {
+  padding: 0 5px 0 5px;
+}
+.ct-profile-banner .tag {
+  padding: 25px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.ct-profile-banner .tag.is-active {
+  background-color: #137DC5;
+}
+.ct-profile-banner .tag.is-active span {
+  color: white;
+}
+.ct-profile-banner .tag.is-inactive {
+  background-color: rgb(225, 225, 225);
+}
+.ct-profile-banner .tag.is-inactive span {
+  color: rgb(185, 185, 185);
+}
+
+.ct-profile-content__section-header {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgb(161, 172, 184);
+  text-transform: uppercase;
+}
+.ct-profile-content__section-content {
+  margin-top: 16px;
+}
+.ct-profile-content__section-content .column {
+  margin-bottom: 12px !important;
+}
+.ct-profile-content__section-content .column strong {
+  color: rgb(86, 106, 127);
+}
+.ct-profile-content__section-content .column span {
+  color: rgb(86, 106, 127);
+}
+.ct-profile-content__section-content .column .value {
   font-weight: 700;
 }
 
@@ -1090,6 +1163,226 @@ p strong {
 .ct-user-bar__user-menu__content.is-active {
   display: block;
   height: auto;
+}
+
+.bronze {
+  color: rgb(188, 120, 60) !important;
+}
+
+.garnet {
+  color: rgb(154, 42, 42) !important;
+}
+
+.silver {
+  color: rgb(165, 165, 165) !important;
+}
+
+.amethyst {
+  color: rgb(153, 102, 204) !important;
+}
+
+.gold {
+  color: rgb(237, 175, 53) !important;
+}
+
+.sapphire {
+  color: rgb(15, 82, 186) !important;
+}
+
+.platinum {
+  color: rgb(237, 214, 174) !important;
+}
+
+.ruby {
+  color: rgb(155, 17, 30) !important;
+}
+
+.diamond {
+  color: rgb(12, 191, 157) !important;
+}
+
+.emerald {
+  color: rgb(6, 95, 53) !important;
+}
+
+.obsidian {
+  color: rgb(86, 54, 217) !important;
+}
+
+.progress.bronze::-webkit-progress-value {
+  background-color: rgb(188, 120, 60);
+}
+.progress.bronze::-moz-progress-bar {
+  background-color: rgb(188, 120, 60);
+}
+.progress.bronze::-ms-fill {
+  background-color: rgb(188, 120, 60);
+}
+
+.progress.garnet::-webkit-progress-value {
+  background-color: rgb(154, 42, 42);
+}
+.progress.garnet::-moz-progress-bar {
+  background-color: rgb(154, 42, 42);
+}
+.progress.garnet::-ms-fill {
+  background-color: rgb(154, 42, 42);
+}
+
+.progress.silver::-webkit-progress-value {
+  background-color: rgb(165, 165, 165);
+}
+.progress.silver::-moz-progress-bar {
+  background-color: rgb(165, 165, 165);
+}
+.progress.silver::-ms-fill {
+  background-color: rgb(165, 165, 165);
+}
+
+.progress.amethyst::-webkit-progress-value {
+  background-color: rgb(153, 102, 204);
+}
+.progress.amethyst::-moz-progress-bar {
+  background-color: rgb(153, 102, 204);
+}
+.progress.amethyst::-ms-fill {
+  background-color: rgb(153, 102, 204);
+}
+
+.progress.gold::-webkit-progress-value {
+  background-color: rgb(237, 175, 53);
+}
+.progress.gold::-moz-progress-bar {
+  background-color: rgb(237, 175, 53);
+}
+.progress.gold::-ms-fill {
+  background-color: rgb(237, 175, 53);
+}
+
+.progress.sapphire::-webkit-progress-value {
+  background-color: rgb(15, 82, 186);
+}
+.progress.sapphire::-moz-progress-bar {
+  background-color: rgb(15, 82, 186);
+}
+.progress.sapphire::-ms-fill {
+  background-color: rgb(15, 82, 186);
+}
+
+.progress.platinum::-webkit-progress-value {
+  background-color: rgb(237, 214, 174);
+}
+.progress.platinum::-moz-progress-bar {
+  background-color: rgb(237, 214, 174);
+}
+.progress.platinum::-ms-fill {
+  background-color: rgb(237, 214, 174);
+}
+
+.progress.ruby::-webkit-progress-value {
+  background-color: rgb(155, 17, 30);
+}
+.progress.ruby::-moz-progress-bar {
+  background-color: rgb(155, 17, 30);
+}
+.progress.ruby::-ms-fill {
+  background-color: rgb(155, 17, 30);
+}
+
+.progress.diamond::-webkit-progress-value {
+  background-color: rgb(12, 191, 157);
+}
+.progress.diamond::-moz-progress-bar {
+  background-color: rgb(12, 191, 157);
+}
+.progress.diamond::-ms-fill {
+  background-color: rgb(12, 191, 157);
+}
+
+.progress.emerald::-webkit-progress-value {
+  background-color: rgb(6, 95, 53);
+}
+.progress.emerald::-moz-progress-bar {
+  background-color: rgb(6, 95, 53);
+}
+.progress.emerald::-ms-fill {
+  background-color: rgb(6, 95, 53);
+}
+
+.progress.obsidian::-webkit-progress-value {
+  background-color: rgb(86, 54, 217);
+}
+.progress.obsidian::-moz-progress-bar {
+  background-color: rgb(86, 54, 217);
+}
+.progress.obsidian::-ms-fill {
+  background-color: rgb(86, 54, 217);
+}
+
+.stepper-wrapper.bronze .stepper-item.completed .step-counter,
+.stepper-wrapper.bronze .stepper-item.completed.line:after {
+  background-color: rgb(188, 120, 60);
+  border-bottom: 2px solid rgb(188, 120, 60);
+}
+
+.stepper-wrapper.garnet .stepper-item.completed .step-counter,
+.stepper-wrapper.garnet .stepper-item.completed.line:after {
+  background-color: rgb(154, 42, 42);
+  border-bottom: 2px solid rgb(154, 42, 42);
+}
+
+.stepper-wrapper.silver .stepper-item.completed .step-counter,
+.stepper-wrapper.silver .stepper-item.completed.line:after {
+  background-color: rgb(165, 165, 165);
+  border-bottom: 2px solid rgb(165, 165, 165);
+}
+
+.stepper-wrapper.amethyst .stepper-item.completed .step-counter,
+.stepper-wrapper.amethyst .stepper-item.completed.line:after {
+  background-color: rgb(153, 102, 204);
+  border-bottom: 2px solid rgb(153, 102, 204);
+}
+
+.stepper-wrapper.gold .stepper-item.completed .step-counter,
+.stepper-wrapper.gold .stepper-item.completed.line:after {
+  background-color: rgb(237, 175, 53);
+  border-bottom: 2px solid rgb(237, 175, 53);
+}
+
+.stepper-wrapper.sapphire .stepper-item.completed .step-counter,
+.stepper-wrapper.sapphire .stepper-item.completed.line:after {
+  background-color: rgb(15, 82, 186);
+  border-bottom: 2px solid rgb(15, 82, 186);
+}
+
+.stepper-wrapper.platinum .stepper-item.completed .step-counter,
+.stepper-wrapper.platinum .stepper-item.completed.line:after {
+  background-color: rgb(237, 214, 174);
+  border-bottom: 2px solid rgb(237, 214, 174);
+}
+
+.stepper-wrapper.ruby .stepper-item.completed .step-counter,
+.stepper-wrapper.ruby .stepper-item.completed.line:after {
+  background-color: rgb(155, 17, 30);
+  border-bottom: 2px solid rgb(155, 17, 30);
+}
+
+.stepper-wrapper.diamond .stepper-item.completed .step-counter,
+.stepper-wrapper.diamond .stepper-item.completed.line:after {
+  background-color: rgb(12, 191, 157);
+  border-bottom: 2px solid rgb(12, 191, 157);
+}
+
+.stepper-wrapper.emerald .stepper-item.completed .step-counter,
+.stepper-wrapper.emerald .stepper-item.completed.line:after {
+  background-color: rgb(6, 95, 53);
+  border-bottom: 2px solid rgb(6, 95, 53);
+}
+
+.stepper-wrapper.obsidian .stepper-item.completed .step-counter,
+.stepper-wrapper.obsidian .stepper-item.completed.line:after {
+  background-color: rgb(86, 54, 217);
+  border-bottom: 2px solid rgb(86, 54, 217);
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,263 @@
+.bronze {
+  color: $color-rank-bronze !important;
+}
+
+.garnet {
+  color: $color-rank-garnet !important;
+}
+
+.silver {
+  color: $color-rank-silver !important;
+}
+
+.amethyst {
+  color: $color-rank-amethyst !important;
+}
+
+.gold {
+  color: $color-rank-gold !important;
+}
+
+.sapphire {
+  color: $color-rank-sapphire !important;
+}
+
+.platinum {
+  color: $color-rank-platinum !important;
+}
+
+.ruby {
+  color: $color-rank-ruby !important;
+}
+
+.diamond {
+  color: $color-rank-diamond !important;
+}
+
+.emerald {
+  color: $color-rank-emerald !important;
+}
+
+.obsidian {
+  color: $color-rank-obsidian !important;
+}
+
+.progress.bronze {
+  &::-webkit-progress-value {
+    background-color: $color-rank-bronze;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-bronze;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-bronze;
+  }
+}
+
+.progress.garnet {
+  &::-webkit-progress-value {
+    background-color: $color-rank-garnet;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-garnet;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-garnet;
+  }
+}
+
+.progress.silver {
+  &::-webkit-progress-value {
+    background-color: $color-rank-silver;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-silver;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-silver;
+  }
+}
+
+.progress.amethyst {
+  &::-webkit-progress-value {
+    background-color: $color-rank-amethyst;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-amethyst;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-amethyst;
+  }
+}
+
+.progress.gold {
+  &::-webkit-progress-value {
+    background-color: $color-rank-gold;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-gold;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-gold;
+  }
+}
+
+.progress.sapphire {
+  &::-webkit-progress-value {
+    background-color: $color-rank-sapphire;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-sapphire;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-sapphire;
+  }
+}
+
+.progress.platinum {
+  &::-webkit-progress-value {
+    background-color: $color-rank-platinum;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-platinum;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-platinum;
+  }
+}
+
+.progress.ruby {
+  &::-webkit-progress-value {
+    background-color: $color-rank-ruby;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-ruby;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-ruby;
+  }
+}
+
+.progress.diamond {
+  &::-webkit-progress-value {
+    background-color: $color-rank-diamond;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-diamond;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-diamond;
+  }
+}
+
+.progress.emerald {
+  &::-webkit-progress-value {
+    background-color: $color-rank-emerald;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-emerald;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-emerald;
+  }
+}
+
+.progress.obsidian {
+  &::-webkit-progress-value {
+    background-color: $color-rank-obsidian;
+  }
+
+  &::-moz-progress-bar {
+    background-color: $color-rank-obsidian;
+  }
+
+  &::-ms-fill {
+    background-color: $color-rank-obsidian;
+  }
+}
+
+.stepper-wrapper.bronze .stepper-item.completed .step-counter,
+.stepper-wrapper.bronze .stepper-item.completed.line:after {
+  background-color: $color-rank-bronze;
+  border-bottom: 2px solid $color-rank-bronze;
+}
+
+.stepper-wrapper.garnet .stepper-item.completed .step-counter,
+.stepper-wrapper.garnet .stepper-item.completed.line:after {
+  background-color: $color-rank-garnet;
+  border-bottom: 2px solid $color-rank-garnet;
+}
+
+.stepper-wrapper.silver .stepper-item.completed .step-counter,
+.stepper-wrapper.silver .stepper-item.completed.line:after {
+  background-color: $color-rank-silver;
+  border-bottom: 2px solid $color-rank-silver;
+}
+
+.stepper-wrapper.amethyst .stepper-item.completed .step-counter,
+.stepper-wrapper.amethyst .stepper-item.completed.line:after {
+  background-color: $color-rank-amethyst;
+  border-bottom: 2px solid $color-rank-amethyst;
+}
+
+.stepper-wrapper.gold .stepper-item.completed .step-counter,
+.stepper-wrapper.gold .stepper-item.completed.line:after {
+  background-color: $color-rank-gold;
+  border-bottom: 2px solid $color-rank-gold;
+}
+
+.stepper-wrapper.sapphire .stepper-item.completed .step-counter,
+.stepper-wrapper.sapphire .stepper-item.completed.line:after {
+  background-color: $color-rank-sapphire;
+  border-bottom: 2px solid $color-rank-sapphire;
+}
+
+.stepper-wrapper.platinum .stepper-item.completed .step-counter,
+.stepper-wrapper.platinum .stepper-item.completed.line:after {
+  background-color: $color-rank-platinum;
+  border-bottom: 2px solid $color-rank-platinum;
+}
+
+.stepper-wrapper.ruby .stepper-item.completed .step-counter,
+.stepper-wrapper.ruby .stepper-item.completed.line:after {
+  background-color: $color-rank-ruby;
+  border-bottom: 2px solid $color-rank-ruby;
+}
+
+.stepper-wrapper.diamond .stepper-item.completed .step-counter,
+.stepper-wrapper.diamond .stepper-item.completed.line:after {
+  background-color: $color-rank-diamond;
+  border-bottom: 2px solid $color-rank-diamond;
+}
+
+.stepper-wrapper.emerald .stepper-item.completed .step-counter,
+.stepper-wrapper.emerald .stepper-item.completed.line:after {
+  background-color: $color-rank-emerald;
+  border-bottom: 2px solid $color-rank-emerald;
+}
+
+.stepper-wrapper.obsidian .stepper-item.completed .step-counter,
+.stepper-wrapper.obsidian .stepper-item.completed.line:after {
+  background-color: $color-rank-obsidian;
+  border-bottom: 2px solid $color-rank-obsidian;
+}

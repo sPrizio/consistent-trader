@@ -344,6 +344,12 @@ p strong {
 .ct-account-balance-history__entry .vertically-align {
   vertical-align: center;
 }
+.ct-account-balance-history__delete-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+}
 
 .ct-performance-statistics__entry__header {
   font-weight: 500;
@@ -734,6 +740,7 @@ p strong {
 .ct-modal__content {
   background-color: white;
   max-width: 650px;
+  min-height: 150px;
   max-height: 650px;
   top: 0;
   left: 0;
@@ -778,6 +785,8 @@ p strong {
 .ct-modal__content__body {
   display: flex;
   flex: 1;
+  justify-content: center;
+  align-items: center;
 }
 .ct-modal__content__controls {
   border-top: 1px solid #DDDDDD;
@@ -794,6 +803,9 @@ p strong {
 }
 .ct-modal__content__controls__control:not(:last-child) {
   margin-right: 12px;
+}
+.ct-modal.ct-account-balance-history-delete-modal .ct-modal__content {
+  height: 275px;
 }
 
 @keyframes fade-out {

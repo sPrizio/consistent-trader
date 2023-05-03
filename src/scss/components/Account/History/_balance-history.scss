@@ -64,4 +64,11 @@
       vertical-align: center;
     }
   }
+
+  &__delete-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+  }
 }

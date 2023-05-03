@@ -1,6 +1,6 @@
 import SimpleButton from "../Buttons/SimpleButton";
 import {IoMdClose} from "react-icons/io";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 /**
  * Base modal to be used as skeleton for custom modals
@@ -11,6 +11,7 @@ import React, {useEffect} from "react";
  * @param hasControls if true, show section for buttons
  * @param submitHandler when buttons are shown, a submit handler is needed
  * @param closeHandler handle closing the modal
+ * @param cssClasses custom css classes
  *
  * @author Stephen Prizio
  * @version 1.0
@@ -21,8 +22,9 @@ function BaseModal(
         title = '',
         content = [],
         hasControls = true,
-        submitHandler = undefined,
+        submitHandler,
         closeHandler,
+        cssClasses = '',
     }
         : {
         active: boolean,
@@ -30,13 +32,24 @@ function BaseModal(
         content?: Array<any>,
         hasControls?: boolean,
         submitHandler?: Function,
-        closeHandler: Function
+        closeHandler: Function,
+        cssClasses?: string
     }) {
+
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         hideApexCharts()
     })
 
+
+    //  HANDLER FUNCTIONS
+
+    function handleSubmit() {
+        setIsLoading(true)
+        submitHandler && submitHandler()
+        setIsLoading(false)
+    }
 
     //  GENERAL FUNCTIONS
 
@@ -66,7 +79,7 @@ function BaseModal(
     //  RENDER
 
     return (
-        <div className={"ct-modal" + (active ? " active " : "")}>
+        <div className={"ct-modal" + (active ? " active " : "") + " " + cssClasses}>
             <div className="ct-modal__overlay"/>
             <div className="ct-modal__content">
                 <div className="ct-modal__content__header">
@@ -96,16 +109,20 @@ function BaseModal(
                         }
                     </div>
                 </div>
-                <div className="ct-modal__content__controls has-text-right">
-                    <div className="modal-padding">
-                        <div className="ct-modal__content__controls__control">
-                            <SimpleButton text={'Cancel'} plain={true} handler={closeHandler}/>
+                {
+                    hasControls ?
+                        <div className="ct-modal__content__controls has-text-right">
+                            <div className="modal-padding">
+                                <div className="ct-modal__content__controls__control">
+                                    <SimpleButton text={'Cancel'} plain={true} handler={closeHandler}/>
+                                </div>
+                                <div className="ct-modal__content__controls__control">
+                                    <SimpleButton text={'Submit'} handler={handleSubmit} loading={isLoading} />
+                                </div>
+                            </div>
                         </div>
-                        <div className="ct-modal__content__controls__control">
-                            <SimpleButton text={'Submit'}/>
-                        </div>
-                    </div>
-                </div>
+                        : null
+                }
             </div>
         </div>
     )

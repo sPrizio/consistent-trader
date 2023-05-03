@@ -1,0 +1,101 @@
+import {BalanceHistoryInfo} from "../../../types/api-types";
+import {CoreConstants} from "../../../constants/CoreConstants";
+import {formatDate} from "../../../services/datetime/DateTimeService";
+import {formatNumberForDisplay} from "../../../services/data/FormattingService";
+import {FaCircle, FaSquare} from "react-icons/fa";
+import {useState} from "react";
+
+/**
+*  Component that renders an entry of balance history
+ *
+ * @param balanceHistoryInfo balance history
+ * @author Stephen Prizio
+ * @version 1.0
+ */
+function BalanceHistoryEntry({balanceHistoryInfo = {}}: {balanceHistoryInfo: BalanceHistoryInfo}) {
+
+    const [isModalActive, setIsModalActive] = useState(false)
+
+
+    //  HANDLER FUNCTIONS
+
+    /**
+     * Toggles the modal active and inactive
+     */
+    function toggleModal() {
+        setIsModalActive(!isModalActive)
+    }
+
+    //  GENERAL FUNCTIONS
+
+    /**
+     * Computes the class to show whether the update has been processed
+     *
+     * @param val value
+     * @param processed true if processed
+     */
+    function computeValueClass(val: number, processed: boolean) {
+
+        if (!processed) {
+            return ' pending '
+        }
+
+        if (val >= 0) {
+            return ' positive '
+        }
+
+        return ' negative '
+    }
+
+
+    //  RENDER
+
+    return (
+        <div className="ct-account-balance-history__entry hoverable" onClick={toggleModal}>
+            <div className="columns is-multiline is-mobile is-vcentered">
+                <div className="column is-3">
+                    <div className="vertically-align">
+                        <h6 className="ct-account-balance-history__entry__sub-header">
+                            {formatDate(balanceHistoryInfo.dateTime ?? '', CoreConstants.DateTime.ISOShortMonthDayYearFormat)}
+                        </h6>
+                    </div>
+                </div>
+                <div className="column is-6">
+                    {
+                        !balanceHistoryInfo.processed ?
+                            <h6 className="ct-account-balance-history__entry__sub-header ct-account-balance-history__entry__pending">
+                                PENDING
+                            </h6>
+                            : null
+                    }
+                    <h5 className="ct-account-balance-history__entry__description">
+                        {balanceHistoryInfo.description}
+                    </h5>
+                </div>
+                <div className="column is-2 has-text-right">
+                        <span className="ct-account-balance-history__entry__value">
+                            {formatNumberForDisplay(balanceHistoryInfo.amount ?? 0)}
+                        </span>
+                </div>
+                <div className="column is-1">
+                        <span
+                            className={"ct-account-balance-history__entry__amount-icon icon" + (computeValueClass(balanceHistoryInfo.amount ?? 0, balanceHistoryInfo.processed ?? false))}>
+                            {
+                                balanceHistoryInfo.processed ?
+                                    <FaCircle/>
+                                    :
+                                    <FaSquare/>
+                            }
+                        </span>
+                </div>
+                {/*<AccountBalanceHistoryEntryModal
+                    uid={balanceHistoryInfo.uid}
+                    active={isModalActive}
+                    closeHandler={toggleModal}
+                />*/}
+            </div>
+        </div>
+    )
+}
+
+export default BalanceHistoryEntry;

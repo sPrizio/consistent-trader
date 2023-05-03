@@ -1,0 +1,67 @@
+.ct-account-balance-history {
+
+  .hoverable {
+    transition: background-color $transition-duration $transition-curve;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(245, 245, 245, 1.0);
+    }
+  }
+
+  .columns {
+    .column.is-12 {
+      &:not(:last-child) {
+        border-bottom: 2px solid rgba(215, 215, 215, 0.5);
+      }
+    }
+  }
+
+  &__entry {
+    padding: 0 12px;
+
+    &__sub-header {
+      color: $color-font-header-subtitle;
+      font-size: map-get($font-body, 'small', 'desktop', 'size');
+      line-height: map-get($font-body, 'small', 'desktop', 'line');
+      font-weight: $font-weight-regular;
+    }
+
+    &__description {
+      color: $color-font-primary;
+      font-size: map-get($font-body, 'default', 'desktop', 'size');
+      line-height: map-get($font-body, 'default', 'desktop', 'line');
+      font-weight: $font-weight-regular;
+    }
+
+    &__value {
+      color: $color-font-header-title;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    &__amount-icon {
+      font-size: 12px;
+    }
+
+    &__amount-icon.positive {
+      color: $color-value-positive;
+    }
+
+    &__amount-icon.negative {
+      color: $color-value-negative;
+    }
+
+    &__amount-icon.pending {
+      color: orange;
+    }
+
+    &__sub-header.pending {
+      text-transform: uppercase;
+    }
+
+    .vertically-align {
+      vertical-align: center;
+    }
+  }
+}

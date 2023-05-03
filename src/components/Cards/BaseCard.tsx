@@ -3,11 +3,11 @@ import React from "react";
 /**
  * Base card component representing a generic card that is used throughout the app
  *
- * @prop header - card header component
- * @prop subtitle - card subtitle
- * @prop content - custom card content, can be anything, expecting an array
- * @prop controls - custom controls, for buttons if necessary, expecting an array
- * @prop loading - flag to determine whether the card is in a loading state
+ * @param header - card header component
+ * @param subtitle - card subtitle
+ * @param content - custom card content, can be anything, expecting an array
+ * @param controls - custom controls, for buttons if necessary, expecting an array
+ * @param loading - flag to determine whether the card is in a loading state
  *
  * @author Stephen Prizio
  * @version 1.0

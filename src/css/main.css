@@ -296,6 +296,55 @@ p strong {
   display: none;
 }
 
+.ct-account-balance-history .hoverable {
+  transition: background-color 0.3s ease-in-out;
+}
+.ct-account-balance-history .hoverable:hover {
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+}
+.ct-account-balance-history .columns .column.is-12:not(:last-child) {
+  border-bottom: 2px solid rgba(215, 215, 215, 0.5);
+}
+.ct-account-balance-history__entry {
+  padding: 0 12px;
+}
+.ct-account-balance-history__entry__sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+.ct-account-balance-history__entry__description {
+  color: #313131;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.ct-account-balance-history__entry__value {
+  color: rgb(86, 106, 127);
+  font-size: 16px;
+  font-weight: 400;
+}
+.ct-account-balance-history__entry__amount-icon {
+  font-size: 12px;
+}
+.ct-account-balance-history__entry__amount-icon.positive {
+  color: rgb(113, 221, 55);
+}
+.ct-account-balance-history__entry__amount-icon.negative {
+  color: rgb(255, 62, 29);
+}
+.ct-account-balance-history__entry__amount-icon.pending {
+  color: orange;
+}
+.ct-account-balance-history__entry__sub-header.pending {
+  text-transform: uppercase;
+}
+.ct-account-balance-history__entry .vertically-align {
+  vertical-align: center;
+}
+
 .ct-performance-statistics__entry__header {
   font-weight: 500;
   color: rgb(86, 106, 127);

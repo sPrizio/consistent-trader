@@ -119,6 +119,16 @@ export type ProfitCurveInfo = {
     points?: Array<ProfitCurvePoint>
 }
 
+export type BalanceHistoryInfo = {
+    amount?: number,
+    dateTime?: string,
+    description?: string,
+    empty?: boolean,
+    modificationType?: string,
+    processed?: boolean,
+    uid?: string,
+}
+
 
 //  TRADE & TRADE RECORD
 

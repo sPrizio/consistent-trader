@@ -3,6 +3,7 @@ import ProfileBanner from "../components/Account/Profile/ProfileBanner";
 import {getUser} from "../services/user/userService";
 import EquityCurveCard from "../components/Cards/Account/EquityCurveCard";
 import ProfileContent from "../components/Account/Profile/ProfileContent";
+import BalanceHistoryCard from "../components/Cards/Account/BalanceHistoryCard";
 
 /**
  * Page that displays a user's profile
@@ -86,7 +87,7 @@ function ProfilePage() {
                                             <EquityCurveCard />
                                         </div>
                                         <div className="column is-12">
-                                            {/*<AccountBalanceHistory/>*/}
+                                            <BalanceHistoryCard />
                                         </div>
                                     </div>
                                 </div>

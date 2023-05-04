@@ -66,7 +66,7 @@ function SimpleButton(
     //  RENDER
 
     return (
-        <button className={computeClass(variant, inverted, plain, active)} disabled={disabled} onClick={async () => await handler}>
+        <button className={computeClass(variant, inverted, plain, active)} disabled={disabled} onClick={handler}>
             {!loading ? text : <div className="ct-button--loader">L</div>}
         </button>
     );

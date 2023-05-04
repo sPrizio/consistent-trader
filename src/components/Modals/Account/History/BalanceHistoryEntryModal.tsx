@@ -1,8 +1,9 @@
 import BaseModal from "../../BaseModal";
-import get, {cDelete} from "../../../../services/client/ClientService";
+import {cDelete} from "../../../../services/client/ClientService";
 import {CoreConstants} from "../../../../constants/CoreConstants";
 import {StandardJsonResponse} from "../../../../types/api-types";
 import hasData from "../../../../services/data/DataIntegrityService";
+import {useState} from "react";
 
 /**
  * Modal that displays the delete balance history logic
@@ -13,30 +14,37 @@ import hasData from "../../../../services/data/DataIntegrityService";
  * @author Stephen Prizio
  * @version 1.0
  */
-function BalanceHistoryEntryModal({active = false, closeHandler, uid = ''}: {active: boolean, closeHandler: Function, uid: string}) {
+function BalanceHistoryEntryModal({active = false, closeHandler, uid = ''}: {
+    active: boolean,
+    closeHandler: Function,
+    uid: string
+}) {
+
+    const [isLoading, setIsLoading] = useState(false)
 
 
     //  GENERAL FUNCTIONS
 
-    // TODO: figure out why the modal is closing and then waiting for the function to finish
+    /**
+     * Makes an api call to delete the history entry
+     */
+    async function deleteHistory() {
 
-    function deleteHistory(val: string) {
+        setIsLoading(true)
 
-        const d =
-            cDelete(
-                CoreConstants.ApiUrls.Account.DeleteBalanceModification
-                    .replace('{uid}', val)
-            )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
+        try {
+            const result = await cDelete(CoreConstants.ApiUrls.Account.DeleteBalanceModification.replace('{uid}', uid))
+            let response: StandardJsonResponse = JSON.parse(result)
             if (response.success && hasData(response.data)) {
                 window.location.reload()
+            } else {
+                console.log('error')
             }
-        }).catch(err => {
-            console.log(err)
-        })
+        } catch (err) {
+            console.log(err, 'error')
+        }
 
-        return {}
+        setIsLoading(false)
     }
 
 
@@ -55,8 +63,9 @@ function BalanceHistoryEntryModal({active = false, closeHandler, uid = ''}: {act
                 hasControls={true}
                 closeHandler={closeHandler}
                 content={[content]}
-                submitHandler={() => deleteHistory(uid)}
+                submitHandler={deleteHistory}
                 cssClasses={'ct-account-balance-history-delete-modal'}
+                isLoading={isLoading}
             />
         </>
     )

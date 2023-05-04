@@ -13,7 +13,6 @@ function BalanceHistory({balanceHistory = []}: {balanceHistory: Array<BalanceHis
 
     //  RENDER
 
-    //  TODO: modal for deleting
     //  TODO: controls for adding new entries
     //  TODO: select for changing period
 

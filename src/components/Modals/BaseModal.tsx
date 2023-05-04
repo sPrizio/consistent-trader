@@ -25,6 +25,7 @@ function BaseModal(
         submitHandler,
         closeHandler,
         cssClasses = '',
+        isLoading = false,
     }
         : {
         active: boolean,
@@ -34,22 +35,13 @@ function BaseModal(
         submitHandler?: Function,
         closeHandler: Function,
         cssClasses?: string
+        isLoading?: boolean
     }) {
 
-    const [isLoading, setIsLoading] = useState(false)
-
     useEffect(() => {
-        hideApexCharts()
-    })
+        //hideApexCharts()
+    }, [isLoading])
 
-
-    //  HANDLER FUNCTIONS
-
-    function handleSubmit() {
-        setIsLoading(true)
-        submitHandler && submitHandler()
-        setIsLoading(false)
-    }
 
     //  GENERAL FUNCTIONS
 
@@ -88,7 +80,7 @@ function BaseModal(
                             <h6 className="ct-modal__content__header__title">{title}</h6>
                         </div>
                         <div className="ct-modal__content__header__column has-text-right">
-                            <div className="icon is-size-2" onClick={() => closeHandler()}>
+                            <div className="icon is-size-2" onClick={() => closeHandler}>
                                 <IoMdClose/>
                             </div>
                         </div>
@@ -117,7 +109,7 @@ function BaseModal(
                                     <SimpleButton text={'Cancel'} plain={true} handler={closeHandler}/>
                                 </div>
                                 <div className="ct-modal__content__controls__control">
-                                    <SimpleButton text={'Submit'} handler={handleSubmit} loading={isLoading} />
+                                    <SimpleButton text={'Submit'} handler={submitHandler} loading={isLoading} />
                                 </div>
                             </div>
                         </div>

@@ -18,6 +18,10 @@ function BalanceHistoryEntry({balanceHistoryInfo = {}}: {balanceHistoryInfo: Bal
     const [isModalActive, setIsModalActive] = useState(false)
 
 
+    //  TODO: global error state, handle cases when API is down. Maybe using toasts?
+    //  TODO: profile page components should show error state
+    //  TODO: base card should show a default message if no data or content. Maybe can put the card in an error state with a prop?
+
     //  HANDLER FUNCTIONS
 
     /**
@@ -52,33 +56,34 @@ function BalanceHistoryEntry({balanceHistoryInfo = {}}: {balanceHistoryInfo: Bal
     //  RENDER
 
     return (
-        <div className="ct-account-balance-history__entry hoverable" onClick={toggleModal}>
-            <div className="columns is-multiline is-mobile is-vcentered">
-                <div className="column is-3">
-                    <div className="vertically-align">
-                        <h6 className="ct-account-balance-history__entry__sub-header">
-                            {formatDate(balanceHistoryInfo.dateTime ?? '', CoreConstants.DateTime.ISOShortMonthDayYearFormat)}
-                        </h6>
-                    </div>
-                </div>
-                <div className="column is-6">
-                    {
-                        !balanceHistoryInfo.processed ?
-                            <h6 className="ct-account-balance-history__entry__sub-header ct-account-balance-history__entry__pending">
-                                PENDING
+        <>
+            <div className="ct-account-balance-history__entry hoverable" onClick={toggleModal}>
+                <div className="columns is-multiline is-mobile is-vcentered">
+                    <div className="column is-3">
+                        <div className="vertically-align">
+                            <h6 className="ct-account-balance-history__entry__sub-header">
+                                {formatDate(balanceHistoryInfo.dateTime ?? '', CoreConstants.DateTime.ISOShortMonthDayYearFormat)}
                             </h6>
-                            : null
-                    }
-                    <h5 className="ct-account-balance-history__entry__description">
-                        {balanceHistoryInfo.description}
-                    </h5>
-                </div>
-                <div className="column is-2 has-text-right">
+                        </div>
+                    </div>
+                    <div className="column is-6">
+                        {
+                            !balanceHistoryInfo.processed ?
+                                <h6 className="ct-account-balance-history__entry__sub-header ct-account-balance-history__entry__pending">
+                                    PENDING
+                                </h6>
+                                : null
+                        }
+                        <h5 className="ct-account-balance-history__entry__description">
+                            {balanceHistoryInfo.description}
+                        </h5>
+                    </div>
+                    <div className="column is-2 has-text-right">
                         <span className="ct-account-balance-history__entry__value">
                             {formatNumberForDisplay(balanceHistoryInfo.amount ?? 0)}
                         </span>
-                </div>
-                <div className="column is-1">
+                    </div>
+                    <div className="column is-1">
                         <span
                             className={"ct-account-balance-history__entry__amount-icon icon" + (computeValueClass(balanceHistoryInfo.amount ?? 0, balanceHistoryInfo.processed ?? false))}>
                             {
@@ -88,10 +93,11 @@ function BalanceHistoryEntry({balanceHistoryInfo = {}}: {balanceHistoryInfo: Bal
                                     <FaSquare/>
                             }
                         </span>
+                    </div>
                 </div>
-                <BalanceHistoryEntryModal active={isModalActive} closeHandler={toggleModal} uid={balanceHistoryInfo.uid ?? ''} />
             </div>
-        </div>
+            <BalanceHistoryEntryModal active={isModalActive} closeHandler={toggleModal} uid={balanceHistoryInfo.uid ?? ''} />
+        </>
     )
 }
 

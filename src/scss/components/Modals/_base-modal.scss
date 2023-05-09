@@ -108,6 +108,19 @@
       height: 275px;
     }
   }
+
+  &.ct-account-balance-history-create-modal {
+    .sub-header {
+      color: $color-font-header-subtitle;
+      font-size: map-get($font-body, 'small', 'desktop', 'size');
+      font-weight: map-get($font-body, 'small', 'desktop', 'weight');
+      line-height: map-get($font-body, 'small', 'desktop', 'line');
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
 }
 
 @keyframes fade-out {

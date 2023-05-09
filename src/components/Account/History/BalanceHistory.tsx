@@ -2,6 +2,7 @@ import {BalanceHistoryInfo} from "../../../types/api-types";
 import BalanceHistoryEntry from "./BalanceHistoryEntry";
 import {ChangeEvent, useState} from "react";
 import {RiAddCircleFill} from "react-icons/ri";
+import CreateBalanceHistoryEntryModal from "../../Modals/Account/History/CreateBalanceHistoryEntryModal";
 
 /**
  * Component that display's the account's balance history
@@ -110,22 +111,25 @@ function BalanceHistory(
         </div>
 
     return (
-        <div className="ct-account-balance-history">
-            {selector}
-            <div className="columns is-multiline is-mobile is-gapless">
-                {!emptyText && header}
-                {
-                    balanceHistory && balanceHistory.map((item, key) => {
-                        return (
-                            <div className="column is-12" key={item.uid}>
-                                <BalanceHistoryEntry balanceHistoryInfo={item}/>
-                            </div>
-                        )
-                    })
-                }
-                {emptyText}
+        <>
+            <div className="ct-account-balance-history">
+                {selector}
+                <div className="columns is-multiline is-mobile is-gapless">
+                    {!emptyText && header}
+                    {
+                        balanceHistory && balanceHistory.map((item, key) => {
+                            return (
+                                <div className="column is-12" key={item.uid}>
+                                    <BalanceHistoryEntry balanceHistoryInfo={item}/>
+                                </div>
+                            )
+                        })
+                    }
+                    {emptyText}
+                </div>
             </div>
-        </div>
+            <CreateBalanceHistoryEntryModal active={isModalActive} closeHandler={toggleModal} />
+        </>
     )
 }
 

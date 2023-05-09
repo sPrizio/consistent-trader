@@ -14,7 +14,7 @@ import {useState} from "react";
  * @author Stephen Prizio
  * @version 1.0
  */
-function BalanceHistoryEntryModal({active = false, closeHandler, uid = ''}: {
+function DeleteBalanceHistoryEntryModal({active = false, closeHandler, uid = ''}: {
     active: boolean,
     closeHandler: Function,
     uid: string
@@ -71,4 +71,4 @@ function BalanceHistoryEntryModal({active = false, closeHandler, uid = ''}: {
     )
 }
 
-export default BalanceHistoryEntryModal;
+export default DeleteBalanceHistoryEntryModal;

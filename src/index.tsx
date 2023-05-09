@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bulma/css/bulma.min.css'
 import './css/main.css'
+import "react-datepicker/dist/react-datepicker.css";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

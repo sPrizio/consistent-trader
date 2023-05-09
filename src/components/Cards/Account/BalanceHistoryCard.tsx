@@ -19,7 +19,7 @@ function BalanceHistoryCard() {
 
     const [isLoading, setIsLoading] = useState(false)
     const [start, setStart] = useState(formatDateMoment(now().subtract(60, 'days'), CoreConstants.DateTime.ISODateFormat))
-    const [end, setEnd] = useState(formatDateMoment(now().add(5, 'days'), CoreConstants.DateTime.ISODateFormat))
+    const [end, setEnd] = useState(formatDateMoment(now().add(2, 'months'), CoreConstants.DateTime.ISODateFormat))
     const [filterHistory, setFilterHistory] = useState('last-60')
     const [balanceHistory, setBalanceHistory] = useState([])
 

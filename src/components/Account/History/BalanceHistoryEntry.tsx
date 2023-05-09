@@ -4,7 +4,7 @@ import {formatDate} from "../../../services/datetime/DateTimeService";
 import {formatNumberForDisplay} from "../../../services/data/FormattingService";
 import {FaCircle, FaSquare} from "react-icons/fa";
 import {useState} from "react";
-import BalanceHistoryEntryModal from "../../Modals/Account/History/BalanceHistoryEntryModal";
+import DeleteBalanceHistoryEntryModal from "../../Modals/Account/History/DeleteBalanceHistoryEntryModal";
 
 /**
 *  Component that renders an entry of balance history
@@ -96,7 +96,7 @@ function BalanceHistoryEntry({balanceHistoryInfo = {}}: {balanceHistoryInfo: Bal
                     </div>
                 </div>
             </div>
-            <BalanceHistoryEntryModal active={isModalActive} closeHandler={toggleModal} uid={balanceHistoryInfo.uid ?? ''} />
+            <DeleteBalanceHistoryEntryModal active={isModalActive} closeHandler={toggleModal} uid={balanceHistoryInfo.uid ?? ''} />
         </>
     )
 }

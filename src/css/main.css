@@ -828,6 +828,15 @@ p strong {
 .ct-modal.ct-account-balance-history-delete-modal .ct-modal__content {
   height: 275px;
 }
+.ct-modal.ct-account-balance-history-create-modal .sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.ct-modal.ct-account-balance-history-create-modal textarea {
+  resize: none;
+}
 
 @keyframes fade-out {
   from {

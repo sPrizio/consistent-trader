@@ -59,7 +59,7 @@ function BalanceHistoryEntryModal({active = false, closeHandler, uid = ''}: {
         <>
             <BaseModal
                 active={active}
-                title={'Delete History'}
+                title={'Delete Entry'}
                 hasControls={true}
                 closeHandler={closeHandler}
                 content={[content]}

@@ -306,8 +306,31 @@ p strong {
 .ct-account-balance-history .columns .column.is-12:not(:last-child) {
   border-bottom: 2px solid rgba(215, 215, 215, 0.5);
 }
+.ct-account-balance-history__empty-text {
+  padding-top: 24px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  color: rgb(161, 172, 184);
+}
+.ct-account-balance-history__controls__new-entry:hover {
+  cursor: pointer;
+}
+.ct-account-balance-history__controls__new-entry .icon {
+  color: #137DC5;
+}
 .ct-account-balance-history__entry {
-  padding: 0 12px;
+  padding: 12px 12px;
+}
+.ct-account-balance-history__entry.header-row {
+  padding-top: 24px;
+}
+.ct-account-balance-history__entry.header-row .header-row__header {
+  color: #137DC5;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 500;
 }
 .ct-account-balance-history__entry__sub-header {
   color: rgb(161, 172, 184);
@@ -476,7 +499,7 @@ p strong {
   position: relative;
   text-decoration: none;
   text-transform: none;
-  min-height: 50px;
+  min-height: 44px;
   transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
@@ -484,8 +507,8 @@ p strong {
 @media screen and (min-width: 992px) {
   .ct-button {
     font-size: 15px;
-    line-height: 24px;
-    padding: 12px 20px;
+    line-height: 20px;
+    padding: 8px 20px;
   }
 }
 .ct-button:hover, .ct-button:focus-visible {
@@ -712,11 +735,9 @@ p strong {
 }
 
 .ct-modal {
-  display: none;
-  animation: fade-out 0.3s forwards;
+  /*animation: fade-out $transition-duration forwards;*/
 }
-.ct-modal.active {
-  display: flex;
+.ct-modal.is-active {
   animation: fade-in 0.3s forwards;
 }
 .ct-modal .modal-padding {
@@ -734,7 +755,7 @@ p strong {
   bottom: 0;
   margin: auto;
   position: fixed;
-  z-index: 12;
+  z-index: 40;
   background-color: rgba(0, 0, 0, 0.8);
 }
 .ct-modal__content {
@@ -748,7 +769,7 @@ p strong {
   bottom: 0;
   margin: auto;
   position: fixed;
-  z-index: 12;
+  z-index: 45;
   border-radius: 16px;
   display: flex;
   flex-direction: column;

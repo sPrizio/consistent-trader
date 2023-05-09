@@ -1,9 +1,7 @@
 .ct-modal {
-  display: none;
-  animation: fade-out $transition-duration forwards;
+  /*animation: fade-out $transition-duration forwards;*/
 
-  &.active {
-    display: flex;
+  &.is-active {
     animation: fade-in $transition-duration forwards;
   }
 
@@ -24,7 +22,7 @@
     bottom: 0;
     margin: auto;
     position: fixed;
-    z-index: 12;
+    z-index: 40;
     background-color: rgba($color-black, 0.80);
   }
 
@@ -39,7 +37,7 @@
     bottom: 0;
     margin: auto;
     position: fixed;
-    z-index: 12;
+    z-index: 45;
     border-radius: 16px;
     display: flex;
     flex-direction: column;

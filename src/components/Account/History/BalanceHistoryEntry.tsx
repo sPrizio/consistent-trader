@@ -83,7 +83,7 @@ function BalanceHistoryEntry({balanceHistoryInfo = {}}: {balanceHistoryInfo: Bal
                             {formatNumberForDisplay(balanceHistoryInfo.amount ?? 0)}
                         </span>
                     </div>
-                    <div className="column is-1">
+                    <div className="column is-1 has-text-right">
                         <span
                             className={"ct-account-balance-history__entry__amount-icon icon" + (computeValueClass(balanceHistoryInfo.amount ?? 0, balanceHistoryInfo.processed ?? false))}>
                             {

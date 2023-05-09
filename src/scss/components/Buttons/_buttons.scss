@@ -11,15 +11,15 @@
   position: relative;
   text-decoration: none;
   text-transform: none;
-  min-height: 50px;
+  min-height: 44px;
   transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: $transition-duration;
   transition-timing-function: $transition-curve;
 
   @include mq-large-up {
     font-size: 15px;
-    line-height: 24px;
-    padding: 12px 20px;
+    line-height: 20px;
+    padding: 8px 20px;
   }
 
   &:hover,

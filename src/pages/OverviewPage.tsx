@@ -1,11 +1,7 @@
 import BaseCard from "../components/Cards/BaseCard";
 import UserBar from "../components/User/UserBar";
-import get from "../services/client/ClientService";
 import {CoreConstants} from "../constants/CoreConstants";
 import {useEffect, useState} from "react";
-import {StandardJsonResponse} from "../types/api-types";
-import hasData from "../services/data/DataIntegrityService";
-import Overview from "../components/Account/Overview";
 import EquityCurveCard from "../components/Cards/Account/EquityCurveCard";
 import PerformanceSummaryCard from "../components/Cards/Account/Performance/PerformanceSummaryCard";
 import ExcessLossCard from "../components/Cards/Account/ExcessLossCard";
@@ -14,6 +10,7 @@ import PerformanceStatisticsCard from "../components/Cards/Account/Performance/S
 import TradeLogCard from "../components/Cards/Trade/Log/TradeLogCard";
 import NewsCard from "../components/Cards/News/NewsCard";
 import {getUser} from "../services/user/userService";
+import OverviewCard from "../components/Cards/Account/OverviewCard";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -25,11 +22,9 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [userInfo, setUserInfo] = useState<any>(null)
-    const [accountOverview, setAccountOverview] = useState<any>(null)
 
     useEffect(() => {
         getUserInfo()
-        getAccountOverview()
     }, [])
 
 
@@ -45,30 +40,9 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
         return {}
     }
 
-    /**
-     * Obtains the account overview for use with the overview page
-     */
-    function getAccountOverview() {
-        setIsLoading(true);
-
-        const d = get(CoreConstants.ApiUrls.Account.Overview)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setAccountOverview(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
-
-        setIsLoading(false)
-        return {}
-    }
-
 
     //  RENDER
 
-    const subtitle = `${accountOverview?.account?.broker ?? ''}\u00A0-\u00A0${accountOverview?.account?.accountNumber ?? ''}`
     return (
         <div className="columns is-multiline is-mobile">
             <div className="column is-12">
@@ -79,8 +53,7 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-12">
-                                {/*//  TODO: make this an Overview Card so it is reusable*/}
-                                <BaseCard loading={isLoading} title={'Overview & Rank'} subtitle={subtitle} hasBorder={true} content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]} />
+                                <OverviewCard accountOverview={userInfo} isLoading={isLoading} />
                             </div>
                             <div className="column is-12">
                                 <NewsCard

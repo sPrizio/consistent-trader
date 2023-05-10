@@ -1,0 +1,16 @@
+.ct-profile-page {
+  &__tabs {
+    border-bottom: 1px solid $color-primary;
+    padding: 12px 0;
+
+    .level-item {
+      &:not(:first-child) {
+        margin-left: 12px;
+      }
+
+      &:not(:last-child) {
+        margin-right: 12px;
+      }
+    }
+  }
+}

@@ -52,8 +52,6 @@ function BalanceHistory(
 
     //  RENDER
 
-    //  TODO: controls for adding new entries
-
     let emptyText = null
     if (!balanceHistory || balanceHistory.length === 0) {
         emptyText =

@@ -413,6 +413,9 @@ p strong {
   font-weight: 700;
 }
 
+.ct-profile-banner {
+  margin-bottom: 24px;
+}
 .ct-profile-banner__banner img {
   height: 215px;
 }
@@ -1137,6 +1140,45 @@ p strong {
   height: 100%;
 }
 
+.ct-skillprogress .level:first-child {
+  margin-bottom: 10px;
+}
+.ct-skillprogress .level:last-child {
+  margin-top: 10px;
+}
+.ct-skillprogress__label {
+  color: rgb(86, 106, 127);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.ct-skillprogress__net {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.ct-skillprogress__net .positive {
+  color: rgb(113, 221, 55);
+}
+.ct-skillprogress__net .negative {
+  color: rgb(255, 62, 29);
+}
+.ct-skillprogress .progress.is-primary::-webkit-progress-value {
+  background-color: #137DC5;
+}
+.ct-skillprogress .progress.is-primary::-moz-progress-bar {
+  background-color: #137DC5;
+}
+.ct-skillprogress .progress.is-primary::-ms-fill {
+  background-color: #137DC5;
+}
+.ct-skillprogress .progress.is-primary:indeterminate {
+  background-image: linear-gradient(to right, #137DC5 30%, #ededed 30%);
+}
+.ct-skillprogress .progress.rank {
+  height: 0.35rem;
+}
+
 .ct-trade-log__disclaimer {
   font-weight: 300;
   color: rgb(86, 106, 127);
@@ -1254,6 +1296,17 @@ p strong {
 .ct-user-bar__user-menu__content.is-active {
   display: block;
   height: auto;
+}
+
+.ct-profile-page__tabs {
+  border-bottom: 1px solid #137DC5;
+  padding: 12px 0;
+}
+.ct-profile-page__tabs .level-item:not(:first-child) {
+  margin-left: 12px;
+}
+.ct-profile-page__tabs .level-item:not(:last-child) {
+  margin-right: 12px;
 }
 
 .bronze {

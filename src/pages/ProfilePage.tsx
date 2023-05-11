@@ -12,6 +12,7 @@ import {StandardJsonResponse} from "../types/api-types";
 import hasData from "../services/data/DataIntegrityService";
 import SkillProgressCard from "../components/Cards/Skill/SkillProgressCard";
 import PromotionalPaymentsCard from "../components/Cards/Account/PromotionalPaymentsCard";
+import DisregardedTradesCard from "../components/Cards/Trade/DisregardedTradesCard";
 
 /**
  * Page that displays a user's profile
@@ -152,10 +153,9 @@ function ProfilePage() {
                                     <div className="columns is-multiline is-mobile">
                                         <div className="column is-12">
                                             <PromotionalPaymentsCard/>
-                                            {/*<AccountSupport />*/}
                                         </div>
                                         <div className="column is-12">
-                                            {/*<IrrelevantTrades />*/}
+                                            <DisregardedTradesCard />
                                         </div>
                                     </div>
                                 </div>

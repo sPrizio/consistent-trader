@@ -197,6 +197,20 @@ export type PromotionalPaymentsInfo = {
     total?: number,
 }
 
+export type DisregardedEntryInfo = {
+    losingTrades?: number,
+    netPoints?: number,
+    netProfit?: number,
+    totalTrades?: number,
+    winPercentage?: number,
+    winningTrades?: number,
+}
+
+export type DisregardedTradesInfo = {
+    current?: DisregardedEntryInfo,
+    previous?: DisregardedEntryInfo,
+}
+
 
 //  NEWS
 

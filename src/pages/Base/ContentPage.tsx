@@ -11,8 +11,8 @@ import ProfilePage from "../ProfilePage";
  */
 function ContentPage() {
 
-    const [page, setPage] = useState('profile')
-    const [selectedTab, setSelectedTab] = useState('profile')
+    const [page, setPage] = useState('overview')
+    const [selectedTab, setSelectedTab] = useState('overview')
 
 
     //  HANDLERS

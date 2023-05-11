@@ -98,7 +98,7 @@ export type UserInfo = {
     username?: string,
 }
 
-export type AccountOverview = {
+export type AccountOverviewInfo = {
     account?: AccountInfo,
     balance?: number,
     dailyEarnings?: number,

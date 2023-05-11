@@ -11,6 +11,7 @@ import TradeLogCard from "../components/Cards/Trade/Log/TradeLogCard";
 import NewsCard from "../components/Cards/News/NewsCard";
 import {getUser} from "../services/user/userService";
 import OverviewCard from "../components/Cards/Account/OverviewCard";
+import {getAccountOverview} from "../services/account/accountService";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -22,9 +23,11 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [userInfo, setUserInfo] = useState<any>(null)
+    const [overview, setOverview] = useState<any>(null)
 
     useEffect(() => {
         getUserInfo()
+        getOverview()
     }, [])
 
 
@@ -33,9 +36,19 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
     /**
      * Obtains the user info for use with the overview page
      */
-    function getUserInfo() {
+    async function getUserInfo() {
         setIsLoading(true);
-        setUserInfo(getUser())
+        setUserInfo(await getUser())
+        setIsLoading(false)
+        return {}
+    }
+
+    /**
+     * Obtains the account overview
+     */
+    async function getOverview() {
+        setIsLoading(true);
+        setOverview(await getAccountOverview())
         setIsLoading(false)
         return {}
     }
@@ -53,7 +66,7 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-12">
-                                <OverviewCard accountOverview={userInfo} isLoading={isLoading} />
+                                <OverviewCard accountOverview={overview} isLoading={isLoading} />
                             </div>
                             <div className="column is-12">
                                 <NewsCard

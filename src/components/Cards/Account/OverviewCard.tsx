@@ -1,6 +1,6 @@
 import BaseCard from "../BaseCard";
 import Overview from "../../Account/Overview";
-import {UserInfo} from "../../../types/api-types";
+import {AccountOverviewInfo, UserInfo} from "../../../types/api-types";
 
 /**
  * Card component representing an account overview
@@ -10,7 +10,7 @@ import {UserInfo} from "../../../types/api-types";
  * @author Stephen Prizio
  * @version 1.0
  */
-function OverviewCard({accountOverview = {}, isLoading = false}: {accountOverview: UserInfo, isLoading: boolean}) {
+function OverviewCard({accountOverview = {}, isLoading = false}: {accountOverview: AccountOverviewInfo, isLoading: boolean}) {
 
 
     //  RENDER

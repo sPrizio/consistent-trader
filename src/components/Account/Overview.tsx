@@ -1,4 +1,4 @@
-import {AccountOverview} from "../../types/api-types";
+import {AccountOverviewInfo} from "../../types/api-types";
 import {formatNumberForDisplay} from "../../services/data/FormattingService";
 import {TbTrendingDown, TbTrendingUp} from "react-icons/tb";
 import AccountOverviewRank from "../Rank/AccountOverviewRank";
@@ -9,7 +9,7 @@ import AccountOverviewRank from "../Rank/AccountOverviewRank";
  * @author Stephen Prizio
  * @version 1.0
  */
-function Overview({accountOverview = {}}: { accountOverview: AccountOverview }) {
+function Overview({accountOverview = {}}: { accountOverview: AccountOverviewInfo }) {
 
 
     //  GENERAL FUNCTIONS

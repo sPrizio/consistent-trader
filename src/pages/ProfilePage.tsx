@@ -6,13 +6,10 @@ import ProfileContent from "../components/Account/Profile/ProfileContent";
 import BalanceHistoryCard from "../components/Cards/Account/BalanceHistoryCard";
 import SimpleButton from "../components/Buttons/SimpleButton";
 import OverviewCard from "../components/Cards/Account/OverviewCard";
-import get from "../services/client/ClientService";
-import {CoreConstants} from "../constants/CoreConstants";
-import {StandardJsonResponse} from "../types/api-types";
-import hasData from "../services/data/DataIntegrityService";
 import SkillProgressCard from "../components/Cards/Skill/SkillProgressCard";
 import PromotionalPaymentsCard from "../components/Cards/Account/PromotionalPaymentsCard";
 import DisregardedTradesCard from "../components/Cards/Trade/DisregardedTradesCard";
+import {getAccountOverview} from "../services/account/accountService";
 
 /**
  * Page that displays a user's profile
@@ -23,13 +20,13 @@ import DisregardedTradesCard from "../components/Cards/Trade/DisregardedTradesCa
 function ProfilePage() {
 
     const [isLoading, setIsLoading] = useState(false)
-    const [activeTab, setActiveTab] = useState('skillRank')
+    const [activeTab, setActiveTab] = useState('account')
     const [userInfo, setUserInfo] = useState({})
-    const [accountOverview, setAccountOverview] = useState<any>(null)
+    const [overview, setOverview] = useState<any>(null)
 
     useEffect(() => {
         getUserInfo()
-        getAccountOverview()
+        getOverview()
     }, [])
 
 
@@ -67,21 +64,11 @@ function ProfilePage() {
     }
 
     /**
-     * Obtains the account overview for use with the overview page
+     * Obtains the account overview
      */
-    function getAccountOverview() {
+    async function getOverview() {
         setIsLoading(true);
-
-        const d = get(CoreConstants.ApiUrls.Account.Overview)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setAccountOverview(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
-
+        setOverview(await getAccountOverview())
         setIsLoading(false)
         return {}
     }
@@ -142,7 +129,7 @@ function ProfilePage() {
                                 <div className="column is-6-desktop is-12-tablet is-12-mobile">
                                     <div className="columns is-multiline is-mobile">
                                         <div className="column is-12">
-                                            <OverviewCard accountOverview={accountOverview} isLoading={isLoading} />
+                                            <OverviewCard accountOverview={overview} isLoading={isLoading} />
                                         </div>
                                         <div className="column is-12">
                                             <SkillProgressCard userInfo={userInfo} isLoading={isLoading} />

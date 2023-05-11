@@ -269,6 +269,17 @@ p strong {
   color: rgb(161, 172, 184);
 }
 
+.ct-promotional-payments__value {
+  color: #137DC5;
+  font-weight: 600;
+}
+.ct-promotional-payments__sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
 .ct-account-overview__balance {
   color: rgb(86, 106, 127);
 }
@@ -1177,6 +1188,22 @@ p strong {
 }
 .ct-skillprogress .progress.rank {
   height: 0.35rem;
+}
+
+.ct-disregarded-trades__header {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.ct-disregarded-trades__value {
+  color: #137DC5;
+  font-weight: 600;
+}
+.ct-disregarded-trades__sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
 }
 
 .ct-trade-log__disclaimer {

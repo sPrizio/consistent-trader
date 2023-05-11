@@ -17,29 +17,29 @@ function DisregardedTrades({disregardedTrades = {}}: {disregardedTrades: Disrega
         <div className="ct-disregarded-trades">
             <div className="columns is-multiline is-mobile is-vcentered">
                 <div className="column is-6">
-                    <h5 className="header">Trades</h5>
+                    <h5 className="ct-disregarded-trades__header">Trades</h5>
                 </div>
                 <div className="column is-6 has-text-right">
-                    <span className="value">{disregardedTrades.current?.totalTrades ?? 0}</span>
-                    <h6 className="sub-header">{disregardedTrades.current?.winningTrades ?? 0} wins ({disregardedTrades.current?.winPercentage ?? 0}%)</h6>
+                    <span className="ct-disregarded-trades__value">{disregardedTrades.current?.totalTrades ?? 0}</span>
+                    <h6 className="ct-disregarded-trades__sub-header">{disregardedTrades.current?.winningTrades ?? 0} wins ({disregardedTrades.current?.winPercentage ?? 0}%)</h6>
                 </div>
                 <div className="column is-6">
-                    <h5 className="header">P&L</h5>
-                    <h6 className="sub-header">Previous Month:</h6>
+                    <h5 className="ct-disregarded-trades__header">P&L</h5>
+                    <h6 className="ct-disregarded-trades__sub-header">Previous Month:</h6>
                 </div>
                 <div className="column is-6 has-text-right">
-                    <span className="value">{formatNumberForDisplay(disregardedTrades.current?.netProfit ?? 0)}</span>
-                    <h6 className="sub-header">
+                    <span className="ct-disregarded-trades__value">{formatNumberForDisplay(disregardedTrades.current?.netProfit ?? 0)}</span>
+                    <h6 className="ct-disregarded-trades__sub-header">
                         {formatNumberForDisplay(disregardedTrades.previous?.netProfit ?? 0)}
                     </h6>
                 </div>
                 <div className="column is-6">
-                    <h5 className="header">Points</h5>
-                    <h6 className="sub-header">Previous Month:</h6>
+                    <h5 className="ct-disregarded-trades__header">Points</h5>
+                    <h6 className="ct-disregarded-trades__sub-header">Previous Month:</h6>
                 </div>
                 <div className="column is-6 has-text-right">
-                    <span className="value">{formatNumberForDisplay(disregardedTrades.current?.netPoints ?? 0)}</span>
-                    <h6 className="sub-header">
+                    <span className="ct-disregarded-trades__value">{formatNumberForDisplay(disregardedTrades.current?.netPoints ?? 0)}</span>
+                    <h6 className="ct-disregarded-trades__sub-header">
                         {formatNumberForDisplay(disregardedTrades.previous?.netPoints ?? 0)} pts
                     </h6>
                 </div>

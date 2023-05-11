@@ -44,10 +44,10 @@ function PromotionalPayments({promoPayments = {}}: {promoPayments: PromotionalPa
                         Promo Payments
                     </div>
                     <div className="column is-6 has-text-right">
-                        <span className="value">
+                        <span className="ct-promotional-payments__value">
                             {formatNumberForDisplay(promoPayments.total ?? 0)}
                         </span>
-                        <h6 className="sub-header">
+                        <h6 className="ct-promotional-payments__sub-header">
                             {promoPayments.numberOfPayments} payments
                         </h6>
                     </div>

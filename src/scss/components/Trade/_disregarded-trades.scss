@@ -1,0 +1,19 @@
+.ct-disregarded-trades {
+  &__header {
+    font-size: map-get($font-body, 'default', 'desktop', 'size');
+    line-height: map-get($font-body, 'default', 'desktop', 'line');
+    font-weight: $font-weight-regular;
+  }
+
+  &__value {
+    color: $color-primary;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  &__sub-header {
+    color: $color-font-header-subtitle;
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
+    font-weight: $font-weight-regular;
+  }
+}

@@ -7,9 +7,11 @@ import SkillProgress from "../../Skill/SkillProgress";
  *
  * @param userInfo user info
  * @param isLoading is loading
- * @constructor
+ * @author Stephen Prizio
+ * @version 1.0
  */
 function SkillProgressCard({userInfo = {}, isLoading = false}: {userInfo: UserInfo, isLoading: boolean}) {
+
 
     //  RENDER
 

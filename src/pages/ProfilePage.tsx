@@ -11,6 +11,7 @@ import {CoreConstants} from "../constants/CoreConstants";
 import {StandardJsonResponse} from "../types/api-types";
 import hasData from "../services/data/DataIntegrityService";
 import SkillProgressCard from "../components/Cards/Skill/SkillProgressCard";
+import PromotionalPaymentsCard from "../components/Cards/Account/PromotionalPaymentsCard";
 
 /**
  * Page that displays a user's profile
@@ -150,6 +151,7 @@ function ProfilePage() {
                                 <div className="column is-6-desktop is-12-tablet is-12-mobile">
                                     <div className="columns is-multiline is-mobile">
                                         <div className="column is-12">
+                                            <PromotionalPaymentsCard/>
                                             {/*<AccountSupport />*/}
                                         </div>
                                         <div className="column is-12">

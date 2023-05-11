@@ -191,6 +191,12 @@ export type ExcessLossInfo = {
     type?: string,
 }
 
+export type PromotionalPaymentsInfo = {
+    lastPaymentDate?: string,
+    numberOfPayments?: number,
+    total?: number,
+}
+
 
 //  NEWS
 

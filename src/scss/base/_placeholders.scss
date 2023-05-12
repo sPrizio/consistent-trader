@@ -144,3 +144,7 @@ p {
         letter-spacing: map-get($font-body, 'xsmall', 'desktop', 'letter');
     }
 }
+
+hr.is-primary {
+    background-color: rgba($color-primary, 0.25);
+}

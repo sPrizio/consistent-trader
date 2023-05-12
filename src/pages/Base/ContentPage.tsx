@@ -2,6 +2,8 @@ import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
 import {useState} from "react";
 import OverviewPage from "../OverviewPage";
 import ProfilePage from "../ProfilePage";
+import AboutPage from "../Content/AboutPage";
+import ContactPage from "../Content/ContactPage";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -39,6 +41,10 @@ function ContentPage() {
                 return <OverviewPage pageHandler={selectPage} />
             case "profile":
                 return <ProfilePage />
+            case "about":
+                return <AboutPage />
+            case "contact":
+                return <ContactPage />
             default:
                 return null;
         }

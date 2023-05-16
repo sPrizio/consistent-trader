@@ -82,6 +82,10 @@ export const CoreConstants = {
         ColorPrimary: '#137DC5',
 
         FontPrimary: '"Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+
+        EquityCurveGreen: 'rgb(76, 187, 23)',
+        EquityCurveRed: 'rgb(255, 62, 29)',
+        White: '#FFFFFF',
     },
 
     DateTime: {

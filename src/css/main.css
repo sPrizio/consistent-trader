@@ -282,7 +282,7 @@ hr.is-primary {
   font-weight: 600;
 }
 .ct-account-overview__net .positive {
-  color: rgb(113, 221, 55);
+  color: rgb(76, 187, 23);
 }
 .ct-account-overview__net .negative {
   color: rgb(255, 62, 29);
@@ -353,7 +353,7 @@ hr.is-primary {
   font-size: 12px;
 }
 .ct-account-balance-history__entry__amount-icon.positive {
-  color: rgb(113, 221, 55);
+  color: rgb(76, 187, 23);
 }
 .ct-account-balance-history__entry__amount-icon.negative {
   color: rgb(255, 62, 29);
@@ -393,7 +393,7 @@ hr.is-primary {
   color: rgb(161, 172, 184);
 }
 .ct-performance-statistics__entry__unit.positive span {
-  color: rgb(113, 221, 55);
+  color: rgb(76, 187, 23);
   font-weight: 500;
 }
 .ct-performance-statistics__entry__unit.negative span {
@@ -1174,7 +1174,7 @@ button {
   line-height: 26px;
 }
 .ct-skillprogress__net .positive {
-  color: rgb(113, 221, 55);
+  color: rgb(76, 187, 23);
 }
 .ct-skillprogress__net .negative {
   color: rgb(255, 62, 29);
@@ -1216,10 +1216,13 @@ button {
   width: 24px;
 }
 .ct-trade-history-entry__header__result.positive {
-  color: rgb(113, 221, 55);
+  color: rgb(76, 187, 23);
 }
 .ct-trade-history-entry__header__result.negative {
   color: rgb(255, 62, 29);
+}
+.ct-trade-history-entry__header__expand {
+  color: #137DC5;
 }
 .ct-trade-history-entry__header__expand:hover {
   cursor: pointer;
@@ -1243,7 +1246,7 @@ button {
   font-weight: 600;
 }
 .ct-trade-history-entry__header__percentage.positive {
-  color: rgb(113, 221, 55);
+  color: rgb(76, 187, 23);
 }
 .ct-trade-history-entry__header__percentage.negative {
   color: rgb(255, 62, 29);

@@ -6,7 +6,6 @@ import {ActiveMonthInfo, ActiveYearInfo, StandardJsonResponse} from "../../types
 import hasData from "../../services/data/DataIntegrityService";
 import {Helmet} from "react-helmet";
 import {displayString} from "../../services/data/FormattingService";
-import {AiOutlineArrowLeft} from "react-icons/ai";
 import SimpleButton from "../../components/Buttons/SimpleButton";
 import TradeHistoryEntryCard from "../../components/Cards/Trade/History/TradeHistoryEntryCard";
 import {BsArrowLeftShort} from "react-icons/bs";

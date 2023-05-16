@@ -8,6 +8,7 @@ import {AiFillCheckCircle} from "react-icons/ai";
 import {MdInsertChartOutlined, MdOutlineCancel} from "react-icons/md";
 import {formatNumberForDisplay} from "../../../services/data/FormattingService";
 import SimpleButton from "../../Buttons/SimpleButton";
+import TradeHistoryEquityCurve from "./TradeHistoryEquityCurve";
 
 
 function TradeHistoryEntry(
@@ -15,11 +16,13 @@ function TradeHistoryEntry(
         tradeRecord = {},
         selectEntryHandler,
         shouldAllowTradeList = false,
+        index = -1
     }
         : {
         tradeRecord: TradeRecordInfo,
         selectEntryHandler: Function,
-        shouldAllowTradeList: boolean
+        shouldAllowTradeList: boolean,
+        index: number
     }) {
     const [isActive, setIsActive] = useState(false)
     const [modalActive, setModalActive] = useState(false)
@@ -115,13 +118,13 @@ function TradeHistoryEntry(
     let exploreButton = null
     if (tradeRecord.aggregateInterval !== 'DAILY') {
         exploreButton =
-            <div className="expand" onClick={() => {
+            <div className="ct-trade-history-entry__header__expand" onClick={() => {
                 const record = tradeRecord
                 const st = record.startDate
                 const en = formatDateMoment(getDate(record.endDate ?? '').add(1, 'days'), CoreConstants.DateTime.ISODateFormat)
                 selectEntryHandler(record.aggregateInterval, st, en)
             }}>
-                <SimpleButton variant={'primary'} text={'View'} icon={<SlMagnifier />} iconPosition={'right'} />
+                <SimpleButton variant={'primary'} text={'View'} icon={<SlMagnifier/>} iconPosition={'right'}/>
             </div>
     }
 
@@ -190,24 +193,21 @@ function TradeHistoryEntry(
             }
             <div className="columns is-multiline is-mobile is-vcentered ct-trade-history-entry__ordered-columns">
                 <div className="column is-3">
-                    Equity Curve
-                    {/*<TradeLogEntryEquityCurve
-                                    points={this.props.tradeRecord.statistics.points}
-                                    index={this.props.index}
-                                    height={125}
-                                    showXAxis={false}
-                                    showYAxis={false}
-                                    showTooltip={false}
-                                />*/}
+                    <TradeHistoryEquityCurve
+                        points={tradeRecord.statistics?.points ?? []}
+                        index={index}
+                        height={125}
+                        showXAxis={false}
+                        showYAxis={false}
+                        showTooltip={false}
+                    />
                 </div>
                 <div className="column is-9">
                     <table className="table is-fullwidth">
                         <tbody>
                         <tr>
                             <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">
-                                    Trades
-                                </h5>
+                                <h5 className="ct-trade-history-entry__ordered-columns__header">Trades</h5>
                             </td>
                             <td className="has-text-right">
                                 <h5 className="ct-trade-history-entry__ordered-columns__value">
@@ -216,18 +216,14 @@ function TradeHistoryEntry(
                                 {computeWinningText()}
                             </td>
                             <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">
-                                    Average Win
-                                </h5>
+                                <h5 className="ct-trade-history-entry__ordered-columns__header">Average Win</h5>
                             </td>
                             <td className="has-text-right">
                                 <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.averageWinAmount ?? -1)}</h5>
                                 <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.averageWinSize ?? -1)}&nbsp;pts</h6>
                             </td>
                             <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">
-                                    Largest Win
-                                </h5>
+                                <h5 className="ct-trade-history-entry__ordered-columns__header">Largest Win</h5>
                             </td>
                             <td className="has-text-right">
                                 <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.largestWinAmount ?? -1)}</h5>
@@ -236,9 +232,7 @@ function TradeHistoryEntry(
                         </tr>
                         <tr>
                             <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">
-                                    Net P&L
-                                </h5>
+                                <h5 className="ct-trade-history-entry__ordered-columns__header">Net P&L</h5>
                                 <h6 className="ct-trade-history-entry__ordered-columns__sub-header">
                                     Profitability: {formatNumberForDisplay(tradeRecord.statistics?.profitability ?? -1)}
                                 </h6>
@@ -252,18 +246,14 @@ function TradeHistoryEntry(
                                 </h6>
                             </td>
                             <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">
-                                    Average Loss
-                                </h5>
+                                <h5 className="ct-trade-history-entry__ordered-columns__header">Average Loss</h5>
                             </td>
                             <td className="has-text-right">
                                 <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.averageLossAmount ?? -1)}</h5>
                                 <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.averageLossSize ?? -1)}&nbsp;pts</h6>
                             </td>
                             <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">
-                                    Largest Loss
-                                </h5>
+                                <h5 className="ct-trade-history-entry__ordered-columns__header">Largest Loss</h5>
                             </td>
                             <td className="has-text-right">
                                 <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.largestLossAmount ?? -1)}</h5>
@@ -277,7 +267,7 @@ function TradeHistoryEntry(
                     className={"column is-12" + ((isActive && shouldAllowTradeList) ? '' : ' no-show ')}>
                     <hr/>
                     <div className="columns is-multiline is-mobile is-vcentered">
-                        <div className="column is-6">
+                        <div className="column is-12">
                             Trade Log List
                             {/*<TradeLogTradeList
                                             tradeData={this.state.trades}
@@ -287,15 +277,12 @@ function TradeHistoryEntry(
                                             disregardHandler={this.disregardTrade}
                                         />*/}
                         </div>
-                        <div className="column is-6">
-                            Live chart (deprecated)
-                        </div>
                     </div>
                 </div>
-                {/*<TradeLogEntryEquityCurveModal modalActive={this.state.modalActive} toggleModal={this.toggleModal}>
+                {/*<TradeLogEntryEquityCurveModal modalActive={modalActive} toggleModal={toggleModal}>
                     <TradeLogEntryEquityCurve
-                        points={this.props.tradeRecord.statistics.points}
-                        index={this.props.index}
+                        points={tradeRecord.statistics.points}
+                        index={index}
                         height={500}
                         showXAxis={true}
                         showYAxis={true}

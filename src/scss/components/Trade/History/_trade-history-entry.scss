@@ -16,6 +16,8 @@
     }
 
     &__expand {
+      color: $color-primary;
+
       &:hover {
         cursor: pointer;
       }

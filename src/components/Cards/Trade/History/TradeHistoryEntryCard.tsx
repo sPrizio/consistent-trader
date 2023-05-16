@@ -3,7 +3,21 @@ import {useState} from "react";
 import TradeHistoryEntry from "../../../Trade/History/TradeHistoryEntry";
 import {TradeRecordInfo} from "../../../../types/api-types";
 
-function TradeHistoryEntryCard({tradeRecord = {}, index = -1, selectedEntryHandler, listId = -1, shouldAllowTradeList = false}: {tradeRecord: TradeRecordInfo, index: number, selectedEntryHandler: Function, listId: number, shouldAllowTradeList: boolean}) {
+function TradeHistoryEntryCard(
+    {
+        tradeRecord = {},
+        index = -1,
+        selectedEntryHandler,
+        listId = -1,
+        shouldAllowTradeList = false
+    }: {
+        tradeRecord:
+            TradeRecordInfo,
+        index: number,
+        selectedEntryHandler: Function,
+        listId: number,
+        shouldAllowTradeList: boolean
+    }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -15,7 +29,12 @@ function TradeHistoryEntryCard({tradeRecord = {}, index = -1, selectedEntryHandl
             <BaseCard
                 loading={isLoading}
                 hasBorder={false}
-                content={[<TradeHistoryEntry key={0} tradeRecord={tradeRecord} shouldAllowTradeList={shouldAllowTradeList} selectEntryHandler={selectedEntryHandler} />]}
+                content={[<TradeHistoryEntry key={0}
+                                             tradeRecord={tradeRecord}
+                                             shouldAllowTradeList={shouldAllowTradeList}
+                                             selectEntryHandler={selectedEntryHandler}
+                                             index={index}
+                />]}
             />
         </>
     )

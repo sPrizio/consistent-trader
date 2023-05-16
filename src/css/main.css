@@ -1211,6 +1211,9 @@ button {
   font-weight: 400;
 }
 
+.ct-trade-history-entry hr {
+  background-color: rgba(215, 215, 215, 0.5);
+}
 .ct-trade-history-entry__header__result svg {
   height: 24px;
   width: 24px;
@@ -1293,40 +1296,75 @@ button {
   line-height: 26px;
   font-weight: 700;
 }
-.ct-trade-history-entry .trade-log .trade-list .container {
-  margin-top: 25px;
+.ct-trade-history-entry__trade-list .container {
+  margin-top: 12px;
 }
-.ct-trade-history-entry .trade-log .trade-list .pagination-link {
+.ct-trade-history-entry__trade-list .table .hide-lines td {
+  border: none !important;
+}
+.ct-trade-history-entry__trade-list .table tr.selected td {
+  color: white;
+}
+.ct-trade-history-entry__trade-list .table tr.selected td .icon {
+  color: white;
+}
+.ct-trade-history-entry__trade-list .table thead tr {
+  background-color: #137DC5;
+}
+.ct-trade-history-entry__trade-list .table thead tr th {
+  color: #FFFFFF;
+  border-bottom: none;
+  font-weight: 500;
+}
+.ct-trade-history-entry__trade-list .table thead tr th:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.ct-trade-history-entry__trade-list .table thead tr th:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.ct-trade-history-entry__trade-list .table tbody tr:nth-child(odd) {
+  background-color: rgba(19, 125, 197, 0.125);
+}
+.ct-trade-history-entry__trade-list .table tbody tr td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.ct-trade-history-entry__trade-list .table tbody tr td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.ct-trade-history-entry__trade-list .table-container {
+  margin-bottom: 0;
+}
+.ct-trade-history-entry__trade-list .icon {
+  font-size: 22px;
+  line-height: 32px;
+}
+.ct-trade-history-entry__trade-list .icon.buy {
+  color: #356d76;
+}
+.ct-trade-history-entry__trade-list .icon.sell {
+  color: #765e35;
+}
+.ct-trade-history-entry__trade-list .ct-pagination {
+  margin-top: 18px;
+}
+.ct-trade-history-entry__trade-list .ct-pagination .sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+.ct-trade-history-entry__trade-list .ct-pagination .pagination-link {
+  color: #313131;
   background-color: rgb(240, 242, 244);
   border: none;
 }
-.ct-trade-history-entry .trade-log .trade-list .pagination-link.is-current {
-  color: white;
-}
-.ct-trade-history-entry .trade-log .trade-list .icon {
-  font-size: 22px;
-}
-.ct-trade-history-entry .trade-log .trade-list .table .hide-lines td {
-  border: none !important;
-}
-.ct-trade-history-entry .trade-log .trade-list .table tr.selected td {
-  color: white;
-}
-.ct-trade-history-entry .trade-log .trade-list .table tr.selected td .icon {
-  color: white;
-}
-.ct-trade-history-entry .trade-log .trade-list .table-container {
-  margin-bottom: 0;
-}
-.ct-trade-history-entry .trade-log .trade-list .disregard-container {
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.ct-trade-history-entry .trade-log .chart-container {
-  margin: 0 auto;
-  height: 500px;
-  width: 100%;
+.ct-trade-history-entry__trade-list .ct-pagination .pagination-link.is-current {
+  background-color: #137DC5;
+  color: #FFFFFF;
 }
 
 .ct-trade-log__disclaimer {

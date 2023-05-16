@@ -130,6 +130,27 @@ export type BalanceHistoryInfo = {
 
 //  TRADE & TRADE RECORD
 
+export type TradeInfo = {
+    account?: AccountInfo,
+    closePrice?: number,
+    empty?: boolean,
+    lotSize?: number,
+    netProfit?: number,
+    openPrice?: number,
+    pips?: number,
+    processed?: boolean,
+    product?: string,
+    reasonForEntrance?: Array<string>,
+    relevant?: boolean,
+    resultOfTrade?: Array<string>,
+    tradeCloseTime?: string,
+    tradeId?: string,
+    tradeOpenTime?: string,
+    tradePlatform?: string,
+    tradeType?: string,
+    uid?: string,
+}
+
 export type EquityChartPoint = {
     x?: string,
     y?: number,
@@ -229,6 +250,35 @@ export type ActiveYearInfo = {
     netProfit?: number,
     numberOfTrades?: number,
     year?: number,
+}
+
+export type SortInfo = {
+    empty?: boolean,
+    sorted?: boolean,
+    unsorted?: boolean,
+}
+
+export type PageableInfo = {
+    offset?: number,
+    pageNumber?: number,
+    pageSize?: number,
+    paged?: boolean,
+    sort?: SortInfo,
+    unpaged?: boolean,
+}
+
+export type PagedTradesInfo = {
+    content?: Array<TradeInfo>,
+    empty?: boolean,
+    first?: boolean,
+    last?: boolean,
+    number?: number,
+    numberOfElements?: number,
+    pageable?: PageableInfo,
+    size?: number,
+    sort?: SortInfo,
+    totalElements?: number,
+    totalPages?: number
 }
 
 

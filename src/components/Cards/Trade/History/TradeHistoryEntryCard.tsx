@@ -1,8 +1,19 @@
 import BaseCard from "../../BaseCard";
 import {useState} from "react";
-import TradeHistoryEntry from "../../../Trade/History/TradeHistoryEntry";
+import TradeHistoryEntry from "../../../Trade/History/Entry/TradeHistoryEntry";
 import {TradeRecordInfo} from "../../../../types/api-types";
 
+/**
+ * Card that renders a trade history entry component
+ *
+ * @param tradeRecord trade record info
+ * @param index session index
+ * @param selectedEntryHandler select entry handler
+ * @param listId list id
+ * @param shouldAllowTradeList true if a trade list should be shown
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function TradeHistoryEntryCard(
     {
         tradeRecord = {},

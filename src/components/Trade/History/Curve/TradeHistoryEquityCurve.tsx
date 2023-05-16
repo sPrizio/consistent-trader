@@ -1,6 +1,6 @@
-import {CoreConstants} from "../../../constants/CoreConstants";
-import {formatNumberForDisplay} from "../../../services/data/FormattingService";
-import {formatDate} from "../../../services/datetime/DateTimeService";
+import {CoreConstants} from "../../../../constants/CoreConstants";
+import {formatNumberForDisplay} from "../../../../services/data/FormattingService";
+import {formatDate} from "../../../../services/datetime/DateTimeService";
 import {Area, CartesianGrid, ComposedChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 export function TradeHistoryEquityCurve(

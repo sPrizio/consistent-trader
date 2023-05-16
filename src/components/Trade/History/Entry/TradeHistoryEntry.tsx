@@ -1,16 +1,28 @@
-import {TradeRecordInfo} from "../../../types/api-types";
-import React, {useState} from "react";
+import {StandardJsonResponse, TradeRecordInfo} from "../../../../types/api-types";
+import React, {useEffect, useState} from "react";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
-import {CoreConstants} from "../../../constants/CoreConstants";
-import {formatDate, formatDateMoment, getDate} from "../../../services/datetime/DateTimeService";
-import {SlMagnifier} from "react-icons/sl";
+import {CoreConstants} from "../../../../constants/CoreConstants";
+import {formatDate, formatDateMoment, getDate} from "../../../../services/datetime/DateTimeService";
 import {AiFillCheckCircle} from "react-icons/ai";
 import {MdInsertChartOutlined, MdOutlineCancel} from "react-icons/md";
-import {formatNumberForDisplay} from "../../../services/data/FormattingService";
-import SimpleButton from "../../Buttons/SimpleButton";
-import TradeHistoryEquityCurve from "./TradeHistoryEquityCurve";
+import {formatNumberForDisplay} from "../../../../services/data/FormattingService";
+import SimpleButton from "../../../Buttons/SimpleButton";
+import TradeHistoryEquityCurve from "../Curve/TradeHistoryEquityCurve";
+import TradeHistoryEntryTradeList from "./TradeHistoryEntryTradeList";
+import get from "../../../../services/client/ClientService";
+import hasData from "../../../../services/data/DataIntegrityService";
+import {RxMagnifyingGlass} from "react-icons/rx";
 
-
+/**
+ * Component that renders a trade record, information about a trading session
+ *
+ * @param tradeRecord trade record data
+ * @param selectEntryHandler select entry handler
+ * @param shouldAllowTradeList true if list of trades should be shown
+ * @param index session index in list
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function TradeHistoryEntry(
     {
         tradeRecord = {},
@@ -24,19 +36,36 @@ function TradeHistoryEntry(
         shouldAllowTradeList: boolean,
         index: number
     }) {
+
     const [isActive, setIsActive] = useState(false)
     const [modalActive, setModalActive] = useState(false)
+    const [trades, setTrades] = useState({})
+    const [currentPage, setCurrentPage] = useState(0)
+    const [pageSize, setPageSize] = useState(10)
+
+    useEffect(() => {
+        if (isActive) {
+            getTrades()
+        }
+    }, [isActive, currentPage])
 
 
     //  HANDLER FUNCTIONS
+
+    /**
+     * Handles changing page for the pagination
+     *
+     * @param val page value
+     */
+    function changePage(val: number) {
+        setCurrentPage(val)
+    }
 
     /**
      * Toggles the trade list view as open (explodes the entry)
      */
     function toggleTradeView() {
         setIsActive(!isActive)
-        //  get trades
-        //this.setState({isActive: !this.state.isActive}, () => this.getTrades())
     }
 
     /**
@@ -104,6 +133,31 @@ function TradeHistoryEntry(
         )
     }
 
+    /**
+     * Fetches the trades contained within this trade record session
+     */
+    function getTrades() {
+
+        const d =
+            get(
+                CoreConstants.ApiUrls.Trade.ListPaged
+                    .replace('{start}', formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISODateTimeFormat))
+                    .replace('{end}', formatDate(tradeRecord.endDate ?? '', CoreConstants.DateTime.ISODateTimeFormat))
+                    .replace('{includeNonRelevant}', 'false')
+                    .replace('{page}', currentPage.toString())
+                    .replace('{pageSize}', pageSize.toString())
+            )
+        d.then(res => {
+            let response: StandardJsonResponse = JSON.parse(res)
+            if (response.success && hasData(response.data)) {
+                console.log(response.data)
+                setTrades(response.data)
+            }
+        })
+
+        return {}
+    }
+
 
     //  RENDER
 
@@ -124,7 +178,7 @@ function TradeHistoryEntry(
                 const en = formatDateMoment(getDate(record.endDate ?? '').add(1, 'days'), CoreConstants.DateTime.ISODateFormat)
                 selectEntryHandler(record.aggregateInterval, st, en)
             }}>
-                <SimpleButton variant={'primary'} text={'View'} icon={<SlMagnifier/>} iconPosition={'right'}/>
+                <SimpleButton variant={'primary'} text={'View'} icon={<RxMagnifyingGlass/>} iconPosition={'right'}/>
             </div>
     }
 
@@ -134,7 +188,7 @@ function TradeHistoryEntry(
                 <div className="level-left">
                     <div className="level-item">
                         {
-                            tradeRecord.statistics?.netPips ?? -1 > 0 ?
+                            (tradeRecord.statistics?.netPips ?? -1) > 0 ?
                                 <span className="icon ct-trade-history-entry__header__result positive">
                                     <AiFillCheckCircle/>
                                 </span>
@@ -153,9 +207,9 @@ function TradeHistoryEntry(
                 </div>
                 <div className="level-right">
                     <div className="level-item">
-                        <p className={'ct-trade-history-entry__header__percentage' + (tradeRecord.statistics?.percentageProfit ?? -1 >= 0 ? ' positive ' : ' negative ')}>
+                        <p className={'ct-trade-history-entry__header__percentage' + ((tradeRecord.statistics?.percentageProfit ?? -1) >= 0 ? ' positive ' : ' negative ')}>
                             {
-                                tradeRecord.statistics?.percentageProfit ?? 0 !== 0 ?
+                                (tradeRecord.statistics?.percentageProfit ?? 0) !== 0 ?
                                     formatNumberForDisplay(tradeRecord.statistics?.percentageProfit ?? -1) + '%'
                                     :
                                     null
@@ -181,7 +235,7 @@ function TradeHistoryEntry(
                     </div>
                 </div>
             </div>
-            <hr/>
+            <br />
             {
                 tradeRecord.aggregateInterval !== 'DAILY' ?
                     <div className="has-text-right is-fullwidth ct-trade-history-entry__trade-sessions-container">
@@ -263,19 +317,10 @@ function TradeHistoryEntry(
                         </tbody>
                     </table>
                 </div>
-                <div
-                    className={"column is-12" + ((isActive && shouldAllowTradeList) ? '' : ' no-show ')}>
-                    <hr/>
+                <div className={"column is-12" + ((isActive && shouldAllowTradeList) ? '' : ' no-show ')}>
                     <div className="columns is-multiline is-mobile is-vcentered">
                         <div className="column is-12">
-                            Trade Log List
-                            {/*<TradeLogTradeList
-                                            tradeData={this.state.trades}
-                                            pageHandler={this.changePage}
-                                            selectedTrade={this.state.selectedTrade}
-                                            selectTradeHandler={this.selectTrade}
-                                            disregardHandler={this.disregardTrade}
-                                        />*/}
+                            <TradeHistoryEntryTradeList tradeData={trades} pageHandler={changePage}/>
                         </div>
                     </div>
                 </div>

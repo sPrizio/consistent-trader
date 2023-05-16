@@ -168,8 +168,14 @@ export type TradeRecordStatisticsInfo = {
 }
 
 export type TradeRecordInfo = {
+    account?: AccountInfo,
+    aggregateInterval?: string,
+    balance?: number,
+    empty?: boolean,
+    endDate?: string,
     startDate?: string,
     statistics?: TradeRecordStatisticsInfo,
+    uid?: string
 }
 
 export type PerformanceSummaryInfo = {
@@ -209,6 +215,20 @@ export type DisregardedEntryInfo = {
 export type DisregardedTradesInfo = {
     current?: DisregardedEntryInfo,
     previous?: DisregardedEntryInfo,
+}
+
+export type ActiveMonthInfo = {
+    active?: boolean,
+    month?: string,
+    netProfit?: number,
+    numberOfTrades?: number,
+}
+
+export type ActiveYearInfo = {
+    active?: boolean,
+    netProfit?: number,
+    numberOfTrades?: number,
+    year?: number,
 }
 
 

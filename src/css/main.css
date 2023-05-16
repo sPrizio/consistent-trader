@@ -54,23 +54,8 @@ body, html {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
   }
 }
-.ct-content-page .page-container {
-  padding: 24px 24px;
-  max-width: 1440px;
-  margin: 0 auto;
-  transition-property: padding-top, padding-right, padding-bottom, padding-left;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
-}
-@media screen and (min-width: 768px) {
-  .ct-content-page .page-container {
-    padding: 36px 48px;
-  }
-}
-@media screen and (min-width: 992px) {
-  .ct-content-page .page-container {
-    padding: 48px 100px;
-  }
+option[disabled] {
+  color: rgba(161, 172, 184, 0.35);
 }
 
 h1,
@@ -504,7 +489,14 @@ hr.is-primary {
   font-weight: 700;
 }
 
+button {
+  all: unset;
+}
+
 .ct-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background: none;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -521,6 +513,12 @@ hr.is-primary {
   transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
+}
+.ct-button__inner:first-child {
+  padding-right: 6px;
+}
+.ct-button__inner:last-child {
+  padding-left: 6px;
 }
 @media screen and (min-width: 992px) {
   .ct-button {
@@ -1329,6 +1327,25 @@ hr.is-primary {
   height: auto;
 }
 
+.ct-content-page .page-container {
+  padding: 24px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  transition-property: padding-top, padding-right, padding-bottom, padding-left;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .ct-content-page .page-container {
+    padding: 36px 48px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .ct-content-page .page-container {
+    padding: 48px 100px;
+  }
+}
+
 .ct-contact-page .container {
   margin-top: 50px;
 }
@@ -1364,6 +1381,12 @@ hr.is-primary {
 .ct-contact-page .card.reset-borders {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.ct-trade-history-page__disclaimer-container {
+  height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .ct-profile-page__tabs {

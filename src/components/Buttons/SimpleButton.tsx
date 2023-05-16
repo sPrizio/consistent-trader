@@ -12,6 +12,8 @@ import React from "react";
  * @param disabled - flag to determine whether this button should render as disabled
  * @param loading - flag to show the button as loading
  * @param handler - handler function for button
+ * @param icon - icon component
+ * @param iconPosition - icon position on left or right of text
  *
  * @author Stephen Prizio
  * @version 1.0
@@ -25,7 +27,9 @@ function SimpleButton(
         active = false,
         disabled = false,
         loading = false,
-        handler = null
+        handler = null,
+        icon = null,
+        iconPosition = 'left',
     }
         : {
         text?: string,
@@ -35,7 +39,9 @@ function SimpleButton(
         active?: boolean,
         disabled?: boolean,
         loading?: boolean,
-        handler?: any
+        handler?: any,
+        icon?: any,
+        iconPosition?: 'left' | 'right'
     }
 ) {
 
@@ -66,9 +72,13 @@ function SimpleButton(
     //  RENDER
 
     return (
-        <button className={computeClass(variant, inverted, plain, active)} disabled={disabled} onClick={handler}>
-            {!loading ? text : <div className="ct-button--loader">L</div>}
-        </button>
+        <div className={computeClass(variant, inverted, plain, active)}>
+            {icon && iconPosition === 'left' ? icon : null}
+            <button className="ct-button__inner" disabled={disabled} onClick={handler}>
+                {!loading ? text : <div className="ct-button--loader">L</div>}
+            </button>
+            {icon && iconPosition === 'right' ? icon : null}
+        </div>
     );
 }
 

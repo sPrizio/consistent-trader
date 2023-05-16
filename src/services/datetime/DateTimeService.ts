@@ -36,3 +36,32 @@ export function formatDateMoment(value: Moment, format: string) {
         return ''
     }
 }
+
+/**
+ * Obtains an instance of a moment date for the given string
+ *
+ * @param value date string
+ */
+export function getDate(value: string): Moment {
+    try {
+        return moment(value)
+    } catch (e) {
+        console.log(e)
+        return moment()
+    }
+}
+
+/**
+ * Obtains an instance of a moment date for the given string and date format
+ *
+ * @param value date string
+ * @param format date format
+ */
+export function getDateForFormat(value: string, format: string): Moment {
+    try {
+        return moment(value, format)
+    } catch (e) {
+        console.log(e)
+        return moment()
+    }
+}

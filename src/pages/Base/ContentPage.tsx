@@ -4,6 +4,7 @@ import OverviewPage from "../OverviewPage";
 import ProfilePage from "../ProfilePage";
 import AboutPage from "../Content/AboutPage";
 import ContactPage from "../Content/ContactPage";
+import TradeHistoryPage from "../Trade/TradeHistoryPage";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -45,6 +46,8 @@ function ContentPage() {
                 return <AboutPage />
             case "contact":
                 return <ContactPage />
+            case "history":
+                return <TradeHistoryPage />
             default:
                 return null;
         }

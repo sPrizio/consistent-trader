@@ -1,4 +1,11 @@
+button {
+  all: unset;
+}
+
 .ct-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background: none;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -15,6 +22,16 @@
   transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: $transition-duration;
   transition-timing-function: $transition-curve;
+
+  &__inner {
+    &:first-child {
+      padding-right: 6px;
+    }
+
+    &:last-child {
+      padding-left: 6px;
+    }
+  }
 
   @include mq-large-up {
     font-size: 15px;

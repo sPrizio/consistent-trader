@@ -20,7 +20,7 @@ import React from "react";
  */
 function SimpleButton(
     {
-        text = 'Lorem Ipsum',
+        text = '',
         variant = 'primary',
         inverted = false,
         plain = false,
@@ -41,7 +41,7 @@ function SimpleButton(
         loading?: boolean,
         handler?: any,
         icon?: any,
-        iconPosition?: 'left' | 'right'
+        iconPosition?: 'left' | 'right' | 'center'
     }
 ) {
 
@@ -74,9 +74,15 @@ function SimpleButton(
     return (
         <div className={computeClass(variant, inverted, plain, active)}>
             {icon && iconPosition === 'left' ? icon : null}
-            <button className="ct-button__inner" disabled={disabled} onClick={handler}>
-                {!loading ? text : <div className="ct-button--loader">L</div>}
-            </button>
+            {icon && iconPosition === 'center' ? icon : null}
+            {
+                text && text.length > 0 ?
+                    <button className="ct-button__inner" disabled={disabled} onClick={handler}>
+                        {!loading ? text : <div className="ct-button--loader">L</div>}
+                    </button>
+                    :
+                    null
+            }
             {icon && iconPosition === 'right' ? icon : null}
         </div>
     );

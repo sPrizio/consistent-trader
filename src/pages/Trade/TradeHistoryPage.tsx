@@ -9,6 +9,7 @@ import {displayString} from "../../services/data/FormattingService";
 import {AiOutlineArrowLeft} from "react-icons/ai";
 import SimpleButton from "../../components/Buttons/SimpleButton";
 import TradeHistoryEntryCard from "../../components/Cards/Trade/History/TradeHistoryEntryCard";
+import {BsArrowLeftShort} from "react-icons/bs";
 
 /**
  * The trade history page, showing each session for the given interval of time
@@ -165,7 +166,7 @@ function TradeHistoryPage() {
             <SimpleButton
                 text={currentYear}
                 iconPosition={'left'}
-                icon={<AiOutlineArrowLeft/>}
+                icon={<BsArrowLeftShort/>}
                 handler={() => handleButtonClick('DAILY')}
                 variant={'primary'}
                 inverted={true}
@@ -176,7 +177,7 @@ function TradeHistoryPage() {
             <SimpleButton
                 text={'All-time'}
                 iconPosition={'left'}
-                icon={<AiOutlineArrowLeft/>}
+                icon={<BsArrowLeftShort/>}
                 handler={() => handleButtonClick('MONTHLY')}
                 variant={'primary'}
                 inverted={true}

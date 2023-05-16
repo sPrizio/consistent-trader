@@ -514,17 +514,20 @@ button {
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
+.ct-button svg {
+  font-size: 1.5rem;
+}
 .ct-button__inner:first-child {
-  padding-right: 6px;
+  padding-right: 4px;
 }
 .ct-button__inner:last-child {
-  padding-left: 6px;
+  padding-left: 4px;
 }
 @media screen and (min-width: 992px) {
   .ct-button {
     font-size: 15px;
     line-height: 20px;
-    padding: 8px 20px;
+    padding: 8px 16px;
   }
 }
 .ct-button:hover, .ct-button:focus-visible {
@@ -1206,6 +1209,121 @@ button {
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
+}
+
+.ct-trade-history-entry__header__result svg {
+  height: 24px;
+  width: 24px;
+}
+.ct-trade-history-entry__header__result.positive {
+  color: rgb(113, 221, 55);
+}
+.ct-trade-history-entry__header__result.negative {
+  color: rgb(255, 62, 29);
+}
+.ct-trade-history-entry__header__expand:hover {
+  cursor: pointer;
+}
+.ct-trade-history-entry__header__title {
+  /*color: $color-font-header-title;*/
+  color: #137DC5;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+}
+.ct-trade-history-entry__header__subtitle {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+.ct-trade-history-entry__header__percentage {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.ct-trade-history-entry__header__percentage.positive {
+  color: rgb(113, 221, 55);
+}
+.ct-trade-history-entry__header__percentage.negative {
+  color: rgb(255, 62, 29);
+}
+.ct-trade-history-entry__header .level-right .level-item:not(:last-child) {
+  margin-right: 24px;
+}
+.ct-trade-history-entry__trade-sessions-container {
+  padding: 0 12px 0 12px;
+}
+.ct-trade-history-entry__trade-sessions-container__trading-days {
+  color: rgb(86, 106, 127);
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.ct-trade-history-entry__ordered-columns .column:not(:first-child):not(:last-child) {
+  /*border-right: 2px solid rgba(theme.$primary-color, 0.35);*/
+  border-right: 2px solid rgba(19, 125, 197, 0);
+}
+.ct-trade-history-entry__ordered-columns .column .table tr:not(:last-child) td {
+  border-bottom: 2px solid rgba(19, 125, 197, 0.35);
+}
+.ct-trade-history-entry__ordered-columns .column .table tr:not(:last-child) th {
+  border-bottom: 2px solid rgba(19, 125, 197, 0.35);
+}
+.ct-trade-history-entry__ordered-columns__header {
+  color: rgb(86, 106, 127);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 500;
+}
+.ct-trade-history-entry__ordered-columns__sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 300;
+}
+.ct-trade-history-entry__ordered-columns__value {
+  color: rgb(86, 106, 127);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+.ct-trade-history-entry .trade-log .trade-list .container {
+  margin-top: 25px;
+}
+.ct-trade-history-entry .trade-log .trade-list .pagination-link {
+  background-color: rgb(240, 242, 244);
+  border: none;
+}
+.ct-trade-history-entry .trade-log .trade-list .pagination-link.is-current {
+  color: white;
+}
+.ct-trade-history-entry .trade-log .trade-list .icon {
+  font-size: 22px;
+}
+.ct-trade-history-entry .trade-log .trade-list .table .hide-lines td {
+  border: none !important;
+}
+.ct-trade-history-entry .trade-log .trade-list .table tr.selected td {
+  color: white;
+}
+.ct-trade-history-entry .trade-log .trade-list .table tr.selected td .icon {
+  color: white;
+}
+.ct-trade-history-entry .trade-log .trade-list .table-container {
+  margin-bottom: 0;
+}
+.ct-trade-history-entry .trade-log .trade-list .disregard-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.ct-trade-history-entry .trade-log .chart-container {
+  margin: 0 auto;
+  height: 500px;
+  width: 100%;
 }
 
 .ct-trade-log__disclaimer {

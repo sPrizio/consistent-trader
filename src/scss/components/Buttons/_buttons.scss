@@ -23,20 +23,24 @@ button {
   transition-duration: $transition-duration;
   transition-timing-function: $transition-curve;
 
+  svg {
+    font-size: 1.5rem;
+  }
+
   &__inner {
     &:first-child {
-      padding-right: 6px;
+      padding-right: 4px;
     }
 
     &:last-child {
-      padding-left: 6px;
+      padding-left: 4px;
     }
   }
 
   @include mq-large-up {
     font-size: 15px;
     line-height: 20px;
-    padding: 8px 20px;
+    padding: 8px 16px;
   }
 
   &:hover,

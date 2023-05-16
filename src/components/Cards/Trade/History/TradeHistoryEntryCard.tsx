@@ -15,7 +15,7 @@ function TradeHistoryEntryCard({tradeRecord = {}, index = -1, selectedEntryHandl
             <BaseCard
                 loading={isLoading}
                 hasBorder={false}
-                content={[<TradeHistoryEntry key={0} />]}
+                content={[<TradeHistoryEntry key={0} tradeRecord={tradeRecord} shouldAllowTradeList={shouldAllowTradeList} selectEntryHandler={selectedEntryHandler} />]}
             />
         </>
     )

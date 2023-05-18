@@ -1299,14 +1299,12 @@ button {
 .ct-trade-history-entry__trade-list .container {
   margin-top: 12px;
 }
+.ct-trade-history-entry__trade-list .test {
+  display: flex;
+  justify-content: center;
+}
 .ct-trade-history-entry__trade-list .table .hide-lines td {
   border: none !important;
-}
-.ct-trade-history-entry__trade-list .table tr.selected td {
-  color: white;
-}
-.ct-trade-history-entry__trade-list .table tr.selected td .icon {
-  color: white;
 }
 .ct-trade-history-entry__trade-list .table thead tr {
   background-color: #137DC5;

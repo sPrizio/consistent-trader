@@ -24,9 +24,9 @@ function TradeHistoryEntryTradeList({tradeData = {}, pageHandler}: { tradeData: 
                         <tr>
                             <th/>
                             <th className="has-text-centered is-vcentered">Open</th>
+                            <th className="has-text-centered is-vcentered">Price (O)</th>
                             <th className="has-text-centered is-vcentered">Close</th>
-                            <th className="has-text-centered is-vcentered">Entry Price</th>
-                            <th className="has-text-centered is-vcentered">Exit Price</th>
+                            <th className="has-text-centered is-vcentered">Price (C)</th>
                             <th className="has-text-centered is-vcentered">Product</th>
                             <th className="has-text-centered is-vcentered">Size</th>
                             <th className="has-text-centered is-vcentered">P&L</th>

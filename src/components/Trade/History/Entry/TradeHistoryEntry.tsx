@@ -2,7 +2,12 @@ import {StandardJsonResponse, TradeRecordInfo} from "../../../../types/api-types
 import React, {useEffect, useState} from "react";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import {CoreConstants} from "../../../../constants/CoreConstants";
-import {formatDate, formatDateMoment, getDate} from "../../../../services/datetime/DateTimeService";
+import {
+    formatDate,
+    formatDateForTradeRecord,
+    formatDateMoment,
+    getDate
+} from "../../../../services/datetime/DateTimeService";
 import {AiFillCheckCircle} from "react-icons/ai";
 import {MdInsertChartOutlined, MdOutlineCancel} from "react-icons/md";
 import {formatNumberForDisplay} from "../../../../services/data/FormattingService";
@@ -12,6 +17,7 @@ import TradeHistoryEntryTradeList from "./TradeHistoryEntryTradeList";
 import get from "../../../../services/client/ClientService";
 import hasData from "../../../../services/data/DataIntegrityService";
 import {RxMagnifyingGlass} from "react-icons/rx";
+import TradeHistoryEquityCurveModal from "../../../Modals/Trade/History/Curve/TradeHistoryEquityCurveModal";
 
 /**
  * Component that renders a trade record, information about a trading session
@@ -77,22 +83,6 @@ function TradeHistoryEntry(
 
 
     //  GENERAL FUNCTIONS
-
-    /**
-     * Computes the header as the date to display representing the session as a function of the aggregate interval
-     */
-    function computeHeader() {
-        const interval = tradeRecord.aggregateInterval
-        if (interval === 'DAILY') {
-            return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOMonthDayFormat)
-        } else if (interval === 'WEEKLY') {
-            return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOMonthDayFormat) + ' - ' + formatDate(tradeRecord.endDate ?? '', CoreConstants.DateTime.ISODayFormat)
-        } else if (interval === 'MONTHLY') {
-            return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOMonthFormat)
-        }
-
-        return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOYearFormat)
-    }
 
     /**
      * Computes the sub header based on the day of the week and aggregate interval
@@ -199,7 +189,7 @@ function TradeHistoryEntry(
                         }
                     </div>
                     <div className="level-item">
-                        <h5 className="ct-trade-history-entry__header__title">{computeHeader()}</h5>
+                        <h5 className="ct-trade-history-entry__header__title">{formatDateForTradeRecord(tradeRecord.startDate ?? '', tradeRecord)}</h5>
                     </div>
                     <div className="level-item">
                         {computeSubHeader()}
@@ -219,13 +209,15 @@ function TradeHistoryEntry(
                     <div className="level-item">
                         {
                             shouldAllowTradeList ?
-                                <SimpleButton
-                                    text={''}
-                                    variant={'primary'}
-                                    icon={<MdInsertChartOutlined/>}
-                                    iconPosition={'center'}
-                                    handler={toggleModal}
-                                />
+                                <div onClick={toggleModal}>
+                                    <SimpleButton
+                                        text={''}
+                                        variant={'primary'}
+                                        icon={<MdInsertChartOutlined/>}
+                                        iconPosition={'center'}
+                                        handler={toggleModal}
+                                    />
+                                </div>
                                 : null
                         }
                     </div>
@@ -324,16 +316,12 @@ function TradeHistoryEntry(
                         </div>
                     </div>
                 </div>
-                {/*<TradeLogEntryEquityCurveModal modalActive={modalActive} toggleModal={toggleModal}>
-                    <TradeLogEntryEquityCurve
-                        points={tradeRecord.statistics.points}
-                        index={index}
-                        height={500}
-                        showXAxis={true}
-                        showYAxis={true}
-                        showTooltip={true}
-                    />
-                </TradeLogEntryEquityCurveModal>*/}
+                <TradeHistoryEquityCurveModal
+                    modalActive={modalActive}
+                    toggleModal={toggleModal}
+                    tradeRecord={tradeRecord}
+                    index={index}
+                />
             </div>
         </div>
     )

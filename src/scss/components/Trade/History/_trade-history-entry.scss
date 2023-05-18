@@ -127,20 +127,16 @@
       margin-top: 12px;
     }
 
+    .test {
+      display: flex;
+      justify-content: center;
+    }
+
     .table {
       $radius: 12px;
 
       .hide-lines td {
         border: none !important;
-      }
-
-      tr.selected td {
-        //background-color: theme.$primary-color;
-        color: white;
-
-        .icon {
-          color: white;
-        }
       }
 
       thead {

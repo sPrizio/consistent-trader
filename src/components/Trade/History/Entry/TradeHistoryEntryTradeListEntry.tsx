@@ -60,23 +60,25 @@ function TradeHistoryEntryTradeListEntry(
     return (
         <tr className="hide-lines">
             <td className="has-text-centered is-vcentered">
-                <span className={"icon " + (getTradeTypeClass())}>
+                <div className={'test'}>
+                    <span className={"icon " + (getTradeTypeClass())}>
                     {
                         tradeType === 'BUY' ?
                             <BsArrowUpRightCircleFill/>
                             :
                             <BsArrowDownRightCircleFill/>
                     }
-                </span>
+                    </span>
+                </div>
             </td>
             <td className="has-text-centered is-vcentered">
                 {formatDate(openTime, CoreConstants.DateTime.ISOShortTimeFormat)}
             </td>
             <td className="has-text-centered is-vcentered">
-                {formatDate(closeTime, CoreConstants.DateTime.ISOShortTimeFormat)}
+                {formatNumberForDisplay(entryPrice)}
             </td>
             <td className="has-text-centered is-vcentered">
-                {formatNumberForDisplay(entryPrice)}
+                {formatDate(closeTime, CoreConstants.DateTime.ISOShortTimeFormat)}
             </td>
             <td className="has-text-centered is-vcentered">
                 {formatNumberForDisplay(exitPrice)}

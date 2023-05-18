@@ -1,4 +1,6 @@
 import moment, {Moment} from "moment";
+import {CoreConstants} from "../../constants/CoreConstants";
+import {TradeRecordInfo} from "../../types/api-types";
 
 /**
  * Obtains the current date & time
@@ -64,4 +66,24 @@ export function getDateForFormat(value: string, format: string): Moment {
         console.log(e)
         return moment()
     }
+}
+
+/**
+ * Formats a date for the given trade record (based on its aggregate interval)
+ *
+ * @param value date value
+ * @param tradeRecord trade record
+ */
+export function formatDateForTradeRecord(value: string, tradeRecord: TradeRecordInfo) {
+
+    const interval = tradeRecord.aggregateInterval
+    if (interval === 'DAILY') {
+        return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOMonthDayFormat)
+    } else if (interval === 'WEEKLY') {
+        return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOMonthDayFormat) + ' - ' + formatDate(tradeRecord.endDate ?? '', CoreConstants.DateTime.ISODayFormat)
+    } else if (interval === 'MONTHLY') {
+        return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOMonthFormat)
+    }
+
+    return formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISOYearFormat);
 }

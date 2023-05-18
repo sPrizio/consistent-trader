@@ -1,15 +1,15 @@
 import {useEffect, useState} from "react";
-import ProfileBanner from "../components/Account/Profile/ProfileBanner";
-import {getUser} from "../services/user/userService";
-import EquityCurveCard from "../components/Cards/Account/EquityCurveCard";
-import ProfileContent from "../components/Account/Profile/ProfileContent";
-import BalanceHistoryCard from "../components/Cards/Account/BalanceHistoryCard";
-import SimpleButton from "../components/Buttons/SimpleButton";
-import OverviewCard from "../components/Cards/Account/OverviewCard";
-import SkillProgressCard from "../components/Cards/Skill/SkillProgressCard";
-import PromotionalPaymentsCard from "../components/Cards/Account/PromotionalPaymentsCard";
-import DisregardedTradesCard from "../components/Cards/Trade/DisregardedTradesCard";
-import {getAccountOverview} from "../services/account/accountService";
+import ProfileBanner from "../../components/Account/Profile/ProfileBanner";
+import {getUser} from "../../services/user/userService";
+import EquityCurveCard from "../../components/Cards/Account/EquityCurveCard";
+import ProfileContent from "../../components/Account/Profile/ProfileContent";
+import BalanceHistoryCard from "../../components/Cards/Account/BalanceHistoryCard";
+import SimpleButton from "../../components/Buttons/SimpleButton";
+import OverviewCard from "../../components/Cards/Account/OverviewCard";
+import SkillProgressCard from "../../components/Cards/Skill/SkillProgressCard";
+import PromotionalPaymentsCard from "../../components/Cards/Account/PromotionalPaymentsCard";
+import DisregardedTradesCard from "../../components/Cards/Trade/DisregardedTradesCard";
+import {getAccountOverview} from "../../services/account/accountService";
 
 /**
  * Page that displays a user's profile

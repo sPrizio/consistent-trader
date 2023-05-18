@@ -1,10 +1,11 @@
 import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
 import {useState} from "react";
-import OverviewPage from "../OverviewPage";
-import ProfilePage from "../ProfilePage";
+import OverviewPage from "../Overview/OverviewPage";
+import ProfilePage from "../Profile/ProfilePage";
 import AboutPage from "../Content/AboutPage";
 import ContactPage from "../Content/ContactPage";
 import TradeHistoryPage from "../Trade/TradeHistoryPage";
+import ReportIssuePage from "../Content/ReportIssuePage";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -48,6 +49,8 @@ function ContentPage() {
                 return <ContactPage />
             case "history":
                 return <TradeHistoryPage />
+            case "report":
+                return <ReportIssuePage />
             default:
                 return null;
         }

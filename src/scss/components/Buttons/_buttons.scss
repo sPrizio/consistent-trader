@@ -6,6 +6,8 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-content: center;
+  justify-content: center;
   background: none;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -19,6 +21,7 @@ button {
   text-decoration: none;
   text-transform: none;
   min-height: 44px;
+  max-width: 200px;
   transition-property: background-color, border-color, color, opacity, width, min-width;
   transition-duration: $transition-duration;
   transition-timing-function: $transition-curve;

@@ -50,8 +50,8 @@ function DesktopSideNav({ pageHandler, selectedTab } : { pageHandler: Function, 
         return (
             <div
                 key={key}
-                className={"ct-side-nav__links__link" + (selectedTab === val.toLowerCase() ? ' active ' : '')}
-                onClick={() => selectTab(val.toLowerCase())}
+                className={"ct-side-nav__links__link" + (selectedTab === key.toLowerCase() ? ' active ' : '')}
+                onClick={() => selectTab(key.toLowerCase())}
             >
                 <span className="val">{val}</span>
             </div>
@@ -69,7 +69,7 @@ function DesktopSideNav({ pageHandler, selectedTab } : { pageHandler: Function, 
         renderLink('about', 'about'),
         renderLink('contact', 'contact'),
         renderLink('help', 'help'),
-        renderLink('report an issue', 'report an issue'),
+        renderLink('report an issue', 'report'),
     ]
 
     const adminLinks = [

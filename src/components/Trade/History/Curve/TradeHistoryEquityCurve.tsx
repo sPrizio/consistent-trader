@@ -13,23 +13,23 @@ import {Area, CartesianGrid, ComposedChart, ReferenceLine, ResponsiveContainer, 
 const CustomTooltip = ({active, payload, label}: { active: boolean, payload: any, label: string }) => {
     if (active && payload && payload.length && payload.length > 0) {
         return (
-            <div className="ct-equity-curve__tooltip">
+            <div className="ct-equity-curve__tooltip ct-chart-tooltip">
                 <div className="card">
                     <div className="card-content">
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-6">
-                                <h5 className="ct-equity-curve__tooltip__header">Time:</h5>
+                                <h5 className="ct-chart-tooltip__header">Time:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
-                                <h5 className="ct-equity-curve__tooltip__value">{formatDate(payload[0].payload.x, CoreConstants.DateTime.ISOShortTimeFormat)}</h5>
+                                <h5 className="ct-chart-tooltip__value">{formatDate(payload[0].payload.x, CoreConstants.DateTime.ISOShortTimeFormat)}</h5>
                             </div>
                         </div>
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-6">
-                                <h5 className="ct-equity-curve__tooltip__header">Points:</h5>
+                                <h5 className="ct-chart-tooltip__header">Points:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
-                                <h5 className="ct-equity-curve__tooltip__value">{formatNumberForDisplay(payload[0].payload.y)}</h5>
+                                <h5 className="ct-chart-tooltip__value">{formatNumberForDisplay(payload[0].payload.y)}</h5>
                             </div>
                         </div>
                     </div>

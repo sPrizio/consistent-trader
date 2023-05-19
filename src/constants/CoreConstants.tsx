@@ -85,6 +85,12 @@ export const CoreConstants = {
 
         EquityCurveGreen: 'rgb(76, 187, 23)',
         EquityCurveRed: 'rgb(255, 62, 29)',
+
+        FadedBarColor: '#e8e8e8e8',
+        GreenBarColor: '#82ca9d',
+        RedBarColor: '#ca828b',
+        NeutralBarColor: 'rgb(86, 106, 127)',
+
         White: '#FFFFFF',
     },
 
@@ -103,7 +109,9 @@ export const CoreConstants = {
         ISOShortMonthDayFormat: 'MMM D',
         ISOShortestMonthFormat: 'MM',
         ISOShortMonthDayYearFormat: 'MMM Do[,] YYYY',
+        ISOShortHourFormat: 'H:mm',
         ISOShortTimeFormat: 'HH:mm',
+        ISOTimeFormat: 'HH:mm:ss',
         ISOWeekdayFormat: 'dddd'
     }
 }

@@ -22,7 +22,7 @@ function ExcessLossCard({start = '', end = ''} : {start: string, end: string}) {
 
     useEffect(() => {
         getLossInfoData()
-    }, [])
+    }, [start, end])
 
 
     //  GENERAL FUNCTIONS

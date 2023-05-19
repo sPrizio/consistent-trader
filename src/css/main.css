@@ -756,6 +756,22 @@ button {
   margin-right: 6px;
 }
 
+.ct-chart-tooltip .card {
+  max-width: 290px;
+}
+.ct-chart-tooltip__header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+.ct-chart-tooltip__value {
+  color: #137DC5;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
 .ct-modal {
   /*animation: fade-out $transition-duration forwards;*/
 }
@@ -1368,19 +1384,6 @@ button {
   color: #FFFFFF;
 }
 
-.ct-equity-curve__tooltip__header {
-  color: rgb(161, 172, 184);
-  font-size: 14px;
-  line-height: 22px;
-  font-weight: 400;
-}
-.ct-equity-curve__tooltip__value {
-  color: #137DC5;
-  font-size: 14px;
-  line-height: 22px;
-  font-weight: 500;
-}
-
 .ct-trade-log__disclaimer {
   font-weight: 300;
   color: rgb(86, 106, 127);
@@ -1498,6 +1501,12 @@ button {
 .ct-user-bar__user-menu__content.is-active {
   display: block;
   height: auto;
+}
+
+.ct-analysis-page__disclaimer-container {
+  height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .ct-content-page .page-container {

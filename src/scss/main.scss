@@ -17,6 +17,7 @@
         "./components/Account/Profile/profile-content",
         "./components/Buttons/buttons",
         "./components/Cards/base-card",
+        "./components/Charts/Tooltip/chart-tooltip",
         "./components/Modals/base-modal",
         "./components/Navigation/desktop-side-nav",
         "./components/News/news",
@@ -27,7 +28,8 @@
         "./components/Trade/Log/trade-log",
         "./components/User/user-bar";
 
-@import "./pages/Base/pages",
+@import "./pages/Account/analysis-page",
+        "./pages/Base/pages",
         "./pages/Content/about-page",
         "./pages/Content/contact-page",
         "./pages/Content/report-issue-page",

@@ -3,6 +3,56 @@ import {formatNumberForDisplay} from "../../../../services/data/FormattingServic
 import {formatDate} from "../../../../services/datetime/DateTimeService";
 import {Area, CartesianGrid, ComposedChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
+/**
+ * Defines a custom tooltip for use with the equity curve
+ *
+ * @param active is active
+ * @param payload data
+ * @param label label
+ */
+const CustomTooltip = ({active, payload, label}: { active: boolean, payload: any, label: string }) => {
+    if (active && payload && payload.length && payload.length > 0) {
+        return (
+            <div className="ct-equity-curve__tooltip">
+                <div className="card">
+                    <div className="card-content">
+                        <div className="columns is-multiline is-mobile">
+                            <div className="column is-6">
+                                <h5 className="ct-equity-curve__tooltip__header">Time:</h5>
+                            </div>
+                            <div className="column is-6 has-text-right">
+                                <h5 className="ct-equity-curve__tooltip__value">{formatDate(payload[0].payload.x, CoreConstants.DateTime.ISOShortTimeFormat)}</h5>
+                            </div>
+                        </div>
+                        <div className="columns is-multiline is-mobile">
+                            <div className="column is-6">
+                                <h5 className="ct-equity-curve__tooltip__header">Points:</h5>
+                            </div>
+                            <div className="column is-6 has-text-right">
+                                <h5 className="ct-equity-curve__tooltip__value">{formatNumberForDisplay(payload[0].payload.y)}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    return null;
+};
+
+/**
+ * Component that renders an equity curve for trade history throughout a session
+ *
+ * @param points data points
+ * @param index list index
+ * @param height chart height
+ * @param showXAxis should show x-axis
+ * @param showYAxis should show y-axis
+ * @param showTooltip should show tooltip
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 export function TradeHistoryEquityCurve(
     {
         points = [],
@@ -19,37 +69,6 @@ export function TradeHistoryEquityCurve(
         showYAxis: boolean,
         showTooltip: boolean,
     }) {
-
-    const CustomTooltip = ({active, payload, label}: { active: boolean, payload: any, label: string }) => {
-        if (active && payload && payload.length && payload.length > 0) {
-            return (
-                <div className="performance-statistics">
-                    <div className="card">
-                        <div className="card-content">
-                            <div className="columns is-multiline is-mobile">
-                                <div className="column is-6">
-                                    <h5 className="row-entry-small">Time:</h5>
-                                </div>
-                                <div className="column is-6 has-text-right">
-                                    <h5 className="row-entry-small">{formatDate(payload[0].payload.x, CoreConstants.DateTime.ISOShortTimeFormat)}</h5>
-                                </div>
-                            </div>
-                            <div className="columns is-multiline is-mobile">
-                                <div className="column is-6">
-                                    <h5 className="row-entry-small">Points:</h5>
-                                </div>
-                                <div className="column is-6 has-text-right">
-                                    <h5 className="row-entry-small">{formatNumberForDisplay(payload[0].payload.y)}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-        return null;
-    };
 
 
     //  GENERAL FUNCTION
@@ -78,6 +97,12 @@ export function TradeHistoryEquityCurve(
 
     //  RENDER
 
+    let tooltip = null
+    if (showTooltip) {
+        // @ts-ignore
+        tooltip = <Tooltip content={CustomTooltip} />
+    }
+
     return (
         <>
             <div className="ct-equity-curve">
@@ -98,7 +123,7 @@ export function TradeHistoryEquityCurve(
                             stroke={"rgba(215, 215, 215, 0.5)"}
                             /*label={{position: 'insideTopRight', value: 'Break-even', fill: 'red', fontSize: 10}}*/
                         />
-                        {/*{showTooltip ? <Tooltip content={CustomTooltip} /> : null}*/}
+                        {tooltip}
                         <Area
                             type="monotone"
                             name="Net"

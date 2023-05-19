@@ -10,6 +10,7 @@ import SkillProgressCard from "../../components/Cards/Skill/SkillProgressCard";
 import PromotionalPaymentsCard from "../../components/Cards/Account/PromotionalPaymentsCard";
 import DisregardedTradesCard from "../../components/Cards/Trade/DisregardedTradesCard";
 import {getAccountOverview} from "../../services/account/accountService";
+import {Helmet} from "react-helmet";
 
 /**
  * Page that displays a user's profile
@@ -77,81 +78,86 @@ function ProfilePage() {
     //  RENDER
 
     return (
-        <div className="ct-profile-page">
-            <div className="container">
-                <ProfileBanner profileInfo={userInfo} />
-                <div className="columns is-multiline is-mobile columns-gap">
-                    <div className="column is-12">
-                        <div className="level ct-profile-page__tabs">
-                            <div className="level-left" />
-                            <div className="level-right">
-                                <div className="level-item">
-                                    <SimpleButton
-                                        variant={"primary"}
-                                        plain={!isActiveTab('account')}
-                                        text={"Account"}
-                                        handler={() => handleTabChange('account')}
-                                    />
-                                </div>
-                                <div className="level-item">
-                                    <SimpleButton
-                                        variant={"primary"}
-                                        plain={!isActiveTab('skillRank')}
-                                        text={'Skill & Rank'}
-                                        handler={() => handleTabChange('skillRank')}
-                                    />
+        <>
+            <Helmet>
+                <title>CTrader | My Account</title>
+            </Helmet>
+            <div className="ct-profile-page">
+                <div className="container">
+                    <ProfileBanner profileInfo={userInfo} />
+                    <div className="columns is-multiline is-mobile columns-gap">
+                        <div className="column is-12">
+                            <div className="level ct-profile-page__tabs">
+                                <div className="level-left" />
+                                <div className="level-right">
+                                    <div className="level-item">
+                                        <SimpleButton
+                                            variant={"primary"}
+                                            plain={!isActiveTab('account')}
+                                            text={"Account"}
+                                            handler={() => handleTabChange('account')}
+                                        />
+                                    </div>
+                                    <div className="level-item">
+                                        <SimpleButton
+                                            variant={"primary"}
+                                            plain={!isActiveTab('skillRank')}
+                                            text={'Skill & Rank'}
+                                            handler={() => handleTabChange('skillRank')}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        {
+                            activeTab === 'account' ?
+                                <>
+                                    <div className="column is-5-desktop is-12-tablet is-12-mobile">
+                                        <ProfileContent profileInfo={userInfo} />
+                                    </div>
+                                    <div className="column is-7-desktop is-12-tablet is-12-mobile">
+                                        <div className="columns is-multiline is-mobile is-vcentered">
+                                            <div className="column is-12">
+                                                <EquityCurveCard />
+                                            </div>
+                                            <div className="column is-12">
+                                                <BalanceHistoryCard />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                                : null
+                        }
+                        {
+                            activeTab === 'skillRank' ?
+                                <>
+                                    <div className="column is-6-desktop is-12-tablet is-12-mobile">
+                                        <div className="columns is-multiline is-mobile">
+                                            <div className="column is-12">
+                                                <OverviewCard accountOverview={overview} isLoading={isLoading} />
+                                            </div>
+                                            <div className="column is-12">
+                                                <SkillProgressCard userInfo={userInfo} isLoading={isLoading} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="column is-6-desktop is-12-tablet is-12-mobile">
+                                        <div className="columns is-multiline is-mobile">
+                                            <div className="column is-12">
+                                                <PromotionalPaymentsCard/>
+                                            </div>
+                                            <div className="column is-12">
+                                                <DisregardedTradesCard />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                                : null
+                        }
                     </div>
-                    {
-                        activeTab === 'account' ?
-                            <>
-                                <div className="column is-5-desktop is-12-tablet is-12-mobile">
-                                    <ProfileContent profileInfo={userInfo} />
-                                </div>
-                                <div className="column is-7-desktop is-12-tablet is-12-mobile">
-                                    <div className="columns is-multiline is-mobile is-vcentered">
-                                        <div className="column is-12">
-                                            <EquityCurveCard />
-                                        </div>
-                                        <div className="column is-12">
-                                            <BalanceHistoryCard />
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                            : null
-                    }
-                    {
-                        activeTab === 'skillRank' ?
-                            <>
-                                <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                                    <div className="columns is-multiline is-mobile">
-                                        <div className="column is-12">
-                                            <OverviewCard accountOverview={overview} isLoading={isLoading} />
-                                        </div>
-                                        <div className="column is-12">
-                                            <SkillProgressCard userInfo={userInfo} isLoading={isLoading} />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                                    <div className="columns is-multiline is-mobile">
-                                        <div className="column is-12">
-                                            <PromotionalPaymentsCard/>
-                                        </div>
-                                        <div className="column is-12">
-                                            <DisregardedTradesCard />
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                            : null
-                    }
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

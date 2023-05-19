@@ -222,3 +222,21 @@
     }
   }
 }
+
+.ct-equity-curve {
+  &__tooltip {
+    &__header {
+      color: $color-font-header-subtitle;
+      font-size: map-get($font-body, 'small', 'desktop', 'size');
+      line-height: map-get($font-body, 'small', 'desktop', 'line');
+      font-weight: $font-weight-regular;
+    }
+
+    &__value {
+      color: $color-primary;
+      font-size: map-get($font-body, 'small', 'desktop', 'size');
+      line-height: map-get($font-body, 'small', 'desktop', 'line');
+      font-weight: $font-weight-medium;
+    }
+  }
+}

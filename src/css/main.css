@@ -1368,6 +1368,19 @@ button {
   color: #FFFFFF;
 }
 
+.ct-equity-curve__tooltip__header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+.ct-equity-curve__tooltip__value {
+  color: #137DC5;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
 .ct-trade-log__disclaimer {
   font-weight: 300;
   color: rgb(86, 106, 127);

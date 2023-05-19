@@ -12,6 +12,7 @@ import NewsCard from "../../components/Cards/News/NewsCard";
 import {getUser} from "../../services/user/userService";
 import OverviewCard from "../../components/Cards/Account/OverviewCard";
 import {getAccountOverview} from "../../services/account/accountService";
+import {Helmet} from "react-helmet";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -57,56 +58,61 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
     //  RENDER
 
     return (
-        <div className="columns is-multiline is-mobile">
-            <div className="column is-12">
-                <BaseCard loading={isLoading} hasBorder={false} content={[<UserBar key={0} userInfo={userInfo ?? {}} pageHandler={pageHandler}/>]}/>
-            </div>
-            <div className="column is-12">
-                <div className="columns is-multiline is-mobile">
-                    <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        <div className="columns is-multiline is-mobile">
-                            <div className="column is-12">
-                                <OverviewCard accountOverview={overview} isLoading={isLoading} />
-                            </div>
-                            <div className="column is-12">
-                                <NewsCard
-                                    start={formatDateMoment(now().startOf('week').add(1, 'days'), CoreConstants.DateTime.ISODateFormat)}
-                                    end={formatDateMoment(now().startOf('week').add(6, 'days'), CoreConstants.DateTime.ISODateFormat)}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        <div className="columns is-multiline is-mobile">
-                            <div className="column is-12">
-                                <EquityCurveCard />
-                            </div>
-                            <div className="column is-12">
-                                <PerformanceSummaryCard />
-                            </div>
-                            <div className="column is-6">
-                                <ExcessLossCard
-                                    start={formatDateMoment(now().startOf('month'), CoreConstants.DateTime.ISODateFormat)}
-                                    end={formatDateMoment(now().startOf('month').add(1, 'months'), CoreConstants.DateTime.ISODateFormat)}
-                                />
-                            </div>
-                            <div className="column is-6">
-                                <PerformanceStatisticsCard
-                                    start={formatDateMoment(now().startOf('month'), CoreConstants.DateTime.ISODateFormat)}
-                                    end={formatDateMoment(now().startOf('month').add(1, 'months'), CoreConstants.DateTime.ISODateFormat)}
-                                />
+        <>
+            <Helmet>
+                <title>CTrader | Overview</title>
+            </Helmet>
+            <div className="columns is-multiline is-mobile">
+                <div className="column is-12">
+                    <BaseCard loading={isLoading} hasBorder={false} content={[<UserBar key={0} userInfo={userInfo ?? {}} pageHandler={pageHandler}/>]}/>
+                </div>
+                <div className="column is-12">
+                    <div className="columns is-multiline is-mobile">
+                        <div className="column is-6-desktop is-12-tablet is-12-mobile">
+                            <div className="columns is-multiline is-mobile">
+                                <div className="column is-12">
+                                    <OverviewCard accountOverview={overview} isLoading={isLoading} />
+                                </div>
+                                <div className="column is-12">
+                                    <NewsCard
+                                        start={formatDateMoment(now().startOf('week').add(1, 'days'), CoreConstants.DateTime.ISODateFormat)}
+                                        end={formatDateMoment(now().startOf('week').add(6, 'days'), CoreConstants.DateTime.ISODateFormat)}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="column is-7-desktop is-12-tablet is-12-mobile">
-                        Recent Retro
-                    </div>
-                    <div className="column is-5-desktop is-12-tablet is-12-mobile">
-                        <TradeLogCard count={5} />
+                        <div className="column is-6-desktop is-12-tablet is-12-mobile">
+                            <div className="columns is-multiline is-mobile">
+                                <div className="column is-12">
+                                    <EquityCurveCard />
+                                </div>
+                                <div className="column is-12">
+                                    <PerformanceSummaryCard />
+                                </div>
+                                <div className="column is-6">
+                                    <ExcessLossCard
+                                        start={formatDateMoment(now().startOf('month'), CoreConstants.DateTime.ISODateFormat)}
+                                        end={formatDateMoment(now().startOf('month').add(1, 'months'), CoreConstants.DateTime.ISODateFormat)}
+                                    />
+                                </div>
+                                <div className="column is-6">
+                                    <PerformanceStatisticsCard
+                                        start={formatDateMoment(now().startOf('month'), CoreConstants.DateTime.ISODateFormat)}
+                                        end={formatDateMoment(now().startOf('month').add(1, 'months'), CoreConstants.DateTime.ISODateFormat)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="column is-7-desktop is-12-tablet is-12-mobile">
+                            Recent Retro
+                        </div>
+                        <div className="column is-5-desktop is-12-tablet is-12-mobile">
+                            <TradeLogCard count={5} />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

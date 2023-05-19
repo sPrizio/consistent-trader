@@ -208,7 +208,7 @@ function TradeHistoryPage() {
         return (
             <>
                 <Helmet>
-                    <title>TraderBuddy | Trade History</title>
+                    <title>CTrader | Trade History</title>
                 </Helmet>
                 <div className="ct-trade-history-page">
                     <div className="ct-trade-history-page__disclaimer-container has-text-centered">

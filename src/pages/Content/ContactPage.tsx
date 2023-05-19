@@ -8,6 +8,7 @@ import {CoreConstants} from "../../constants/CoreConstants";
 import {post} from "../../services/client/ClientService";
 import {StandardJsonResponse} from "../../types/api-types";
 import SimpleButton from "../../components/Buttons/SimpleButton";
+import {Helmet} from "react-helmet";
 
 /**
  * Contact page, allowing users to send messages to the admin
@@ -158,55 +159,59 @@ function ContactPage() {
     //  RENDER
 
     return (
-        <div className="ct-contact-page">
-            <div className="container">
-                <div className="columns is-multiline is-mobile is-gapless">
-                    <div className="column is-4 highlighted">
-                        <div className="highlighted-content">
-                            <h2>Let's talk!</h2>
-                            <p>
-                                Have any questions or concerns?<br/>We're here for you!
-                            </p>
-                            <div className="columns is-multiline is-mobile is-vcentered">
-                                <div className="column is-3 has-text-centered">
-                                    <div>
+        <>
+            <Helmet>
+                <title>CTrader | Report an Issue</title>
+            </Helmet>
+            <div className="ct-contact-page">
+                <div className="container">
+                    <div className="columns is-multiline is-mobile is-gapless">
+                        <div className="column is-4 highlighted">
+                            <div className="highlighted-content">
+                                <h2>Let's talk!</h2>
+                                <p>
+                                    Have any questions or concerns?<br/>We're here for you!
+                                </p>
+                                <div className="columns is-multiline is-mobile is-vcentered">
+                                    <div className="column is-3 has-text-centered">
+                                        <div>
                                             <span className="icon is-large">
                                                 <TfiLocationPin/>
                                             </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="column is-9">
-                                    507 Place d'Armes, Suite 300,<br/>Montreal, QC H2Y 2W8
-                                </div>
-                                <div className="column is-3 has-text-centered">
-                                    <div>
+                                    <div className="column is-9">
+                                        507 Place d'Armes, Suite 300,<br/>Montreal, QC H2Y 2W8
+                                    </div>
+                                    <div className="column is-3 has-text-centered">
+                                        <div>
                                             <span className="icon is-large">
                                                 <ImPhone/>
                                             </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="column is-9">
-                                    (514) 941-1025
-                                </div>
-                                <div className="column is-3 has-text-centered">
-                                    <div>
+                                    <div className="column is-9">
+                                        (514) 941-1025
+                                    </div>
+                                    <div className="column is-3 has-text-centered">
+                                        <div>
                                             <span className="icon is-large">
                                                 <MdOutlineEmail/>
                                             </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="column is-9">
-                                    support@traderbuddy.com
+                                    <div className="column is-9">
+                                        support@ctrader.com
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="column is-8">
-                        <div className="card reset-borders">
-                            <div className="card-content">
-                                {
-                                    isSuccess ?
-                                        <div className="notification is-success">
+                        <div className="column is-8">
+                            <div className="card reset-borders">
+                                <div className="card-content">
+                                    {
+                                        isSuccess ?
+                                            <div className="notification is-success">
                                                 <span className="icon-text">
                                                     <span>
                                                         Your message was successfully received. We'll
@@ -216,113 +221,31 @@ function ContactPage() {
                                                        <TbMoodHappy/>
                                                     </span>
                                                 </span>
+                                            </div>
+                                            :
+                                            null
+                                    }
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Name</label>
                                         </div>
-                                        :
-                                        null
-                                }
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Name</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control is-expanded has-icons-left">
-                                                <input
-                                                    className={"input" + (isError('name') ? ' is-danger ' : '')}
-                                                    type="text" placeholder="Name"
-                                                    value={form.name}
-                                                    onChange={(e) => handleNameChange(e)}
-                                                />
-                                                <span className="icon is-small is-left">
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control is-expanded has-icons-left">
+                                                    <input
+                                                        className={"input" + (isError('name') ? ' is-danger ' : '')}
+                                                        type="text" placeholder="Name"
+                                                        value={form.name}
+                                                        onChange={(e) => handleNameChange(e)}
+                                                    />
+                                                    <span className="icon is-small is-left">
                                                         <HiOutlineUser/>
                                                     </span>
-                                            </div>
-                                            {
-                                                isError('name') ?
-                                                    <p className="help is-danger">
-                                                        Your name is required
-                                                    </p>
-                                                    :
-                                                    null
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Email</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control is-expanded has-icons-left">
-                                                <input
-                                                    className={"input" + (isError('email') ? ' is-danger ' : '')}
-                                                    type="email"
-                                                    placeholder="Email"
-                                                    value={form.email}
-                                                    onChange={(e) => handleEmailChange(e)}
-                                                />
-                                                <span className="icon is-small is-left">
-                                                      <MdAlternateEmail/>
-                                                    </span>
-                                            </div>
-                                            {
-                                                isError('email') ?
-                                                    <p className="help is-danger">
-                                                        Your email is required
-                                                    </p>
-                                                    :
-                                                    null
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Subject</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control has-icons-left">
-                                                <input
-                                                    className={"input" + (isError('subject') ? ' is-danger ' : '')}
-                                                    type="text"
-                                                    placeholder="Say Hello!"
-                                                    value={form.subject}
-                                                    onChange={(e) => handleSubjectChange(e)}
-                                                />
-                                                <span className="icon is-small is-left">
-                                                      <MdOutlineSubtitles/>
-                                                    </span>
-                                            </div>
-                                            {
-                                                isError('subject') ?
-                                                    <p className="help is-danger">
-                                                        A subject is required
-                                                    </p>
-                                                    :
-                                                    null
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Message</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control">
-                                                    <textarea
-                                                        className={"textarea" + (isError('message') ? ' is-danger ' : '')}
-                                                        placeholder="How can we help?"
-                                                        value={form.message}
-                                                        onChange={(e) => handleMessageChange(e)}
-                                                    />
+                                                </div>
                                                 {
-                                                    isError('message') ?
+                                                    isError('name') ?
                                                         <p className="help is-danger">
-                                                            A message is required
+                                                            Your name is required
                                                         </p>
                                                         :
                                                         null
@@ -330,19 +253,102 @@ function ContactPage() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label">
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Email</label>
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control is-expanded has-icons-left">
+                                                    <input
+                                                        className={"input" + (isError('email') ? ' is-danger ' : '')}
+                                                        type="email"
+                                                        placeholder="Email"
+                                                        value={form.email}
+                                                        onChange={(e) => handleEmailChange(e)}
+                                                    />
+                                                    <span className="icon is-small is-left">
+                                                      <MdAlternateEmail/>
+                                                    </span>
+                                                </div>
+                                                {
+                                                    isError('email') ?
+                                                        <p className="help is-danger">
+                                                            Your email is required
+                                                        </p>
+                                                        :
+                                                        null
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control">
-                                                <SimpleButton
-                                                    loading={isLoading}
-                                                    text={'Send Message'}
-                                                    variant={'primary'}
-                                                    handler={handleSubmit}
-                                                />
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Subject</label>
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control has-icons-left">
+                                                    <input
+                                                        className={"input" + (isError('subject') ? ' is-danger ' : '')}
+                                                        type="text"
+                                                        placeholder="Say Hello!"
+                                                        value={form.subject}
+                                                        onChange={(e) => handleSubjectChange(e)}
+                                                    />
+                                                    <span className="icon is-small is-left">
+                                                      <MdOutlineSubtitles/>
+                                                    </span>
+                                                </div>
+                                                {
+                                                    isError('subject') ?
+                                                        <p className="help is-danger">
+                                                            A subject is required
+                                                        </p>
+                                                        :
+                                                        null
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Message</label>
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control">
+                                                    <textarea
+                                                        className={"textarea" + (isError('message') ? ' is-danger ' : '')}
+                                                        placeholder="How can we help?"
+                                                        value={form.message}
+                                                        onChange={(e) => handleMessageChange(e)}
+                                                    />
+                                                    {
+                                                        isError('message') ?
+                                                            <p className="help is-danger">
+                                                                A message is required
+                                                            </p>
+                                                            :
+                                                            null
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="field is-horizontal">
+                                        <div className="field-label">
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control">
+                                                    <SimpleButton
+                                                        loading={isLoading}
+                                                        text={'Send Message'}
+                                                        variant={'primary'}
+                                                        handler={handleSubmit}
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -352,7 +358,7 @@ function ContactPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

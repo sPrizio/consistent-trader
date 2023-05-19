@@ -8,6 +8,7 @@ import {TbMoodHappy} from "react-icons/tb";
 import {HiOutlineUser} from "react-icons/hi";
 import {IoMdWarning} from "react-icons/io";
 import SimpleButton from "../../components/Buttons/SimpleButton";
+import {Helmet} from "react-helmet";
 
 /**
  * The report issue page, allowing users to report issues with the app
@@ -151,46 +152,50 @@ export function ReportIssuePage() {
     //  RENDER
 
     return (
-        <div className="ct-report-issue-page">
-            <div className="container">
-                <div className="columns is-multiline is-mobile is-gapless">
-                    <div className="column is-4 highlighted">
-                        <div className="highlighted-content">
-                            <h2>Something not quite right?</h2>
-                            <p>
-                                Noticing a discrepancy, numbers not adding up or something that just doesn't look
-                                right? Let us know and we'll take care of it!
-                            </p>
-                            <div className="columns is-multiline is-mobile is-vcentered">
-                                <div className="column is-3 has-text-centered">
-                                    <div>
+        <>
+            <Helmet>
+                <title>CTrader | Report an Issue</title>
+            </Helmet>
+            <div className="ct-report-issue-page">
+                <div className="container">
+                    <div className="columns is-multiline is-mobile is-gapless">
+                        <div className="column is-4 highlighted">
+                            <div className="highlighted-content">
+                                <h2>Something not quite right?</h2>
+                                <p>
+                                    Noticing a discrepancy, numbers not adding up or something that just doesn't look
+                                    right? Let us know and we'll take care of it!
+                                </p>
+                                <div className="columns is-multiline is-mobile is-vcentered">
+                                    <div className="column is-3 has-text-centered">
+                                        <div>
                                         <span className="icon is-large">
                                             <ImPhone/>
                                         </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="column is-9">
-                                    (514) 941-1025
-                                </div>
-                                <div className="column is-3 has-text-centered">
-                                    <div>
+                                    <div className="column is-9">
+                                        (514) 941-1025
+                                    </div>
+                                    <div className="column is-3 has-text-centered">
+                                        <div>
                                         <span className="icon is-large">
                                             <MdOutlineEmail/>
                                         </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="column is-9">
-                                    support@traderbuddy.com
+                                    <div className="column is-9">
+                                        support@ctrader.com
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="column is-8">
-                        <div className="card reset-borders">
-                            <div className="card-content">
-                                {
-                                    isSuccess ?
-                                        <div className="notification is-success">
+                        <div className="column is-8">
+                            <div className="card reset-borders">
+                                <div className="card-content">
+                                    {
+                                        isSuccess ?
+                                            <div className="notification is-success">
                                             <span className="icon-text">
                                                 <span>
                                                     Your message was successfully received. We'll
@@ -200,106 +205,31 @@ export function ReportIssuePage() {
                                                     <TbMoodHappy/>
                                                 </span>
                                             </span>
+                                            </div>
+                                            :
+                                            null
+                                    }
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Name</label>
                                         </div>
-                                        :
-                                        null
-                                }
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Name</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control is-expanded has-icons-left">
-                                                <input
-                                                    className={"input" + (isError('name') ? ' is-danger ' : '')}
-                                                    type="text" placeholder="Name"
-                                                    value={form.name}
-                                                    onChange={handleNameChange}
-                                                />
-                                                <span className="icon is-small is-left">
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control is-expanded has-icons-left">
+                                                    <input
+                                                        className={"input" + (isError('name') ? ' is-danger ' : '')}
+                                                        type="text" placeholder="Name"
+                                                        value={form.name}
+                                                        onChange={handleNameChange}
+                                                    />
+                                                    <span className="icon is-small is-left">
                                                     <HiOutlineUser/>
                                                 </span>
-                                            </div>
-                                            {
-                                                isError('name') ?
-                                                    <p className="help is-danger">
-                                                        Your name is required
-                                                    </p>
-                                                    :
-                                                    null
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Email</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control is-expanded has-icons-left">
-                                                <input
-                                                    className={"input" + (isError('email') ? ' is-danger ' : '')}
-                                                    type="email"
-                                                    placeholder="Email"
-                                                    value={form.email}
-                                                    onChange={handleEmailChange}
-                                                />
-                                                <span className="icon is-small is-left">
-                                                      <MdAlternateEmail/>
-                                                    </span>
-                                            </div>
-                                            {
-                                                isError('email') ?
-                                                    <p className="help is-danger">
-                                                        Your email is required
-                                                    </p>
-                                                    :
-                                                    null
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Severity</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control has-icons-left">
-                                                <div className="select">
-                                                    <select value={form.severity}
-                                                            onChange={handleSeverityChange}>
-                                                        <option value={'low'}>Low</option>
-                                                        <option value={'moderate'}>Moderate</option>
-                                                        <option value={'severe'}>Severe</option>
-                                                    </select>
-                                                    <span className="icon is-small is-left">
-                                                          <IoMdWarning/>
-                                                        </span>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label is-normal">
-                                        <label className="label">Message</label>
-                                    </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control">
-                                                    <textarea
-                                                        className={"textarea" + (isError('message') ? ' is-danger ' : '')}
-                                                        placeholder="Description of issue / Steps to recreate"
-                                                        value={form.message}
-                                                        onChange={handleMessageChange}
-                                                    />
                                                 {
-                                                    isError('message') ?
+                                                    isError('name') ?
                                                         <p className="help is-danger">
-                                                            A message is required
+                                                            Your name is required
                                                         </p>
                                                         :
                                                         null
@@ -307,19 +237,95 @@ export function ReportIssuePage() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="field is-horizontal">
-                                    <div className="field-label">
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Email</label>
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control is-expanded has-icons-left">
+                                                    <input
+                                                        className={"input" + (isError('email') ? ' is-danger ' : '')}
+                                                        type="email"
+                                                        placeholder="Email"
+                                                        value={form.email}
+                                                        onChange={handleEmailChange}
+                                                    />
+                                                    <span className="icon is-small is-left">
+                                                      <MdAlternateEmail/>
+                                                    </span>
+                                                </div>
+                                                {
+                                                    isError('email') ?
+                                                        <p className="help is-danger">
+                                                            Your email is required
+                                                        </p>
+                                                        :
+                                                        null
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="field-body">
-                                        <div className="field">
-                                            <div className="control">
-                                                <SimpleButton
-                                                    loading={isLoading}
-                                                    variant={'primary'}
-                                                    text={'Send Message'}
-                                                    handler={handleSubmit}
-                                                />
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Severity</label>
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control has-icons-left">
+                                                    <div className="select">
+                                                        <select value={form.severity}
+                                                                onChange={handleSeverityChange}>
+                                                            <option value={'low'}>Low</option>
+                                                            <option value={'moderate'}>Moderate</option>
+                                                            <option value={'severe'}>Severe</option>
+                                                        </select>
+                                                        <span className="icon is-small is-left">
+                                                          <IoMdWarning/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="field is-horizontal">
+                                        <div className="field-label is-normal">
+                                            <label className="label">Message</label>
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control">
+                                                    <textarea
+                                                        className={"textarea" + (isError('message') ? ' is-danger ' : '')}
+                                                        placeholder="Description of issue / Steps to recreate"
+                                                        value={form.message}
+                                                        onChange={handleMessageChange}
+                                                    />
+                                                    {
+                                                        isError('message') ?
+                                                            <p className="help is-danger">
+                                                                A message is required
+                                                            </p>
+                                                            :
+                                                            null
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="field is-horizontal">
+                                        <div className="field-label">
+                                        </div>
+                                        <div className="field-body">
+                                            <div className="field">
+                                                <div className="control">
+                                                    <SimpleButton
+                                                        loading={isLoading}
+                                                        variant={'primary'}
+                                                        text={'Send Message'}
+                                                        handler={handleSubmit}
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -329,7 +335,7 @@ export function ReportIssuePage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

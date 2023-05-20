@@ -91,6 +91,9 @@ export const CoreConstants = {
         RedBarColor: '#ca828b',
         NeutralBarColor: 'rgb(86, 106, 127)',
 
+        RedCandleColor: '#ce1b2d',
+        BucketBarColor: 'rgba(19, 125, 197, 0.5)',
+
         White: '#FFFFFF',
     },
 

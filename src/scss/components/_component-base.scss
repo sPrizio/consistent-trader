@@ -1,0 +1,17 @@
+.ct-header-level {
+  &__header {
+    font-weight: $font-weight-medium;
+    color: $color-font-header-title;
+    font-size: map-get($font-body, 'xxsmall', 'desktop', 'size');
+    line-height: map-get($font-body, 'xxsmall', 'desktop', 'line');
+    text-transform: uppercase;
+    letter-spacing: 1.25px;
+  }
+
+  &__value {
+    font-weight: $font-weight-semi-bold;
+    color: $color-primary;
+    font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
+    line-height: map-get($font-body, 'xsmall', 'desktop', 'line');
+  }
+}

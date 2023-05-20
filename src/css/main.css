@@ -217,6 +217,21 @@ hr.is-primary {
   background-color: rgba(19, 125, 197, 0.25);
 }
 
+.ct-header-level__header {
+  font-weight: 500;
+  color: rgb(86, 106, 127);
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+}
+.ct-header-level__value {
+  font-weight: 600;
+  color: #137DC5;
+  font-size: 13px;
+  line-height: 20px;
+}
+
 .ct-equity-curve .tabs {
   margin-bottom: 0;
   margin-top: -12px;

@@ -6,7 +6,8 @@
         "./base/input",
         "./base/placeholders";
 
-@import "./components/Account/equity-curve",
+@import "./components/component-base",
+        "./components/Account/equity-curve",
         "./components/Account/excess_loss",
         "./components/Account/promotional-payments",
         "./components/Account/overview",

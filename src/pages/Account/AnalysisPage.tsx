@@ -9,6 +9,7 @@ import ExcessLossCard from "../../components/Cards/Account/ExcessLossCard";
 import SimpleButton from "../../components/Buttons/SimpleButton";
 import WeekdayPerformanceCard from "../../components/Cards/Account/Analysis/WeekdayPerformanceCard";
 import ProfitabilityCard from "../../components/Cards/Account/Analysis/ProfitabilityCard";
+import BucketCard from "../../components/Cards/Account/Analysis/BucketCard";
 
 /**
  * Renders the account analysis page
@@ -203,9 +204,11 @@ function AnalysisPage() {
                         <ProfitabilityCard start={start} end={end} code={'5m'} />
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
+                        <BucketCard start={start} end={end} bucketSize={8} isLoser={false} />
                         {/*<WinningBucket start={this.state.start} end={this.state.end} bucketSize={8} isLoser={false} />*/}
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
+                        <BucketCard start={start} end={end} bucketSize={8} isLoser={true} />
                         {/*<WinningBucket start={this.state.start} end={this.state.end} bucketSize={8} isLoser={true} />*/}
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">

@@ -1,5 +1,5 @@
 import BaseCard from "../../BaseCard";
-import {formatDate, formatDateMoment, getDateForFormat} from "../../../../services/datetime/DateTimeService";
+import {formatDateMoment, getDateForFormat} from "../../../../services/datetime/DateTimeService";
 import {CoreConstants} from "../../../../constants/CoreConstants";
 import {useEffect, useState} from "react";
 import {formatNumberForDisplay} from "../../../../services/data/FormattingService";

@@ -312,3 +312,19 @@ export type NewsPieceInfo = {
 export type NewsInfo = {
     news?: Array<NewsPieceInfo>
 }
+
+//  ANALYSIS
+
+export type PerformanceAveragesInfo = {
+    averageLotSize?: number,
+    averagePips?: number,
+    averageProfit?: number,
+    averageTradeDuration?: number,
+    numberOfWinLosses?: number,
+    profitability?: number,
+    totalAverageDuration?: number,
+    totalPips?: number,
+    totalTrades?: number,
+    tradingRate?: number,
+    winLossPercentage?: number
+}

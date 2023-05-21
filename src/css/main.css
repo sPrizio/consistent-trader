@@ -311,6 +311,25 @@ hr.is-primary {
   display: none;
 }
 
+.ct-performance-averages__header {
+  color: rgb(86, 106, 127);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 500;
+}
+.ct-performance-averages__sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 300;
+}
+.ct-performance-averages__value {
+  color: #137DC5;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
 .ct-account-balance-history .hoverable {
   transition: background-color 0.3s ease-in-out;
 }

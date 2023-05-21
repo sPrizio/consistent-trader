@@ -10,6 +10,7 @@ import SimpleButton from "../../components/Buttons/SimpleButton";
 import WeekdayPerformanceCard from "../../components/Cards/Account/Analysis/WeekdayPerformanceCard";
 import ProfitabilityCard from "../../components/Cards/Account/Analysis/ProfitabilityCard";
 import BucketCard from "../../components/Cards/Account/Analysis/BucketCard";
+import PerformanceAveragesCard from "../../components/Cards/Account/Analysis/PerformanceAveragesCard";
 
 /**
  * Renders the account analysis page
@@ -205,17 +206,15 @@ function AnalysisPage() {
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <BucketCard start={start} end={end} bucketSize={8} isLoser={false} />
-                        {/*<WinningBucket start={this.state.start} end={this.state.end} bucketSize={8} isLoser={false} />*/}
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <BucketCard start={start} end={end} bucketSize={8} isLoser={true} />
-                        {/*<WinningBucket start={this.state.start} end={this.state.end} bucketSize={8} isLoser={true} />*/}
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        {/*<AverageValues isWin={true} start={this.state.start} end={this.state.end}/>*/}
+                        <PerformanceAveragesCard isWin={true} start={start} end={end}/>
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        {/*<AverageValues isWin={false} start={this.state.start} end={this.state.end}/>*/}
+                        <PerformanceAveragesCard isWin={false} start={start} end={end}/>
                     </div>
                     <div className="column is-3-desktop is-12-tablet is-12-mobile">
                         {/*<TopTrades count={5} sortByLosses={false}

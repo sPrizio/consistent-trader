@@ -313,6 +313,7 @@ export type NewsInfo = {
     news?: Array<NewsPieceInfo>
 }
 
+
 //  ANALYSIS
 
 export type PerformanceAveragesInfo = {
@@ -327,4 +328,15 @@ export type PerformanceAveragesInfo = {
     totalTrades?: number,
     tradingRate?: number,
     winLossPercentage?: number
+}
+
+export type TopValueInfo = {
+    loss?: boolean,
+    lotSize?: number,
+    netProfit?: number,
+    pips?: number,
+    product?: string,
+    tradeCloseTime?: string,
+    tradeDuration?: number,
+    tradeOpenTime?: string,
 }

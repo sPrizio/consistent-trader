@@ -11,6 +11,7 @@ import WeekdayPerformanceCard from "../../components/Cards/Account/Analysis/Week
 import ProfitabilityCard from "../../components/Cards/Account/Analysis/ProfitabilityCard";
 import BucketCard from "../../components/Cards/Account/Analysis/BucketCard";
 import PerformanceAveragesCard from "../../components/Cards/Account/Analysis/PerformanceAveragesCard";
+import TopValuesCard from "../../components/Cards/Account/Analysis/TopValuesCard";
 
 /**
  * Renders the account analysis page
@@ -196,9 +197,6 @@ function AnalysisPage() {
                 </div>
                 <div className="columns is-multiline is-mobile">
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                        <ExcessLossCard start={start} end={end} />
-                    </div>
-                    <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <WeekdayPerformanceCard start={start} end={end} />
                     </div>
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
@@ -216,33 +214,53 @@ function AnalysisPage() {
                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                         <PerformanceAveragesCard isWin={false} start={start} end={end}/>
                     </div>
+                    <div className="column is-6-desktop is-offset-3-desktop is-12-tablet is-12-mobile">
+                        <ExcessLossCard start={start} end={end} />
+                    </div>
+                    <div className="column is-1-desktop" />
                     <div className="column is-3-desktop is-12-tablet is-12-mobile">
-                        {/*<TopTrades count={5} sortByLosses={false}
-                                   start={this.state.start} title={'Points'}
-                                   sort={'PIPS'} end={this.state.end}
-                                   dataKey={'pips'}
-                        />*/}
+                        <TopValuesCard
+                            count={5}
+                            sortByLosses={false}
+                            start={start}
+                            title={'Points'}
+                            sort={'PIPS'}
+                            end={end}
+                            dataKey={'pips'}
+                        />
                     </div>
                     <div className="column is-3-desktop is-12-tablet is-12-mobile">
-                        {/*<TopTrades count={5} sortByLosses={true}
-                                   start={this.state.start} title={'Points'}
-                                   sort={'PIPS'} end={this.state.end}
-                                   dataKey={'pips'}
-                        />*/}
+                        <TopValuesCard
+                            count={5}
+                            sortByLosses={true}
+                            start={start}
+                            title={'Points'}
+                            sort={'PIPS'}
+                            end={end}
+                            dataKey={'pips'}
+                        />
                     </div>
                     <div className="column is-3-desktop is-12-tablet is-12-mobile">
-                        {/*<TopTrades count={5} sortByLosses={false}
-                                   start={this.state.start} title={'P&L'}
-                                   sort={'NET_PROFIT'} end={this.state.end}
-                                   dataKey={'netProfit'}
-                        />*/}
+                        <TopValuesCard
+                            count={5}
+                            sortByLosses={false}
+                            start={start}
+                            title={'P&L'}
+                            sort={'NET_PROFIT'}
+                            end={end}
+                            dataKey={'netProfit'}
+                        />
                     </div>
                     <div className="column is-3-desktop is-12-tablet is-12-mobile">
-                        {/*<TopTrades count={5} sortByLosses={true}
-                                   start={this.state.start} title={'P&L'}
-                                   sort={'NET_PROFIT'} end={this.state.end}
-                                   dataKey={'netProfit'}
-                        />*/}
+                        <TopValuesCard
+                            count={5}
+                            sortByLosses={true}
+                            start={start}
+                            title={'P&L'}
+                            sort={'NET_PROFIT'}
+                            end={end}
+                            dataKey={'netProfit'}
+                        />
                     </div>
                 </div>
             </div>

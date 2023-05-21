@@ -1,6 +1,14 @@
 import {PerformanceAveragesInfo} from "../../../types/api-types";
 import {formatNumberForDisplay, tradeDuration} from "../../../services/data/FormattingService";
 
+/**
+ * Component that renders the performance averages
+ *
+ * @param averages average data
+ * @param isWin refers to winners or losers
+ * @author Stephen Prizio
+ * @version 1.0
+ */
 function PerformanceAverages({averages = {}, isWin = false}: { averages: PerformanceAveragesInfo, isWin: boolean }) {
 
 

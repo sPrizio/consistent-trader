@@ -1,0 +1,22 @@
+.ct-top-values {
+  &__header {
+    color: $color-font-header-title;
+    font-size: map-get($font-body, 'default', 'desktop', 'size');
+    line-height: map-get($font-body, 'default', 'desktop', 'line');
+    font-weight: $font-weight-medium;
+  }
+
+  &__sub-header {
+    color: $color-font-header-subtitle;
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
+    font-weight: $font-weight-light;
+  }
+
+  &__value {
+    color: $color-primary;
+    font-size: map-get($font-body, 'default', 'desktop', 'size');
+    line-height: map-get($font-body, 'default', 'desktop', 'line');
+    font-weight: $font-weight-bold;
+  }
+}

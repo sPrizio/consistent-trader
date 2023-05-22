@@ -7,6 +7,11 @@ export const PeriodType = {
     YEARS: {ordinal: 4, label: 'Years', key: 'yearly', unit: 'year'},
 }
 
+export const RetrospectiveType = {
+    AUDIO: {code: 'audio'},
+    NOTE: {code: 'note'},
+}
+
 
 //  TYPES
 
@@ -16,3 +21,10 @@ export type EquityChartTabValue = {
 }
 
 export type EquityChartTabMap = Record<string, EquityChartTabValue>
+
+export type CreateRetrospectiveForm = {
+    startDate?: string,
+    endDate?: string,
+    intervalFrequency?: string,
+    points?: Array<any>
+}

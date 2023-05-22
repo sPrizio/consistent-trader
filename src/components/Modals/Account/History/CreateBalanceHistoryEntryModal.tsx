@@ -1,8 +1,7 @@
 import BaseModal from "../../BaseModal";
 import {ChangeEvent, useState} from "react";
 import {CoreConstants} from "../../../../constants/CoreConstants";
-import moment from "moment";
-import {formatDateMoment} from "../../../../services/datetime/DateTimeService";
+import {formatDateMoment, getDate} from "../../../../services/datetime/DateTimeService";
 import DatePicker from "react-datepicker"
 import {post} from "../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../types/api-types";
@@ -37,7 +36,7 @@ function CreateBalanceHistoryEntryModal({active = false, closeHandler}: { active
      */
     function handleDateChange(val: any) {
         if (val) {
-            const start = moment(val)
+            const start = getDate(val)
             setDate(formatDateMoment(start, CoreConstants.DateTime.ISODateFormat))
             setDatePicker(start.toDate())
         }

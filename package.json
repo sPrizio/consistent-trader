@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@creativebulma/bulma-divider": "^1.1.0",
+    "@hassanmojab/react-modern-calendar-datepicker": "^3.1.7",
     "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -31,6 +32,7 @@
     "react-icons": "^4.6.0",
     "react-loader-spinner": "^5.3.4",
     "react-loading-skeleton": "^3.1.0",
+    "react-modern-calendar-datepicker": "^3.1.6",
     "react-redux": "^8.0.4",
     "react-scripts": "5.0.1",
     "react-time-picker": "^5.2.0",

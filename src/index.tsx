@@ -4,6 +4,7 @@ import './index.css';
 import 'bulma/css/bulma.min.css'
 import './css/main.css'
 import "react-datepicker/dist/react-datepicker.css";
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

@@ -259,7 +259,10 @@ function CreateRetrospectiveModal(
                 hasControls={true}
                 closeHandler={closeHandler}
                 content={[content]}
-                submitHandler={handleSubmit}
+                submitHandler={() => {
+                    console.log('submitting')
+                    handleSubmit(formData)
+                }}
                 cssClasses={'ct-create-retro-modal'}
                 isLoading={isLoading}
             />

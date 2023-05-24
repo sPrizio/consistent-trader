@@ -232,6 +232,97 @@ hr.is-primary {
   line-height: 20px;
 }
 
+.ct-message .message-body p:not(:last-child) {
+  padding-bottom: 15px;
+}
+.ct-message--primary {
+  background-color: rgba(19, 125, 197, 0.1);
+}
+.ct-message--primary .message-header {
+  background-color: #137DC5;
+  color: #fff;
+}
+.ct-message--primary .message-body {
+  border-color: #137DC5;
+  color: #137DC5;
+}
+
+.stepper-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+}
+.stepper-item .step-counter {
+  position: relative;
+  color: rgb(86, 106, 127);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgb(233, 233, 233);
+  margin-bottom: 6px;
+}
+.stepper-item .step-name {
+  font-size: 14px;
+}
+
+.stepper-item.active {
+  font-weight: bold;
+}
+
+.stepper-item.completed .step-counter {
+  background-color: #137DC5;
+  color: white;
+}
+
+.stepper-item.completed.line::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #137DC5;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+  color: white;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+
+.stepper-item:last-child::after {
+  content: none;
+}
+
 .ct-equity-curve .tabs {
   margin-bottom: 0;
   margin-top: -12px;
@@ -1658,6 +1749,82 @@ button {
 .ct-report-issue-page .card.reset-borders {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.ct-help-page .value {
+  font-weight: 600;
+}
+.ct-help-page .container {
+  margin-top: 25px;
+}
+.ct-help-page__menu__sub {
+  border-left-color: rgba(19, 125, 197, 0.5) !important;
+}
+.ct-help-page__menu .menu-list a {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.ct-help-page__menu .menu-list a.is-active {
+  background-color: #137DC5;
+  border-radius: 6px;
+}
+.ct-help-page__menu .menu-list a.is-active span {
+  color: #FFFFFF;
+}
+.ct-help-page__menu .menu-list p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.ct-help-page .media-content .content small {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.ct-help-page .tag-text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+}
+.ct-help-page .tag-icon {
+  color: rgb(86, 106, 127);
+  font-size: 22px;
+}
+.ct-help-page .tag-icon .invert-horizontal {
+  transform: scale(-1, 1);
+}
+.ct-help-page .tag-icon .invert-vertical {
+  transform: scale(1, -1);
+}
+.ct-help-page .tag-columns {
+  margin-top: 25px;
+}
+.ct-help-page .bullish {
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.ct-help-page .bullish span {
+  padding: 10px;
+  border-top: 2px solid rgb(76, 187, 23);
+  border-left: 2px solid rgb(76, 187, 23);
+  color: rgb(76, 187, 23);
+}
+.ct-help-page .bearish {
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.ct-help-page .bearish span {
+  padding: 10px;
+  color: rgb(255, 62, 29);
+  border-right: 2px solid rgb(255, 62, 29);
+  border-top: 2px solid rgb(255, 62, 29);
+}
+.ct-help-page .separator {
+  min-height: 300px;
+  width: 1.5px;
+  margin: 0 auto;
+  border: 1.5px solid rgba(19, 125, 197, 0.35);
 }
 
 .ct-trade-history-page__disclaimer-container {

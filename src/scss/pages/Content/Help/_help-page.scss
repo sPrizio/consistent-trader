@@ -1,0 +1,103 @@
+.ct-help-page {
+
+  .value {
+    font-weight: $font-weight-semi-bold;
+  }
+
+  .container {
+    margin-top: 25px;
+  }
+
+  &__menu {
+    &__sub {
+      border-left-color: rgba($color-primary, 0.5) !important;
+    }
+
+    .menu-list {
+      a {
+        font-size: map-get($font-body, 'small', 'desktop', 'size');
+        font-weight: map-get($font-body, 'small', 'desktop', 'weight');
+        line-height: map-get($font-body, 'small', 'desktop', 'line');
+
+        &.is-active {
+          background-color: $color-primary;
+          border-radius: 6px;
+
+          span {
+            color: $color-white;
+          }
+        }
+      }
+
+      p {
+        font-size: map-get($font-body, 'small', 'desktop', 'size');
+        font-weight: map-get($font-body, 'small', 'desktop', 'weight');
+        line-height: map-get($font-body, 'small', 'desktop', 'line');
+      }
+    }
+  }
+
+  .media-content {
+    .content {
+      small {
+        font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
+        font-weight: map-get($font-body, 'xsmall', 'desktop', 'weight');
+        line-height: map-get($font-body, 'xsmall', 'desktop', 'line');
+      }
+    }
+  }
+
+  .tag-text {
+    font-size: map-get($font-body, 'default', 'desktop', 'size');
+    font-weight: map-get($font-body, 'default', 'desktop', 'weight');
+    line-height: map-get($font-body, 'default', 'desktop', 'line');
+  }
+
+  .tag-icon {
+    color: $color-font-header-title;
+    font-size: 22px;
+
+    .invert-horizontal {
+      transform: scale(-1, 1);
+    }
+
+    .invert-vertical {
+      transform: scale(1, -1);
+    }
+  }
+
+  .tag-columns {
+    margin-top: 25px;
+  }
+
+  .bullish {
+    text-transform: uppercase;
+    margin-bottom: 25px;
+
+    span {
+      padding: 10px;
+      border-top: 2px solid $color-value-positive;
+      border-left: 2px solid $color-value-positive;
+      color: $color-value-positive;
+    }
+  }
+
+  .bearish {
+    text-transform: uppercase;
+    margin-bottom: 25px;
+
+    span {
+      padding: 10px;
+      color: $color-value-negative;
+      border-right: 2px solid $color-value-negative;
+      border-top: 2px solid $color-value-negative;
+    }
+  }
+
+  .separator {
+    min-height: 300px;
+    width: 1.5px;
+    margin: 0 auto;
+    border: 1.5px solid rgba($color-primary, 0.35);
+  }
+}

@@ -15,6 +15,17 @@ export type CurrencyInfo = {
     label?: string,
 }
 
+export type BaseRankInfo = {
+    className?: string,
+    empty?: boolean,
+    imageUrl?: string,
+    level?: number,
+    name?: string,
+    ranks?: Array<RankInfo>
+    uid?: string,
+    multiplier?: number,
+}
+
 export type RankInfo = {
     className?: string,
     empty?: boolean,

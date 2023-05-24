@@ -8,6 +8,7 @@ import TradeHistoryPage from "../Trade/TradeHistoryPage";
 import ReportIssuePage from "../Content/ReportIssuePage";
 import AnalysisPage from "../Account/AnalysisPage";
 import RetrospectivesPage from "../Retrospective/RetrospectivesPage";
+import HelpPage from "../Content/Help/HelpPage";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -57,6 +58,8 @@ function ContentPage() {
                 return <AnalysisPage />
             case "retrospectives":
                 return <RetrospectivesPage />
+            case "help":
+                return <HelpPage />
             default:
                 return null;
         }

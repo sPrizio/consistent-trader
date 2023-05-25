@@ -8,6 +8,7 @@ import {now} from "../../services/datetime/DateTimeService";
 import BaseModal from "../Modals/BaseModal";
 import temp from '../../assets/icons/locales/canada.png'
 import AccountSwitchModal from "../Modals/Account/AccountSwitchModal";
+import TradesImportModal from "../Modals/Trade/TradesImportModal";
 
 
 /**
@@ -137,12 +138,7 @@ function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandle
                 </div>
             </div>
 
-            <BaseModal
-                active={modalActive && selectedModal === 'importTrades'}
-                title={'Import Trades'}
-                closeHandler={toggleModal}
-                content={[<div key={0}>Hello There, General Kenobi</div>]}
-            />
+            <TradesImportModal active={modalActive && selectedModal === 'importTrades'} closeHandler={() => toggleModal('')} />
 
             <AccountSwitchModal
                 active={modalActive && selectedModal === 'accountSwitch'}

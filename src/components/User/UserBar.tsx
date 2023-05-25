@@ -7,6 +7,7 @@ import {useState} from "react";
 import {now} from "../../services/datetime/DateTimeService";
 import BaseModal from "../Modals/BaseModal";
 import temp from '../../assets/icons/locales/canada.png'
+import AccountSwitchModal from "../Modals/Account/AccountSwitchModal";
 
 
 /**
@@ -22,6 +23,7 @@ function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandle
 
     const [menuActive, setMenuActive] = useState(false)
     const [modalActive, setModalActive] = useState(false)
+    const [selectedModal, setSelectedModal] = useState('')
 
 
     //  HANDLERS
@@ -35,9 +37,12 @@ function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandle
 
     /**
      * Toggles a modal
+     *
+     * @param val modal type
      */
-    function toggleModal() {
+    function toggleModal(val: string) {
         setModalActive(!modalActive)
+        setSelectedModal(val)
         if (menuActive) {
             setMenuActive(false)
         }
@@ -102,18 +107,17 @@ function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandle
                             <div className={"ct-user-bar__user-menu__content" + (menuActive ? " is-active " : "")}>
                                 <div className="ct-user-bar__user-menu__content__container">
                                     <div className="ct-user-bar__user-menu__content__container__link" onClick={() => pageHandler('profile')}>
-                                        <span className="icon-text">
-                                            <span className="icon"><AiOutlineUser/></span>
+                                        <span className="icon-text">                                            <span className="icon"><AiOutlineUser/></span>
                                             <span>My Account</span>
                                         </span>
                                     </div>
-                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={toggleModal}>
+                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={() => toggleModal('importTrades')}>
                                         <span className="icon-text">
                                             <span className="icon"><HiUpload/></span>
                                             <span>Import Trades</span>
                                         </span>
                                     </div>
-                                    <div className="ct-user-bar__user-menu__content__container__link">
+                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={() => toggleModal('accountSwitch')}>
                                         <span className="icon-text">
                                             <span className="icon"><AiOutlineSwap/></span>
                                             <span>Switch Accounts</span>
@@ -134,10 +138,16 @@ function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandle
             </div>
 
             <BaseModal
-                active={modalActive}
+                active={modalActive && selectedModal === 'importTrades'}
                 title={'Import Trades'}
                 closeHandler={toggleModal}
                 content={[<div key={0}>Hello There, General Kenobi</div>]}
+            />
+
+            <AccountSwitchModal
+                active={modalActive && selectedModal === 'accountSwitch'}
+                closeHandler={() => toggleModal('')}
+                accounts={userInfo.accounts ?? []}
             />
         </div>
     )

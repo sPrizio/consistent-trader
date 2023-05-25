@@ -1037,6 +1037,50 @@ button {
     opacity: 100%;
   }
 }
+.ct-account-switch-modal .accounts-container {
+  padding: 15px 0 15px 0;
+  border-top: 2px solid rgba(215, 215, 215, 0.45);
+  border-bottom: 2px solid rgba(215, 215, 215, 0.45);
+}
+.ct-account-switch-modal .container {
+  margin-top: 25px;
+}
+.ct-account-switch-modal .container .info {
+  font-size: 12px;
+  color: rgb(161, 172, 184);
+}
+.ct-account-switch-modal .columns {
+  font-size: 15px;
+}
+.ct-account-switch-modal .account-number {
+  font-weight: 700;
+  color: #137DC5;
+}
+.ct-account-switch-modal .balance {
+  font-size: 16px;
+  font-weight: 600;
+}
+.ct-account-switch-modal .balance small {
+  font-size: 12px;
+  font-weight: 600;
+}
+.ct-account-switch-modal .column.is-12:not(:last-child) {
+  border-bottom: 2px solid rgba(19, 125, 197, 0.25);
+}
+.ct-account-switch-modal .column.is-12:hover {
+  background-color: rgba(215, 215, 215, 0.25);
+  cursor: pointer;
+}
+.ct-account-switch-modal .default-icon {
+  color: #137DC5;
+  font-size: 27.5px;
+}
+.ct-account-switch-modal .sub-header {
+  color: rgb(161, 172, 184);
+  font-size: 12.75px;
+  font-weight: 400;
+}
+
 .ct-create-retro-modal.ct-modal .ct-modal__content {
   max-height: 800px !important;
 }

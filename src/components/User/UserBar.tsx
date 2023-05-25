@@ -77,6 +77,9 @@ function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandle
         <div className="ct-user-bar">
             <div className="level is-mobile is-vcentered">
                 <div className="level-left">
+                    <div className="level-item ct-mobile-side-nav-trigger">
+                        MN
+                    </div>
                     <div className="level-item">
                         {getDisplayText()}
                     </div>

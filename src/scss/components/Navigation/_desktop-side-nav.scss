@@ -26,6 +26,10 @@
     }
   }
 
+  @include mq-xlarge-down {
+    display: none;
+  }
+
   min-height: 100vh;
   height: 100%;
   max-width: 300px;

@@ -1120,6 +1120,11 @@ button {
 .ct-side-nav.minimized .ct-side-nav__footer__title.active {
   background-color: transparent;
 }
+@media screen and (max-width: 1131px) {
+  .ct-side-nav {
+    display: none;
+  }
+}
 .ct-side-nav__content {
   padding: 18px 18px;
   min-height: 100vh;
@@ -1272,6 +1277,12 @@ button {
   line-height: 20px;
   font-weight: 300;
   color: rgb(161, 172, 184);
+}
+
+@media screen and (min-width: 1132px) {
+  .ct-mobile-side-nav-trigger {
+    display: none;
+  }
 }
 
 .ct-news__entry .is-active {
@@ -1712,10 +1723,15 @@ button {
 }
 @media screen and (min-width: 768px) {
   .ct-content-page .page-container {
-    padding: 36px 48px;
+    padding: 12px 25px;
   }
 }
 @media screen and (min-width: 992px) {
+  .ct-content-page .page-container {
+    padding: 24px 50px;
+  }
+}
+@media screen and (min-width: 1132px) {
   .ct-content-page .page-container {
     padding: 48px 100px;
   }

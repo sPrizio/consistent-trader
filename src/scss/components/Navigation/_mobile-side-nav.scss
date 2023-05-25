@@ -1,0 +1,9 @@
+.ct-mobile-side-nav {
+
+}
+
+.ct-mobile-side-nav-trigger {
+  @include mq-xlarge-up {
+    display: none;
+  }
+}

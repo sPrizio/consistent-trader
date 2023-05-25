@@ -10,10 +10,14 @@
     transition-timing-function: $transition-curve;
 
     @include mq-medium-up {
-      padding: 36px 48px;
+      padding: 12px 25px;
     }
 
     @include mq-large-up {
+      padding: 24px 50px;
+    }
+
+    @include mq-xlarge-up {
       padding: 48px 100px;
     }
   }

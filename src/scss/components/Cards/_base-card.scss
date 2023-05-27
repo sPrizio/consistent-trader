@@ -41,6 +41,7 @@
     padding-bottom: 6px;
     margin-bottom: 12px;
     border-bottom: 1px solid transparent;
+    text-transform: capitalize;
 
     &.header-border {
       border-bottom: 1px solid rgba($color-primary, 0.4);

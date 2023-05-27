@@ -843,6 +843,7 @@ button {
   padding-bottom: 6px;
   margin-bottom: 12px;
   border-bottom: 1px solid transparent;
+  text-transform: capitalize;
 }
 .ct-card__header.header-border {
   border-bottom: 1px solid rgba(19, 125, 197, 0.4);
@@ -1393,6 +1394,9 @@ button {
   font-weight: 700;
   margin-right: 12px;
 }
+.ct-note-retrospective .block:last-child {
+  padding-bottom: 24px;
+}
 .ct-note-retrospective__header {
   color: rgb(161, 172, 184);
   font-size: 12px;
@@ -1413,6 +1417,9 @@ button {
 }
 .ct-note-retrospective__key-point .icon {
   margin-right: 12px;
+}
+.ct-note-retrospective__totals {
+  padding-bottom: 24px;
 }
 .ct-note-retrospective .message .message-body p:not(:last-child) {
   padding-bottom: 15px;

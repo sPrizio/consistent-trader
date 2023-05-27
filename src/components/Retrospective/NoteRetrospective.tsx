@@ -1,10 +1,11 @@
 import BaseCard from "../Cards/BaseCard";
-import {RetrospectiveInfo, RetrospectivePointInfo} from "../../types/api-types";
+import {RetrospectiveInfo} from "../../types/api-types";
 import {CoreConstants} from "../../constants/CoreConstants";
 import {formatDate} from "../../services/datetime/DateTimeService";
-import {AiFillDelete, AiFillEdit, AiFillRightCircle} from "react-icons/ai";
+import {AiFillRightCircle} from "react-icons/ai";
 import {RiAlarmWarningLine} from "react-icons/ri";
 import {formatNumberForDisplay} from "../../services/data/FormattingService";
+import SimpleButton from "../Buttons/SimpleButton";
 
 /**
  * Component that renders a written retrospective
@@ -77,7 +78,7 @@ function NoteRetrospective(
     let totals = null
     if (showTotals && retro && retro.totals && retro.totals.statistics) {
         totals =
-            <div>
+            <div className="ct-note-retrospective__totals">
                 <hr/>
                 <div className="columns is-multiline is-mobile has-text-centered">
                     <div className="column is-3">
@@ -195,14 +196,34 @@ function NoteRetrospective(
         </div>
     }
 
+    let controls : Array<any> = []
+    if (showCrud) {
+        controls =
+            [
+                <SimpleButton
+                    loading={isLoading}
+                    text={'Delete'}
+                    variant={"tertiary"}
+                    key={1}
+                    handler={() => deleteHandler(retro.uid)}
+                />,
+                /*<SimpleButton
+                    text={'Edit'}
+                    key={0}
+                    loading={false}
+                />*/
+            ]
+    }
+
     return (
         <>
             <BaseCard
                 loading={false}
-                title={'Retrospective'}
+                title={interval.toLowerCase() + ' Retrospective'}
                 subtitle={getDate()}
                 hasBorder={false}
                 content={[content]}
+                controls={controls}
             />
         </>
     )

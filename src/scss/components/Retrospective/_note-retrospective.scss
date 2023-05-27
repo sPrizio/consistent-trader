@@ -14,6 +14,10 @@
       font-weight: $font-weight-bold;
       margin-right: 12px;
     }
+
+    &:last-child {
+      padding-bottom: 24px;
+    }
   }
 
   &__header {
@@ -39,6 +43,10 @@
     .icon {
       margin-right: 12px;
     }
+  }
+
+  &__totals {
+    padding-bottom: 24px;
   }
 
   .message {

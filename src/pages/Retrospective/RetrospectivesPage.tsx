@@ -6,7 +6,7 @@ import CreateRetrospectiveModal from "../../components/Modals/Retrospective/Crea
 import {ActiveMonthInfo, ActiveYearInfo, StandardJsonResponse} from "../../types/api-types";
 import {formatDate, formatDateMoment, getDate, now} from "../../services/datetime/DateTimeService";
 import {CoreConstants} from "../../constants/CoreConstants";
-import get, {post} from "../../services/client/ClientService";
+import get, {cDelete, post} from "../../services/client/ClientService";
 import hasData from "../../services/data/DataIntegrityService";
 import moment from "moment";
 import NoteRetrospective from "../../components/Retrospective/NoteRetrospective";
@@ -37,6 +37,7 @@ function RetrospectivesPage() {
     const [end, setEnd] = useState('')
     const [retros, setRetros] = useState([])
     const [isEditing, setIsEditing] = useState(false)
+    const [didDelete, setDidDelete] = useState(false)
 
     useEffect(() => {
         getActiveYears()
@@ -58,9 +59,22 @@ function RetrospectivesPage() {
         }
     }, [isEditing])
 
+    useEffect(() => {
+        if (didDelete) {
+            setDidDelete(false)
+            getRetrospectives()
+        }
+    }, [didDelete])
+
 
     //  HANDLER FUNCTIONS
 
+    /**
+     * Toggles the modal active or inactive
+     *
+     * @param shouldCancel should clear the form
+     * @param modType type of modal (note or audio)
+     */
     function toggleModal(shouldCancel: boolean, modType: string) {
 
         if (shouldCancel) {
@@ -71,6 +85,11 @@ function RetrospectivesPage() {
         setRetroType(modType)
     }
 
+    /**
+     * Handler for selecting a month
+     *
+     * @param e change event
+     */
     function handleMonthChange(e: ChangeEvent) {
         const target = e.target as HTMLSelectElement
         setCurrentMonth(target.value)
@@ -78,6 +97,11 @@ function RetrospectivesPage() {
         setEnd(formatDateMoment(getDate(target.value).add(1, 'months'), CoreConstants.DateTime.ISODateFormat))
     }
 
+    /**
+     * Handler for selecting a year
+     *
+     * @param e change event
+     */
     function handleYearChange(e: ChangeEvent) {
         const target = e.target as HTMLSelectElement
         setCurrentYear(target.value)
@@ -86,6 +110,9 @@ function RetrospectivesPage() {
 
     //  GENERAL FUNCTIONS
 
+    /**
+     * Resets form data
+     */
     function resetForm() {
         setFormData({
             intervalFrequency: 'WEEKLY',
@@ -96,10 +123,16 @@ function RetrospectivesPage() {
         setIsEditing(false)
     }
 
+    /**
+     * Returns true if there aren't any retrospectives
+     */
     function isEmpty() {
         return !retros || retros.length === 0
     }
 
+    /**
+     * Performs an API call to get the active years (years that contain retrospectives)
+     */
     async function getActiveYears() {
 
         setIsLoading(true)
@@ -120,6 +153,9 @@ function RetrospectivesPage() {
         return {}
     }
 
+    /**
+     * Performs an API call to get the active months (months that contain retrospectives)
+     */
     async function getActiveMonths() {
 
         setIsLoading(true)
@@ -144,6 +180,9 @@ function RetrospectivesPage() {
         return {}
     }
 
+    /**
+     * Performs an API call to fetch retrospectives
+     */
     async function getRetrospectives() {
 
         setIsLoading(true)
@@ -157,7 +196,6 @@ function RetrospectivesPage() {
         d.then(res => {
             let response: StandardJsonResponse = JSON.parse(res)
             if (response.success && hasData(response.data)) {
-                console.log(response.data)
                 setRetros(response.data)
             }
         })
@@ -167,15 +205,30 @@ function RetrospectivesPage() {
         return {}
     }
 
+    /**
+     * Edit handler
+     *
+     * @param val1 retro uid
+     */
     async function handleEdit(val1: string) {
         setIsEditing(true)
         //await this.getRetrospective(val1)
     }
 
+    /**
+     * Delete handler
+     *
+     * @param val1 retro uid
+     */
     async function handleDelete(val1: string) {
-        //await this.deleteRetrospective(val1)
+        await deleteRetrospective(val1)
     }
 
+    /**
+     * Performs an API call to create a new retro
+     *
+     * @param val form data
+     */
     async function createRetrospective(val: any) {
 
         setIsLoading(true)
@@ -197,8 +250,37 @@ function RetrospectivesPage() {
         return {}
     }
 
+    /**
+     * Submits the form for creating a new retro
+     *
+     * @param val form data
+     */
     async function handleSubmit(val: any) {
         await createRetrospective(val)
+    }
+
+    /**
+     * Performs the API call to delete a retro
+     *
+     * @param val1 retro uid
+     */
+    async function deleteRetrospective(val1: string) {
+
+        setIsLoading(true)
+
+        try {
+            const result = await cDelete(CoreConstants.ApiUrls.Retrospective.Delete.replace('{uid}', val1))
+            let response: StandardJsonResponse = JSON.parse(result)
+            if (response.success && hasData(response.data)) {
+                setDidDelete(true)
+            } else {
+                console.log('error')
+            }
+        } catch (err) {
+            console.log(err, 'error')
+        }
+
+        setIsLoading(false)
     }
 
 

@@ -1,3 +1,59 @@
 .ct-retrospectives-page {
+  .floating-buttons-container {
+    .button.is-floating.is-lead {
+      height: $float-height;
+      width: $float-width;
+      padding: 0;
 
+      &.is-primary {
+        background-color: $color-primary;
+        span {
+          color: $color-white;
+        }
+      }
+    }
+
+    .floating-sub-container.no-show {
+      display: none;
+    }
+
+    .floating-sub-container {
+      position: fixed;
+      height: $float-container-height;
+      width: $float-width;
+      bottom: $float-bottom;
+      right: $float-right;
+
+      .button-container {
+        padding: 5px 0 5px 0;
+
+        .button {
+          height: $float-height;
+          width: $float-width;
+          border-radius: 100%;
+          border: 2px solid rgba($color-primary, 0.5);
+          background-color: white;
+          font-weight: bold;
+          transition: background-color $transition-duration $transition-curve;
+          padding: 0;
+
+          span {
+            color: $color-primary;
+            transition: color $transition-duration $transition-curve;
+          }
+
+          &:hover {
+            background-color: $color-primary;
+            span {
+              color: $color-white;
+            }
+          }
+
+          .icon {
+            font-size: 23px;
+          }
+        }
+      }
+    }
+  }
 }

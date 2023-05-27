@@ -10,6 +10,10 @@ import get, {cDelete, post} from "../../services/client/ClientService";
 import hasData from "../../services/data/DataIntegrityService";
 import moment from "moment";
 import NoteRetrospective from "../../components/Retrospective/NoteRetrospective";
+import {HiPlus} from "react-icons/hi";
+import {TfiWrite} from "react-icons/tfi";
+import {AiFillAudio} from "react-icons/ai";
+import 'bulma-floating-button/dist/css/bulma-floating-button.min.css'
 
 /**
  * Component that renders the retrospectives page
@@ -20,6 +24,7 @@ import NoteRetrospective from "../../components/Retrospective/NoteRetrospective"
 function RetrospectivesPage() {
 
     const [isLoading, setIsLoading] = useState(false)
+    const [newActive, setNewActive] = useState(false)
     const [selectedInterval, setSelectedInterval] = useState('WEEKLY')
     const [modalActive, setModalActive] = useState(false)
     const [retroType, setRetroType] = useState(RetrospectiveType.NOTE.code)
@@ -68,6 +73,13 @@ function RetrospectivesPage() {
 
 
     //  HANDLER FUNCTIONS
+
+    /**
+     * Toggles the new button container as active
+     */
+    function toggleNew() {
+        setNewActive(!newActive)
+    }
 
     /**
      * Toggles the modal active or inactive
@@ -365,7 +377,30 @@ function RetrospectivesPage() {
                     }
                 </div>
 
-                <SimpleButton text={'Click Me'} handler={() => toggleModal(true, RetrospectiveType.NOTE.code)}/>
+                <div className="floating-buttons-container">
+                    <button className="button is-floating is-lead is-primary is-vcentered has-text-centered" onClick={toggleNew}>
+                        <span className="is-size-3" style={{marginTop: "5px"}}>
+                            <HiPlus/>
+                        </span>
+                    </button>
+
+                    <div className={"floating-sub-container" + (newActive ? '' : ' no-show ')}>
+                        <div className="button-container">
+                            <button className="button" onClick={() => toggleModal(true, RetrospectiveType.NOTE.code)}>
+                                <span className="icon">
+                                    <TfiWrite/>
+                                </span>
+                            </button>
+                        </div>
+                        <div className="button-container">
+                            <button className="button" onClick={() => toggleModal(true, 'audio')}>
+                                <span className="icon">
+                                    <AiFillAudio />
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <CreateRetrospectiveModal
                     modalActive={modalActive && retroType === RetrospectiveType.NOTE.code}

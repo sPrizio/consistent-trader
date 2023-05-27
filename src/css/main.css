@@ -1950,6 +1950,54 @@ button {
   margin-right: 12px;
 }
 
+.ct-retrospectives-page .floating-buttons-container .button.is-floating.is-lead {
+  height: 60px;
+  width: 60px;
+  padding: 0;
+}
+.ct-retrospectives-page .floating-buttons-container .button.is-floating.is-lead.is-primary {
+  background-color: #137DC5;
+}
+.ct-retrospectives-page .floating-buttons-container .button.is-floating.is-lead.is-primary span {
+  color: #FFFFFF;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container.no-show {
+  display: none;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container {
+  position: fixed;
+  height: 145px;
+  width: 60px;
+  bottom: 110px;
+  right: 45px;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container .button-container {
+  padding: 5px 0 5px 0;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container .button-container .button {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  border: 2px solid rgba(19, 125, 197, 0.5);
+  background-color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+  padding: 0;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container .button-container .button span {
+  color: #137DC5;
+  transition: color 0.3s ease-in-out;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container .button-container .button:hover {
+  background-color: #137DC5;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container .button-container .button:hover span {
+  color: #FFFFFF;
+}
+.ct-retrospectives-page .floating-buttons-container .floating-sub-container .button-container .button .icon {
+  font-size: 23px;
+}
+
 .bronze {
   color: rgb(188, 120, 60) !important;
 }

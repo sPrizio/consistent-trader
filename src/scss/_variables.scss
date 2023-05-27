@@ -71,6 +71,13 @@ $color-rank-diamond: rgb(12, 191, 157);
 $color-rank-emerald: rgb(6, 95, 53);
 $color-rank-obsidian: rgb(86, 54, 217);
 
+//  retro floating buttons
+$float-height: 60px;
+$float-width: 60px;
+$float-bottom: 50px + $float-height;
+$float-right: 45px;
+$float-container-height: $float-height * 2 + 25px; // height = # of buttons * height of lead button + offset
+
 
 //  TYPOGRAPHY
 

@@ -1379,6 +1379,45 @@ button {
   height: 100%;
 }
 
+.ct-note-retrospective .container {
+  margin-top: 25px;
+}
+.ct-note-retrospective .block {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+}
+.ct-note-retrospective .block .icon {
+  color: #137DC5;
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 12px;
+}
+.ct-note-retrospective__header {
+  color: rgb(161, 172, 184);
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.ct-note-retrospective__value {
+  color: #137DC5;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+.ct-note-retrospective__key-point {
+  color: #137DC5;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.ct-note-retrospective__key-point .icon {
+  margin-right: 12px;
+}
+.ct-note-retrospective .message .message-body p:not(:last-child) {
+  padding-bottom: 15px;
+}
+
 .ct-skillprogress .level:first-child {
   margin-bottom: 10px;
 }

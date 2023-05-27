@@ -351,3 +351,36 @@ export type TopValueInfo = {
     tradeDuration?: number,
     tradeOpenTime?: string,
 }
+
+
+//  RETROSPECTIVE
+
+export type RetrospectivePointInfo = {
+    empty?: boolean,
+    entryText?: string
+    keyPoint?: boolean,
+    lineNumber?: number,
+    uid?: string,
+}
+
+export type RetrospectiveTotalsInfo = {
+    account?: AccountInfo,
+    aggregateInterval?: string,
+    balance?: number,
+    empty?: string,
+    endDate?: string,
+    startDate?: string,
+    statistics?: TradeRecordStatisticsInfo,
+    uid?: string
+}
+
+export type RetrospectiveInfo = {
+    account?: AccountInfo,
+    empty?: boolean,
+    endDate?: string,
+    intervalFrequency?: string,
+    points?: Array<RetrospectivePointInfo>,
+    startDate?: string,
+    totals?: RetrospectiveTotalsInfo,
+    uid?: string,
+}

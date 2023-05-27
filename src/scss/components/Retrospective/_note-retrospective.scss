@@ -1,0 +1,53 @@
+.ct-note-retrospective {
+  .container {
+    margin-top: 25px;
+  }
+
+  .block {
+    font-size: map-get($font-body, 'default', 'mobile', 'size');
+    font-weight: map-get($font-body, 'default', 'mobile', 'weight');
+    line-height: map-get($font-body, 'default', 'mobile', 'line');
+
+    .icon {
+      color: $color-primary;
+      font-size: 20px;
+      font-weight: $font-weight-bold;
+      margin-right: 12px;
+    }
+  }
+
+  &__header {
+    color: $color-font-header-subtitle;
+    font-size: map-get($font-body, 'xsmall', 'mobile', 'size');
+    line-height: map-get($font-body, 'xsmall', 'mobile', 'line');
+    font-weight: $font-weight-regular;
+  }
+
+  &__value {
+    color: $color-primary;
+    font-size: map-get($font-body, 'default', 'mobile', 'size');
+    line-height: map-get($font-body, 'default', 'mobile', 'line');
+    font-weight: $font-weight-bold;
+  }
+
+  &__key-point {
+    color: $color-primary;
+    font-size: map-get($font-body, 'default', 'mobile', 'size');
+    line-height: map-get($font-body, 'default', 'mobile', 'line');
+    font-weight: $font-weight-regular;
+
+    .icon {
+      margin-right: 12px;
+    }
+  }
+
+  .message {
+    .message-body {
+      p {
+        &:not(:last-child) {
+          padding-bottom: 15px;
+        }
+      }
+    }
+  }
+}

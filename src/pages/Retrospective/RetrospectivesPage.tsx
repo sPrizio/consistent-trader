@@ -9,6 +9,7 @@ import {CoreConstants} from "../../constants/CoreConstants";
 import get, {post} from "../../services/client/ClientService";
 import hasData from "../../services/data/DataIntegrityService";
 import moment from "moment";
+import NoteRetrospective from "../../components/Retrospective/NoteRetrospective";
 
 /**
  * Component that renders the retrospectives page
@@ -99,7 +100,7 @@ function RetrospectivesPage() {
         return !retros || retros.length === 0
     }
 
-    async function  getActiveYears() {
+    async function getActiveYears() {
 
         setIsLoading(true)
 
@@ -166,6 +167,15 @@ function RetrospectivesPage() {
         return {}
     }
 
+    async function handleEdit(val1: string) {
+        setIsEditing(true)
+        //await this.getRetrospective(val1)
+    }
+
+    async function handleDelete(val1: string) {
+        //await this.deleteRetrospective(val1)
+    }
+
     async function createRetrospective(val: any) {
 
         setIsLoading(true)
@@ -204,7 +214,8 @@ function RetrospectivesPage() {
                     <div className="level">
                         <div className="level-left">
                             <div className="level-item">
-                                <h4>Retrospectives for {formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}</h4>
+                                <h4>Retrospectives
+                                    for {formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}</h4>
                             </div>
                         </div>
                         <div className="level-right">
@@ -250,18 +261,29 @@ function RetrospectivesPage() {
                     </div>
                 </div>
 
+                <hr className="is-primary"/>
+
+                <div className="columns is-multiline is-mobile">
+                    {
+                        retros && retros.map((item, key) => {
+                            return (
+                                <div className="column is-12" key={key}>
+                                    <NoteRetrospective
+                                        interval={selectedInterval}
+                                        showTotals={true}
+                                        isLoading={isLoading}
+                                        retro={item}
+                                        editHandler={handleEdit}
+                                        deleteHandler={handleDelete}
+                                        showCrud={true}
+                                    />
+                                </div>
+                            )
+                        })
+                    }
+                </div>
 
                 <SimpleButton text={'Click Me'} handler={() => toggleModal(true, RetrospectiveType.NOTE.code)}/>
-
-                <hr />
-
-                {
-                    retros && retros.map((item, key) => {
-                        return (
-                            <p>Hi</p>
-                        )
-                    })
-                }
 
                 <CreateRetrospectiveModal
                     modalActive={modalActive && retroType === RetrospectiveType.NOTE.code}

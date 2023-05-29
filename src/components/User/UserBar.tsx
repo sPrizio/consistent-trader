@@ -5,7 +5,6 @@ import {HiUpload} from "react-icons/hi";
 import {RiLogoutCircleLine} from "react-icons/ri";
 import {useState} from "react";
 import {now} from "../../services/datetime/DateTimeService";
-import BaseModal from "../Modals/BaseModal";
 import temp from '../../assets/icons/locales/canada.png'
 import AccountSwitchModal from "../Modals/Account/AccountSwitchModal";
 import TradesImportModal from "../Modals/Trade/TradesImportModal";
@@ -17,10 +16,9 @@ import TradesImportModal from "../Modals/Trade/TradesImportModal";
  * @author Stephen Prizio
  * @version 1.0
  */
-function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandler: Function }) {
+function UserBar({userInfo = {}, pageHandler, mobileHandler}: { userInfo?: UserInfo, pageHandler: Function, mobileHandler: Function }) {
 
     //  TODO: add locale selector
-    //  TODO: add comments to all methods and classes
 
     const [menuActive, setMenuActive] = useState(false)
     const [modalActive, setModalActive] = useState(false)
@@ -77,8 +75,10 @@ function UserBar({userInfo = {}, pageHandler}: { userInfo?: UserInfo, pageHandle
         <div className="ct-user-bar">
             <div className="level is-mobile is-vcentered">
                 <div className="level-left">
-                    <div className="level-item ct-mobile-side-nav-trigger">
-                        MN
+                    <div className="level-item ct-mobile-side-nav-trigger ct-user-bar__user-menu">
+                        <span className="icon is-size-3" onClick={() => mobileHandler()}>
+                            <RxHamburgerMenu />
+                        </span>
                     </div>
                     <div className="level-item">
                         {getDisplayText()}

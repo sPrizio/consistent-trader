@@ -1,5 +1,5 @@
 import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import OverviewPage from "../Overview/OverviewPage";
 import ProfilePage from "../Profile/ProfilePage";
 import AboutPage from "../Content/AboutPage";
@@ -9,6 +9,10 @@ import ReportIssuePage from "../Content/ReportIssuePage";
 import AnalysisPage from "../Account/AnalysisPage";
 import RetrospectivesPage from "../Retrospective/RetrospectivesPage";
 import HelpPage from "../Content/Help/HelpPage";
+import MobileSideNav from "../../components/Navigation/MobileSideNav";
+import BaseCard from "../../components/Cards/BaseCard";
+import UserBar from "../../components/User/UserBar";
+import {getUser} from "../../services/user/userService";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -18,8 +22,15 @@ import HelpPage from "../Content/Help/HelpPage";
  */
 function ContentPage() {
 
+    const [isLoading, setIsLoading] = useState(false)
     const [page, setPage] = useState('overview')
     const [selectedTab, setSelectedTab] = useState('overview')
+    const [mobileMenuActive, setMobileMenuActive] = useState(false)
+    const [userInfo, setUserInfo] = useState<any>(null)
+
+    useEffect(() => {
+        getUserInfo()
+    }, [])
 
 
     //  HANDLERS
@@ -32,6 +43,11 @@ function ContentPage() {
     function selectPage(val: string) {
         setPage(val);
         setSelectedTab(val)
+        setMobileMenuActive(false)
+    }
+
+    function toggleMobileMenu() {
+        setMobileMenuActive(!mobileMenuActive)
     }
 
 
@@ -65,6 +81,16 @@ function ContentPage() {
         }
     }
 
+    /**
+     * Obtains the user info for use with the overview page
+     */
+    async function getUserInfo() {
+        setIsLoading(true);
+        setUserInfo(await getUser())
+        setIsLoading(false)
+        return {}
+    }
+
 
     //  RENDER
 
@@ -72,10 +98,16 @@ function ContentPage() {
         <div className="columns is-multiline is-mobile is-gapless">
             <div className="column is-narrow-desktop is-narrow-tablet is-12-mobile">
                 <DesktopSideNav pageHandler={selectPage} selectedTab={selectedTab} />
+                <MobileSideNav pageHandler={selectPage} selectedTab={selectedTab} active={mobileMenuActive} />
             </div>
             <div className="column is-12-mobile">
                 <div className="ct-content-page">
                     <div className="page-container">
+                        <div className="columns is-multiline is-mobile">
+                            <div className="column is-12">
+                                <BaseCard loading={isLoading} hasBorder={false} content={[<UserBar key={0} userInfo={userInfo ?? {}} pageHandler={selectPage} mobileHandler={toggleMobileMenu} />]}/>
+                            </div>
+                        </div>
                         {resolvePage()}
                     </div>
                 </div>

@@ -43,6 +43,10 @@
     border-bottom: 1px solid transparent;
     text-transform: capitalize;
 
+    sup {
+      text-transform: lowercase;
+    }
+
     &.header-border {
       border-bottom: 1px solid rgba($color-primary, 0.4);
     }

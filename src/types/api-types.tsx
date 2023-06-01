@@ -301,6 +301,7 @@ export type NewsEntrySlotEntryInfo = {
     severity?: string,
     severityLevel?: number,
     uid?: string,
+    country?: string,
 }
 
 export type NewsEntrySlotInfo = {

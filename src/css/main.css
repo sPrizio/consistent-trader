@@ -1525,20 +1525,28 @@ button {
   font-weight: 300;
   line-height: 22px;
 }
-.ct-news__entry__content .severe {
+.ct-news__entry__content.severe {
   color: rgb(255, 0, 0);
 }
-.ct-news__entry__content .moderate {
+.ct-news__entry__content.moderate {
   color: rgb(255, 165, 0);
 }
-.ct-news__entry__content .low {
+.ct-news__entry__content.low {
   color: rgba(105, 122, 141, 0.5);
+}
+.ct-news__entry__content-text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
 }
 .ct-news__entry .content-column:not(:first-child) .content {
   padding: 4px 0;
 }
 .ct-news__entry .content-column.first:not(:first-child) {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.ct-news__entry__columns {
+  margin: 0 !important;
 }
 .ct-news .entry:nth-child(even) {
   background-color: rgba(19, 125, 197, 0.05);

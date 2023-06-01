@@ -5,7 +5,7 @@ import {HiUpload} from "react-icons/hi";
 import {RiLogoutCircleLine} from "react-icons/ri";
 import {useState} from "react";
 import {now} from "../../services/datetime/DateTimeService";
-import temp from '../../assets/icons/locales/canada.png'
+import temp from '../../assets/icons/locales/round/canada.png'
 import AccountSwitchModal from "../Modals/Account/AccountSwitchModal";
 import TradesImportModal from "../Modals/Trade/TradesImportModal";
 

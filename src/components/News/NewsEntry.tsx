@@ -5,6 +5,7 @@ import {VscWarning} from "react-icons/vsc";
 import {RiErrorWarningLine} from "react-icons/ri";
 import {formatDate, formatDateMoment, now} from "../../services/datetime/DateTimeService";
 import {AiOutlineLine, AiOutlineRight} from "react-icons/ai";
+import {getFlagForCode} from "../../services/locale/LocaleService";
 
 /**
  * Component representing a day of market news
@@ -16,7 +17,12 @@ import {AiOutlineLine, AiOutlineRight} from "react-icons/ai";
  * @author Stephen Prizio
  * @version 1.0
  */
-function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {active: boolean, oldNews: boolean, date: string, slots: Array<NewsEntrySlotInfo>}) {
+function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
+    active: boolean,
+    oldNews: boolean,
+    date: string,
+    slots: Array<NewsEntrySlotInfo>
+}) {
 
 
     //  GENERAL FUNCTIONS
@@ -30,7 +36,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
         const day = moment(val).format(CoreConstants.DateTime.ISODayFormat).match('(\\d+)([a-zA-z]+)')
         return (
             <>
-                {moment(val).format(CoreConstants.DateTime.ISOShortMonthFormat)}&nbsp;{day ? day[1]: ''}<sup>{day ? day[2]: ''}</sup>
+                {moment(val).format(CoreConstants.DateTime.ISOShortMonthFormat)}&nbsp;{day ? day[1] : ''}<sup>{day ? day[2] : ''}</sup>
             </>
         )
     }
@@ -42,7 +48,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
      */
     function isFirst(val: number) {
         const values: any = []
-        const bools : any = []
+        const bools: any = []
 
         for (let i = 0; i < slots.length; i++) {
             if (slots[i].time === '12:34:00' || values.includes(slots[i].time)) {
@@ -77,11 +83,11 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
     function computeIcon(val: number) {
         switch (val) {
             case 1:
-                return <RiErrorWarningLine />
+                return <RiErrorWarningLine/>
             case 2:
-                return <VscWarning />
+                return <VscWarning/>
             case 3:
-                return <AiOutlineLine />
+                return <AiOutlineLine/>
             default:
                 return ''
         }
@@ -124,7 +130,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
     return (
         <div className="ct-news__entry">
             <div className={"columns is-multiline is-mobile " + (computeClass())}>
-                <div className="column is-3 date-column">
+                <div className="column is-one-quarter date-column">
                     <h6 className="ct-news__entry__news-date-header">
                         {moment(date).format(CoreConstants.DateTime.ISOWeekdayFormat)}
                     </h6>
@@ -132,18 +138,20 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
                         {dateDisplay(date)}
                     </h6>
                 </div>
-                <div className="column is-9 value-column">
+                <div className="column value-column">
                     <div className="columns is-multiline is-mobile is-gapless">
                         {
                             slots && slots.map((item, key) => {
                                 return (
-                                    <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')} key={key}>
+                                    <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')}
+                                         key={key}>
                                         <div className="content">
                                             <div className="columns is-multiline is-mobile is-gapless">
-                                                <div className={"column is-3 ct-news__entry__time" + (item.active ? ' active ' : '')}>
+                                                <div
+                                                    className={"column is-3 ct-news__entry__time" + (item.active ? ' active ' : '')}>
                                                     <span className="icon-text">
                                                         <span className="icon">
-                                                            <AiOutlineRight />
+                                                            <AiOutlineRight/>
                                                         </span>
                                                         <span>
                                                             {formatTime(item, key)}
@@ -154,14 +162,21 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
                                                     {
                                                         item.entries && item.entries.map((item, key) => {
                                                             return (
-                                                                <>
-                                                                    <span className="icon-text ct-news__entry__content">
-                                                                        <span className={"icon is-size-5 " + getMaxSeverity(item.severityLevel ?? 0)}>
+                                                                <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns">
+                                                                    <div className="column">
+                                                                        <span className="icon">
+                                                                            {getFlagForCode(item.country ?? '')}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div className="column">
+                                                                        <span className={"ct-news__entry__content icon is-size-5 " + getMaxSeverity(item.severityLevel ?? 0)}>
                                                                             {computeIcon(item.severityLevel ?? -1)}
                                                                         </span>
-                                                                        <span>{item.content}</span>
-                                                                    </span>
-                                                                </>
+                                                                    </div>
+                                                                    <div className="column is-three-quarters-desktop is-half-tablet is-half-mobile ct-news__entry__content-text">
+                                                                        {item.content}
+                                                                    </div>
+                                                                </div>
                                                             )
                                                         })
                                                     }

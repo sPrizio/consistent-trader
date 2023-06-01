@@ -33,7 +33,8 @@ export const CoreConstants = {
         },
         News: {
             Create: getNewsDomain() + '/create',
-            ForInterval: getNewsDomain() + '/for-interval?start={start}&end={end}'
+            Fetch: getNewsDomain() + '/fetch-news',
+            ForInterval: getNewsDomain() + '/for-interval?start={start}&end={end}',
         },
         Rank: {
             BaseRanks: getRankDomain() + '/base-ranks',
@@ -116,5 +117,24 @@ export const CoreConstants = {
         ISOShortTimeFormat: 'HH:mm',
         ISOTimeFormat: 'HH:mm:ss',
         ISOWeekdayFormat: 'dddd'
-    }
+    },
+
+    MenuLinks: {
+        TradingLinks: [
+            {code: 'overview', name: 'Overview'},
+            {code: 'history', name: 'History'},
+            {code: 'analysis', name: 'Analysis'},
+            {code: 'retrospectives', name: 'Retrospectives'},
+            {code: 'news', name: 'Market News (TODO)'},
+        ],
+        SupportLinks: [
+            {code: 'about', name: 'About CTrader'},
+            {code: 'contact', name: 'Contact Us'},
+            {code: 'help', name: 'Help'},
+            {code: 'report', name: 'Report an Issue'},
+        ],
+        AdminLinks: [
+            {code: 'dashboard', name: 'Admin Dashboard'},
+        ]
+    },
 }

@@ -308,6 +308,7 @@ export type NewsEntrySlotInfo = {
     entries?: Array<NewsEntrySlotEntryInfo>,
     time?: string,
     uid?: string,
+    active?: boolean
 }
 
 export type NewsPieceInfo = {

@@ -1,0 +1,16 @@
+.ct-market-news-admin-card {
+  &__success-text,
+  &__error-text {
+    font-size: map-get($font-body, 'small', 'desktop', 'size');
+    font-weight: $font-weight-regular;
+    line-height: map-get($font-body, 'small', 'desktop', 'line');
+  }
+
+  &__success-text {
+    color: $color-value-positive;
+  }
+
+  &__error-text {
+    color: $color-value-negative;
+  }
+}

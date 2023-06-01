@@ -633,6 +633,18 @@ hr.is-primary {
   font-weight: 700;
 }
 
+.ct-market-news-admin-card__success-text, .ct-market-news-admin-card__error-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.ct-market-news-admin-card__success-text {
+  color: rgb(76, 187, 23);
+}
+.ct-market-news-admin-card__error-text {
+  color: rgb(255, 62, 29);
+}
+
 button {
   all: unset;
 }
@@ -1241,9 +1253,6 @@ button {
   transition-timing-function: ease-in-out;
   width: 100%;
 }
-.ct-side-nav__links__link .val {
-  text-transform: capitalize;
-}
 .ct-side-nav__links__link.active {
   background-color: rgba(19, 125, 197, 0.16);
   font-weight: 600;
@@ -1433,9 +1442,6 @@ button {
   transition-timing-function: ease-in-out;
   width: 100%;
 }
-.ct-mobile-side-nav__links__link .val {
-  text-transform: capitalize;
-}
 .ct-mobile-side-nav__links__link.active {
   background-color: rgba(19, 125, 197, 0.16);
   font-weight: 600;
@@ -1477,7 +1483,7 @@ button {
 
 @media screen and (min-width: 1132px) {
   .ct-mobile-side-nav-trigger {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -1506,6 +1512,13 @@ button {
   font-size: 13px;
   font-weight: 300;
   line-height: 20px;
+}
+.ct-news__entry__time .icon {
+  visibility: hidden;
+  color: #137DC5;
+}
+.ct-news__entry__time.active .icon {
+  visibility: visible;
 }
 .ct-news__entry__content {
   font-size: 14px;

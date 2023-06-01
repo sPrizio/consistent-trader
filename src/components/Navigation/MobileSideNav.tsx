@@ -1,6 +1,7 @@
 import brand from "../../assets/images/brand/brand_white-removebg.png";
 import {AiOutlineClose, AiOutlineKey, AiOutlineLineChart, AiOutlineQuestionCircle} from "react-icons/ai";
 import {useEffect, useState} from "react";
+import {CoreConstants} from "../../constants/CoreConstants";
 
 function MobileSideNav({ active = false, pageHandler, selectedTab } : { active: boolean, pageHandler: Function, selectedTab: string }) {
 
@@ -50,23 +51,17 @@ function MobileSideNav({ active = false, pageHandler, selectedTab } : { active: 
         )
     }
 
-    const tradingLinks = [
-        renderLink('overview', 'overview'),
-        renderLink('history', 'history'),
-        renderLink('analysis', 'analysis'),
-        renderLink('retrospectives', 'retrospectives'),
-    ]
+    const tradingLinks = CoreConstants.MenuLinks.TradingLinks.map((item) => {
+        return renderLink(item.name, item.code)
+    })
 
-    const supportLinks = [
-        renderLink('about', 'about'),
-        renderLink('contact', 'contact'),
-        renderLink('help', 'help'),
-        renderLink('report an issue', 'report'),
-    ]
+    const supportLinks = CoreConstants.MenuLinks.SupportLinks.map((item) => {
+        return renderLink(item.name, item.code)
+    })
 
-    const adminLinks = [
-        renderLink('dashboard', 'dashboard'),
-    ]
+    const adminLinks = CoreConstants.MenuLinks.AdminLinks.map((item) => {
+        return renderLink(item.name, item.code)
+    })
 
 
     //  RENDER FUNCTION

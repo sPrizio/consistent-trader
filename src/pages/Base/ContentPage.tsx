@@ -13,6 +13,7 @@ import MobileSideNav from "../../components/Navigation/MobileSideNav";
 import BaseCard from "../../components/Cards/BaseCard";
 import UserBar from "../../components/User/UserBar";
 import {getUser} from "../../services/user/userService";
+import AdminPage from "../Admin/AdminPage";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -76,6 +77,8 @@ function ContentPage() {
                 return <RetrospectivesPage />
             case "help":
                 return <HelpPage />
+            case "dashboard":
+                return <AdminPage />
             default:
                 return null;
         }

@@ -3,7 +3,8 @@ import moment from "moment";
 import {NewsEntrySlotInfo} from "../../types/api-types";
 import {VscWarning} from "react-icons/vsc";
 import {RiErrorWarningLine} from "react-icons/ri";
-import {FiBookmark} from "react-icons/fi";
+import {formatDate, formatDateMoment, now} from "../../services/datetime/DateTimeService";
+import {AiOutlineLine, AiOutlineRight} from "react-icons/ai";
 
 /**
  * Component representing a day of market news
@@ -80,7 +81,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
             case 2:
                 return <VscWarning />
             case 3:
-                return <FiBookmark />
+                return <AiOutlineLine />
             default:
                 return ''
         }
@@ -102,6 +103,19 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
             default:
                 return ''
         }
+    }
+
+    function formatTime(item: NewsEntrySlotInfo, key: number) {
+
+        if (!isFirst(key)) {
+            return null;
+        }
+
+        if (item && item.entries && item.entries[0].severity === 'Holiday') {
+            return <>All Day</>
+        }
+
+        return <>{formatDate(formatDateMoment(now(), CoreConstants.DateTime.ISODateFormat) + ' ' + item.time, CoreConstants.DateTime.ISOShortTimeFormat)}</>
     }
 
 
@@ -126,12 +140,15 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {ac
                                     <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')} key={key}>
                                         <div className="content">
                                             <div className="columns is-multiline is-mobile is-gapless">
-                                                <div className="column is-3 ct-news__entry__time">
-                                                    {
-                                                        isFirst(key) ?
-                                                            <>{moment(moment().format(CoreConstants.DateTime.ISODateFormat) + ' ' + item.time).format(CoreConstants.DateTime.ISOShortTimeFormat)}</>
-                                                            : null
-                                                    }
+                                                <div className={"column is-3 ct-news__entry__time" + (item.active ? ' active ' : '')}>
+                                                    <span className="icon-text">
+                                                        <span className="icon">
+                                                            <AiOutlineRight />
+                                                        </span>
+                                                        <span>
+                                                            {formatTime(item, key)}
+                                                        </span>
+                                                    </span>
                                                 </div>
                                                 <div className="column is-9">
                                                     {

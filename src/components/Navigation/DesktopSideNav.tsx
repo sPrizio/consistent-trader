@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 import brand from '../../assets/images/brand/brand_white-removebg.png'
 import {useState} from "react";
+import {CoreConstants} from "../../constants/CoreConstants";
 
 /**
  * Component representing a side navigation bar. Handles all logic associated
@@ -58,23 +59,17 @@ function DesktopSideNav({ pageHandler, selectedTab } : { pageHandler: Function, 
         )
     }
 
-    const tradingLinks = [
-        renderLink('overview', 'overview'),
-        renderLink('history', 'history'),
-        renderLink('analysis', 'analysis'),
-        renderLink('retrospectives', 'retrospectives'),
-    ]
+    const tradingLinks = CoreConstants.MenuLinks.TradingLinks.map((item) => {
+        return renderLink(item.name, item.code)
+    })
 
-    const supportLinks = [
-        renderLink('about', 'about'),
-        renderLink('contact', 'contact'),
-        renderLink('help', 'help'),
-        renderLink('report an issue', 'report'),
-    ]
+    const supportLinks = CoreConstants.MenuLinks.SupportLinks.map((item) => {
+        return renderLink(item.name, item.code)
+    })
 
-    const adminLinks = [
-        renderLink('dashboard', 'dashboard'),
-    ]
+    const adminLinks = CoreConstants.MenuLinks.AdminLinks.map((item) => {
+        return renderLink(item.name, item.code)
+    })
 
 
     //  RENDER

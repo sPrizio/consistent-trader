@@ -179,7 +179,7 @@
       width: 100%;
 
       .val {
-        text-transform: capitalize;
+        //text-transform: capitalize;
       }
 
       &.active {
@@ -233,6 +233,6 @@
 
 .ct-mobile-side-nav-trigger {
   @include mq-xlarge-up {
-    display: none;
+    display: none !important;
   }
 }

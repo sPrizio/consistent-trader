@@ -28,6 +28,17 @@
     }
 
     &__time {
+      .icon {
+        visibility: hidden;
+        color: $color-primary;
+      }
+
+      &.active {
+        .icon {
+          visibility: visible;
+        }
+      }
+
       font-size: map-get($font-body, 'xsmall', 'desktop', 'size');
       font-weight: $font-weight-light;
       line-height: map-get($font-body, 'xsmall', 'desktop', 'line');

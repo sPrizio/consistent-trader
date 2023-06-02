@@ -90,6 +90,7 @@ export type UserLocaleInfo = {
     country?: string,
     empty?: boolean,
     languages?: Array<string>,
+    currencies?: Array<string>,
     timeZoneOffset?: string,
     townCity?: string,
     uid?: string,

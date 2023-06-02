@@ -4,7 +4,7 @@ import {CoreConstants} from "../../../constants/CoreConstants";
 import {formatDate, formatDateMoment} from "../../../services/datetime/DateTimeService";
 import moment from "moment";
 import get from "../../../services/client/ClientService";
-import {StandardJsonResponse} from "../../../types/api-types";
+import {StandardJsonResponse, UserLocaleInfo} from "../../../types/api-types";
 import hasData from "../../../services/data/DataIntegrityService";
 import News from "../../News/News";
 
@@ -13,17 +13,18 @@ import News from "../../News/News";
  *
  * @param start start date
  * @param end end date
+ * @param locale user locale info
  * @author Stephen Prizio
  * @version 1.0
  */
-function NewsCard({start = '', end = ''}: { start: string, end: string }) {
+function NewsCard({start = '', end = '', locale = {}}: { start: string, end: string, locale: UserLocaleInfo }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [newsInfo, setNewsInfo] = useState({})
 
     useEffect(() => {
         getMarketNews()
-    }, [])
+    }, [locale])
 
 
     //  GENERAL FUNCTIONS
@@ -54,6 +55,7 @@ function NewsCard({start = '', end = ''}: { start: string, end: string }) {
                 CoreConstants.ApiUrls.News.ForInterval
                     .replace('{start}', start)
                     .replace('{end}', end)
+                    .replace('{locales}', locale?.currencies?.join(',') ?? '')
             )
         d.then(res => {
             let response: StandardJsonResponse = JSON.parse(res)

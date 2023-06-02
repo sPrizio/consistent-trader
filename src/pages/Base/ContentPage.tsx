@@ -60,7 +60,7 @@ function ContentPage() {
     function resolvePage() {
         switch (page) {
             case "overview":
-                return <OverviewPage pageHandler={selectPage} />
+                return <OverviewPage pageHandler={selectPage} userInfo={userInfo} />
             case "profile":
                 return <ProfilePage />
             case "about":
@@ -89,7 +89,8 @@ function ContentPage() {
      */
     async function getUserInfo() {
         setIsLoading(true);
-        setUserInfo(await getUser())
+        const user = await getUser()
+        setUserInfo(user)
         setIsLoading(false)
         return {}
     }

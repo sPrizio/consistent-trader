@@ -117,7 +117,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
             return null;
         }
 
-        if (item && item.entries && item.entries[0].severity === 'Holiday') {
+        if (item && item.entries && (item?.entries[0]?.severity ?? '') === 'Holiday') {
             return <>All Day</>
         }
 
@@ -141,7 +141,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
                 <div className="column value-column">
                     <div className="columns is-multiline is-mobile is-gapless">
                         {
-                            slots && slots.map((item, key) => {
+                            slots && slots.filter(item => item.entries && item.entries.length > 0).map((item, key) => {
                                 return (
                                     <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')}
                                          key={key}>
@@ -162,7 +162,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
                                                     {
                                                         item.entries && item.entries.map((item, key) => {
                                                             return (
-                                                                <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns">
+                                                                <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns" key={key}>
                                                                     <div className="column">
                                                                         <span className="icon">
                                                                             {getFlagForCode(item.country ?? '')}

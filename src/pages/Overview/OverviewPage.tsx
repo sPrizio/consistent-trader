@@ -11,7 +11,7 @@ import OverviewCard from "../../components/Cards/Account/OverviewCard";
 import {getAccountOverview} from "../../services/account/accountService";
 import {Helmet} from "react-helmet";
 import get from "../../services/client/ClientService";
-import {StandardJsonResponse} from "../../types/api-types";
+import {StandardJsonResponse, UserInfo} from "../../types/api-types";
 import hasData from "../../services/data/DataIntegrityService";
 import NoteRetrospective from "../../components/Retrospective/NoteRetrospective";
 
@@ -21,7 +21,7 @@ import NoteRetrospective from "../../components/Retrospective/NoteRetrospective"
  * @author Stephen Prizio
  * @version 1.0
  */
-function OverviewPage({ pageHandler } : { pageHandler: Function }) {
+function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, userInfo: UserInfo }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [overview, setOverview] = useState<any>(null)
@@ -89,6 +89,7 @@ function OverviewPage({ pageHandler } : { pageHandler: Function }) {
                                     <NewsCard
                                         start={formatDateMoment(now().startOf('week').add(1, 'days'), CoreConstants.DateTime.ISODateFormat)}
                                         end={formatDateMoment(now().startOf('week').add(6, 'days'), CoreConstants.DateTime.ISODateFormat)}
+                                        locale={userInfo?.userLocale ?? {}}
                                     />
                                 </div>
                             </div>

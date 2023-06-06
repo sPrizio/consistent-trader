@@ -19,14 +19,18 @@ function News({newsInfo = {}}: {newsInfo: NewsInfo}) {
             {
                 newsInfo && newsInfo?.news?.map((item, key) => {
                     return (
-                        <div className="column is-12 entry" key={item.date}>
-                            <NewsEntry
-                                active={moment(item.date).startOf('day').isSame(moment().startOf('day'))}
-                                oldNews={moment(item.date).startOf('day').isBefore(moment().startOf('day'))}
-                                date={item.date ?? ''}
-                                slots={item.slots ?? []}
-                            />
+                        <div className="entry-column">
+                            <div className="column is-12" key={item.date}>
+                                <NewsEntry
+                                    active={moment(item.date).startOf('day').isSame(moment().startOf('day'))}
+                                    oldNews={moment(item.date).startOf('day').isBefore(moment().startOf('day'))}
+                                    date={item.date ?? ''}
+                                    slots={item.slots ?? []}
+                                />
+                            </div>
+                            {/*<hr className="is-primary" />*/}
                         </div>
+
                     )
                 })
             }

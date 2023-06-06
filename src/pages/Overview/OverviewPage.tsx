@@ -87,8 +87,8 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
                                 </div>
                                 <div className="column is-12">
                                     <NewsCard
-                                        start={formatDateMoment(now().startOf('week').add(1, 'days'), CoreConstants.DateTime.ISODateFormat)}
-                                        end={formatDateMoment(now().startOf('week').add(6, 'days'), CoreConstants.DateTime.ISODateFormat)}
+                                        start={formatDateMoment(now().startOf('day'), CoreConstants.DateTime.ISODateFormat)}
+                                        end={formatDateMoment(now().startOf('day').add(2, 'days'), CoreConstants.DateTime.ISODateFormat)}
                                         locale={userInfo?.userLocale ?? {}}
                                     />
                                 </div>

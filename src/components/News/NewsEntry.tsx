@@ -111,6 +111,12 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
         }
     }
 
+    /**
+     * Formats the time display for each news entry
+     *
+     * @param item news entry slot
+     * @param key array index
+     */
     function formatTime(item: NewsEntrySlotInfo, key: number) {
 
         if (!isFirst(key)) {
@@ -127,9 +133,52 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
 
     //  RENDER
 
+    let slotsTemplate = slots?.filter(item => item.entries && item.entries.length > 0)?.map((item, key) => {
+        return <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')} key={key}>
+            <div className="content">
+                <div className="columns is-multiline is-mobile is-gapless is-vcentered">
+                    <div
+                        className={"column is-3 ct-news__entry__time" + (item.active ? ' active ' : '')}>
+                        <span className="icon-text">
+                            <span className="icon">
+                                <AiOutlineRight/>
+                            </span>
+                            <span>
+                                {formatTime(item, key)}
+                            </span>
+                        </span>
+                    </div>
+                    <div className="column is-9">
+                        {
+                            item.entries && item.entries.map((item, key) => {
+                                return (
+                                    <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns" key={key}>
+                                        <div className="column">
+                                            <span className="icon">
+                                                {getFlagForCode(item.country ?? '')}
+                                            </span>
+                                        </div>
+                                        <div className="column">
+                                            <span className={"ct-news__entry__content icon is-size-5 " + getMaxSeverity(item.severityLevel ?? 0)}>
+                                                {computeIcon(item.severityLevel ?? -1)}
+                                            </span>
+                                        </div>
+                                        <div className="column is-three-quarters-desktop is-half-tablet is-half-mobile ct-news__entry__content-text">
+                                            {item.content}
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    })
+
     return (
         <div className="ct-news__entry">
-            <div className={"columns is-multiline is-mobile " + (computeClass())}>
+            <div className={"columns is-multiline is-mobile entry-columns " + (computeClass())}>
                 <div className="column is-one-quarter date-column">
                     <h6 className="ct-news__entry__news-date-header">
                         {moment(date).format(CoreConstants.DateTime.ISOWeekdayFormat)}
@@ -140,53 +189,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
                 </div>
                 <div className="column value-column">
                     <div className="columns is-multiline is-mobile is-gapless">
-                        {
-                            slots && slots.filter(item => item.entries && item.entries.length > 0).map((item, key) => {
-                                return (
-                                    <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')}
-                                         key={key}>
-                                        <div className="content">
-                                            <div className="columns is-multiline is-mobile is-gapless">
-                                                <div
-                                                    className={"column is-3 ct-news__entry__time" + (item.active ? ' active ' : '')}>
-                                                    <span className="icon-text">
-                                                        <span className="icon">
-                                                            <AiOutlineRight/>
-                                                        </span>
-                                                        <span>
-                                                            {formatTime(item, key)}
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                                <div className="column is-9">
-                                                    {
-                                                        item.entries && item.entries.map((item, key) => {
-                                                            return (
-                                                                <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns" key={key}>
-                                                                    <div className="column">
-                                                                        <span className="icon">
-                                                                            {getFlagForCode(item.country ?? '')}
-                                                                        </span>
-                                                                    </div>
-                                                                    <div className="column">
-                                                                        <span className={"ct-news__entry__content icon is-size-5 " + getMaxSeverity(item.severityLevel ?? 0)}>
-                                                                            {computeIcon(item.severityLevel ?? -1)}
-                                                                        </span>
-                                                                    </div>
-                                                                    <div className="column is-three-quarters-desktop is-half-tablet is-half-mobile ct-news__entry__content-text">
-                                                                        {item.content}
-                                                                    </div>
-                                                                </div>
-                                                            )
-                                                        })
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
+                        { slotsTemplate }
                     </div>
                 </div>
             </div>

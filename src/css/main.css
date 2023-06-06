@@ -1487,7 +1487,19 @@ button {
   }
 }
 
-.ct-news__entry .is-active {
+.ct-news .entry-column:not(:first-child) {
+  margin-top: 36px;
+}
+.ct-news .entry-column:not(:last-child) {
+  margin-bottom: 36px;
+}
+.ct-news .entry-column:last-child hr.is-primary {
+  display: none;
+}
+.ct-news__entry .entry-columns {
+  border-left: 3px solid transparent;
+}
+.ct-news__entry .entry-columns.is-active {
   border-left: 3px solid #137DC5;
 }
 .ct-news__entry .old-news {
@@ -1543,16 +1555,19 @@ button {
   padding: 4px 0;
 }
 .ct-news__entry .content-column.first:not(:first-child) {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(19, 125, 197, 0.15);
 }
 .ct-news__entry__columns {
   margin: 0 !important;
 }
-.ct-news .entry:nth-child(even) {
-  background-color: rgba(19, 125, 197, 0.05);
-}
-.ct-news .entry:nth-child(even) .date-column {
-  border-right: 2px solid white;
+.ct-news .entry {
+  /*&:nth-child(even) {
+    background-color: rgba($color-primary, 0.05);
+
+    .date-column {
+      border-right: 2px solid rgba($color-white, 1.0);
+    }
+  }*/
 }
 
 .ct-account-overview__rank .progress.is-primary::-webkit-progress-value {

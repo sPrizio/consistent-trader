@@ -24,7 +24,7 @@ function NewsCard({start = '', end = '', locale = {}}: { start: string, end: str
 
     useEffect(() => {
         getMarketNews()
-    }, [locale])
+    }, [locale, start, end])
 
 
     //  GENERAL FUNCTIONS
@@ -87,7 +87,7 @@ function NewsCard({start = '', end = '', locale = {}}: { start: string, end: str
                         {dateDisplay(formatDateMoment(moment(end).subtract(1, 'days'), CoreConstants.DateTime.ISODateFormat))}
                     </>
                 }
-                hasBorder={true}
+                hasBorder={false}
                 content={[<News key={0} newsInfo={newsInfo} />]}
             />
         </>

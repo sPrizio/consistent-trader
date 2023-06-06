@@ -17,7 +17,7 @@ import News from "../../News/News";
  * @author Stephen Prizio
  * @version 1.0
  */
-function NewsCard({start = '', end = '', locale = {}}: { start: string, end: string, locale: UserLocaleInfo }) {
+function NewsCard({start = '', end = '', locale = {}, minimizeEntries = true}: { start: string, end: string, locale?: UserLocaleInfo, minimizeEntries?: boolean }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [newsInfo, setNewsInfo] = useState({})
@@ -88,7 +88,7 @@ function NewsCard({start = '', end = '', locale = {}}: { start: string, end: str
                     </>
                 }
                 hasBorder={false}
-                content={[<News key={0} newsInfo={newsInfo} />]}
+                content={[<News key={0} newsInfo={newsInfo} minimizeEntries={minimizeEntries} />]}
             />
         </>
     )

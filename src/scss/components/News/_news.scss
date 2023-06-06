@@ -86,6 +86,12 @@
       font-size: map-get($font-body, 'small', 'desktop', 'size');
       font-weight: $font-weight-light;
       line-height: map-get($font-body, 'small', 'desktop', 'line');
+
+      &__header {
+        font-size: map-get($font-body, 'xxsmall', 'desktop', 'size');
+        font-weight: $font-weight-light;
+        line-height: map-get($font-body, 'xxsmall', 'desktop', 'line');
+      }
     }
 
     .content-column {

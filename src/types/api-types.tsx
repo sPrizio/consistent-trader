@@ -303,6 +303,8 @@ export type NewsEntrySlotEntryInfo = {
     severityLevel?: number,
     uid?: string,
     country?: string,
+    forecast?: string,
+    previous?: string,
 }
 
 export type NewsEntrySlotInfo = {

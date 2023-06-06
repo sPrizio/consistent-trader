@@ -14,6 +14,7 @@ import BaseCard from "../../components/Cards/BaseCard";
 import UserBar from "../../components/User/UserBar";
 import {getUser} from "../../services/user/userService";
 import AdminPage from "../Admin/AdminPage";
+import NewsPage from "../News/NewsPage";
 
 /**
  * General content page, a page that displays user content and UI components
@@ -79,6 +80,8 @@ function ContentPage() {
                 return <HelpPage />
             case "dashboard":
                 return <AdminPage />
+            case "news":
+                return <NewsPage userInfo={userInfo} />
             default:
                 return null;
         }

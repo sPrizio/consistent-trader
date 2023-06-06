@@ -1551,6 +1551,11 @@ button {
   font-weight: 300;
   line-height: 22px;
 }
+.ct-news__entry__content-text__header {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 20px;
+}
 .ct-news__entry .content-column:not(:first-child) .content {
   padding: 4px 0;
 }

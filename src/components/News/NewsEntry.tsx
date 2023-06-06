@@ -1,6 +1,6 @@
 import {CoreConstants} from "../../constants/CoreConstants";
 import moment from "moment";
-import {NewsEntrySlotInfo} from "../../types/api-types";
+import {NewsEntrySlotEntryInfo, NewsEntrySlotInfo} from "../../types/api-types";
 import {VscWarning} from "react-icons/vsc";
 import {RiErrorWarningLine} from "react-icons/ri";
 import {formatDate, formatDateMoment, now} from "../../services/datetime/DateTimeService";
@@ -14,14 +14,17 @@ import {getFlagForCode} from "../../services/locale/LocaleService";
  * @param oldNews true if date is in the past
  * @param date date
  * @param slots new slots
+ * @param minimizeEntries if false, show extra information
+ * @param minimizeEntries if false, show extra information
  * @author Stephen Prizio
  * @version 1.0
  */
-function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
+function NewsEntry({active = false, oldNews = false, date = '', slots = [], minimizeEntries = true}: {
     active: boolean,
     oldNews: boolean,
     date: string,
-    slots: Array<NewsEntrySlotInfo>
+    slots: Array<NewsEntrySlotInfo>,
+    minimizeEntries?: boolean,
 }) {
 
 
@@ -66,6 +69,11 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
      * Computes the given class depending on the time of the week
      */
     function computeClass() {
+
+        if (!minimizeEntries) {
+            return active ? ' is-active' : ''
+        }
+
         if (oldNews) {
             return ' old-news '
         } else if (active) {
@@ -133,47 +141,71 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
 
     //  RENDER
 
+    let minimized = (item: NewsEntrySlotEntryInfo, key: number) =>
+        <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns" key={key}>
+            <div className="column">
+                <span className="icon">
+                    {getFlagForCode(item.country ?? '')}
+                </span>
+            </div>
+            <div className="column">
+                <span className={"ct-news__entry__content icon is-size-5 " + getMaxSeverity(item.severityLevel ?? 0)}>
+                    {computeIcon(item.severityLevel ?? -1)}
+                </span>
+            </div>
+            <div
+                className="column is-three-quarters-desktop is-half-tablet is-half-mobile ct-news__entry__content-text">
+                {item.content}
+            </div>
+        </div>
+
+    let maximized = (item: NewsEntrySlotEntryInfo, key: number) =>
+        <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns" key={key}>
+            <div className="column is-2 has-text-centered">
+                <span className="icon">
+                    {getFlagForCode(item.country ?? '')}
+                </span>
+            </div>
+            <div className="column is-2 has-text-centered">
+                <span className={"ct-news__entry__content icon is-size-5 " + getMaxSeverity(item.severityLevel ?? 0)}>
+                    {computeIcon(item.severityLevel ?? -1)}
+                </span>
+            </div>
+            <div className="column is-4 is-half-tablet is-half-mobile ct-news__entry__content-text">
+                {item.content}
+            </div>
+            <div className="column is-2 ct-news__entry__content-text has-text-centered">
+                {item.forecast}
+            </div>
+            <div className="column  is-2 ct-news__entry__content-text has-text-centered">
+                {item.previous}
+            </div>
+        </div>
+
     let slotsTemplate = slots?.filter(item => item.entries && item.entries.length > 0)?.map((item, key) => {
-        return <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')} key={key}>
-            <div className="content">
-                <div className="columns is-multiline is-mobile is-gapless is-vcentered">
-                    <div
-                        className={"column is-3 ct-news__entry__time" + (item.active ? ' active ' : '')}>
-                        <span className="icon-text">
-                            <span className="icon">
-                                <AiOutlineRight/>
+        return (
+            <div className={"column is-12 content-column" + (isFirst(key) ? ' first ' : '')} key={key}>
+                <div className="content">
+                    <div className="columns is-multiline is-mobile is-gapless is-vcentered">
+                        <div className={"column is-3 ct-news__entry__time" + (item.active ? ' active ' : '')}>
+                            <span className="icon-text">
+                                <span className="icon"><AiOutlineRight/></span>
+                                <span>{formatTime(item, key)}</span>
                             </span>
-                            <span>
-                                {formatTime(item, key)}
-                            </span>
-                        </span>
-                    </div>
-                    <div className="column is-9">
-                        {
-                            item.entries && item.entries.map((item, key) => {
-                                return (
-                                    <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns" key={key}>
-                                        <div className="column">
-                                            <span className="icon">
-                                                {getFlagForCode(item.country ?? '')}
-                                            </span>
-                                        </div>
-                                        <div className="column">
-                                            <span className={"ct-news__entry__content icon is-size-5 " + getMaxSeverity(item.severityLevel ?? 0)}>
-                                                {computeIcon(item.severityLevel ?? -1)}
-                                            </span>
-                                        </div>
-                                        <div className="column is-three-quarters-desktop is-half-tablet is-half-mobile ct-news__entry__content-text">
-                                            {item.content}
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
+                        </div>
+                        <div className="column is-9">
+                            {
+                                item.entries && item.entries.map((item, key) => {
+                                    return (
+                                        minimizeEntries ? minimized(item, key) : maximized(item, key)
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        )
     })
 
     return (
@@ -189,7 +221,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = []}: {
                 </div>
                 <div className="column value-column">
                     <div className="columns is-multiline is-mobile is-gapless">
-                        { slotsTemplate }
+                        {slotsTemplate}
                     </div>
                 </div>
             </div>

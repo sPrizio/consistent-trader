@@ -125,7 +125,7 @@ export const CoreConstants = {
             {code: 'history', name: 'History'},
             {code: 'analysis', name: 'Analysis'},
             {code: 'retrospectives', name: 'Retrospectives'},
-            {code: 'news', name: 'Market News (TODO)'},
+            {code: 'news', name: 'Market News'},
         ],
         SupportLinks: [
             {code: 'about', name: 'About CTrader'},

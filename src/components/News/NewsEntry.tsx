@@ -213,7 +213,7 @@ function NewsEntry({active = false, oldNews = false, date = '', slots = [], mini
             <div className={"columns is-multiline is-mobile entry-columns " + (computeClass())}>
                 <div className="column is-one-quarter date-column">
                     <h6 className="ct-news__entry__news-date-header">
-                        {moment(date).format(CoreConstants.DateTime.ISOWeekdayFormat)}
+                        {formatDate(date, CoreConstants.DateTime.ISOWeekdayFormat)}
                     </h6>
                     <h6 className="ct-news__entry__news-date-value">
                         {dateDisplay(date)}

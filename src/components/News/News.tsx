@@ -1,8 +1,8 @@
 import {NewsInfo} from "../../types/api-types";
 import NewsEntry from "./NewsEntry";
-import moment from "moment";
 import {CoreConstants} from "../../constants/CoreConstants";
-import {AiOutlineRight} from "react-icons/ai";
+import NewsHeader from "./NewsHeader";
+import {formatDate, getDate, now} from "../../services/datetime/DateTimeService";
 import {getFlagForCode} from "../../services/locale/LocaleService";
 
 /**
@@ -23,58 +23,84 @@ function News({newsInfo = {}, minimizeEntries = true}: {newsInfo: NewsInfo, mini
 
     return (
         <div className="ct-news">
-            <div className="entry-column entry-column-header">
-                <div className="column is-12">
-                    <div className="ct-news__entry">
-                        <div className="columns is-multiline is-mobile entry-columns">
-                            <div className="column is-one-quarter date-column" />
-                            <div className="column value-column">
-                                <div className="columns is-multiline is-mobile is-gapless">
-                                    <div className="column is-12 content-column">
-                                        <div className="content">
-                                            <div className="columns is-multiline is-mobile is-gapless is-vcentered">
-                                                <div className="column is-3 ct-news__entry__time">
-                                                    <span className="icon-text">
-                                                        <span className="icon"><AiOutlineRight/></span>
-                                                        <span>Time</span>
-                                                    </span>
-                                                </div>
-                                                <div className="column is-9">
-                                                    <div className="columns is-multiline is-gapless is-mobile is-vcentered ct-news__entry__columns">
-                                                        <div className="column is-2 ct-news__entry__content-text__header has-text-centered">
-                                                            Country
-                                                        </div>
-                                                        <div className="column is-2 ct-news__entry__content-text__header has-text-centered">
-                                                            Impact
-                                                        </div>
-                                                        <div className="column is-4 ct-news__entry__content-text__header">
-                                                            Event
-                                                        </div>
-                                                        <div className="column is-2 ct-news__entry__content-text__header has-text-centered">
-                                                            Forecast
-                                                        </div>
-                                                        <div className="column is-2 ct-news__entry__content-text__header has-text-centered">
-                                                            Previous
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <div className="table-container">
+                <table className="table is-fullwidth ct-news__table">
+                    {/*<thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Country</th>
+                        <th>Impact</th>
+                        <th>Event</th>
+                    </tr>
+                    </thead>*/}
+                    <tbody>
+                    {
+                        newsInfo && newsInfo?.news?.map((info, key) => {
+                            return (
+                                <tr className="ct-news__table__row">
+                                    <td className={"ct-news__table__row__column date-column" + (info.active ? ' is-active ' : '')} width={"25%"}>
+                                        {formatDate(info.date ?? '', CoreConstants.DateTime.ISOMonthDayFormat)}
+                                    </td>
+                                    <td className="ct-news__table__row__column">
+                                        <table className="table is-fullwidth ct-news__table__slot-table">
+                                            <tbody>
+                                            {
+                                                info.slots?.filter(slot => slot.entries && slot.entries.length > 0)?.map((slot, key) => {
+                                                    return (
+                                                        <tr className="ct-news__table__slot-table__row">
+                                                            <td width={"25%"}>{slot.time}</td>
+                                                            <td>
+                                                                <div>
+                                                                    {
+                                                                        slot.entries?.map((entry, key) => {
+                                                                            return (
+                                                                                <div className="ct-news__table__slot-table__entry">
+                                                                                    <div className="ct-news__table__slot-table__entry__column icon-column">
+                                                                                        <div className="icon-wrapper">
+                                                                                            {getFlagForCode(entry.country ?? '')}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div className="ct-news__table__slot-table__entry__column icon-column">
+
+                                                                                    </div>
+                                                                                    <div className="ct-news__table__slot-table__entry__column">
+                                                                                        {entry.content}
+                                                                                    </div>
+                                                                                </div>
+                                                                            )
+                                                                        })
+                                                                    }
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
+                    </tbody>
+                </table>
             </div>
+
+
+
+
+            {minimizeEntries ? null : <NewsHeader />}
             {
                 newsInfo && newsInfo?.news?.map((item, key) => {
                     return (
                         <div className="entry-column">
                             <div className="column is-12" key={item.date}>
                                 <NewsEntry
-                                    active={moment(item.date).startOf('day').isSame(moment().startOf('day'))}
-                                    oldNews={moment(item.date).startOf('day').isBefore(moment().startOf('day'))}
+                                    active={getDate(item.date ?? '').startOf('day').isSame(now().startOf('day'))}
+                                    oldNews={getDate(item.date ?? '').startOf('day').isBefore(now().startOf('day'))}
                                     date={item.date ?? ''}
                                     slots={item.slots ?? []}
                                     minimizeEntries={minimizeEntries}

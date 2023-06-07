@@ -1495,6 +1495,21 @@ button {
 .ct-news__table__row:not(:last-child) .ct-news__table__row__column {
   padding-bottom: 48px;
 }
+.ct-news__table__row__column.date-column {
+  padding-left: 12px;
+}
+.ct-news__table__row__column.date-column .date-header {
+  color: rgb(86, 106, 127);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+}
+.ct-news__table__row__column.date-column .date-value {
+  color: #137DC5;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+}
 .ct-news__table__row__column.date-column.is-active {
   border-left: 3px solid #137DC5 !important;
 }
@@ -1511,15 +1526,55 @@ button {
 }
 .ct-news__table__slot-table__entry__column.icon-column {
   flex: 0 0 35px;
+  text-align: center;
 }
 .ct-news__table__slot-table__entry__column.icon-column .icon-wrapper {
   height: 30px;
   width: 30px;
-  margin: 6px 0;
+  margin: 4px auto;
+  display: flex;
+}
+.ct-news__table__slot-table__entry__column.icon-column .icon-wrapper .impact-icon {
+  margin: 0 auto;
+  display: flex;
+  align-self: center;
+  height: 70%;
+  width: 70%;
+}
+.ct-news__table__slot-table__entry__column.icon-column .icon-wrapper .impact-icon.severe {
+  color: rgb(255, 0, 0) !important;
+}
+.ct-news__table__slot-table__entry__column.icon-column .icon-wrapper .impact-icon.moderate {
+  color: rgb(255, 165, 0) !important;
+}
+.ct-news__table__slot-table__entry__column.icon-column .icon-wrapper .impact-icon.low {
+  color: rgba(105, 122, 141, 0.5) !important;
+}
+.ct-news__table__slot-table__entry__column.icon-column .icon-wrapper .impact-icon svg {
+  height: 100%;
+  width: 100%;
 }
 .ct-news__table__slot-table__entry__column.icon-column .icon-wrapper img {
   height: 100%;
   width: 100%;
+}
+.ct-news__table__slot-table__entry__column.time-cell {
+  padding-left: 4px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+}
+.ct-news__table__slot-table__entry__column.time-cell .icon {
+  display: none;
+}
+.ct-news__table__slot-table__entry__column.time-cell.active .icon {
+  color: #137DC5 !important;
+  display: flex;
+}
+.ct-news__table__slot-table__entry__column.text-cell {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
 }
 .ct-news .entry-column:not(:first-child) {
   margin-top: 36px;

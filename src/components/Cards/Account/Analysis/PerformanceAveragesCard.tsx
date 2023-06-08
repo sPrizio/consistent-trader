@@ -4,7 +4,7 @@ import {CoreConstants} from "../../../../constants/CoreConstants";
 import {useEffect, useState} from "react";
 import get from "../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../types/api-types";
-import hasData from "../../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
 import PerformanceAverages from "../../../Account/Analysis/PerformanceAverages";
 
 /**
@@ -65,6 +65,7 @@ function PerformanceAveragesCard({start = '', end = '', isWin = false}: { start:
                 subtitle={formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[<PerformanceAverages key={0} averages={average} isWin={isWin} />]}
+                hasError={emptyObject(average)}
             />
         </>
     )

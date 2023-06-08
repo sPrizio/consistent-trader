@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import get from "../../../services/client/ClientService";
 import {CoreConstants} from "../../../constants/CoreConstants";
 import {StandardJsonResponse} from "../../../types/api-types";
-import hasData from "../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../services/data/DataIntegrityService";
 import PromotionalPayments from "../../Account/PromotionalPayments";
 
 /**
@@ -59,6 +59,7 @@ function PromotionalPaymentsCard() {
                 subtitle={'Remember the Journey'}
                 hasBorder={true}
                 content={[<PromotionalPayments key={0} promoPayments={promoPayments} />]}
+                hasError={emptyObject(promoPayments)}
             />
         </>
     )

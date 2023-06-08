@@ -1,6 +1,7 @@
 import BaseCard from "../BaseCard";
 import Overview from "../../Account/Overview";
 import {AccountOverviewInfo, UserInfo} from "../../../types/api-types";
+import {emptyObject} from "../../../services/data/DataIntegrityService";
 
 /**
  * Card component representing an account overview
@@ -24,6 +25,7 @@ function OverviewCard({accountOverview = {}, isLoading = false}: {accountOvervie
                 subtitle={subtitle}
                 hasBorder={true}
                 content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]}
+                hasError={emptyObject(accountOverview)}
             />
         </>
     )

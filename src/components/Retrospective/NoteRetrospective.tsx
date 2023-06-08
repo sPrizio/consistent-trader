@@ -6,6 +6,7 @@ import {AiFillRightCircle} from "react-icons/ai";
 import {RiAlarmWarningLine} from "react-icons/ri";
 import {formatNumberForDisplay} from "../../services/data/FormattingService";
 import SimpleButton from "../Buttons/SimpleButton";
+import {emptyObject} from "../../services/data/DataIntegrityService";
 
 /**
  * Component that renders a written retrospective
@@ -224,6 +225,7 @@ function NoteRetrospective(
                 hasBorder={false}
                 content={[content]}
                 controls={controls}
+                hasError={emptyObject(retro)}
             />
         </>
     )

@@ -4,7 +4,7 @@ import {formatDate, formatDateMoment, now} from "../../../services/datetime/Date
 import {CoreConstants} from "../../../constants/CoreConstants";
 import get from "../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../types/api-types";
-import hasData from "../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../services/data/DataIntegrityService";
 import DisregardedTrades from "../../Trade/DisregardedTrades";
 
 /**
@@ -66,6 +66,7 @@ function DisregardedTradesCard() {
                 subtitle={formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[<DisregardedTrades key={0} disregardedTrades={disregardedTrades} />]}
+                hasError={emptyObject(disregardedTrades)}
             />
         </>
     )

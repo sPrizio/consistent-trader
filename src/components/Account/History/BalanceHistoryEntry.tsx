@@ -18,10 +18,6 @@ function BalanceHistoryEntry({balanceHistoryInfo = {}}: {balanceHistoryInfo: Bal
     const [isModalActive, setIsModalActive] = useState(false)
 
 
-    //  TODO: global error state, handle cases when API is down. Maybe using toasts?
-    //  TODO: profile page components should show error state
-    //  TODO: base card should show a default message if no data or content. Maybe can put the card in an error state with a prop?
-
     //  HANDLER FUNCTIONS
 
     /**

@@ -4,7 +4,7 @@ import {CoreConstants} from "../../../../constants/CoreConstants";
 import {formatDate} from "../../../../services/datetime/DateTimeService";
 import get from "../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../types/api-types";
-import hasData from "../../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
 import TopValues from "../../../Account/Analysis/TopValues";
 
 /**
@@ -88,6 +88,7 @@ function TopValuesCard(
                 subtitle={formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[<TopValues key={0} values={values} dataKey={dataKey} />]}
+                hasError={emptyObject(values)}
             />
         </>
     )

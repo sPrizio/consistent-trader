@@ -4,7 +4,7 @@ import {CoreConstants} from "../../../constants/CoreConstants";
 import {formatDateMoment, now} from "../../../services/datetime/DateTimeService";
 import get from "../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../types/api-types";
-import hasData from "../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../services/data/DataIntegrityService";
 import BalanceHistory from "../../Account/History/BalanceHistory";
 
 export default BalanceHistoryCard;
@@ -114,6 +114,7 @@ function BalanceHistoryCard() {
                 subtitle={'Balance Updates'}
                 hasBorder={true}
                 content={[<BalanceHistory key={0} balanceHistory={balanceHistory} historyHandler={handleSelectChange} filter={filterHistory} />]}
+                hasError={emptyObject(balanceHistory)}
             />
         </>
     )

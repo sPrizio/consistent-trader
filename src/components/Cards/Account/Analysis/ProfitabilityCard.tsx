@@ -6,7 +6,7 @@ import {formatNumberForDisplay} from "../../../../services/data/FormattingServic
 import {Bar, CartesianGrid, Cell, ComposedChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import get from "../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../types/api-types";
-import hasData from "../../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
 
 /**
  * Defines a custom tooltip for use with the chart
@@ -189,6 +189,7 @@ function ProfitabilityCard({start = '', end = '', code = ''}: { start: string, e
                 subtitle={'5-minute Intervals'}
                 hasBorder={true}
                 content={[content]}
+                hasError={emptyObject(bucket)}
             />
         </>
     )

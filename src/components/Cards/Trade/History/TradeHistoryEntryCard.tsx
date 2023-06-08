@@ -2,6 +2,7 @@ import BaseCard from "../../BaseCard";
 import {useState} from "react";
 import TradeHistoryEntry from "../../../Trade/History/Entry/TradeHistoryEntry";
 import {TradeRecordInfo} from "../../../../types/api-types";
+import {emptyObject} from "../../../../services/data/DataIntegrityService";
 
 /**
  * Card that renders a trade history entry component
@@ -46,6 +47,7 @@ function TradeHistoryEntryCard(
                                              selectEntryHandler={selectedEntryHandler}
                                              index={index}
                 />]}
+                hasError={emptyObject(tradeRecord)}
             />
         </>
     )

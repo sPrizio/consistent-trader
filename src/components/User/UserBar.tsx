@@ -8,6 +8,7 @@ import {now} from "../../services/datetime/DateTimeService";
 import temp from '../../assets/icons/locales/round/canada.png'
 import AccountSwitchModal from "../Modals/Account/AccountSwitchModal";
 import TradesImportModal from "../Modals/Trade/TradesImportModal";
+import {emptyObject} from "../../services/data/DataIntegrityService";
 
 
 /**
@@ -73,81 +74,90 @@ function UserBar({userInfo = {}, pageHandler, mobileHandler}: { userInfo?: UserI
 
     return (
         <div className="ct-user-bar">
-            <div className="level is-mobile is-vcentered">
-                <div className="level-left">
-                    <div className="level-item ct-mobile-side-nav-trigger ct-user-bar__user-menu">
+            {
+                emptyObject(userInfo) ?
+                    <div className="has-text-centered">
+                        <p>There was an error fetching the required data. Please try again later.</p>
+                    </div>
+                    :
+                    <>
+                        <div className="level is-mobile is-vcentered">
+                            <div className="level-left">
+                                <div className="level-item ct-mobile-side-nav-trigger ct-user-bar__user-menu">
                         <span className="icon is-size-3" onClick={() => mobileHandler()}>
                             <RxHamburgerMenu />
                         </span>
-                    </div>
-                    <div className="level-item">
-                        {getDisplayText()}
-                    </div>
-                </div>
-                <div className="level-right">
-                    <div className="level-item">
-                        <div className="ct-user-bar__skill-text">
-                            Level
-                        </div>
-                        <div className="ct-user-bar__skill-icon">
-                            <div className="ct-user-bar__skill-icon__text">
-                                {userInfo.account?.skill.level}
+                                </div>
+                                <div className="level-item">
+                                    {getDisplayText()}
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="level-item">
-                        <div className="ct-user-bar__locale">
-                            {/*TODO: dropdown for locales, need to be selectable. Language should come from the backend*/}
-                            <img src={temp} alt={'User Locale'} />
-                        </div>
-                    </div>
-                    <div className="level-item">
-                        <div className="ct-user-bar__user-menu">
+                            <div className="level-right">
+                                <div className="level-item">
+                                    <div className="ct-user-bar__skill-text">
+                                        Level
+                                    </div>
+                                    <div className="ct-user-bar__skill-icon">
+                                        <div className="ct-user-bar__skill-icon__text">
+                                            {userInfo.account?.skill.level}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="level-item">
+                                    <div className="ct-user-bar__locale">
+                                        {/*TODO: dropdown for locales, need to be selectable. Language should come from the backend*/}
+                                        <img src={temp} alt={'User Locale'} />
+                                    </div>
+                                </div>
+                                <div className="level-item">
+                                    <div className="ct-user-bar__user-menu">
                             <span className="icon is-size-3" onClick={toggleMenu}>
                                 {
                                     menuActive ? <AiOutlineClose/> : <RxHamburgerMenu />
                                 }
                             </span>
-                            <div className={"ct-user-bar__user-menu__content" + (menuActive ? " is-active " : "")}>
-                                <div className="ct-user-bar__user-menu__content__container">
-                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={() => pageHandler('profile')}>
+                                        <div className={"ct-user-bar__user-menu__content" + (menuActive ? " is-active " : "")}>
+                                            <div className="ct-user-bar__user-menu__content__container">
+                                                <div className="ct-user-bar__user-menu__content__container__link" onClick={() => pageHandler('profile')}>
                                         <span className="icon-text">                                            <span className="icon"><AiOutlineUser/></span>
                                             <span>My Account</span>
                                         </span>
-                                    </div>
-                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={() => toggleModal('importTrades')}>
+                                                </div>
+                                                <div className="ct-user-bar__user-menu__content__container__link" onClick={() => toggleModal('importTrades')}>
                                         <span className="icon-text">
                                             <span className="icon"><HiUpload/></span>
                                             <span>Import Trades</span>
                                         </span>
-                                    </div>
-                                    <div className="ct-user-bar__user-menu__content__container__link" onClick={() => toggleModal('accountSwitch')}>
+                                                </div>
+                                                <div className="ct-user-bar__user-menu__content__container__link" onClick={() => toggleModal('accountSwitch')}>
                                         <span className="icon-text">
                                             <span className="icon"><AiOutlineSwap/></span>
                                             <span>Switch Accounts</span>
                                         </span>
-                                    </div>
-                                    <hr className="dropdown-divider" />
-                                    <div className="ct-user-bar__user-menu__content__container__link">
+                                                </div>
+                                                <hr className="dropdown-divider" />
+                                                <div className="ct-user-bar__user-menu__content__container__link">
                                         <span className="icon-text">
                                             <span className="icon"><RiLogoutCircleLine/></span>
                                             <span>Logout</span>
                                         </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <TradesImportModal active={modalActive && selectedModal === 'importTrades'} closeHandler={() => toggleModal('')} />
+                        <TradesImportModal active={modalActive && selectedModal === 'importTrades'} closeHandler={() => toggleModal('')} />
 
-            <AccountSwitchModal
-                active={modalActive && selectedModal === 'accountSwitch'}
-                closeHandler={() => toggleModal('')}
-                accounts={userInfo.accounts ?? []}
-            />
+                        <AccountSwitchModal
+                            active={modalActive && selectedModal === 'accountSwitch'}
+                            closeHandler={() => toggleModal('')}
+                            accounts={userInfo.accounts ?? []}
+                        />
+                    </>
+            }
         </div>
     )
 }

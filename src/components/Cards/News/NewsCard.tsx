@@ -5,7 +5,7 @@ import {formatDate, formatDateMoment} from "../../../services/datetime/DateTimeS
 import moment from "moment";
 import get from "../../../services/client/ClientService";
 import {StandardJsonResponse, UserLocaleInfo} from "../../../types/api-types";
-import hasData from "../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../services/data/DataIntegrityService";
 import News from "../../News/News";
 
 /**
@@ -89,6 +89,7 @@ function NewsCard({start = '', end = '', locale = {}}: { start: string, end: str
                 }
                 hasBorder={false}
                 content={[<News key={0} newsInfo={newsInfo} />]}
+                hasError={emptyObject(newsInfo)}
             />
         </>
     )

@@ -1,4 +1,13 @@
 .ct-retrospectives-page {
+
+  &__disclaimer-container {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
   .floating-buttons-container {
     .button.is-floating.is-lead {
       height: $float-height;

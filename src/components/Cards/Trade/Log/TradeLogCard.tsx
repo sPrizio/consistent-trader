@@ -4,7 +4,7 @@ import TradeLog from "../../../Trade/Log/TradeLog";
 import get from "../../../../services/client/ClientService";
 import {CoreConstants} from "../../../../constants/CoreConstants";
 import {StandardJsonResponse} from "../../../../types/api-types";
-import hasData from "../../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
 
 /**
  * Card representing a trade log, recent history of trades
@@ -61,6 +61,7 @@ function TradeLogCard({count = 0}: {count: number}) {
                 subtitle={'Last ' + count + ' sessions'}
                 hasBorder={false}
                 content={[<TradeLog key={0} records={records} />]}
+                hasError={emptyObject(records)}
             />
         </>
     )

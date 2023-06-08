@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 import get from "../../../../services/client/ClientService";
 import {CoreConstants} from "../../../../constants/CoreConstants";
-import {StandardJsonResponse} from "../../../../types/api-types";
-import hasData from "../../../../services/data/DataIntegrityService";
+import {StandardJsonResponse, TradeRecordInfo} from "../../../../types/api-types";
+import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
 import BaseCard from "../../BaseCard";
-import {formatDateMoment, now} from "../../../../services/datetime/DateTimeService";
+import {formatDate, formatDateMoment, now} from "../../../../services/datetime/DateTimeService";
 import PerformanceSummary from "../../../Account/Performance/PerformanceSummary";
 
 /**
@@ -16,7 +16,7 @@ import PerformanceSummary from "../../../Account/Performance/PerformanceSummary"
 function PerformanceSummaryCard() {
 
     const [isLoading, setIsLoading] = useState(false)
-    const [performanceSummary, setPerformanceSummary] = useState({})
+    const [performanceSummary, setPerformanceSummary] = useState<TradeRecordInfo>({})
 
     useEffect(() => {
         getSummary()
@@ -57,9 +57,10 @@ function PerformanceSummaryCard() {
             <BaseCard
                 loading={isLoading}
                 title={'Summary'}
-                subtitle={formatDateMoment(now(), CoreConstants.DateTime.ISOMonthYearFormat)}
+                subtitle={formatDate(performanceSummary.startDate ?? '', CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[<PerformanceSummary key={0} performanceSummary={performanceSummary} />]}
+                hasError={emptyObject(performanceSummary)}
             />
         </>
     )

@@ -1,7 +1,6 @@
 import {Helmet} from "react-helmet";
 import {ChangeEvent, useEffect, useState} from "react";
 import {CreateRetrospectiveForm, RetrospectiveType} from "../../types/ui-types";
-import SimpleButton from "../../components/Buttons/SimpleButton";
 import CreateRetrospectiveModal from "../../components/Modals/Retrospective/CreateRetrospectiveModal";
 import {ActiveMonthInfo, ActiveYearInfo, StandardJsonResponse} from "../../types/api-types";
 import {formatDate, formatDateMoment, getDate, now} from "../../services/datetime/DateTimeService";
@@ -297,6 +296,21 @@ function RetrospectivesPage() {
 
 
     //  RENDER
+
+    if (!retros || retros.length === 0) {
+        return (
+            <>
+                <Helmet>
+                    <title>CTrader | Retrospectives</title>
+                </Helmet>
+                <div className="ct-retrospectives-page">
+                    <div className="ct-retrospectives-page__disclaimer-container has-text-centered">
+                        <p>Your retrospectives would appear here. Consider taking some time to reflect on previous performances.</p>
+                    </div>
+                </div>
+            </>
+        )
+    }
 
     return (
         <>

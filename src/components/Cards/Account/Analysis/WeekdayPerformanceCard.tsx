@@ -6,7 +6,7 @@ import {Bar, CartesianGrid, Cell, ComposedChart, ResponsiveContainer, Tooltip, X
 import {displayString, formatNumberForDisplay} from "../../../../services/data/FormattingService";
 import get from "../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../types/api-types";
-import hasData from "../../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
 
 /**
  * Defines a custom tooltip for use with the chart
@@ -166,6 +166,7 @@ function WeekdayPerformanceCard({start = '', end = ''}: { start: string, end: st
                 subtitle={formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[content]}
+                hasError={emptyObject(performance)}
             />
         </>
     )

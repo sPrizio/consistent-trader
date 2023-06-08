@@ -5,7 +5,8 @@ import {formatDate} from "../../../../../services/datetime/DateTimeService";
 import PerformanceStatistics from "../../../../Account/Performance/Statistics/PerformanceStatistics";
 import get from "../../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../../types/api-types";
-import hasData from "../../../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../../../services/data/DataIntegrityService";
+import {stat} from "fs";
 
 /**
  * Card that shows performance statistics for a given period
@@ -66,6 +67,7 @@ function PerformanceStatisticsCard({start = '', end = ''} : {start: string, end:
                 subtitle={formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[<PerformanceStatistics key={0} statisticsInfo={statsInfo} />]}
+                hasError={emptyObject(statsInfo)}
             />
         </>
     )

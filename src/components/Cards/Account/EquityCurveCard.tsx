@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {ProfitCurveInfo, StandardJsonResponse} from "../../../types/api-types";
 import get from "../../../services/client/ClientService";
 import {CoreConstants} from "../../../constants/CoreConstants";
-import hasData from "../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../services/data/DataIntegrityService";
 import EquityCurve from "../../Account/EquityCurve";
 import {PeriodType} from "../../../types/ui-types";
 
@@ -81,6 +81,7 @@ function EquityCurveCard() {
                 subtitle={'Last ' + period + ' ' + periodType.label}
                 hasBorder={true}
                 content={[<EquityCurve key={0} profitCurveInfo={profitCurveInfo} aggregateInterval={periodType} fetchHandler={changeTab} />]}
+                hasError={emptyObject(profitCurveInfo)}
             />
         </>
     )

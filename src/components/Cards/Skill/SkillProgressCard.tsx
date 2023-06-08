@@ -1,6 +1,7 @@
 import BaseCard from "../BaseCard";
 import {UserInfo} from "../../../types/api-types";
 import SkillProgress from "../../Skill/SkillProgress";
+import {emptyObject} from "../../../services/data/DataIntegrityService";
 
 /**
  * Card that renders the skill progress component
@@ -24,6 +25,7 @@ function SkillProgressCard({userInfo = {}, isLoading = false}: {userInfo: UserIn
                 subtitle={subtitle}
                 hasBorder={true}
                 content={[<SkillProgress key={0} userInfo={userInfo} />]}
+                hasError={emptyObject(userInfo)}
             />
         </>
     )

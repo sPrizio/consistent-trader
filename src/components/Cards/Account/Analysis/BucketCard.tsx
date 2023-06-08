@@ -4,7 +4,8 @@ import {Bar, CartesianGrid, ComposedChart, ReferenceLine, ResponsiveContainer, T
 import {CoreConstants} from "../../../../constants/CoreConstants";
 import get from "../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../types/api-types";
-import hasData from "../../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
+import {stat} from "fs";
 
 /**
  * Defines a custom tooltip for use with the chart
@@ -163,6 +164,7 @@ function BucketCard({start = '', end = '', bucketSize = -1, isLoser = false}: { 
                 subtitle={subtitle}
                 hasBorder={true}
                 content={[content]}
+                hasError={emptyObject(statistics)}
             />
         </>
     )

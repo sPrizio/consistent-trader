@@ -8,6 +8,10 @@
   transition-duration: $transition-duration;
   transition-timing-function: $transition-curve;
 
+  &__error-disclaimer {
+    text-align: center;
+  }
+
   &--is-loading {
     .ct-card__loader-overlay {
       display: block;

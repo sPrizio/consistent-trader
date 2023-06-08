@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import get from "../../../services/client/ClientService";
 import {CoreConstants} from "../../../constants/CoreConstants";
 import {StandardJsonResponse} from "../../../types/api-types";
-import hasData from "../../../services/data/DataIntegrityService";
+import hasData, {emptyObject} from "../../../services/data/DataIntegrityService";
 import {formatDate} from "../../../services/datetime/DateTimeService";
 
 /**
@@ -65,6 +65,7 @@ function ExcessLossCard({start = '', end = ''} : {start: string, end: string}) {
                 subtitle={formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[<ExcessLoss key={0} lossInfo={lossInfo}/>]}
+                hasError={emptyObject(lossInfo)}
             />
         </>
     )

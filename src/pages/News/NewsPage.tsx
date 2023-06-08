@@ -20,7 +20,6 @@ function NewsPage({ userInfo = {} } : { userInfo: UserInfo }) {
                         <NewsCard
                             start={formatDateMoment(now().startOf('week').add(1, 'day'), CoreConstants.DateTime.ISODateFormat)}
                             end={formatDateMoment(now().startOf('week').add(6, 'day'), CoreConstants.DateTime.ISODateFormat)}
-                            minimizeEntries={false}
                         />
                     </div>
                 </div>

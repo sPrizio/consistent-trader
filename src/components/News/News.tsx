@@ -1,6 +1,5 @@
 import {NewsEntrySlotInfo, NewsInfo} from "../../types/api-types";
 import {CoreConstants} from "../../constants/CoreConstants";
-import NewsHeader from "./NewsHeader";
 import {formatDate, formatDateMoment, now} from "../../services/datetime/DateTimeService";
 import {getFlagForCode} from "../../services/locale/LocaleService";
 import {VscWarning} from "react-icons/vsc";
@@ -15,7 +14,7 @@ import {AiOutlineLine, AiOutlineRight} from "react-icons/ai";
  * @author Stephen Prizio
  * @version 1.0
  */
-function News({newsInfo = {}, minimizeEntries = true}: {newsInfo: NewsInfo, minimizeEntries?: boolean}) {
+function News({newsInfo = {}}: {newsInfo: NewsInfo}) {
 
 
     //  FUNCTIONS
@@ -37,20 +36,15 @@ function News({newsInfo = {}, minimizeEntries = true}: {newsInfo: NewsInfo, mini
     /**
      * Computes the given class depending on the time of the week
      */
-    /*function computeClass() {
-
-        if (!minimizeEntries) {
-            return active ? ' is-active' : ''
-        }
-
-        if (oldNews) {
+    function computeClass(past: boolean, future: boolean) {
+        if (past) {
             return ' old-news '
-        } else if (active) {
+        } else if (!past && !future) {
             return ' is-active '
         } else {
             return ' future-news '
         }
-    }*/
+    }
 
     /**
      * Computes the icon to show depending on the severity level
@@ -92,7 +86,6 @@ function News({newsInfo = {}, minimizeEntries = true}: {newsInfo: NewsInfo, mini
      * Formats the time display for each news entry
      *
      * @param item news entry slot
-     * @param key array index
      */
     function formatTime(item: NewsEntrySlotInfo) {
 
@@ -106,28 +99,16 @@ function News({newsInfo = {}, minimizeEntries = true}: {newsInfo: NewsInfo, mini
 
     //  RENDER
 
-    //  TODO: old news should be nearly invisible
-    //  TODO: add headers when flag is true
-
     return (
         <div className="ct-news">
 
             <div className="table-container">
                 <table className="table is-fullwidth ct-news__table">
-                    {/*<thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Country</th>
-                        <th>Impact</th>
-                        <th>Event</th>
-                    </tr>
-                    </thead>*/}
                     <tbody>
                     {
                         newsInfo && newsInfo?.news?.map((info, key) => {
                             return (
-                                <tr className="ct-news__table__row">
+                                <tr className={"ct-news__table__row" + (computeClass(info.past ?? false, info.future ?? false))}>
                                     <td className={"ct-news__table__row__column date-column" + (info.active ? ' is-active ' : '')} width={"25%"}>
                                         <h6 className="date-header">
                                             {formatDate(info.date ?? '', CoreConstants.DateTime.ISOWeekdayFormat)}
@@ -190,30 +171,6 @@ function News({newsInfo = {}, minimizeEntries = true}: {newsInfo: NewsInfo, mini
                     </tbody>
                 </table>
             </div>
-
-
-
-
-            {minimizeEntries ? null : <NewsHeader />}
-            {/*{
-                newsInfo && newsInfo?.news?.map((item, key) => {
-                    return (
-                        <div className="entry-column">
-                            <div className="column is-12" key={item.date}>
-                                <NewsEntry
-                                    active={getDate(item.date ?? '').startOf('day').isSame(now().startOf('day'))}
-                                    oldNews={getDate(item.date ?? '').startOf('day').isBefore(now().startOf('day'))}
-                                    date={item.date ?? ''}
-                                    slots={item.slots ?? []}
-                                    minimizeEntries={minimizeEntries}
-                                />
-                            </div>
-                            <hr className="is-primary" />
-                        </div>
-
-                    )
-                })
-            }*/}
         </div>
     )
 }

@@ -1495,8 +1495,13 @@ button {
 .ct-news__table__row:not(:last-child) .ct-news__table__row__column {
   padding-bottom: 48px;
 }
+.ct-news__table__row.old-news {
+  opacity: 0.25;
+}
 .ct-news__table__row__column.date-column {
   padding-left: 12px;
+  padding-top: 12px;
+  vertical-align: top !important;
 }
 .ct-news__table__row__column.date-column .date-header {
   color: rgb(86, 106, 127);
@@ -1512,6 +1517,7 @@ button {
 }
 .ct-news__table__row__column.date-column.is-active {
   border-left: 3px solid #137DC5 !important;
+  background: linear-gradient(90deg, rgba(19, 125, 197, 0.075), #FFFFFF);
 }
 .ct-news__table__slot-table__row:not(:last-child) {
   border-bottom: 2px solid rgba(19, 125, 197, 0.15) !important;

@@ -57,7 +57,7 @@ function PerformanceSummaryCard() {
             <BaseCard
                 loading={isLoading}
                 title={'Summary'}
-                subtitle={formatDate(performanceSummary.startDate ?? '', CoreConstants.DateTime.ISOMonthYearFormat)}
+                subtitle={formatDate(performanceSummary?.startDate ?? '', CoreConstants.DateTime.ISOMonthYearFormat)}
                 hasBorder={true}
                 content={[<PerformanceSummary key={0} performanceSummary={performanceSummary} />]}
                 hasError={emptyObject(performanceSummary)}

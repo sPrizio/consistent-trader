@@ -62,7 +62,7 @@ export const CoreConstants = {
             List: getTradeDomain() + '/for-interval?start={start}&end={end}&includeNonRelevant={includeNonRelevant}',
             ListPaged: getTradeDomain() + '/for-interval-paged?start={start}&end={end}&includeNonRelevant={includeNonRelevant}&page={page}&pageSize={pageSize}',
             Recap: getTradeDomain() + '/recap?tradeId={tradeId}',
-            Upload: getTradeDomain() + '/import-trades?delimiter={delimiter}&tradePlatform={tradePlatform}'
+            Upload: getTradeDomain() + '/import-trades'
         },
         TradeRecord: {
             ActiveMonths: getTradeRecordDomain() + '/active-months?year={year}',

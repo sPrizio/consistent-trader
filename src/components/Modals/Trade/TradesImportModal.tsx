@@ -43,7 +43,7 @@ function TradesImportModal({active = false, closeHandler}: { active: boolean, cl
                 formData.append('file', file);
                 formData.append('fileName', file.name);
                 await fetch(
-                    CoreConstants.ApiUrls.Trade.Upload.replace('{delimiter}', ',').replace('{tradePlatform}', 'CMC_MARKETS'),
+                    CoreConstants.ApiUrls.Trade.Upload,
                     {
                         method: 'POST',
                         body: formData

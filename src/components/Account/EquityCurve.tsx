@@ -197,7 +197,7 @@ function EquityCurve({profitCurveInfo = {}, aggregateInterval, fetchHandler}: {
 
     if (!profitCurveInfo || !profitCurveInfo.points || profitCurveInfo.points.length === 0) {
         return (
-            <div className="ct-equity-curve">
+            <div className="ct-equity-curve has-text-centered">
                 <p>At this moment, your account has not changed. Once you start trading, check back here!</p>
             </div>
         )

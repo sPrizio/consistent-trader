@@ -77,7 +77,7 @@ function BaseCard(
             {
                 hasError ?
                     <div className="ct-card__error-disclaimer">
-                        <p>An error has occurred. Please try again later.</p>
+                        <p>Your data will display here once you have begun trading!</p>
                     </div>
                     :
                     <div className="columns is-multiline is-mobile is-gapless">

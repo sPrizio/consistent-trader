@@ -26,6 +26,7 @@ function OverviewCard({accountOverview = {}, isLoading = false}: {accountOvervie
                 hasBorder={true}
                 content={[<Overview key={0} accountOverview={accountOverview ?? {}} />]}
                 hasError={emptyObject(accountOverview)}
+                hasOverflow={false}
             />
         </>
     )

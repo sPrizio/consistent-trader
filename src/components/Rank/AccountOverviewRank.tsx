@@ -1,5 +1,5 @@
 import {CurrentRankInfo} from "../../types/api-types";
-import {displayRankName, normalize} from "../../services/data/FormattingService";
+import {displayRankName, formatNumberForDisplay, normalize} from "../../services/data/FormattingService";
 
 /**
  * Component for displaying an accounts base rank
@@ -83,14 +83,14 @@ function AccountOverviewRank({showPrevNextRanks = false, rankInfo = {}}: {
                         <div className="level-left">
                             <div className="level-item">
                                 <span className="ct-account-overview__rank__bound">
-                                    {rankInfo.className?.length !== 0 ? rankInfo.start : null}
+                                    {rankInfo.className?.length !== 0 ? formatNumberForDisplay(rankInfo.start ?? -1, 0) : null}
                                 </span>
                             </div>
                         </div>
                         <div className="level-right">
                             <div className="level-item">
                                 <span className="ct-account-overview__rank__bound">
-                                    {rankInfo.className?.length !== 0 ? rankInfo.end : null}
+                                    {rankInfo.className?.length !== 0 ? formatNumberForDisplay(rankInfo.end ?? -1, 0) : null}
                                 </span>
                             </div>
                         </div>
@@ -107,7 +107,7 @@ function AccountOverviewRank({showPrevNextRanks = false, rankInfo = {}}: {
                     <div className="level">
                         <div className="level-left">
                             <div className="level-item">
-                                <span className={"ct-account-overview__rank__value " + rankInfo.className}>
+                                <span className={"ct-account-overview__rank__value has-text-weight-bold " + rankInfo.className}>
                                     {displayRankName(rankInfo.name ?? '')}
                                 </span>
                             </div>
@@ -115,7 +115,7 @@ function AccountOverviewRank({showPrevNextRanks = false, rankInfo = {}}: {
                         <div className="level-right">
                             <div className="level-item">
                                 <span className={"ct-account-overview__rank__value has-text-weight-bold " + rankInfo.className}>
-                                    {rankInfo.className?.length !== 0 ? rankInfo.current : null}
+                                    {rankInfo.className?.length !== 0 ? formatNumberForDisplay(rankInfo.current ?? -1, 0) : null}
                                 </span>
                             </div>
                         </div>

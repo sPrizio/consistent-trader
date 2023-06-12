@@ -96,8 +96,8 @@ function NoteRetrospective(
                     </div>
                     <div className="column is-3">
                         <div>
-                            <p className="ct-note-retrospective__header">Win %</p>
-                            <p className="ct-note-retrospective__value">{retro.totals.statistics.winPercentage}</p>
+                            <p className="ct-note-retrospective__header">Average Win</p>
+                            <p className="ct-note-retrospective__value">{formatNumberForDisplay(retro.totals?.statistics?.averageWinAmount ?? -1)}</p>
                         </div>
                     </div>
                     <div className="column is-3">
@@ -115,8 +115,8 @@ function NoteRetrospective(
                     </div>
                     <div className="column is-3">
                         <div>
-                            <p className="ct-note-retrospective__header">Average Win</p>
-                            <p className="ct-note-retrospective__value">{formatNumberForDisplay(retro.totals?.statistics?.averageWinAmount ?? -1)}</p>
+                            <p className="ct-note-retrospective__header">Win %</p>
+                            <p className="ct-note-retrospective__value">{retro.totals.statistics.winPercentage}</p>
                         </div>
                     </div>
                     <div className="column is-3">
@@ -125,10 +125,16 @@ function NoteRetrospective(
                             <p className="ct-note-retrospective__value">{retro.totals.statistics.largestWinAmount}</p>
                         </div>
                     </div>
-                    <div className="column is-3">
+                    {/*<div className="column is-3">
                         <div>
                             <p className="ct-note-retrospective__header">Gross Gain</p>
                             <p className="ct-note-retrospective__value">{formatNumberForDisplay(retro.totals?.statistics?.grossWinAmount ?? -1)}</p>
+                        </div>
+                    </div>*/}
+                    <div className="column is-3">
+                        <div>
+                            <p className="ct-note-retrospective__header">Points</p>
+                            <p className="ct-note-retrospective__value">{formatNumberForDisplay(retro.totals?.statistics?.netPips ?? -1)}</p>
                         </div>
                     </div>
                 </div>
@@ -154,7 +160,6 @@ function NoteRetrospective(
     let displayPoints : Array<any> = []
     if (retro && retro.points) {
         retro.points.filter(p => !p.keyPoint).forEach((item, key) => {
-            displayPoints = []
             displayPoints.push(
                 <div className="block" key={key}>
                     <span className="icon-text">

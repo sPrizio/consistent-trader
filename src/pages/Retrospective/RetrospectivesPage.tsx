@@ -307,6 +307,38 @@ function RetrospectivesPage() {
                     <div className="ct-retrospectives-page__disclaimer-container has-text-centered">
                         <p>Your retrospectives would appear here. Consider taking some time to reflect on previous performances.</p>
                     </div>
+
+                    <div className="floating-buttons-container">
+                        <button className="button is-floating is-lead is-primary is-vcentered has-text-centered" onClick={toggleNew}>
+                        <span className="is-size-3" style={{marginTop: "5px"}}>
+                            <HiPlus/>
+                        </span>
+                        </button>
+
+                        <div className={"floating-sub-container" + (newActive ? '' : ' no-show ')}>
+                            <div className="button-container">
+                                <button className="button" onClick={() => toggleModal(true, RetrospectiveType.NOTE.code)}>
+                                <span className="icon">
+                                    <TfiWrite/>
+                                </span>
+                                </button>
+                            </div>
+                            <div className="button-container">
+                                <button className="button" onClick={() => toggleModal(true, 'audio')}>
+                                <span className="icon">
+                                    <AiFillAudio />
+                                </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <CreateRetrospectiveModal
+                        modalActive={modalActive && retroType === RetrospectiveType.NOTE.code}
+                        closeHandler={() => toggleModal(true, RetrospectiveType.NOTE.code)}
+                        handleSubmit={handleSubmit}
+                        retroData={formData}
+                    />
                 </div>
             </>
         )

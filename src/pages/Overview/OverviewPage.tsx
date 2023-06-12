@@ -14,6 +14,7 @@ import get from "../../services/client/ClientService";
 import {StandardJsonResponse, UserInfo} from "../../types/api-types";
 import hasData from "../../services/data/DataIntegrityService";
 import NoteRetrospective from "../../components/Retrospective/NoteRetrospective";
+import {Moment} from "moment";
 
 /**
  * The overview page, acts as the home page / main dashboard
@@ -31,6 +32,56 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
         getOverview()
         getRecentRetrospective()
     }, [])
+
+
+    //  GENERAL FUNCTIONS
+
+    /**
+     * Determines which days to show on the news card with a max lookahead of 3 days.
+     * Will stop at the end of the current week.
+     * Examples:
+     *      Monday would show news for Mon-Wed
+     *      Thursday would show news for Thur-Fri
+     *      Friday would show news only for Fri
+     */
+    function computeBounds() {
+
+        const date = now()
+        if (!isWeekend(date)) {
+            let test = date
+            let lookahead = 1
+            while (lookahead < 3 && !isWeekend(test)) {
+                lookahead += 1
+                test = test.add(1, 'days')
+            }
+
+            return {
+                start: formatDateMoment(now().startOf('day'), CoreConstants.DateTime.ISODateFormat),
+                end: formatDateMoment(now().startOf('day').add(lookahead, 'days'), CoreConstants.DateTime.ISODateFormat)
+            }
+        }
+
+        if (date.weekday() === 0) {
+            return {
+                start: formatDateMoment(now().startOf('day').add(1, 'days'), CoreConstants.DateTime.ISODateFormat),
+                end: formatDateMoment(now().startOf('day').add(4, 'days'), CoreConstants.DateTime.ISODateFormat)
+            }
+        }
+
+        return {
+            start: formatDateMoment(now().startOf('week').add(1, 'weeks').add(1, 'days'), CoreConstants.DateTime.ISODateFormat),
+            end: formatDateMoment(now().startOf('week').add(1, 'weeks').add(4, 'days'), CoreConstants.DateTime.ISODateFormat)
+        }
+    }
+
+    /**
+     * Returns true if the given date is a weekend
+     *
+     * @param date date to test
+     */
+    function isWeekend(date: Moment) {
+        return date.weekday() === 0 ||  date.weekday() === 6
+    }
 
 
     //  API FUNCTIONS
@@ -87,8 +138,8 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
                                 </div>
                                 <div className="column is-12">
                                     <NewsCard
-                                        start={formatDateMoment(now().startOf('day'), CoreConstants.DateTime.ISODateFormat)}
-                                        end={formatDateMoment(now().startOf('day').add(2, 'days'), CoreConstants.DateTime.ISODateFormat)}
+                                        start={computeBounds()['start']}
+                                        end={computeBounds()['end']}
                                         locale={userInfo?.userLocale ?? {}}
                                     />
                                 </div>

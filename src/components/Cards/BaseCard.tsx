@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 /**
  * Base card component representing a generic card that is used throughout the app
@@ -21,6 +21,7 @@ function BaseCard(
         controls = [],
         loading = false,
         hasError = false,
+        hasOverflow = true,
     }
         : {
         title?: any,
@@ -30,11 +31,53 @@ function BaseCard(
         controls?: Array<any>,
         loading?: boolean,
         hasError?: boolean,
+        hasOverflow?: boolean,
     }
 ) {
 
+    const [width, setWidth] = useState(getWidth())
+    const [isOverflowing, setIsOverflowing] = useState(false)
+    const contentDiv = useRef(null)
 
-    //  TODO: global error state, handle cases when API is down. Maybe using toasts?
+    useEffect(() => {
+        let timeoutId: string | number | NodeJS.Timeout | null | undefined = null;
+        const resizeListener = () => {
+            // @ts-ignore
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setWidth(getWidth())
+                setIsOverflowing(isOverflown())
+            }, 150)
+        }
+
+        window.addEventListener('resize', resizeListener)
+
+        return () => {
+            window.removeEventListener('resize', resizeListener)
+        }
+    }, [])
+
+
+    //  GENERAL FUNCTIONS
+
+    /**
+     * Returns the width of the card
+     */
+    function getWidth() {
+        return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    }
+
+    /**
+     * Returns true if the content is overflowing
+     */
+    function isOverflown() {
+        if (hasOverflow) {
+            // @ts-ignore
+            return (contentDiv?.current?.scrollHeight ?? -1) > (contentDiv?.current?.clientHeight ?? -1) || (contentDiv?.current?.scrollWidth ?? -1) > (contentDiv?.current?.clientWidth ?? -1);
+        }
+
+        return false
+    }
 
 
     //  RENDER
@@ -44,7 +87,7 @@ function BaseCard(
         mainContent =
             <div className="column is-12">
                 {
-                    <div className="ct-card__content">
+                    <div className={"ct-card__content" + (isOverflowing ? ' overflow' : '')} ref={contentDiv}>
                         {
                             content.map(item => {
                                 return <div className="ct-card__content__item" key={item}>{item}</div>
@@ -84,6 +127,7 @@ function BaseCard(
                         {
                             title.length > 0 ?
                                 <div className="column is-12">
+                                    <div className="scroll scroll-5" />
                                     <div className={"ct-card__header" + (hasBorder ? ' header-border ' : '')}>
                                         <h5 className="ct-card__header__title">{title}</h5>
                                         <h6 className="ct-card__header__subtitle">{subtitle}</h6>

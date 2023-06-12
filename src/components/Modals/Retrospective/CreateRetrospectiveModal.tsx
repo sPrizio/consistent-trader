@@ -85,6 +85,7 @@ function CreateRetrospectiveModal(
      */
     function handleTextChange(e: ChangeEvent) {
         const target = e.target as HTMLTextAreaElement
+        setIsInvalidText(false)
         setTextAreaValue(target.value)
     }
 
@@ -220,7 +221,7 @@ function CreateRetrospectiveModal(
                             </label>
                         </div>
                         <div className="column is-4">
-                            <SimpleButton variant={"tertiary"} text={'Add Note'} handler={() => addPoint()}/>
+                            <SimpleButton variant={"tertiary"} text={'Add Note'} handler={addPoint}/>
                         </div>
                         <div className="column is-12">
                             {
@@ -260,7 +261,6 @@ function CreateRetrospectiveModal(
                 closeHandler={closeHandler}
                 content={[content]}
                 submitHandler={() => {
-                    console.log('submitting')
                     handleSubmit(formData)
                 }}
                 cssClasses={'ct-create-retro-modal'}

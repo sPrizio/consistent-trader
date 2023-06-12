@@ -83,8 +83,9 @@ function NewsCard({start = '', end = '', locale = {}}: { start: string, end: str
                 title={'Market News'}
                 subtitle={
                     <>
-                        {dateDisplay(start)}&nbsp;&nbsp;to&nbsp;
-                        {dateDisplay(formatDateMoment(moment(end).subtract(1, 'days'), CoreConstants.DateTime.ISODateFormat))}
+                        Current Week
+                        {/*{dateDisplay(start)}&nbsp;&nbsp;to&nbsp;
+                        {dateDisplay(formatDateMoment(moment(end).subtract(1, 'days'), CoreConstants.DateTime.ISODateFormat))}*/}
                     </>
                 }
                 hasBorder={false}

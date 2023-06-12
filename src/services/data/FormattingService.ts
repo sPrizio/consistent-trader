@@ -15,10 +15,10 @@ export function displayString(value: string) {
     return ''
 }
 
-export function formatNumberForDisplay(value: number) {
+export function formatNumberForDisplay(value: number, radix = 2) {
 
     if (value) {
-        return value.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        return value.toFixed(radix).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     }
 
     return '0'

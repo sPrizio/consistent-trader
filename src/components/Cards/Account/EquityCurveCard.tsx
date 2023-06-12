@@ -82,6 +82,7 @@ function EquityCurveCard() {
                 hasBorder={true}
                 content={[<EquityCurve key={0} profitCurveInfo={profitCurveInfo} aggregateInterval={periodType} fetchHandler={changeTab} />]}
                 hasError={emptyObject(profitCurveInfo)}
+                hasOverflow={false}
             />
         </>
     )

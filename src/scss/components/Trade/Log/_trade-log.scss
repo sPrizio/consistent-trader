@@ -7,6 +7,10 @@
     line-height: map-get($font-body, 'small', 'desktop', 'line');
   }
 
+  .table-container {
+    @include custom-scrollbar(&)
+  }
+
   &__table {
     &__header {
       border-bottom-color: rgba($color-primary, 0.3) !important;

@@ -245,14 +245,14 @@ function HelpPage() {
                                                     </span>
                                             </a>
                                             <ul className={(showRankList ? '' : ' no-show ')}>
-                                                {baseRanks && baseRanks.map((item, key) => {
+                                                {baseRanks?.map((item, key) => {
                                                     return (
                                                         <li key={key}>
                                                             <a className={(activeTab === item.toLowerCase() ? ' is-active ' : '')}
                                                                onClick={() => handleTabChange(item.toLowerCase(), true)}>{item}</a>
                                                         </li>
                                                     )
-                                                })}
+                                                }) ?? null}
                                             </ul>
                                         </li>
                                     </ul>
@@ -266,7 +266,7 @@ function HelpPage() {
                                 title={'Skill'}
                                 subtitle={'A look at how the Skill System works'}
                                 hasBorder={true}
-                                content={[<div className="container">
+                                content={[<div className="container" key={0}>
                                     <div className="block">
                                         The idea for organic growth is to develop <strong>Skill</strong> with low
                                         position sizes
@@ -299,7 +299,7 @@ function HelpPage() {
                                 title={'Skill Example'}
                                 subtitle={'Skill System in action'}
                                 hasBorder={true}
-                                content={[<div className="container">
+                                content={[<div className="container" key={0}>
                                     <div className="block">
                                         Here's an example of how the <strong>Skill</strong> system might be used:
                                     </div>
@@ -338,7 +338,7 @@ function HelpPage() {
                                 title={'Rank'}
                                 subtitle={'A look at how the Rank System works'}
                                 hasBorder={true}
-                                content={[<div className="container">
+                                content={[<div className="container" key={0}>
                                     <div className="block account-summary">
                                         <strong>Rank</strong> is a measure of your account growth over time.
                                         The <strong>Rank</strong> system is composed of 2
@@ -366,7 +366,7 @@ function HelpPage() {
                                 title={'Rank Example'}
                                 subtitle={'Rank System in action'}
                                 hasBorder={true}
-                                content={[<div className="container">
+                                content={[<div className="container" key={0}>
                                     <div className="block">
                                         Here's an example of the <strong>Rank</strong> system:
                                     </div>
@@ -400,7 +400,7 @@ function HelpPage() {
                                 title={'Ranks Overview'}
                                 subtitle={'A look at each possible rank'}
                                 hasBorder={true}
-                                content={[<div className="container has-text-centered">
+                                content={[<div className="container has-text-centered" key={0}>
                                     <p>
                                         Select a rank to view its details and break-down. Each rank as a certain
                                         number of sub-ranks. The examples used
@@ -417,13 +417,13 @@ function HelpPage() {
                         </div>
                         <div className={(currentRank !== null && currentRank !== undefined ? '' : ' no-show ')}>
                             <BaseCard
-                                title={currentRank && currentRank.name ? currentRank.name : ''}
+                                title={currentRank?.name ?? ''}
                                 subtitle={'* Examples are computed using a $1000 account'}
                                 hasBorder={true}
-                                content={[<div className="container">
+                                content={[<div className="container" key={0}>
                                     <div className="columns is-multiline is-mobile">
                                         {
-                                                currentRank && currentRank.ranks && currentRank.ranks.map((item, key) => {
+                                                currentRank?.ranks?.map((item, key) => {
                                                     return (
                                                         <div key={key} className="column is-12">
                                                             <HelpRankEntry
@@ -436,10 +436,11 @@ function HelpPage() {
                                                         </div>
 
                                                     )
-                                                })
+                                                }) ?? null
                                             }
                                     </div>
                                 </div>]}
+                                hasOverflow={false}
                             />
                         </div>
                         <div className={(activeTab === 'tag-entry' ? '' : ' no-show ')}>
@@ -447,7 +448,7 @@ function HelpPage() {
                                 title={'Entry Tagging'}
                                 subtitle={'Attach reasons to entering your positions'}
                                 hasBorder={true}
-                                content={[<div className="container">
+                                content={[<div className="container" key={0}>
                                     <div className="block">
                                         Ideally, every position that you enter would have at least 1 (hopefully
                                         more) reason to enter it. This reason can be whatever you want since your
@@ -530,7 +531,7 @@ function HelpPage() {
                                 title={'Result Annotations'}
                                 subtitle={'Add result summaries to your positions'}
                                 hasBorder={true}
-                                content={[<div className="container">
+                                content={[<div className="container" key={0}>
                                     <div className="block">
                                         Once your position is closed, adding some context to the result of the trade
                                         can help identify good & bad patterns. Tagging the results helps to create

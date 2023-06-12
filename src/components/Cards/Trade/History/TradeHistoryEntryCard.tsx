@@ -48,6 +48,7 @@ function TradeHistoryEntryCard(
                                              index={index}
                 />]}
                 hasError={emptyObject(tradeRecord)}
+                hasOverflow={false}
             />
         </>
     )

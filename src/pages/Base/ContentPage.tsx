@@ -112,7 +112,12 @@ function ContentPage() {
                     <div className="page-container">
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-12">
-                                <BaseCard loading={isLoading} hasBorder={false} content={[<UserBar key={0} userInfo={userInfo ?? {}} pageHandler={selectPage} mobileHandler={toggleMobileMenu} />]}/>
+                                <BaseCard
+                                    loading={isLoading}
+                                    hasBorder={false}
+                                    content={[<UserBar key={0} userInfo={userInfo ?? {}} pageHandler={selectPage} mobileHandler={toggleMobileMenu} />]}
+                                    hasOverflow={false}
+                                />
                             </div>
                         </div>
                         {resolvePage()}

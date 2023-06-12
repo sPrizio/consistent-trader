@@ -156,7 +156,7 @@ function HelpRankEntry(
                             {
                                 (baseRank?.name?.toLowerCase() ?? '') !== 'obsidian' && baseRank.ranks && baseRank.ranks.map((item, key) => {
                                     return (
-                                        <div
+                                        <div key={key}
                                             className={"stepper-item" + (computeRange()[key][1] === computeRange()[index][0] ? ' completed line ' : '')}>
                                             <div className="step-counter">
                                                 {

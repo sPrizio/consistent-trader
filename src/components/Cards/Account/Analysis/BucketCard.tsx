@@ -121,7 +121,7 @@ function BucketCard({start = '', end = '', bucketSize = -1, isLoser = false}: { 
 
     let content =
         <div>
-            <div className="level ct-header-level">
+            <div className="level is-mobile ct-header-level">
                 <div className="level-item has-text-centered">
                     <div>
                         <p className="ct-header-level__header">{isLoser ? 'Losing' : 'Winning'}&nbsp;Days</p>

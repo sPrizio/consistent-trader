@@ -89,6 +89,10 @@
 
   .step-name {
     font-size: 14px;
+
+    @include mq-medium-down {
+      font-size: 12px;
+    }
   }
 }
 

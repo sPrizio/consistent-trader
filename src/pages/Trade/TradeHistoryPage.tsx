@@ -230,7 +230,7 @@ function TradeHistoryPage() {
                 <title>CTrader | Trade History</title>
             </Helmet>
             <div className="ct-trade-history-page">
-                <div className="level">
+                <div className="level is-mobile">
                     <div className="level-left">
                         <div className="level-item">
                             {button}

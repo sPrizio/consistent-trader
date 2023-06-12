@@ -351,11 +351,12 @@ function RetrospectivesPage() {
             </Helmet>
             <div className="ct-retrospectives-page">
                 <div className="ct-retrospectives-page__header">
-                    <div className="level">
+                    <div className="level is-mobile">
                         <div className="level-left">
                             <div className="level-item">
-                                <h4>Retrospectives
-                                    for {formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}</h4>
+                                <h4 className="ct-retrospectives-page__header__title">
+                                    {formatDate(start, CoreConstants.DateTime.ISOMonthYearFormat)}
+                                </h4>
                             </div>
                         </div>
                         <div className="level-right">

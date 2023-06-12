@@ -1,5 +1,17 @@
 .ct-retrospectives-page {
 
+  &__header {
+    &__title {
+      color: $color-font-header-title;
+      font-weight: $font-weight-semi-bold;
+
+      @include mq-medium-down {
+        font-size: map-get($font-body, 'default', 'desktop', 'size');
+        line-height: map-get($font-body, 'default', 'desktop', 'line');
+      }
+    }
+  }
+
   &__disclaimer-container {
     height: 80vh;
     display: flex;

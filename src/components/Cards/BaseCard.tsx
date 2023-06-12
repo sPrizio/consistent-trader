@@ -35,7 +35,6 @@ function BaseCard(
     }
 ) {
 
-    const [width, setWidth] = useState(getWidth())
     const [isOverflowing, setIsOverflowing] = useState(false)
     const contentDiv = useRef(null)
 
@@ -45,7 +44,6 @@ function BaseCard(
             // @ts-ignore
             clearTimeout(timeoutId);
             timeoutId = setTimeout(() => {
-                setWidth(getWidth())
                 setIsOverflowing(isOverflown())
             }, 150)
         }
@@ -59,13 +57,6 @@ function BaseCard(
 
 
     //  GENERAL FUNCTIONS
-
-    /**
-     * Returns the width of the card
-     */
-    function getWidth() {
-        return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-    }
 
     /**
      * Returns true if the content is overflowing

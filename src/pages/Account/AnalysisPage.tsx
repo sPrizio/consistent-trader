@@ -147,7 +147,7 @@ function AnalysisPage() {
                 <title>CTrader | Account Analysis</title>
             </Helmet>
             <div className="ct-analysis-page">
-                <div className="level">
+                <div className="level is-mobile">
                     <div className="level-left" />
                     <div className="level-right">
                         <div className="level-item">
@@ -155,7 +155,7 @@ function AnalysisPage() {
                                 <div className="select is-fullwidth">
                                     <select value={currentYear} onChange={handleYearChange}>
                                         {
-                                            activeYears && activeYears.map((item, key) => {
+                                            activeYears?.map((item, key) => {
                                                 const val = getDate(item)
                                                 return (
                                                     <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
@@ -163,7 +163,7 @@ function AnalysisPage() {
                                                         {val.format(CoreConstants.DateTime.ISOYearFormat)}
                                                     </option>
                                                 )
-                                            })
+                                            }) ?? null
                                         }
                                     </select>
                                 </div>
@@ -174,7 +174,7 @@ function AnalysisPage() {
                                 <div className="select is-fullwidth">
                                     <select value={currentMonth} onChange={handleMonthChange}>
                                         {
-                                            activeMonths && activeMonths.map((item: any, key) => {
+                                            activeMonths?.map((item: any, key) => {
                                                 const val = getDateForFormat(formatDate(currentYear, CoreConstants.DateTime.ISOYearFormat) + '-' + item.month.toLowerCase() + '-01', CoreConstants.DateTime.ISODateLongMonthFormat)
                                                 return (
                                                     <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
@@ -182,7 +182,7 @@ function AnalysisPage() {
                                                         {val.format(CoreConstants.DateTime.ISOMonthFormat)}
                                                     </option>
                                                 )
-                                            })
+                                            }) ?? null
                                         }
                                     </select>
                                 </div>

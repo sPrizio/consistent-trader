@@ -166,7 +166,7 @@ function ContactPage() {
             <div className="ct-contact-page">
                 <div className="container">
                     <div className="columns is-multiline is-mobile is-gapless">
-                        <div className="column is-4 highlighted">
+                        <div className="column is-4-desktop is-12-tablet is-12-mobile highlighted">
                             <div className="highlighted-content">
                                 <h2>Let's talk!</h2>
                                 <p>
@@ -206,7 +206,7 @@ function ContactPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="column is-8">
+                        <div className="column is-8-desktop is-12-tablet is-12-mobile">
                             <div className="card reset-borders">
                                 <div className="card-content">
                                     {

@@ -6,20 +6,35 @@
       .level-item {
         &:not(:last-child) {
           margin-right: 24px;
+
+          @include mq-medium-down {
+            margin-right: 12px;
+          }
         }
       }
     }
   }
 
-  .highlight-name {
-    font-weight: $font-weight-semi-bold;
-    color: $color-primary;
+  .highlight-name-wrapper {
+    @include mq-medium-down {
+      font-size: map-get($font-body, 'small', 'desktop', 'size');
+      line-height: map-get($font-body, 'small', 'desktop', 'height');
+    }
+
+    .highlight-name {
+      font-weight: $font-weight-semi-bold;
+      color: $color-primary;
+    }
   }
 
   &__skill-text {
     padding-right: 8px;
     color: $color-primary;
     font-weight: $font-weight-semi-bold;
+
+    @include mq-medium-down {
+      display: none;
+    }
   }
 
   &__skill-icon {
@@ -34,6 +49,11 @@
     justify-content: center;
     align-items: center;
 
+    @include mq-medium-down {
+      height: 30px;
+      width: 30px;
+    }
+
     &__text {
       font-weight: $font-weight-semi-bold;
       color: $color-primary;
@@ -47,6 +67,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+
+    @include mq-medium-down {
+      height: 28px;
+      width: 28px;
+    }
 
     &:hover {
       cursor: pointer;
@@ -68,6 +93,7 @@
   &__user-menu {
     position: relative;
     display: flex;
+    z-index: 10;
 
     .icon {
       cursor: pointer;

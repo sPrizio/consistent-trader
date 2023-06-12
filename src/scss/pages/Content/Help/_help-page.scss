@@ -38,6 +38,8 @@
   }
 
   .media-content {
+    @include custom-scrollbar(&);
+
     .content {
       small {
         font-size: map-get($font-body, 'xsmall', 'desktop', 'size');

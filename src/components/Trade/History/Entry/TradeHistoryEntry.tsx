@@ -174,7 +174,7 @@ function TradeHistoryEntry(
 
     return (
         <div className="ct-trade-history-entry">
-            <div className="level ct-trade-history-entry__header">
+            <div className="level is-mobile ct-trade-history-entry__header">
                 <div className="level-left">
                     <div className="level-item">
                         {
@@ -209,7 +209,7 @@ function TradeHistoryEntry(
                     <div className="level-item">
                         {
                             shouldAllowTradeList ?
-                                <div onClick={toggleModal}>
+                                <div onClick={toggleModal} className="ct-trade-history-entry__header__chart-expand">
                                     <SimpleButton
                                         text={''}
                                         variant={'primary'}
@@ -238,7 +238,7 @@ function TradeHistoryEntry(
                     null
             }
             <div className="columns is-multiline is-mobile is-vcentered ct-trade-history-entry__ordered-columns">
-                <div className="column is-3">
+                <div className="column is-3-desktop is-12-tablet is-12-mobile">
                     <TradeHistoryEquityCurve
                         points={tradeRecord.statistics?.points ?? []}
                         index={index}
@@ -248,66 +248,68 @@ function TradeHistoryEntry(
                         showTooltip={false}
                     />
                 </div>
-                <div className="column is-9">
-                    <table className="table is-fullwidth">
-                        <tbody>
-                        <tr>
-                            <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">Trades</h5>
-                            </td>
-                            <td className="has-text-right">
-                                <h5 className="ct-trade-history-entry__ordered-columns__value">
-                                    {tradeRecord.statistics?.numberOfTrades ?? -1}
-                                </h5>
-                                {computeWinningText()}
-                            </td>
-                            <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">Average Win</h5>
-                            </td>
-                            <td className="has-text-right">
-                                <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.averageWinAmount ?? -1)}</h5>
-                                <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.averageWinSize ?? -1)}&nbsp;pts</h6>
-                            </td>
-                            <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">Largest Win</h5>
-                            </td>
-                            <td className="has-text-right">
-                                <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.largestWinAmount ?? -1)}</h5>
-                                <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.largestWinSize ?? -1)}&nbsp;pts</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">Net P&L</h5>
-                                <h6 className="ct-trade-history-entry__ordered-columns__sub-header">
-                                    Profitability: {formatNumberForDisplay(tradeRecord.statistics?.profitability ?? -1)}
-                                </h6>
-                            </td>
-                            <td className="has-text-right">
-                                <h5 className="ct-trade-history-entry__ordered-columns__value">
-                                    {formatNumberForDisplay(tradeRecord.statistics?.netProfit ?? -1)}
-                                </h5>
-                                <h6 className="ct-trade-history-entry__ordered-columns__sub-header">
-                                    {formatNumberForDisplay(tradeRecord.statistics?.netPips ?? -1)}&nbsp;points
-                                </h6>
-                            </td>
-                            <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">Average Loss</h5>
-                            </td>
-                            <td className="has-text-right">
-                                <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.averageLossAmount ?? -1)}</h5>
-                                <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.averageLossSize ?? -1)}&nbsp;pts</h6>
-                            </td>
-                            <td className="has-text-left">
-                                <h5 className="ct-trade-history-entry__ordered-columns__header">Largest Loss</h5>
-                            </td>
-                            <td className="has-text-right">
-                                <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.largestLossAmount ?? -1)}</h5>
-                                <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.largestLossSize ?? -1)}&nbsp;pts</h6>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div className="column is-9-desktop is-12-tablet is-12-mobile">
+                    <div className="table-container">
+                        <table className="table is-fullwidth">
+                            <tbody>
+                            <tr>
+                                <td className="has-text-left">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__header">Trades</h5>
+                                </td>
+                                <td className="has-text-right">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__value">
+                                        {tradeRecord.statistics?.numberOfTrades ?? -1}
+                                    </h5>
+                                    {computeWinningText()}
+                                </td>
+                                <td className="has-text-left">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__header">Average Win</h5>
+                                </td>
+                                <td className="has-text-right">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.averageWinAmount ?? -1)}</h5>
+                                    <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.averageWinSize ?? -1)}&nbsp;pts</h6>
+                                </td>
+                                <td className="has-text-left">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__header">Largest Win</h5>
+                                </td>
+                                <td className="has-text-right">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.largestWinAmount ?? -1)}</h5>
+                                    <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.largestWinSize ?? -1)}&nbsp;pts</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="has-text-left">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__header">Net P&L</h5>
+                                    <h6 className="ct-trade-history-entry__ordered-columns__sub-header">
+                                        Profitability: {formatNumberForDisplay(tradeRecord.statistics?.profitability ?? -1)}
+                                    </h6>
+                                </td>
+                                <td className="has-text-right">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__value">
+                                        {formatNumberForDisplay(tradeRecord.statistics?.netProfit ?? -1)}
+                                    </h5>
+                                    <h6 className="ct-trade-history-entry__ordered-columns__sub-header">
+                                        {formatNumberForDisplay(tradeRecord.statistics?.netPips ?? -1)}&nbsp;points
+                                    </h6>
+                                </td>
+                                <td className="has-text-left">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__header">Average Loss</h5>
+                                </td>
+                                <td className="has-text-right">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.averageLossAmount ?? -1)}</h5>
+                                    <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.averageLossSize ?? -1)}&nbsp;pts</h6>
+                                </td>
+                                <td className="has-text-left">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__header">Largest Loss</h5>
+                                </td>
+                                <td className="has-text-right">
+                                    <h5 className="ct-trade-history-entry__ordered-columns__value">{formatNumberForDisplay(tradeRecord.statistics?.largestLossAmount ?? -1)}</h5>
+                                    <h6 className="ct-trade-history-entry__ordered-columns__sub-header">{formatNumberForDisplay(tradeRecord.statistics?.largestLossSize ?? -1)}&nbsp;pts</h6>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className={"column is-12" + ((isActive && shouldAllowTradeList) ? '' : ' no-show ')}>
                     <div className="columns is-multiline is-mobile is-vcentered">

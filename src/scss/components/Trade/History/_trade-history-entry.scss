@@ -40,6 +40,16 @@
       font-size: map-get($font-body, 'small', 'desktop', 'size');
       line-height: map-get($font-body, 'small', 'desktop', 'line');
       font-weight: $font-weight-regular;
+
+      @include mq-large-down {
+        display: none;
+      }
+    }
+
+    &__chart-expand {
+      @include mq-large-down {
+        display: none;
+      }
     }
 
     &__percentage {
@@ -83,6 +93,10 @@
       &:not(:first-child):not(:last-child) {
         /*border-right: 2px solid rgba(theme.$primary-color, 0.35);*/
         border-right: 2px solid rgba($color-primary, 0.0);
+      }
+
+      .table-container {
+        @include custom-scrollbar(&)
       }
 
       .table {

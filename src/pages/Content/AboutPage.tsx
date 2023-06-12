@@ -32,7 +32,7 @@ function AboutPage() {
                             </div>
                             <hr className="is-primary"/>
                         </div>
-                        <div className="column is-4">
+                        <div className="column is-4-desktop is-12-tablet is-12-mobile">
                             <BaseCard
                                 title={'Track'}
                                 content={[
@@ -54,7 +54,7 @@ function AboutPage() {
                                 ]}
                             />
                         </div>
-                        <div className="column is-4">
+                        <div className="column is-4-desktop is-12-tablet is-12-mobile">
                             <BaseCard
                                 title={'Study'}
                                 content={[
@@ -76,7 +76,7 @@ function AboutPage() {
                                 ]}
                             />
                         </div>
-                        <div className="column is-4">
+                        <div className="column is-4-desktop is-12-tablet is-12-mobile">
                             <BaseCard
                                 title={'Reflect'}
                                 content={[

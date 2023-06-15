@@ -125,3 +125,31 @@
 .stepper-item:last-child::after {
   content: none;
 }
+
+.c-multiselect {
+  min-width: 200px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .dropdown-container {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .flag-container {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+
+    &:not(:first-child) {
+      margin-left: 2px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 2px;
+    }
+  }
+}

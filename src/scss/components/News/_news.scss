@@ -1,4 +1,11 @@
 .ct-news {
+
+  &.no-old {
+    .old-news {
+      display: none;
+    }
+  }
+
   &__table {
     tr, td, th {
       border: none !important;

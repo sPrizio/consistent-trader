@@ -328,6 +328,27 @@ hr.is-primary {
   content: none;
 }
 
+.c-multiselect {
+  min-width: 200px;
+}
+.c-multiselect:hover {
+  cursor: pointer;
+}
+.c-multiselect .dropdown-container:hover {
+  cursor: pointer;
+}
+.c-multiselect .flag-container {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}
+.c-multiselect .flag-container:not(:first-child) {
+  margin-left: 2px;
+}
+.c-multiselect .flag-container:not(:last-child) {
+  margin-right: 2px;
+}
+
 .ct-equity-curve .tabs {
   margin-bottom: 0;
   margin-top: -12px;
@@ -1514,6 +1535,9 @@ button {
   }
 }
 
+.ct-news.no-old .old-news {
+  display: none;
+}
 .ct-news__table tr, .ct-news__table td, .ct-news__table th {
   border: none !important;
   padding: 0;

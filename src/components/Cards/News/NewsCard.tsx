@@ -14,10 +14,11 @@ import News from "../../News/News";
  * @param start start date
  * @param end end date
  * @param locale user locale info
+ * @param oldDays flag to show passed days during the week
  * @author Stephen Prizio
  * @version 1.0
  */
-function NewsCard({start = '', end = '', locale = {}}: { start: string, end: string, locale?: UserLocaleInfo }) {
+function NewsCard({start = '', end = '', locale = {}, oldDays = true}: { start: string, end: string, locale?: UserLocaleInfo, oldDays?: boolean }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [newsInfo, setNewsInfo] = useState({})
@@ -89,7 +90,7 @@ function NewsCard({start = '', end = '', locale = {}}: { start: string, end: str
                     </>
                 }
                 hasBorder={false}
-                content={[<News key={0} newsInfo={newsInfo} />]}
+                content={[<News key={0} newsInfo={newsInfo} oldDays={oldDays} />]}
                 hasError={emptyObject(newsInfo)}
             />
         </>

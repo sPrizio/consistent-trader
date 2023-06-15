@@ -10,11 +10,11 @@ import {AiOutlineLine, AiOutlineRight} from "react-icons/ai";
  * Component that renders news info
  *
  * @param newsInfo news info
- * @param minimizeEntries if false, show extra information
+ * @param oldDays flag to show passed days during the week
  * @author Stephen Prizio
  * @version 1.0
  */
-function News({newsInfo = {}}: {newsInfo: NewsInfo}) {
+function News({newsInfo = {}, oldDays = true}: {newsInfo: NewsInfo, oldDays?: boolean}) {
 
 
     //  FUNCTIONS
@@ -100,7 +100,7 @@ function News({newsInfo = {}}: {newsInfo: NewsInfo}) {
     //  RENDER
 
     return (
-        <div className="ct-news">
+        <div className={"ct-news" + (!oldDays ? ' no-old ' : '')}>
 
             <div className="table-container">
                 <table className="table is-fullwidth ct-news__table">

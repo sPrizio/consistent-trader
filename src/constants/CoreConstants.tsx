@@ -35,6 +35,7 @@ export const CoreConstants = {
             Create: getNewsDomain() + '/create',
             Fetch: getNewsDomain() + '/fetch-news',
             ForInterval: getNewsDomain() + '/for-interval?start={start}&end={end}&locales={locales}',
+            Locales: getNewsDomain() + '/locales',
         },
         Rank: {
             BaseRanks: getRankDomain() + '/base-ranks',

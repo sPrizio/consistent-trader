@@ -4,7 +4,6 @@ import {useState} from "react";
 import {post} from "../../services/client/ClientService";
 import {CoreConstants} from "../../constants/CoreConstants";
 import {StandardJsonResponse} from "../../types/api-types";
-import hasData from "../../services/data/DataIntegrityService";
 
 /**
  * Component that renders the market news card for admins. Allowing the user to fetch the current news cycle for display

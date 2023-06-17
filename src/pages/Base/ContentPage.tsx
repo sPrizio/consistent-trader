@@ -81,7 +81,7 @@ function ContentPage() {
             case "dashboard":
                 return <AdminPage />
             case "news":
-                return <NewsPage userInfo={userInfo} />
+                return <NewsPage />
             default:
                 return null;
         }

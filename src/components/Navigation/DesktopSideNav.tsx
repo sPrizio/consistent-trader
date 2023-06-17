@@ -1,9 +1,9 @@
 import {
     AiOutlineClose,
     AiOutlineKey,
-    AiOutlineRight,
     AiOutlineLineChart,
-    AiOutlineQuestionCircle
+    AiOutlineQuestionCircle,
+    AiOutlineRight
 } from "react-icons/ai";
 import brand from '../../assets/images/brand/brand_white-removebg.png'
 import {useState} from "react";

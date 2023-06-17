@@ -89,7 +89,7 @@ function News({newsInfo = {}, oldDays = true}: {newsInfo: NewsInfo, oldDays?: bo
      */
     function formatTime(item: NewsEntrySlotInfo) {
 
-        if (item && item.entries && (item?.entries[0]?.severity ?? '') === 'Holiday') {
+        if (item?.entries && (item?.entries[0]?.severity ?? '') === 'Holiday') {
             return <>All Day</>
         }
 
@@ -101,14 +101,13 @@ function News({newsInfo = {}, oldDays = true}: {newsInfo: NewsInfo, oldDays?: bo
 
     return (
         <div className={"ct-news" + (!oldDays ? ' no-old ' : '')}>
-
             <div className="table-container">
                 <table className="table is-fullwidth ct-news__table">
                     <tbody>
                     {
-                        newsInfo && newsInfo?.news?.map((info, key) => {
+                        newsInfo?.news?.map((info, key) => {
                             return (
-                                <tr className={"ct-news__table__row" + (computeClass(info.past ?? false, info.future ?? false))}>
+                                <tr key={key} className={"ct-news__table__row" + (computeClass(info.past ?? false, info.future ?? false))}>
                                     <td className={"ct-news__table__row__column date-column" + (info.active ? ' is-active ' : '')} width={"25%"}>
                                         <h6 className="date-header">
                                             {formatDate(info.date ?? '', CoreConstants.DateTime.ISOWeekdayFormat)}
@@ -121,9 +120,9 @@ function News({newsInfo = {}, oldDays = true}: {newsInfo: NewsInfo, oldDays?: bo
                                         <table className="table is-fullwidth ct-news__table__slot-table">
                                             <tbody>
                                             {
-                                                info.slots?.filter(slot => slot.entries && slot.entries.length > 0)?.map((slot, key) => {
+                                                info?.slots?.filter(slot => slot.entries && slot.entries.length > 0)?.map((slot, key) => {
                                                     return (
-                                                        <tr className="ct-news__table__slot-table__row">
+                                                        <tr key={key} className="ct-news__table__slot-table__row">
                                                             <td className={"ct-news__table__slot-table__entry__column time-cell" + (slot.active ? ' active ' : '')} width={"25%"}>
                                                                 <span className="icon-text">
                                                                     <span className="icon"><AiOutlineRight/></span>
@@ -133,9 +132,9 @@ function News({newsInfo = {}, oldDays = true}: {newsInfo: NewsInfo, oldDays?: bo
                                                             <td>
                                                                 <div>
                                                                     {
-                                                                        slot.entries?.map((entry, key) => {
+                                                                        slot?.entries?.map((entry, key) => {
                                                                             return (
-                                                                                <div className="ct-news__table__slot-table__entry">
+                                                                                <div key={key} className="ct-news__table__slot-table__entry">
                                                                                     <div className="ct-news__table__slot-table__entry__column icon-column">
                                                                                         <div className="icon-wrapper">
                                                                                             {getFlagForCode(entry.country ?? '')}
@@ -153,20 +152,34 @@ function News({newsInfo = {}, oldDays = true}: {newsInfo: NewsInfo, oldDays?: bo
                                                                                     </div>
                                                                                 </div>
                                                                             )
-                                                                        })
+                                                                        }) ?? null
                                                                     }
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     )
-                                                })
+                                                }) ?? null
                                             }
                                             </tbody>
                                         </table>
                                     </td>
                                 </tr>
                             )
-                        })
+                        }) ?? null
+                    }
+                    {
+                        (newsInfo?.news?.length ?? -1) === 0 ?
+                            <tr>
+                                <td className="has-text-centered">
+                                    {
+                                        (now().day() === 6 || now().day() === 0) ?
+                                            <p>News will be updated end of day Sunday. Enjoy the weekend!</p>
+                                            :
+                                            <p>Np upcoming news.</p>
+                                    }
+                                </td>
+                            </tr>
+                            : null
                     }
                     </tbody>
                 </table>

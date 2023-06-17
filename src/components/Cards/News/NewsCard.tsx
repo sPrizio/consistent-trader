@@ -1,10 +1,10 @@
 import BaseCard from "../BaseCard";
 import {useEffect, useState} from "react";
 import {CoreConstants} from "../../../constants/CoreConstants";
-import {formatDate, formatDateMoment} from "../../../services/datetime/DateTimeService";
+import {formatDate, formatDateMoment, getDate} from "../../../services/datetime/DateTimeService";
 import moment from "moment";
 import get from "../../../services/client/ClientService";
-import {StandardJsonResponse, UserLocaleInfo} from "../../../types/api-types";
+import {StandardJsonResponse} from "../../../types/api-types";
 import hasData, {emptyObject} from "../../../services/data/DataIntegrityService";
 import News from "../../News/News";
 
@@ -18,14 +18,14 @@ import News from "../../News/News";
  * @author Stephen Prizio
  * @version 1.0
  */
-function NewsCard({start = '', end = '', locale = {}, oldDays = true}: { start: string, end: string, locale?: UserLocaleInfo, oldDays?: boolean }) {
+function NewsCard({start = '', end = '', oldDays = true, locales = []}: { start: string, end: string, oldDays?: boolean, locales: Array<string> }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [newsInfo, setNewsInfo] = useState({})
 
     useEffect(() => {
         getMarketNews()
-    }, [locale, start, end])
+    }, [start, end, locales])
 
 
     //  GENERAL FUNCTIONS
@@ -56,7 +56,7 @@ function NewsCard({start = '', end = '', locale = {}, oldDays = true}: { start: 
                 CoreConstants.ApiUrls.News.ForInterval
                     .replace('{start}', start)
                     .replace('{end}', end)
-                    .replace('{locales}', locale?.currencies?.join(',') ?? '')
+                    .replace('{locales}', locales?.join(',') ?? '')
             )
         d.then(res => {
             let response: StandardJsonResponse = JSON.parse(res)
@@ -84,9 +84,8 @@ function NewsCard({start = '', end = '', locale = {}, oldDays = true}: { start: 
                 title={'Market News'}
                 subtitle={
                     <>
-                        Current Week
-                        {/*{dateDisplay(start)}&nbsp;&nbsp;to&nbsp;
-                        {dateDisplay(formatDateMoment(moment(end).subtract(1, 'days'), CoreConstants.DateTime.ISODateFormat))}*/}
+                        {dateDisplay(start)}&nbsp;&nbsp;to&nbsp;
+                        {dateDisplay(formatDateMoment(getDate(end).subtract(1, 'days'), CoreConstants.DateTime.ISODateFormat))}
                     </>
                 }
                 hasBorder={false}

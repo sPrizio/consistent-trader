@@ -1,6 +1,6 @@
 import BaseCard from "../BaseCard";
 import Overview from "../../Account/Overview";
-import {AccountOverviewInfo, UserInfo} from "../../../types/api-types";
+import {AccountOverviewInfo} from "../../../types/api-types";
 import {emptyObject} from "../../../services/data/DataIntegrityService";
 
 /**

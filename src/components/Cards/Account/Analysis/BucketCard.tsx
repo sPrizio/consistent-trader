@@ -5,7 +5,6 @@ import {CoreConstants} from "../../../../constants/CoreConstants";
 import get from "../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../types/api-types";
 import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
-import {stat} from "fs";
 
 /**
  * Defines a custom tooltip for use with the chart

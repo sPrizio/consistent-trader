@@ -140,7 +140,7 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
                                     <NewsCard
                                         start={computeBounds()['start']}
                                         end={computeBounds()['end']}
-                                        locale={userInfo?.userLocale ?? {}}
+                                        locales={userInfo?.userLocale?.currencies ?? []}
                                     />
                                 </div>
                             </div>

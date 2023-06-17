@@ -1,6 +1,6 @@
 import SimpleButton from "../Buttons/SimpleButton";
 import {IoMdClose} from "react-icons/io";
-import React, {useEffect, useState} from "react";
+import React from "react";
 
 /**
  * Base modal to be used as skeleton for custom modals

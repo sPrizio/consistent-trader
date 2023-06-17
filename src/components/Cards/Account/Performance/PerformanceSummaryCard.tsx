@@ -4,7 +4,7 @@ import {CoreConstants} from "../../../../constants/CoreConstants";
 import {StandardJsonResponse, TradeRecordInfo} from "../../../../types/api-types";
 import hasData, {emptyObject} from "../../../../services/data/DataIntegrityService";
 import BaseCard from "../../BaseCard";
-import {formatDate, formatDateMoment, now} from "../../../../services/datetime/DateTimeService";
+import {formatDate} from "../../../../services/datetime/DateTimeService";
 import PerformanceSummary from "../../../Account/Performance/PerformanceSummary";
 
 /**

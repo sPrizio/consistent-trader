@@ -6,7 +6,6 @@ import PerformanceStatistics from "../../../../Account/Performance/Statistics/Pe
 import get from "../../../../../services/client/ClientService";
 import {StandardJsonResponse} from "../../../../../types/api-types";
 import hasData, {emptyObject} from "../../../../../services/data/DataIntegrityService";
-import {stat} from "fs";
 
 /**
  * Card that shows performance statistics for a given period

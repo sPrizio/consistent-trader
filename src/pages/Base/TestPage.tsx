@@ -1,6 +1,3 @@
-import SimpleButton from "../../components/Buttons/SimpleButton";
-import BaseCard from "../../components/Cards/BaseCard";
-import DesktopSideNav from "../../components/Navigation/DesktopSideNav";
 import get from "../../services/client/ClientService";
 import {CoreConstants} from "../../constants/CoreConstants";
 

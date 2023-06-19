@@ -72,10 +72,20 @@ function BucketCard({start = '', end = '', bucketSize = -1, isLoser = false}: { 
 
     //  GENERAL FUNCTIONS
 
+    /**
+     * Formats text
+     *
+     * @param val text to format
+     */
     function removeHyphen(val: string) {
         return val.replaceAll(/-(?=\d)/g, '').trim()
     }
 
+    /**
+     * Formats the x-axis
+     *
+     * @param value raw value
+     */
     function xAxisTickFormatter(value: number) {
         if (isLoser) {
             if ((value + bucketSize) >= 0) {
@@ -88,24 +98,26 @@ function BucketCard({start = '', end = '', bucketSize = -1, isLoser = false}: { 
         }
     }
 
+    /**
+     * API call to fetch bucket info
+     */
     async function getBuckets() {
 
         setIsLoading(true)
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.Analysis.WinningBuckets
                 .replace('{start}', start)
                 .replace('{end}', end)
                 .replace('{bucketSize}', bucketSize.toString())
                 .replace('{isLoser}', isLoser.toString())
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setBuckets(response.data.buckets)
-                setStatistics(response.data.statistics)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setBuckets(response.data.buckets)
+            setStatistics(response.data.statistics)
+        }
 
         setIsLoading(false)
 

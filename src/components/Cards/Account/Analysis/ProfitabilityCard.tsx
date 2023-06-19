@@ -132,18 +132,17 @@ function ProfitabilityCard({start = '', end = '', code = ''}: { start: string, e
 
         setIsLoading(true)
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.Analysis.Bucket
                 .replace('{start}', start)
                 .replace('{end}', end)
                 .replace('{bucket}', code)
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setBucket(response.data)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setBucket(response.data)
+        }
 
         setIsLoading(false)
 

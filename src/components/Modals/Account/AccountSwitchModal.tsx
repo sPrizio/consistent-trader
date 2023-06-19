@@ -100,6 +100,7 @@ function AccountSwitchModal({active = false, closeHandler, accounts = []}: {
         }).catch(e => console.log(e))
 
         setIsLoading(false)
+
         return {}
     }
 
@@ -115,7 +116,7 @@ function AccountSwitchModal({active = false, closeHandler, accounts = []}: {
             <div className="container">
                 <div className="columns is-multiline is-mobile is-vcentered accounts-container">
                     {
-                        acc && acc.map((item : AccountInfo, key) => {
+                        acc?.map((item : AccountInfo, key) => {
                             return (
                                 <div className="column is-12" key={key}
                                      onClick={() => handleSelect(item.accountNumber ?? -1)}>
@@ -154,7 +155,7 @@ function AccountSwitchModal({active = false, closeHandler, accounts = []}: {
                                     </div>
                                 </div>
                             )
-                        })
+                        }) ?? null
                     }
                 </div>
             </div>

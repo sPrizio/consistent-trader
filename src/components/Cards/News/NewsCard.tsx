@@ -47,27 +47,24 @@ function NewsCard({start = '', end = '', oldDays = true, locales = []}: { start:
     /**
      * Fetches market news
      */
-    function getMarketNews() {
+    async function getMarketNews() {
 
         setIsLoading(true);
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.News.ForInterval
                     .replace('{start}', start)
                     .replace('{end}', end)
                     .replace('{locales}', locales?.join(',') ?? '')
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setNewsInfo({
-                    news: response.data
-                })
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setNewsInfo({
+                news: response.data
+            })
+        }
 
         setIsLoading(false)
 

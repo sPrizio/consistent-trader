@@ -27,22 +27,17 @@ function PromotionalPaymentsCard() {
     /**
      * Api call to obtain promotion payment information
      */
-    function getPromotionalPayments() {
+    async function getPromotionalPayments() {
 
         setIsLoading(true);
 
-        const d =
-            get(CoreConstants.ApiUrls.Account.PromoPayments)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setPromoPayments(
-                    response.data
-                )
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+        const d = await get(CoreConstants.ApiUrls.Account.PromoPayments)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setPromoPayments(
+                response.data
+            )
+        }
 
         setIsLoading(false)
 

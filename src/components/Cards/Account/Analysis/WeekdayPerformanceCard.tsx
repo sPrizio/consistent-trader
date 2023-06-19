@@ -104,30 +104,29 @@ function WeekdayPerformanceCard({start = '', end = ''}: { start: string, end: st
 
         setIsLoading(true)
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.Analysis.WeekdayPerformance
                 .replace('{start}', start)
                 .replace('{end}', end)
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                const filtered = []
 
-                for (const element of response.data) {
-                    for (let prop in element) {
-                        filtered.push({
-                            dayOfWeek: prop,
-                            value: element[prop].averagePips,
-                            total: element[prop]
-                        })
-                    }
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            const filtered = []
+
+            for (const element of response.data) {
+                for (let prop in element) {
+                    filtered.push({
+                        dayOfWeek: prop,
+                        value: element[prop].averagePips,
+                        total: element[prop]
+                    })
                 }
-
-                // @ts-ignore
-                setPerformance(filtered)
             }
-        })
+
+            // @ts-ignore
+            setPerformance(filtered)
+        }
 
         setIsLoading(false)
 

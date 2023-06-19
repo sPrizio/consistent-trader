@@ -30,25 +30,22 @@ function PerformanceStatisticsCard({start = '', end = ''} : {start: string, end:
     /**
      * Obtains the statistics
      */
-    function getStatsInfo() {
+    async function getStatsInfo() {
 
         setIsLoading(true);
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.TradeRecord.RecentHistory
                     .replace('{count}', '1')
                     .replace('{aggregateInterval}', 'MONTHLY')
                     .replace('{sortOrder}', 'DESC')
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setStatsInfo(response.data[0].statistics)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setStatsInfo(response.data[0].statistics)
+        }
 
         setIsLoading(false)
 

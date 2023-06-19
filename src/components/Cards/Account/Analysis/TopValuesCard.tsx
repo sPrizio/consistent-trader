@@ -57,7 +57,7 @@ function TopValuesCard(
 
         setIsLoading(true)
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.Analysis.TopTrades
                 .replace('{start}', start)
                 .replace('{end}', end)
@@ -65,12 +65,11 @@ function TopValuesCard(
                 .replace('{sortByLosses}', sortByLosses.toString())
                 .replace('{count}', count.toString())
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setValues(response.data)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setValues(response.data)
+        }
 
         setIsLoading(false)
 

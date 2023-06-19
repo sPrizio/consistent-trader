@@ -30,25 +30,22 @@ function DisregardedTradesCard() {
     /**
      * API call to get the disregarded trades content
      */
-    function getDisregardedTrades() {
+    async function getDisregardedTrades() {
 
         setIsLoading(true);
 
         const d =
-            get(CoreConstants.ApiUrls.Analysis.IrrelevantTrades
+            await get(CoreConstants.ApiUrls.Analysis.IrrelevantTrades
                 .replace('{start}', start)
                 .replace('{end}', end)
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setDisregardedTrades(
-                    response.data
-                )
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setDisregardedTrades(
+                response.data
+            )
+        }
 
         setIsLoading(false)
 

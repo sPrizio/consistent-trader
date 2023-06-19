@@ -117,20 +117,16 @@ function HelpPage() {
 
         setIsLoading(true)
 
-        const d = get(CoreConstants.ApiUrls.Rank.BaseRanks)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                const index = getIndex(response.data, activeTab)
-                setBaseRanks(response.data.map((item: any) => item.name))
-                setRanks(response.data)
-                setPreviousRank(safeGetData(response.data, index - 1))
-                setCurrentRank(response.data[index])
-                setNextRank(safeGetData(response.data, index + 1))
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+        const d = await get(CoreConstants.ApiUrls.Rank.BaseRanks)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            const index = getIndex(response.data, activeTab)
+            setBaseRanks(response.data.map((item: any) => item.name))
+            setRanks(response.data)
+            setPreviousRank(safeGetData(response.data, index - 1))
+            setCurrentRank(response.data[index])
+            setNextRank(safeGetData(response.data, index + 1))
+        }
 
         setIsLoading(false)
 
@@ -144,15 +140,11 @@ function HelpPage() {
 
         setIsLoading(true)
 
-        const d = get(CoreConstants.ApiUrls.System.EntryTags)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setEntryTags(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+        const d = await get(CoreConstants.ApiUrls.System.EntryTags)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setEntryTags(response.data)
+        }
 
         setIsLoading(false)
 

@@ -15,7 +15,7 @@ import {formatDate} from "../../../services/datetime/DateTimeService";
  * @author Stephen Prizio
  * @version 1.0
  */
-function ExcessLossCard({start = '', end = ''} : {start: string, end: string}) {
+function ExcessLossCard({start = '', end = ''}: { start: string, end: string }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [lossInfo, setLossInfo] = useState({})
@@ -30,24 +30,21 @@ function ExcessLossCard({start = '', end = ''} : {start: string, end: string}) {
     /**
      * Obtains the loss info
      */
-    function getLossInfoData() {
+    async function getLossInfoData() {
 
         setIsLoading(true);
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.Account.LossInfo
                     .replace('{start}', start)
                     .replace('{end}', end)
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setLossInfo(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setLossInfo(response.data)
+        }
 
         setIsLoading(false)
 

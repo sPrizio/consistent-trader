@@ -79,24 +79,21 @@ function BalanceHistoryCard() {
     /**
      * Fetches the balance history from the api
      */
-    function getBalanceHistory() {
+    async function getBalanceHistory() {
 
         setIsLoading(true);
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.Account.BalanceHistory
                     .replace('{start}', start)
                     .replace('{end}', end)
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setBalanceHistory(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setBalanceHistory(response.data)
+        }
 
         setIsLoading(false)
 
@@ -113,7 +110,8 @@ function BalanceHistoryCard() {
                 title={'Account History'}
                 subtitle={'Balance Updates'}
                 hasBorder={true}
-                content={[<BalanceHistory key={0} balanceHistory={balanceHistory} historyHandler={handleSelectChange} filter={filterHistory} />]}
+                content={[<BalanceHistory key={0} balanceHistory={balanceHistory} historyHandler={handleSelectChange}
+                                          filter={filterHistory}/>]}
                 hasError={emptyObject(balanceHistory)}
             />
         </>

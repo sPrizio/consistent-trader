@@ -44,26 +44,23 @@ function EquityCurveCard() {
     /**
      * Obtains the account overview for use with the overview page
      */
-    function getProfitCurveData() {
+    async function getProfitCurveData() {
 
         setIsLoading(true);
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.Account.EquityCurve
                     .replace('{interval}', periodType.key.toUpperCase())
                     .replace('{count}', period.toString())
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setProfitCurveInfo({
-                    points: response.data.reverse()
-                })
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setProfitCurveInfo({
+                points: response.data.reverse()
+            })
+        }
 
         setIsLoading(false)
 

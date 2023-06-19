@@ -113,16 +113,15 @@ function TradeHistoryPage() {
         setIsLoading(true)
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.TradeRecord.ActiveMonths
                     .replace('{year}', currentYear)
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setActiveMonths(response.data)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setActiveMonths(response.data)
+        }
 
         setIsLoading(false)
 
@@ -137,19 +136,18 @@ function TradeHistoryPage() {
         setIsLoading(true)
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.TradeRecord.History
                     .replace('{start}', start)
                     .replace('{end}', end)
                     .replace('{aggregateInterval}', interval)
                     .replace('{sortOrder}', 'desc')
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setTrades(response.data)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setTrades(response.data)
+        }
 
         setIsLoading(false)
 
@@ -244,7 +242,7 @@ function TradeHistoryPage() {
                 </div>
                 <div className={"columns is-multiline is-mobile"}>
                     {
-                        trades && trades.map((item, key) => {
+                        trades?.map((item, key) => {
                             return (
                                 <div className="column is-12" key={key}>
                                     <TradeHistoryEntryCard
@@ -256,7 +254,7 @@ function TradeHistoryPage() {
                                     />
                                 </div>
                             )
-                        })
+                        }) ?? null
                     }
                 </div>
             </div>

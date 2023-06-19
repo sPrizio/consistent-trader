@@ -35,19 +35,18 @@ function PerformanceAveragesCard({start = '', end = '', isWin = false}: { start:
 
         setIsLoading(true)
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.Analysis.Average
                 .replace('{start}', start)
                 .replace('{end}', end)
                 .replace('{win}', isWin.toString())
                 .replace('{count}', '-1')
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setAverage(response.data)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setAverage(response.data)
+        }
 
         setIsLoading(false)
 

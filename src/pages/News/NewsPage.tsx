@@ -34,26 +34,20 @@ function NewsPage() {
     /**
      * Obtains all the locales supported by the system
      */
-    function getLocales() {
+    async function getLocales() {
 
         setIsLoading(true)
 
-        console.log(selected)
-
-        const d = get(CoreConstants.ApiUrls.News.Locales)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setCountries(response.data.map((item: { right: any; left: any; }) => {
-                    return {
-                        value: item.right,
-                        label: item.left
-                    }
-                }))
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+        const d = await get(CoreConstants.ApiUrls.News.Locales)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setCountries(response.data.map((item: { right: any; left: any; }) => {
+                return {
+                    value: item.right,
+                    label: item.left
+                }
+            }))
+        }
 
         setIsLoading(false)
 

@@ -28,23 +28,20 @@ function PerformanceSummaryCard() {
     /**
      * Obtains the performance summary
      */
-    function getSummary() {
+    async function getSummary() {
         setIsLoading(true);
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.TradeRecord.RecentHistory
                 .replace('{count}', '1')
                 .replace('{aggregateInterval}', 'MONTHLY')
                 .replace('{sortOrder}', 'desc')
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setPerformanceSummary(response.data[0])
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setPerformanceSummary(response.data[0])
+        }
 
         setIsLoading(false)
     }

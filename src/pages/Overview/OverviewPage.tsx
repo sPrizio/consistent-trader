@@ -22,7 +22,7 @@ import {Moment} from "moment";
  * @author Stephen Prizio
  * @version 1.0
  */
-function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, userInfo: UserInfo }) {
+function OverviewPage({pageHandler, userInfo = {}}: { pageHandler: Function, userInfo: UserInfo }) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [overview, setOverview] = useState<any>(null)
@@ -80,7 +80,7 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
      * @param date date to test
      */
     function isWeekend(date: Moment) {
-        return date.weekday() === 0 ||  date.weekday() === 6
+        return date.weekday() === 0 || date.weekday() === 6
     }
 
 
@@ -103,19 +103,15 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
 
         setIsLoading(true);
 
-        const d =
-            get(
-                CoreConstants.ApiUrls.Retrospective.MostRecent
-                    .replace('{interval}', 'WEEKLY')
-            )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setRecentRetro(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+        const d = await get(
+            CoreConstants.ApiUrls.Retrospective.MostRecent
+                .replace('{interval}', 'WEEKLY')
+        )
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setRecentRetro(response.data)
+        }
 
         setIsLoading(false)
     }
@@ -134,7 +130,7 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
                         <div className="column is-6-desktop is-12-tablet is-12-mobile">
                             <div className="columns is-multiline is-mobile">
                                 <div className="column is-12">
-                                    <OverviewCard accountOverview={overview} isLoading={isLoading} />
+                                    <OverviewCard accountOverview={overview} isLoading={isLoading}/>
                                 </div>
                                 <div className="column is-12">
                                     <NewsCard
@@ -148,10 +144,10 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
                         <div className="column is-6-desktop is-12-tablet is-12-mobile">
                             <div className="columns is-multiline is-mobile">
                                 <div className="column is-12">
-                                    <EquityCurveCard />
+                                    <EquityCurveCard/>
                                 </div>
                                 <div className="column is-12">
-                                    <PerformanceSummaryCard />
+                                    <PerformanceSummaryCard/>
                                 </div>
                                 <div className="column is-6-desktop is-12-tablet is-12-mobile">
                                     <ExcessLossCard
@@ -179,7 +175,7 @@ function OverviewPage({ pageHandler, userInfo = {} } : { pageHandler: Function, 
                             />
                         </div>
                         <div className="column is-5-desktop is-12-tablet is-12-mobile">
-                            <TradeLogCard count={5} />
+                            <TradeLogCard count={5}/>
                         </div>
                     </div>
                 </div>

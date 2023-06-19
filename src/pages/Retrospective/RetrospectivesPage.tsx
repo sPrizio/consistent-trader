@@ -148,16 +148,12 @@ function RetrospectivesPage() {
 
         setIsLoading(true)
 
-        const d = get(
-            CoreConstants.ApiUrls.Retrospective.ActiveYears
-        )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setCurrentYear(response.data[0])
-                setActiveYears(response.data)
-            }
-        })
+        const d = await get(CoreConstants.ApiUrls.Retrospective.ActiveYears)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setCurrentYear(response.data[0])
+            setActiveYears(response.data)
+        }
 
         setIsLoading(false)
 
@@ -171,20 +167,19 @@ function RetrospectivesPage() {
 
         setIsLoading(true)
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.Retrospective.ActiveMonths
                 .replace('{year}', formatDate(currentYear, CoreConstants.DateTime.ISOYearFormat))
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                const startIndex = 0
-                setCurrentMonth(response.data[startIndex])
-                setActiveMonths(response.data)
-                setStart(formatDate(response.data[startIndex], CoreConstants.DateTime.ISODateFormat))
-                setEnd(formatDateMoment(getDate(response.data[startIndex]).add(1, 'months'), CoreConstants.DateTime.ISODateFormat))
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            const startIndex = 0
+            setCurrentMonth(response.data[startIndex])
+            setActiveMonths(response.data)
+            setStart(formatDate(response.data[startIndex], CoreConstants.DateTime.ISODateFormat))
+            setEnd(formatDateMoment(getDate(response.data[startIndex]).add(1, 'months'), CoreConstants.DateTime.ISODateFormat))
+        }
 
         setIsLoading(false)
 
@@ -198,18 +193,17 @@ function RetrospectivesPage() {
 
         setIsLoading(true)
 
-        const d = get(
+        const d = await get(
             CoreConstants.ApiUrls.Retrospective.List
                 .replace('{start}', start)
                 .replace('{end}', end)
                 .replace('{interval}', selectedInterval)
         )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setRetros(response.data)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setRetros(response.data)
+        }
 
         setIsLoading(false)
 
@@ -247,13 +241,11 @@ function RetrospectivesPage() {
         val.startDate = formatDateMoment(getDate(val.startDate), CoreConstants.DateTime.ISODateFormat)
         val.endDate = formatDateMoment(getDate(val.endDate), CoreConstants.DateTime.ISODateFormat)
 
-        const d = post(CoreConstants.ApiUrls.Retrospective.Create, {'retrospective': val})
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setRetros(response.data)
-            }
-        })
+        const d = await post(CoreConstants.ApiUrls.Retrospective.Create, {'retrospective': val})
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setRetros(response.data)
+        }
 
         setIsLoading(false)
         resetForm()
@@ -305,11 +297,13 @@ function RetrospectivesPage() {
                 </Helmet>
                 <div className="ct-retrospectives-page">
                     <div className="ct-retrospectives-page__disclaimer-container has-text-centered">
-                        <p>Your retrospectives would appear here. Consider taking some time to reflect on previous performances.</p>
+                        <p>Your retrospectives would appear here. Consider taking some time to reflect on previous
+                            performances.</p>
                     </div>
 
                     <div className="floating-buttons-container">
-                        <button className="button is-floating is-lead is-primary is-vcentered has-text-centered" onClick={toggleNew}>
+                        <button className="button is-floating is-lead is-primary is-vcentered has-text-centered"
+                                onClick={toggleNew}>
                         <span className="is-size-3" style={{marginTop: "5px"}}>
                             <HiPlus/>
                         </span>
@@ -317,7 +311,8 @@ function RetrospectivesPage() {
 
                         <div className={"floating-sub-container" + (newActive ? '' : ' no-show ')}>
                             <div className="button-container">
-                                <button className="button" onClick={() => toggleModal(true, RetrospectiveType.NOTE.code)}>
+                                <button className="button"
+                                        onClick={() => toggleModal(true, RetrospectiveType.NOTE.code)}>
                                 <span className="icon">
                                     <TfiWrite/>
                                 </span>
@@ -326,7 +321,7 @@ function RetrospectivesPage() {
                             <div className="button-container">
                                 <button className="button" onClick={() => toggleModal(true, 'audio')}>
                                 <span className="icon">
-                                    <AiFillAudio />
+                                    <AiFillAudio/>
                                 </span>
                                 </button>
                             </div>
@@ -365,7 +360,7 @@ function RetrospectivesPage() {
                                     <div className="select">
                                         <select value={currentYear} onChange={handleYearChange}>
                                             {
-                                                activeYears && activeYears.map((item, key) => {
+                                                activeYears?.map((item, key) => {
                                                     const val = moment(item.year)
                                                     return (
                                                         <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
@@ -373,7 +368,7 @@ function RetrospectivesPage() {
                                                             {val.format(CoreConstants.DateTime.ISOYearFormat)}
                                                         </option>
                                                     )
-                                                })
+                                                }) ?? null
                                             }
                                         </select>
                                     </div>
@@ -384,7 +379,7 @@ function RetrospectivesPage() {
                                     <div className="select">
                                         <select value={currentMonth} onChange={handleMonthChange}>
                                             {
-                                                activeMonths && activeMonths.map((item, key) => {
+                                                activeMonths?.map((item, key) => {
                                                     const val = moment(item.month)
                                                     return (
                                                         <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
@@ -392,7 +387,7 @@ function RetrospectivesPage() {
                                                             {val.format(CoreConstants.DateTime.ISOMonthFormat)}
                                                         </option>
                                                     )
-                                                })
+                                                }) ?? null
                                             }
                                         </select>
                                     </div>
@@ -406,26 +401,32 @@ function RetrospectivesPage() {
 
                 <div className="columns is-multiline is-mobile">
                     {
-                        retros && retros.map((item, key) => {
+                        retros?.map((item: any, key) => {
                             return (
                                 <div className="column is-12" key={key}>
-                                    <NoteRetrospective
-                                        interval={selectedInterval}
-                                        showTotals={true}
-                                        isLoading={isLoading}
-                                        retro={item}
-                                        editHandler={handleEdit}
-                                        deleteHandler={handleDelete}
-                                        showCrud={true}
-                                    />
+                                    {
+                                        item.retrospectiveType === 'NOTE' ?
+                                            <NoteRetrospective
+                                                interval={selectedInterval}
+                                                showTotals={true}
+                                                isLoading={isLoading}
+                                                retro={item}
+                                                editHandler={handleEdit}
+                                                deleteHandler={handleDelete}
+                                                showCrud={true}
+                                            />
+                                            :
+                                            null
+                                    }
                                 </div>
                             )
-                        })
+                        }) ?? null
                     }
                 </div>
 
                 <div className="floating-buttons-container">
-                    <button className="button is-floating is-lead is-primary is-vcentered has-text-centered" onClick={toggleNew}>
+                    <button className="button is-floating is-lead is-primary is-vcentered has-text-centered"
+                            onClick={toggleNew}>
                         <span className="is-size-3" style={{marginTop: "5px"}}>
                             <HiPlus/>
                         </span>
@@ -442,7 +443,7 @@ function RetrospectivesPage() {
                         <div className="button-container">
                             <button className="button" onClick={() => toggleModal(true, 'audio')}>
                                 <span className="icon">
-                                    <AiFillAudio />
+                                    <AiFillAudio/>
                                 </span>
                             </button>
                         </div>

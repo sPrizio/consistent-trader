@@ -76,23 +76,22 @@ function AnalysisPage() {
         setIsLoading(true)
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.TradeRecord.ActiveMonths
                     .replace('{year}', formatDate(currentYear, CoreConstants.DateTime.ISOYearFormat))
                     .replace('{includeStarterMonth}', 'true')
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                const months = response.data
-                const index = months.filter((x: { active: boolean; }) => x.active).reverse()[0]
 
-                setActiveMonths(months)
-                setCurrentMonth(
-                    formatDateMoment(getDateForFormat(formatDate(currentYear, CoreConstants.DateTime.ISOYearFormat) + '-' + index.month.toLowerCase() + '-01', CoreConstants.DateTime.ISODateLongMonthFormat), CoreConstants.DateTime.ISODateFormat)
-                )
-            }
-        })
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            const months = response.data
+            const index = months.filter((x: { active: boolean; }) => x.active).reverse()[0]
+
+            setActiveMonths(months)
+            setCurrentMonth(
+                formatDateMoment(getDateForFormat(formatDate(currentYear, CoreConstants.DateTime.ISOYearFormat) + '-' + index.month.toLowerCase() + '-01', CoreConstants.DateTime.ISODateLongMonthFormat), CoreConstants.DateTime.ISODateFormat)
+            )
+        }
 
         setIsLoading(false)
 
@@ -106,13 +105,11 @@ function AnalysisPage() {
 
         setIsLoading(true)
 
-        const d = get(CoreConstants.ApiUrls.TradeRecord.ActiveYears)
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setActiveYears(response.data)
-            }
-        })
+        const d = await get(CoreConstants.ApiUrls.TradeRecord.ActiveYears)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setActiveYears(response.data)
+        }
 
         setIsLoading(false)
 

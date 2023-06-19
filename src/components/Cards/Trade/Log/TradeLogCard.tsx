@@ -25,25 +25,22 @@ function TradeLogCard({count = 0}: {count: number}) {
 
     //  GENERAL FUNCTIONS
 
-    function getTradeRecordInfo() {
+    async function getTradeRecordInfo() {
 
         setIsLoading(true);
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.TradeRecord.RecentHistory
                     .replace('{count}', count.toString())
                     .replace('{aggregateInterval}', 'DAILY')
                     .replace('{sortOrder}', 'desc')
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                setRecords(response.data)
-            }
-        }).catch(err => {
-            console.log(err)
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setRecords(response.data)
+        }
 
         setIsLoading(false)
 

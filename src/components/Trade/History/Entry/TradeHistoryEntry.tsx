@@ -126,10 +126,10 @@ function TradeHistoryEntry(
     /**
      * Fetches the trades contained within this trade record session
      */
-    function getTrades() {
+    async function getTrades() {
 
         const d =
-            get(
+            await get(
                 CoreConstants.ApiUrls.Trade.ListPaged
                     .replace('{start}', formatDate(tradeRecord.startDate ?? '', CoreConstants.DateTime.ISODateTimeFormat))
                     .replace('{end}', formatDate(tradeRecord.endDate ?? '', CoreConstants.DateTime.ISODateTimeFormat))
@@ -137,13 +137,12 @@ function TradeHistoryEntry(
                     .replace('{page}', currentPage.toString())
                     .replace('{pageSize}', pageSize.toString())
             )
-        d.then(res => {
-            let response: StandardJsonResponse = JSON.parse(res)
-            if (response.success && hasData(response.data)) {
-                console.log(response.data)
-                setTrades(response.data)
-            }
-        })
+
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            console.log(response.data)
+            setTrades(response.data)
+        }
 
         return {}
     }

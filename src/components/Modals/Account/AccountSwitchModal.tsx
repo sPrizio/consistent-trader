@@ -7,7 +7,9 @@ import hasData from "../../../services/data/DataIntegrityService";
 import {formatDate} from "../../../services/datetime/DateTimeService";
 import {getUser} from "../../../services/user/userService";
 import {formatNumberForDisplay} from "../../../services/data/FormattingService";
-import {AiFillCheckCircle} from "react-icons/ai";
+import {AiFillCheckCircle, AiFillPlusCircle} from "react-icons/ai";
+import SimpleButton from "../../Buttons/SimpleButton";
+import CreateNewAccountModal from "./CreateNewAccountModal";
 
 /**
  * Renders the account switch modal, used to select the account whose information will be displayed
@@ -28,6 +30,7 @@ function AccountSwitchModal({active = false, closeHandler, accounts = []}: {
     const [isLoading, setIsLoading] = useState(false)
     const [acc, setAcc] = useState([])
     const [selectedAccount, setSelectedAccount] = useState(-1)
+    const [newAccountModalActive, setNewAccountModalActive] = useState(false)
 
     useEffect(() => {
         getAccounts()
@@ -109,6 +112,21 @@ function AccountSwitchModal({active = false, closeHandler, accounts = []}: {
 
     let content =
         <section className="ct-account-switch-modal">
+            <div className="level">
+                <div className="level-left" />
+                <div className="level-right">
+                    <div className="level-item">
+                        <SimpleButton
+                            text={"Add Account"}
+                            iconPosition={"left"}
+                            icon={<AiFillPlusCircle />}
+                            plain={true}
+                            handler={() => setNewAccountModalActive(!newAccountModalActive)}
+                        />
+                    </div>
+                </div>
+            </div>
+            <br />
             <p>
                 Below is a list of the accounts associated with your TraderBuddy account. Select any account to
                 mark it as default and to view its information.
@@ -168,6 +186,11 @@ function AccountSwitchModal({active = false, closeHandler, accounts = []}: {
                     may always swap between any account at any time.
                 </p>
             </div>
+
+            <CreateNewAccountModal
+                active={newAccountModalActive}
+                closeHandler={() => setNewAccountModalActive(false)}
+            />
         </section>
 
     return (

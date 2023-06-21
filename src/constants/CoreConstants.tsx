@@ -15,9 +15,15 @@ export const CoreConstants = {
     ApiUrls: {
         Account: {
             BalanceHistory: getAccountDomain() + '/balance-history?start={start}&end={end}',
+            CreateNewAccount: getAccountDomain() + '/create-account',
             CreateBalanceModification: getAccountDomain() + '/create-modification',
             DeleteBalanceModification: getAccountDomain() + '/delete-modification?uid={uid}',
             EquityCurve: getAccountDomain() + '/equity-curve?interval={interval}&count={count}',
+            GetAccountTypes: getAccountDomain() + '/account-types',
+            GetBrokers: getAccountDomain() + '/brokers',
+            GetCurrencies: getAccountDomain() + '/currencies',
+            GetStopTypes: getAccountDomain() + '/stop-types',
+            GetTradePlatforms: getAccountDomain() + '/trade-platforms',
             LossInfo: getAccountDomain() + '/loss-info?start={start}&end={end}',
             Overview: getAccountDomain() + '/overview',
             PromoPayments: getAccountDomain() + '/promo-payments',

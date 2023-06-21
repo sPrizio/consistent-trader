@@ -25,7 +25,7 @@ function CreateNewAccountModal({active = false, closeHandler}: { active: boolean
         tradePlatforms: []
     })
     const [accName, setAccName] = useState<string>('')
-    const [accNumber, setAccNumber] = useState<string>('')
+    const [accNumber, setAccNumber] = useState<number>()
     const [accBalance, setAccBalance] = useState<number>()
     const [accCurrency, setAccCurrency] = useState<string>('USD')
     const [accType, setAccType] = useState<string>('SHARES')
@@ -55,7 +55,7 @@ function CreateNewAccountModal({active = false, closeHandler}: { active: boolean
      */
     function resetForm() {
         setAccName('')
-        setAccNumber('')
+        setAccNumber(undefined)
         setAccBalance(undefined)
         setAccCurrency('USD')
         setAccType('SHARES')
@@ -71,7 +71,7 @@ function CreateNewAccountModal({active = false, closeHandler}: { active: boolean
      */
     function validateForm() {
         const nameValid = accName.length > 0
-        const numberValid = accNumber.length > 0
+        const numberValid = accNumber !== undefined
         const balanceValid = accBalance !== undefined
         const currencyValid = accCurrency.length > 0
         const typeValid = accType.length > 0
@@ -226,9 +226,9 @@ function CreateNewAccountModal({active = false, closeHandler}: { active: boolean
                             <input
                                 value={accNumber}
                                 className="input"
-                                type="text"
+                                type="number"
                                 placeholder="Account Number"
-                                onChange={e => setAccNumber(e.target.value)}
+                                onChange={e => setAccNumber(parseInt(e.target.value))}
                             />
                         </p>
                     </div>

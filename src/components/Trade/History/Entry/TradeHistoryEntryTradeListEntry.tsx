@@ -6,6 +6,7 @@ import {CoreConstants} from "../../../../constants/CoreConstants";
 /**
  * Component that renders a trade in a list of trades for a trade session
  *
+ * @param index trade #
  * @param openTime trade open time
  * @param closeTime trade close time
  * @param entryPrice trade entry price
@@ -22,6 +23,7 @@ import {CoreConstants} from "../../../../constants/CoreConstants";
  */
 function TradeHistoryEntryTradeListEntry(
     {
+        index = -1,
         openTime = '',
         closeTime = '',
         entryPrice = -1,
@@ -34,6 +36,7 @@ function TradeHistoryEntryTradeListEntry(
         pips = -1,
         key = -1,
     }: {
+        index: number,
         openTime: string,
         closeTime: string,
         entryPrice: number,
@@ -59,6 +62,9 @@ function TradeHistoryEntryTradeListEntry(
 
     return (
         <tr className="hide-lines">
+            <td className="has-text-centered is-vcentered">
+                {index + 1}
+            </td>
             <td className="has-text-centered is-vcentered">
                 <div className={'test'}>
                     <span className={"icon " + (getTradeTypeClass())}>

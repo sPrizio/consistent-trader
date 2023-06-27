@@ -1,9 +1,12 @@
 .ct-news {
-
   &.no-old {
     .old-news {
       display: none;
     }
+  }
+
+  .table-container {
+    @include custom-scrollbar(&)
   }
 
   &__table {

@@ -22,6 +22,7 @@ function TradeHistoryEntryTradeList({tradeData = {}, pageHandler}: { tradeData: 
                     <table className="table is-fullwidth is-striped">
                         <thead>
                         <tr>
+                            <th className="has-text-centered is-vcentered">#</th>
                             <th/>
                             <th className="has-text-centered is-vcentered">Open</th>
                             <th className="has-text-centered is-vcentered">Price (O)</th>
@@ -35,11 +36,10 @@ function TradeHistoryEntryTradeList({tradeData = {}, pageHandler}: { tradeData: 
                         </thead>
                         <tbody>
                         {
-                            tradeData &&
-                            tradeData.content &&
-                            tradeData.content.map((item, key) => {
+                            tradeData?.content?.map((item, key) => {
                                 return (
                                     <TradeHistoryEntryTradeListEntry
+                                        index={key}
                                         openTime={item.tradeOpenTime ?? ''}
                                         closeTime={item.tradeCloseTime ?? ''}
                                         entryPrice={item.openPrice ?? -1}
@@ -53,7 +53,7 @@ function TradeHistoryEntryTradeList({tradeData = {}, pageHandler}: { tradeData: 
                                         key={key}
                                     />
                                 )
-                            })
+                            }) ?? null
                         }
                         </tbody>
                     </table>

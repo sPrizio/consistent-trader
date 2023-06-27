@@ -8,6 +8,7 @@ export default async function get(url: string) {
     return new Promise<string>(function(resolve, reject) {
         // Do the usual XHR stuff
         const req = new XMLHttpRequest();
+        req.timeout = 5000
         req.open('GET', url);
 
         req.onload = function() {
@@ -26,7 +27,7 @@ export default async function get(url: string) {
 
         // Handle network errors
         req.onerror = function() {
-            reject(Error("Network Error"));
+            resolve('{}')
         };
 
         // Make the request
@@ -44,6 +45,7 @@ export async function cDelete(url: string) {
     return new Promise<string>(function(resolve, reject) {
         // Do the usual XHR stuff
         const req = new XMLHttpRequest();
+        req.timeout = 5000
         req.open('DELETE', url);
 
         req.onload = function() {
@@ -62,7 +64,7 @@ export async function cDelete(url: string) {
 
         // Handle network errors
         req.onerror = function() {
-            reject(Error("Network Error"));
+            resolve('{}')
         };
 
         // Make the request
@@ -81,6 +83,7 @@ export async function post(url: string, body: object) {
     return new Promise<string>(function(resolve, reject) {
         // Do the usual XHR stuff
         const req = new XMLHttpRequest();
+        req.timeout = 5000
         req.open('POST', url);
         req.setRequestHeader('Accept', 'application/json')
         req.setRequestHeader('Content-Type', 'application/json')
@@ -101,7 +104,7 @@ export async function post(url: string, body: object) {
 
         // Handle network errors
         req.onerror = function() {
-            reject(Error("Network Error"));
+            resolve('{}')
         };
 
         // Make the request
@@ -120,6 +123,7 @@ export async function put(url: string, body?: object) {
     return new Promise<string>(function(resolve, reject) {
         // Do the usual XHR stuff
         const req = new XMLHttpRequest();
+        req.timeout = 5000
         req.open('PUT', url);
         req.setRequestHeader('Accept', 'application/json')
         req.setRequestHeader('Content-Type', 'application/json')
@@ -140,7 +144,7 @@ export async function put(url: string, body?: object) {
 
         // Handle network errors
         req.onerror = function() {
-            reject(Error("Network Error"));
+            resolve('{}')
         };
 
         // Make the request

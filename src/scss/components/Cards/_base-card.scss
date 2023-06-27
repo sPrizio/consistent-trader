@@ -9,7 +9,22 @@
   transition-timing-function: $transition-curve;
 
   &__error-disclaimer {
-    text-align: center;
+    &__container {
+      margin: 0 auto;
+      max-width: 250px;
+      text-align: left;
+
+      .image {
+        opacity: 0.425;
+      }
+
+      p {
+        color: $color-font-header-subtitle;
+        font-weight: $font-weight-medium;
+        font-size: map-get($font-body, 'default', 'desktop', 'size');
+        line-height: map-get($font-body, 'default', 'desktop', 'line');
+      }
+    }
   }
 
   &--is-loading {

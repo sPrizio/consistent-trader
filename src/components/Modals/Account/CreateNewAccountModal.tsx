@@ -172,7 +172,7 @@ function CreateNewAccountModal({active = false, closeHandler}: { active: boolean
         validateForm()
 
         if (!hasError) {
-            const result = await post(CoreConstants.ApiUrls.System.Contact, {
+            const result = await post(CoreConstants.ApiUrls.Account.CreateNewAccount, {
                 'account': {
                     name: accName,
                     number: accNumber,

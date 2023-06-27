@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
+import empty from '../../assets/images/status/out-of-stock.png'
 
 /**
  * Base card component representing a generic card that is used throughout the app
@@ -111,7 +112,18 @@ function BaseCard(
             {
                 hasError ?
                     <div className="ct-card__error-disclaimer">
-                        <p>Your data will display here once you have begun trading!</p>
+                        <div className="ct-card__error-disclaimer__container">
+                            <div className="columns is-multiline is-mobile is-vcentered">
+                                <div className="column is-narrow">
+                                    <figure className="image is-64x64">
+                                        <img src={empty} alt={'No data available'} />
+                                    </figure>
+                                </div>
+                                <div className="column">
+                                    <p>No data available.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     :
                     <div className="columns is-multiline is-mobile is-gapless">

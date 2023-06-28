@@ -1,4 +1,3 @@
-import BaseCard from "../../components/Cards/BaseCard";
 import SimpleButton from "../../components/Buttons/SimpleButton";
 
 /**
@@ -8,6 +7,7 @@ import SimpleButton from "../../components/Buttons/SimpleButton";
  * @version 1.0
  */
 function RegisterPage() {
+
 
     //  RENDER
 

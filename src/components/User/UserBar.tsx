@@ -9,6 +9,7 @@ import temp from '../../assets/icons/locales/round/canada.png'
 import AccountSwitchModal from "../Modals/Account/AccountSwitchModal";
 import TradesImportModal from "../Modals/Trade/TradesImportModal";
 import {emptyObject} from "../../services/data/DataIntegrityService";
+import {Link} from "react-router-dom";
 
 
 /**
@@ -145,12 +146,17 @@ function UserBar({userInfo = {}, pageHandler, mobileHandler}: { userInfo?: UserI
                                         </span>
                                         <div className={"ct-user-bar__user-menu__content" + (menuActive ? " is-active " : "")}>
                                             <div className="ct-user-bar__user-menu__content__container">
-                                                <div className="ct-user-bar__user-menu__content__container__link" onClick={() => pageHandler('profile')}>
-                                                    <span className="icon-text">
-                                                        <span className="icon"><AiOutlineUser/></span>
-                                                        <span>My Account</span>
-                                                    </span>
-                                                </div>
+                                                <Link to={'/profile'} onClick={() => {
+                                                    setMenuActive(false)
+                                                    pageHandler('profile')
+                                                }}>
+                                                    <div className="ct-user-bar__user-menu__content__container__link">
+                                                        <span className="icon-text">
+                                                            <span className="icon"><AiOutlineUser/></span>
+                                                            <span>My Account</span>
+                                                        </span>
+                                                    </div>
+                                                </Link>
                                                 <div className="ct-user-bar__user-menu__content__container__link" onClick={() => toggleModal('importTrades')}>
                                                     <span className="icon-text">
                                                         <span className="icon"><HiUpload/></span>

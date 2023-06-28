@@ -8,6 +8,7 @@ import {
 import brand from '../../assets/images/brand/brand_white-removebg.png'
 import {useState} from "react";
 import {CoreConstants} from "../../constants/CoreConstants";
+import {Link} from "react-router-dom";
 
 /**
  * Component representing a side navigation bar. Handles all logic associated
@@ -49,13 +50,15 @@ function DesktopSideNav({ pageHandler, selectedTab } : { pageHandler: Function, 
      */
     function renderLink(val: string, key: any) {
         return (
-            <div
-                key={key}
-                className={"ct-side-nav__links__link" + (selectedTab === key.toLowerCase() ? ' active ' : '')}
-                onClick={() => selectTab(key.toLowerCase())}
-            >
-                <span className="val">{val}</span>
-            </div>
+            <Link to={'/' + key.toLowerCase()}>
+                <div
+                    key={key}
+                    className={"ct-side-nav__links__link" + (selectedTab === key.toLowerCase() ? ' active ' : '')}
+                    onClick={() => selectTab(key.toLowerCase())}
+                >
+                    <span className="val">{val}</span>
+                </div>
+            </Link>
         )
     }
 

@@ -22,7 +22,7 @@ import NewsPage from "../News/NewsPage";
  * @author Stephen Prizio
  * @version 1.0
  */
-function ContentPage() {
+function ContentPage({pageId = 'overview'}: {pageId?: string}) {
 
     const [isLoading, setIsLoading] = useState(false)
     const [page, setPage] = useState('overview')
@@ -59,7 +59,7 @@ function ContentPage() {
      * Resolves the page to show for the selected side menu tab
      */
     function resolvePage() {
-        switch (page) {
+        switch (pageId) {
             case "overview":
                 return <OverviewPage pageHandler={selectPage} userInfo={userInfo} />
             case "profile":

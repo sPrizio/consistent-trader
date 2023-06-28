@@ -2,6 +2,7 @@ import brand from "../../assets/images/brand/brand_white-removebg.png";
 import {AiOutlineClose, AiOutlineKey, AiOutlineLineChart, AiOutlineQuestionCircle} from "react-icons/ai";
 import {useEffect, useState} from "react";
 import {CoreConstants} from "../../constants/CoreConstants";
+import {Link} from "react-router-dom";
 
 function MobileSideNav({ active = false, pageHandler, selectedTab } : { active: boolean, pageHandler: Function, selectedTab: string }) {
 
@@ -41,13 +42,15 @@ function MobileSideNav({ active = false, pageHandler, selectedTab } : { active: 
      */
     function renderLink(val: string, key: any) {
         return (
-            <div
-                key={key}
-                className={"ct-mobile-side-nav__links__link" + (selectedTab === key.toLowerCase() ? ' active ' : '')}
-                onClick={() => selectTab(key.toLowerCase())}
-            >
-                <span className="val">{val}</span>
-            </div>
+            <Link to={'/' + key.toLowerCase()}>
+                <div
+                    key={key}
+                    className={"ct-mobile-side-nav__links__link" + (selectedTab === key.toLowerCase() ? ' active ' : '')}
+                    onClick={() => selectTab(key.toLowerCase())}
+                >
+                    <span className="val">{val}</span>
+                </div>
+            </Link>
         )
     }
 

@@ -2172,6 +2172,9 @@ button {
 .ct-contact-page .notification span, .ct-contact-page .notification div {
   color: #FFFFFF;
 }
+.ct-contact-page .card {
+  min-height: 100%;
+}
 .ct-contact-page .highlighted {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -2220,6 +2223,9 @@ button {
 }
 .ct-report-issue-page .notification span, .ct-report-issue-page .notification div {
   color: #FFFFFF;
+}
+.ct-report-issue-page .card {
+  min-height: 100%;
 }
 .ct-report-issue-page .highlighted {
   border-top-left-radius: 10px;
@@ -2353,6 +2359,50 @@ button {
   border: 1.5px solid rgba(19, 125, 197, 0.35);
 }
 
+.ct-error-page {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+}
+.ct-error-page__container {
+  display: flex;
+  width: 75%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 992px) {
+  .ct-error-page__container {
+    width: 50%;
+  }
+}
+.ct-error-page__container h3 {
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 71.5px;
+  color: rgb(21, 23, 35);
+  margin: 0 !important;
+}
+.ct-error-page__container h5 {
+  color: rgb(21, 23, 35);
+  text-transform: uppercase;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 23px;
+}
+.ct-error-page__container p {
+  color: rgb(161, 172, 184);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17.5px;
+}
+.ct-error-page__home {
+  color: #137DC5;
+  font-weight: 500;
+}
+.ct-error-page__home:hover {
+  color: #137DC5;
+}
+
 .ct-trade-history-page__disclaimer-container {
   height: 80vh;
   display: flex;
@@ -2433,6 +2483,96 @@ button {
 }
 .ct-retrospectives-page .floating-buttons-container .floating-sub-container .button-container .button .icon {
   font-size: 23px;
+}
+
+.ct-login-page__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 97vh;
+}
+.ct-login-page__container .card {
+  width: 400px;
+}
+.ct-login-page__container label {
+  color: rgb(86, 106, 127);
+  font-size: 13px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.ct-login-page__container .input {
+  margin-top: 10px;
+}
+.ct-login-page__container .forgot-password {
+  padding-top: 5px;
+  text-align: right;
+}
+.ct-login-page__container .forgot-password .forgot-password-text {
+  color: #137DC5;
+  font-size: 12.75px;
+}
+.ct-login-page__container .register {
+  color: rgb(105, 122, 141);
+  font-size: 15px;
+}
+.ct-login-page__container .register .value {
+  color: #137DC5;
+  font-weight: 500;
+}
+.ct-login-page__container .sign-in-container {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.ct-login-page__container .sign-in-container .ct-button {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.ct-login-page__container .welcome .header {
+  color: rgb(86, 106, 127);
+  font-size: 22px;
+  font-weight: 500;
+}
+.ct-login-page__container .welcome .sub-header {
+  color: rgb(105, 122, 141);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.ct-register-page__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 97vh;
+}
+.ct-register-page__container .card {
+  width: 75%;
+}
+@media screen and (min-width: 992px) {
+  .ct-register-page__container .card {
+    width: 700px;
+  }
+}
+.ct-register-page__container .card .card-content {
+  padding: 24px !important;
+}
+@media screen and (min-width: 992px) {
+  .ct-register-page__container .card .card-content {
+    padding: 48px !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  .ct-register-page__container .card .card-content {
+    padding: 36px !important;
+  }
+}
+.ct-register-page__container .card .card-title {
+  font-size: 24px;
+  font-weight: 400;
+}
+.ct-register-page__container .card .card-form {
+  margin-top: 36px;
 }
 
 .bronze {

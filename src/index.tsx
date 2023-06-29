@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />
     },
     {
-        path: "/report-issue",
+        path: "/report",
         element: <ContentPage pageId={'report'} />,
         errorElement: <ErrorPage />
     },

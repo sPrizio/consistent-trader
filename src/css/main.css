@@ -2370,9 +2370,13 @@ button {
   width: 75%;
   margin: 0 auto;
 }
+.ct-error-page__container .ct-card {
+  width: 100% !important;
+  max-width: 2000px !important;
+}
 @media screen and (min-width: 992px) {
   .ct-error-page__container {
-    width: 50%;
+    width: 45%;
   }
 }
 .ct-error-page__container h3 {

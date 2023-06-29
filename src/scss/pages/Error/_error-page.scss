@@ -7,13 +7,16 @@
   &__container {
     display: flex;
     width: 75%;
+    margin: 0 auto;
 
-    @include mq-large-up {
-      width: 50%;
+    .ct-card {
+      width: 100% !important;
+      max-width: 2000px !important;
     }
 
-
-    margin: 0 auto;
+    @include mq-large-up {
+      width: 45%;
+    }
 
     h3 {
       font-size: 65px;

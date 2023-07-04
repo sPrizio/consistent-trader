@@ -175,7 +175,7 @@ function News({newsInfo = {}, oldDays = true}: {newsInfo: NewsInfo, oldDays?: bo
                                         (now().day() === 6 || now().day() === 0) ?
                                             <p>News will be updated end of day Sunday. Enjoy the weekend!</p>
                                             :
-                                            <p>Np upcoming news.</p>
+                                            <p>No upcoming news.</p>
                                     }
                                 </td>
                             </tr>

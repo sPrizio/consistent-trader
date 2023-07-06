@@ -2578,6 +2578,9 @@ button {
 .ct-register-page__container .card .card-form {
   margin-top: 36px;
 }
+.ct-register-page__container .country-display {
+  text-transform: capitalize;
+}
 
 .bronze {
   color: rgb(188, 120, 60) !important;

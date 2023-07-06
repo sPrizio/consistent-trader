@@ -78,7 +78,12 @@ export const CoreConstants = {
             RecentHistory: getTradeRecordDomain() + '/log?count={count}&aggregateInterval={aggregateInterval}&sortOrder={sortOrder}',
         },
         User: {
+            CountryCodes: getUserDomain() + '/country-codes',
             Current: getUserDomain() + '/current-user',
+            PhoneTypes: getUserDomain() + '/phone-types',
+            Currencies: getUserDomain() + '/currencies',
+            Countries: getUserDomain() + '/countries',
+            Languages: getUserDomain() + '/languages'
         }
     },
 

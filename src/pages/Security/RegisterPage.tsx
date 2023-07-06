@@ -1,4 +1,10 @@
 import SimpleButton from "../../components/Buttons/SimpleButton";
+import {useEffect, useState} from "react";
+import get from "../../services/client/ClientService";
+import {CoreConstants} from "../../constants/CoreConstants";
+import {StandardJsonResponse} from "../../types/api-types";
+import hasData from "../../services/data/DataIntegrityService";
+import {displayString} from "../../services/data/FormattingService";
 
 /**
  * Renders the registration page
@@ -7,6 +13,131 @@ import SimpleButton from "../../components/Buttons/SimpleButton";
  * @version 1.0
  */
 function RegisterPage() {
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [countryCodes, setCountryCodes] = useState([])
+    const [phoneTypes, setPhoneTypes] = useState([])
+    const [countries, setCountries] = useState([])
+    const [currencies, setCurrencies] = useState([])
+    const [languages, setLanguages] = useState([])
+
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
+
+    const [countryCode, setCountryCode] = useState('1')
+    const [phoneNumber, setPhoneNumber] = useState('')
+    const [phoneType, setPhoneType] = useState('MOBILE')
+
+    const [city, setCity] = useState('')
+    const [country, setCountry] = useState('CANADA')
+    const [timeZone, setTimeZone] = useState('')
+    const [currency, setCurrency] = useState('CAD')
+    const [userLanguages, setUserLanguages] = useState([])
+
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+
+    useEffect(() => {
+        getCountryCodes()
+        getPhoneTypes()
+        getCountries()
+        getCurrencies()
+        getLanguages()
+    })
+
+    //  GENERAL FUNCTIONS
+
+    /**
+     * Fetches the country codes
+     */
+    async function getCountryCodes() {
+
+        setIsLoading(true)
+
+        const d = await get(CoreConstants.ApiUrls.User.CountryCodes)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setCountryCodes(response.data)
+        }
+
+        setIsLoading(false)
+
+        return {}
+    }
+
+    /**
+     * Fetches the phone types
+     */
+    async function getPhoneTypes() {
+
+        setIsLoading(true)
+
+        const d = await get(CoreConstants.ApiUrls.User.PhoneTypes)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setPhoneTypes(response.data)
+        }
+
+        setIsLoading(false)
+
+        return {}
+    }
+
+    /**
+     * Fetches the countries
+     */
+    async function getCountries() {
+
+        setIsLoading(true)
+
+        const d = await get(CoreConstants.ApiUrls.User.Countries)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setCountries(response.data)
+        }
+
+        setIsLoading(false)
+
+        return {}
+    }
+
+    /**
+     * Fetches the currencies
+     */
+    async function getCurrencies() {
+
+        setIsLoading(true)
+
+        const d = await get(CoreConstants.ApiUrls.User.Currencies)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setCurrencies(response.data)
+        }
+
+        setIsLoading(false)
+
+        return {}
+    }
+
+    /**
+     * Fetches the languages
+     */
+    async function getLanguages() {
+
+        setIsLoading(true)
+
+        const d = await get(CoreConstants.ApiUrls.User.Languages)
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setLanguages(response.data)
+        }
+
+        setIsLoading(false)
+
+        return {}
+    }
 
 
     //  RENDER
@@ -26,7 +157,13 @@ function RegisterPage() {
                                         <div className="field">
                                             <label className="label">First Name</label>
                                             <div className="control">
-                                                <input className="input" type="text" placeholder="Text input" />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="John"
+                                                    value={firstName}
+                                                    onChange={(e) => setFirstName(e.target.value)}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -34,7 +171,13 @@ function RegisterPage() {
                                         <div className="field">
                                             <label className="label">Last Name</label>
                                             <div className="control">
-                                                <input className="input" type="text" placeholder="Text input" />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Doe"
+                                                    value={lastName}
+                                                    onChange={(e) => setLastName(e.target.value)}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -42,7 +185,13 @@ function RegisterPage() {
                                         <div className="field">
                                             <label className="label">Email</label>
                                             <div className="control">
-                                                <input className="input" type="email" placeholder="Text input" />
+                                                <input
+                                                    className="input"
+                                                    type="email"
+                                                    placeholder="john.doe@email.com"
+                                                    value={email}
+                                                    onChange={(e) => setEmail(e.target.value)}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -50,7 +199,13 @@ function RegisterPage() {
                                         <div className="field">
                                             <label className="label">Username</label>
                                             <div className="control">
-                                                <input className="input" type="text" placeholder="Text input" />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="john.doe"
+                                                    value={username}
+                                                    onChange={(e) => setUsername(e.target.value)}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -61,23 +216,32 @@ function RegisterPage() {
                                         <div className="field has-addons">
                                             <div className="control">
                                                 <span className="select">
-                                                  <select>
-                                                    <option>+1</option>
-                                                    <option>+35</option>
-                                                    <option>+9</option>
+                                                  <select value={countryCode} onChange={(e) => setCountryCode(e.target.value)}>
+                                                      {
+                                                          countryCodes?.map(c => {
+                                                              return <option value={c}>+{c}</option>
+                                                          }) ?? null
+                                                      }
                                                   </select>
                                                 </span>
                                             </div>
                                             <div className="control is-expanded">
-                                                <input className="input" type="tel" placeholder="Phone Number" />
+                                                <input
+                                                    className="input"
+                                                    type="tel"
+                                                    placeholder="5551239688"
+                                                    value={phoneNumber}
+                                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                                />
                                             </div>
                                             <div className="control">
                                                 <span className="select">
-                                                  <select>
-                                                    <option>Mobile</option>
-                                                    <option>Home</option>
-                                                    <option>Work</option>
-                                                    <option>Other</option>
+                                                  <select value={phoneType} onChange={(e) => setPhoneType(e.target.value)}>
+                                                      {
+                                                          phoneTypes?.map(t => {
+                                                              return <option value={t}>{t}</option>
+                                                          }) ?? null
+                                                      }
                                                   </select>
                                                 </span>
                                             </div>
@@ -88,7 +252,13 @@ function RegisterPage() {
                                             <div className="field">
                                                 <label className="label">City</label>
                                                 <div className="control">
-                                                    <input className="input" type="text" placeholder="Text input" />
+                                                    <input
+                                                        className="input"
+                                                        type="text"
+                                                        placeholder="Montreal"
+                                                        value={city}
+                                                        onChange={(e) => setCity(e.target.value)}
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -98,10 +268,13 @@ function RegisterPage() {
                                             <label className="label">Country</label>
                                             <div className="control">
                                                 <div className="select is-fullwidth">
-                                                    <select>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
-                                                        <option>Other</option>
+                                                    <select value={country} onChange={(e) => setCountry(e.target.value)}>
+                                                        {
+                                                            countries?.map(c => {
+                                                                // @ts-ignore
+                                                                return <option className="country-display" value={c}>{displayString(c)}</option>
+                                                            }) ?? null
+                                                        }
                                                     </select>
                                                 </div>
                                             </div>
@@ -109,7 +282,7 @@ function RegisterPage() {
                                     </div>
                                     <div className="column is-4-desktop is-12-tablet is-12-mobile">
                                         <div className="field">
-                                            <label className="label">Timezone</label>
+                                            <label className="label">Timezone (WIP)</label>
                                             <div className="control">
                                                 <div className="select is-fullwidth">
                                                     <select>
@@ -126,10 +299,12 @@ function RegisterPage() {
                                             <label className="label">Currencies</label>
                                             <div className="control">
                                                 <div className="select is-fullwidth">
-                                                    <select>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
-                                                        <option>Other</option>
+                                                    <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
+                                                        {
+                                                            currencies?.map(c => {
+                                                                return <option value={c}>{c}</option>
+                                                            }) ?? null
+                                                        }
                                                     </select>
                                                 </div>
                                             </div>
@@ -137,7 +312,7 @@ function RegisterPage() {
                                     </div>
                                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                                         <div className="field">
-                                            <label className="label">Languages</label>
+                                            <label className="label">Languages (MULTI)</label>
                                             <div className="control">
                                                 <div className="select is-fullwidth">
                                                     <select>
@@ -153,7 +328,13 @@ function RegisterPage() {
                                         <div className="field">
                                             <label className="label">Password</label>
                                             <div className="control">
-                                                <input className="input" type="text" placeholder="Text input" />
+                                                <input
+                                                    className="input"
+                                                    type="password"
+                                                    placeholder="Text input"
+                                                    value={password}
+                                                    onChange={(e) => setPassword(e.target.value)}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -161,12 +342,18 @@ function RegisterPage() {
                                         <div className="field">
                                             <label className="label">Confirm Password</label>
                                             <div className="control">
-                                                <input className="input" type="text" placeholder="Text input" />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Text input"
+                                                    value={confirmPassword}
+                                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="column is-12">
-                                        <SimpleButton text={'Submit'} />
+                                        <SimpleButton text={'Submit'}/>
                                     </div>
                                 </div>
                             </div>

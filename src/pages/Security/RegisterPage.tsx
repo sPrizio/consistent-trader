@@ -5,6 +5,8 @@ import {CoreConstants} from "../../constants/CoreConstants";
 import {StandardJsonResponse} from "../../types/api-types";
 import hasData from "../../services/data/DataIntegrityService";
 import {displayString} from "../../services/data/FormattingService";
+import {MultiSelect} from "react-multi-select-component";
+import Autocomplete from "react-autocomplete";
 
 /**
  * Renders the registration page
@@ -33,11 +35,13 @@ function RegisterPage() {
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('CANADA')
     const [timeZone, setTimeZone] = useState('')
+    const [tzSearch, setTzSearch] = useState('')
     const [currency, setCurrency] = useState('CAD')
-    const [userLanguages, setUserLanguages] = useState([])
+    const [userLanguages, setUserLanguages] = useState<Array<any>>([])
 
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [timeZones, setTimeZones] = useState('')
 
     useEffect(() => {
         getCountryCodes()
@@ -45,7 +49,12 @@ function RegisterPage() {
         getCountries()
         getCurrencies()
         getLanguages()
-    })
+    }, [])
+
+    useEffect(() => {
+        setTimeout(() => getTimeZones(), 1500)
+    }, [tzSearch])
+
 
     //  GENERAL FUNCTIONS
 
@@ -132,6 +141,30 @@ function RegisterPage() {
         let response: StandardJsonResponse = JSON.parse(d)
         if (response.success && hasData(response.data)) {
             setLanguages(response.data)
+            setLanguages(response.data.map((item: string) => {
+                return {
+                    value: item,
+                    label: displayString(item)
+                }
+            }))
+        }
+
+        setIsLoading(false)
+
+        return {}
+    }
+
+    /**
+     * Fetches the timezones
+     */
+    async function getTimeZones() {
+
+        setIsLoading(true)
+
+        const d = await get(CoreConstants.ApiUrls.User.TimeZones.replace('{query}', tzSearch))
+        let response: StandardJsonResponse = JSON.parse(d)
+        if (response.success && hasData(response.data)) {
+            setTimeZones(response.data)
         }
 
         setIsLoading(false)
@@ -219,7 +252,7 @@ function RegisterPage() {
                                                   <select value={countryCode} onChange={(e) => setCountryCode(e.target.value)}>
                                                       {
                                                           countryCodes?.map(c => {
-                                                              return <option value={c}>+{c}</option>
+                                                              return <option key={c} value={c}>+{c}</option>
                                                           }) ?? null
                                                       }
                                                   </select>
@@ -239,7 +272,7 @@ function RegisterPage() {
                                                   <select value={phoneType} onChange={(e) => setPhoneType(e.target.value)}>
                                                       {
                                                           phoneTypes?.map(t => {
-                                                              return <option value={t}>{t}</option>
+                                                              return <option key={t} value={t}>{displayString(t)}</option>
                                                           }) ?? null
                                                       }
                                                   </select>
@@ -272,7 +305,7 @@ function RegisterPage() {
                                                         {
                                                             countries?.map(c => {
                                                                 // @ts-ignore
-                                                                return <option className="country-display" value={c}>{displayString(c)}</option>
+                                                                return <option key={c} className="country-display" value={c}>{displayString(c)}</option>
                                                             }) ?? null
                                                         }
                                                     </select>
@@ -282,27 +315,42 @@ function RegisterPage() {
                                     </div>
                                     <div className="column is-4-desktop is-12-tablet is-12-mobile">
                                         <div className="field">
-                                            <label className="label">Timezone (WIP)</label>
-                                            <div className="control">
-                                                <div className="select is-fullwidth">
-                                                    <select>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
-                                                        <option>Other</option>
-                                                    </select>
-                                                </div>
+                                            <label className="label">Timezone</label>
+                                            <div className={"control timezone" + (isLoading ? ' is-loading ' : '')}>
+                                                <Autocomplete
+                                                    getItemValue={(item) => item.label}
+                                                    items={[
+                                                        { label: 'apple' },
+                                                        { label: 'banana' },
+                                                        { label: 'pear' }
+                                                    ]}
+                                                    renderInput={(props) => {
+                                                        return <input className="input is-fullwidth" placeholder="America/Montreal" {...props} />
+                                                    }}
+                                                    renderMenu={(items, value, style) => {
+                                                        return <div className="autocomplete-results" children={items}/>
+                                                    }}
+                                                    renderItem={(item, isHighlighted) =>
+                                                        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                                                            {item.label}
+                                                        </div>
+                                                    }
+                                                    value={timeZone}
+                                                    onChange={(e) => setTzSearch(e.target.value)}
+                                                    onSelect={(val) => setTimeZone(val)}
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                                         <div className="field">
-                                            <label className="label">Currencies</label>
+                                            <label className="label">Currency</label>
                                             <div className="control">
                                                 <div className="select is-fullwidth">
                                                     <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
                                                         {
                                                             currencies?.map(c => {
-                                                                return <option value={c}>{c}</option>
+                                                                return <option key={c} value={c}>{c}</option>
                                                             }) ?? null
                                                         }
                                                     </select>
@@ -312,15 +360,19 @@ function RegisterPage() {
                                     </div>
                                     <div className="column is-6-desktop is-12-tablet is-12-mobile">
                                         <div className="field">
-                                            <label className="label">Languages (MULTI)</label>
+                                            <label className="label">Languages</label>
                                             <div className="control">
-                                                <div className="select is-fullwidth">
-                                                    <select>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
-                                                        <option>Other</option>
-                                                    </select>
-                                                </div>
+                                                <MultiSelect
+                                                    options={languages}
+                                                    value={userLanguages}
+                                                    onChange={setUserLanguages}
+                                                    labelledBy="Select"
+                                                    className={'c-multiselect'}
+                                                    disableSearch={true}
+                                                    disabled={false}
+                                                    hasSelectAll={false}
+                                                    isLoading={isLoading}
+                                                />
                                             </div>
                                         </div>
                                     </div>

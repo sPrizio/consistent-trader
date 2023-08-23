@@ -5,6 +5,23 @@
     align-items: center;
     min-height: 97vh;
 
+    .autocomplete-results {
+      border-radius: 3px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      width: 100%;
+      z-index: 11;
+
+      div {
+        padding: 6px 12px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+
     .card {
       width: 75%;
 
@@ -36,6 +53,12 @@
 
     .country-display {
       text-transform: capitalize;
+    }
+
+    .control.timezone {
+      div {
+        display: block !important;
+      }
     }
   }
 }

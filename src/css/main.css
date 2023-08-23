@@ -2550,6 +2550,20 @@ button {
   align-items: center;
   min-height: 97vh;
 }
+.ct-register-page__container .autocomplete-results {
+  border-radius: 3px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 100%;
+  z-index: 11;
+}
+.ct-register-page__container .autocomplete-results div {
+  padding: 6px 12px;
+}
+.ct-register-page__container .autocomplete-results div:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+}
 .ct-register-page__container .card {
   width: 75%;
 }
@@ -2580,6 +2594,9 @@ button {
 }
 .ct-register-page__container .country-display {
   text-transform: capitalize;
+}
+.ct-register-page__container .control.timezone div {
+  display: block !important;
 }
 
 .bronze {

@@ -20,14 +20,14 @@ function TopValues({values = [], dataKey = ''}: {values: Array<TopValueInfo>, da
         <div className="ct-top-values">
             <div className="columns is-multiline is-mobile">
                 {
-                    values && values.map((item, key) => {
+                    values?.map((item, key) => {
                         // @ts-ignore
                         let dk = item[dataKey]
                         return (
                             <div className="column is-12 performance-statistics-entry" key={key}>
                                 <div className="columns is-multiline is-mobile is-vcentered">
                                     <div className="column is-8">
-                                        <h6 className="ct-top-values__sub-header">{formatDate(item.tradeCloseTime ?? '', CoreConstants.DateTime.ISOShortMonthDayYearFormat)}</h6>
+                                        <h6 className="ct-top-values__sub-header">{formatDate(item.tradeCloseTime ?? '', CoreConstants.DateTime.ISOShortMonthFullDayFormat)}</h6>
                                         <h5 className="ct-top-values__header">{sanitizeText(item.product ?? '')}</h5>
                                         <h6 className="ct-top-values__sub-header">
                                             Duration: {tradeDuration(item.tradeDuration ?? 0)}
@@ -40,7 +40,7 @@ function TopValues({values = [], dataKey = ''}: {values: Array<TopValueInfo>, da
                                 </div>
                             </div>
                         )
-                    })
+                    }) ?? null
                 }
             </div>
         </div>

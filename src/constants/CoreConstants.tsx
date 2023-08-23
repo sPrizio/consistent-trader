@@ -83,7 +83,8 @@ export const CoreConstants = {
             PhoneTypes: getUserDomain() + '/phone-types',
             Currencies: getUserDomain() + '/currencies',
             Countries: getUserDomain() + '/countries',
-            Languages: getUserDomain() + '/languages'
+            Languages: getUserDomain() + '/languages',
+            TimeZones: getUserDomain() + '/timezones?q={query}',
         }
     },
 
@@ -123,6 +124,7 @@ export const CoreConstants = {
         ISOMonthYearFormat: 'MMMM YYYY',
         ISOShortMonthFormat: 'MMM',
         ISOShortMonthDayFormat: 'MMM D',
+        ISOShortMonthFullDayFormat: 'MMM Do',
         ISOShortestMonthFormat: 'MM',
         ISOShortMonthDayYearFormat: 'MMM Do[,] YYYY',
         ISOShortHourFormat: 'H:mm',
